@@ -2,6 +2,7 @@ baseURL = "https://sjoukje.eth.limo/"
 languageCode = "en-us"
 title = "sjoukje.eth"
 theme = "hugo-book"
+
 relativeURLs = true
 canonifyURLs = true
 
