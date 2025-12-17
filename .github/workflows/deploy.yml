@@ -23,9 +23,6 @@ jobs:
       - name: Build
         run: hugo --minify
 
-      - name: Prepare Storacha Proof
-        run: echo "${{ secrets.STORACHA_PROOF }}" | base64 -d > storacha.proof
-      
       - name: Deploy to IPFS
         uses: ipfs/ipfs-deploy-action@v1
         id: deploy
