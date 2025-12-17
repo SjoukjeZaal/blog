@@ -2,34 +2,41 @@ baseURL = "https://sjoukje.eth.limo/"
 languageCode = "en-us"
 title = "sjoukje.eth"
 theme = "hugo-book"
-
-# IPFS Specifics
 relativeURLs = true
 canonifyURLs = true
 
 [params]
+    # Branding & Identity
     BookLogo = "images/avatar.png"
     BookTitle = "sjoukje.eth"
     BookDescription = "CTO Data & AI | Thought Leader | Author"
+    
+    # GitHub Integration (The "View Source" feature)
     BookRepo = "https://github.com/sjoukjezaal/blog"
     BookEditPath = "edit/main/content"
-    BookTheme = "auto"
+    
+    # Design Preferences
+    BookTheme = "auto"     # Automatically switches between light/dark mode
     BookMenuBundle = "/menu"
-    BookSection = "*"
+    BookSection = "*"      # Shows all sections in the sidebar
+    
+    # Search Functionality (Essential for your archive)
     BookSearchConfig = { "indexed": true }
 
-[[menu.before]]
-    name = "LinkedIn"
-    url = "https://linkedin.com/in/sjoukjezaal"
-    weight = 10
-[[menu.before]]
-    name = "X (Twitter)"
-    url = "https://x.com/sjoukjezaal"
-    weight = 20
-[[menu.before]]
-    name = "GitHub Profile"
-    url = "https://github.com/sjoukjezaal"
-    weight = 30
+[menu]
+    # Social links in the sidebar above the menu
+    [[menu.before]]
+        name = "LinkedIn"
+        url = "https://linkedin.com/in/sjoukjezaal"
+        weight = 10
+    [[menu.before]]
+        name = "X (Twitter)"
+        url = "https://x.com/sjoukjezaal"
+        weight = 20
+    [[menu.before]]
+        name = "GitHub Profile"
+        url = "https://github.com/sjoukjezaal"
+        weight = 30
 
 [taxonomies]
     category = "categories"
