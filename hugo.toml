@@ -3,7 +3,7 @@ languageCode = "en-us"
 title = "sjoukje.eth"
 theme = "hugo-book"
 
-# Add these two lines here for IPFS compatibility:
+# IPFS Specifics
 relativeURLs = true
 canonifyURLs = true
 
