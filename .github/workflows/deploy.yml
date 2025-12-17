@@ -31,3 +31,4 @@ jobs:
           storacha-key: ${{ secrets.STORACHA_KEY }}
           storacha-proof: ${{ secrets.STORACHA_PROOF }}
           github-token: ${{ secrets.GITHUB_TOKEN }}
+          github-repo: ${{ github.repository }}
