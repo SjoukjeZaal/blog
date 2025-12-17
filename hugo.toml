@@ -1,4 +1,4 @@
-baseURL = "https://sjoukje.eth.limo/"
+baseURL = "/"
 languageCode = "en-us"
 title = "sjoukje.eth"
 theme = "hugo-book"
