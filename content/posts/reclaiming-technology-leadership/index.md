@@ -34,8 +34,6 @@ Without a real understanding of how technology works, scales, and connects acros
 
 The gap between leadership and technology is no longer just inefficient. It is risky.
 
-![Reclaiming the Floor](Reclaiming-the-Floor-Where-Technology-Leadership-Becomes-Real-Again.png)
-
 ### **The fading role of the architect**
 
 No one has felt this shift more than the architect. Once the bridge between vision and engineering, many architects now find themselves reduced to administrators of complexity. Too technical for business meetings, too strategic for delivery teams.  
@@ -53,8 +51,6 @@ It means asking questions that go one layer deeper: How does this scale? Where a
 
 When leaders stay close to those questions, they build credibility and make better strategic choices.  
 The best technology organizations I know are guided by leaders who understand both the architecture and the ambition behind it.
-
-![Leadership Culture](From-Governance-to-Guidance---Rebuilding-a-Tech-First-Culture.png)
 
 ### **Rebuilding a tech-first culture**
 

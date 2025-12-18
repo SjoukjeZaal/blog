@@ -38,15 +38,11 @@ Three elements define this next phase of architecture:
 
 Together, they create architectures that are aware, responsive, and self-optimising.
 
-![Digital Design](Evolving-Intelligent-Systems-and-Digital-Design-1.png)
-
 ### **The Architect as Ecosystem Designer**
 
 The modern architect designs behaviour as much as structure.  
 We define how systems and teams interact, how decisions are made, and how accountability is shared.  
 Our focus expands from technology stacks to **value creation and observability,** ensuring that every intelligent component contributes to business outcomes in a responsible way.
-
-![Modern Architecture](Human-and-AI-Collaboration-in-Modern-Architecture.png)
 
 ### **A Redefinition of the Profession**
 

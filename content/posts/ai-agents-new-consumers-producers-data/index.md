@@ -17,8 +17,6 @@ Agents disrupt that assumption. They can query, reason, and act in real time. Th
 
 If we don’t adapt our data platforms, we risk creating environments where humans and agents operate in silos, duplicating work and reducing trust.
 
-![](ai-agents-exchanging-and-producing-new-data-streams.png)
-
 ## **Opportunities and Challenges Ahead**
 
 ### **1\. A Two-Way Data Flow**
@@ -36,8 +34,6 @@ Most organizations today focus on user roles, access rights, and compliance rule
 ### **4\. Human \+ Agent Collaboration**
 
 The real power lies in combining strengths. Agents can operate at scale and speed, processing volumes no human could. Humans bring context, ethical judgment, and strategic oversight. Data platforms must be designed for this hybrid model, where a compliance officer might validate a dataset enriched by an agent, or a product team might extend features based on agent-detected signals.
-
-![](future-ecosystem-humans-ai-agents-data-collaboration.png)
 
 ## **What Data Platforms Need to Evolve**
 

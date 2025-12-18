@@ -22,8 +22,6 @@ In this model:
 
 * Together, they form a repeatable cycle of **design → build → run → improve** that can be scaled across business units.
 
-![Futuristic AI Factory](futuristic-ai-factory-assembly-line-data-streams.png)
-
 ## **Why This Matters**
 
 Today, most enterprises still lose time reinventing the wheel: rebuilding the same data pipelines, retraining similar models, solving governance issues in silos. The factory mindset replaces this with **standardized components** and **shared services**—cutting cost and time, while improving trust and compliance.
@@ -33,8 +31,6 @@ Today, most enterprises still lose time reinventing the wheel: rebuilding the sa
 * **Governance by design**: Security, privacy, and compliance are embedded, not added later.
 
 * **Scalability**: New use cases move from idea to production in weeks instead of months.
-
-![Industrial AI Data Factory](industrial-ai-data-factory-convergence-concept.png)
 
 ## **What an AI & Data Supply Chain Could Look Like in 2030**
 
