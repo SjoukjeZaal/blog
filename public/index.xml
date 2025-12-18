@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Home on sjoukje.eth</title>
+    <link>http://localhost:1313/</link>
+    <description>Recent content in Home on sjoukje.eth</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 09 Nov 2025 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Reclaiming Technology Leadership</title>
+      <link>http://localhost:1313/posts/reclaiming-technology-leadership/</link>
+      <pubDate>Sun, 09 Nov 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/reclaiming-technology-leadership/</guid>
+      <description>&lt;p&gt;&lt;img src=&#34;The-Cost-of-Distance---When-Leadership-Drifts-Away-From-Technology.png&#34; alt=&#34;Leadership Culture&#34; /&gt;&lt;/p&gt;&#xA;&lt;p&gt;We’ve professionalized technology to the point where we’ve lost touch with it.&lt;br&gt;&#xA;In many organizations, technology leadership has turned into governance, reporting, and compliance. The intent was good: control risk, manage complexity, scale globally.&lt;br&gt;&#xA;But in doing so, many organizations created a gap between leadership and the actual technology.&lt;br&gt;&#xA;Decisions are now abstracted behind PowerPoint decks and KPIs instead of grounded in code, infrastructure, or architecture. When governance replaces guidance, you lose speed, context, and credibility. The result is a leadership layer that knows how to measure delivery but not how to drive it.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>The New Role of the Architect in an Agentic World</title>
+      <link>http://localhost:1313/posts/the-new-role-of-the-architect-in-an-agentic-world/</link>
+      <pubDate>Sun, 02 Nov 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/the-new-role-of-the-architect-in-an-agentic-world/</guid>
+      <description>&lt;p&gt;The role of the architect is being rewritten.&lt;br&gt;&#xA;Not by new frameworks or methodologies, but by intelligent systems that can design, optimize, and learn on their own.&lt;/p&gt;&#xA;&lt;p&gt;As &lt;strong&gt;AI agents&lt;/strong&gt;, &lt;strong&gt;autonomous workflows&lt;/strong&gt;, and &lt;strong&gt;generative tools&lt;/strong&gt; become part of daily operations, architecture itself becomes dynamic.&lt;br&gt;&#xA;It’s no longer a static blueprint. It’s a living system that continuously adapts and improves.&lt;/p&gt;&#xA;&lt;p&gt;&lt;img src=&#34;Adaptive-Architecture-in-the-Age-of-AI-1.png&#34; alt=&#34;Adaptive Architecture&#34; /&gt;&lt;/p&gt;&#xA;&lt;h3 id=&#34;from-control-to-coordination&#34;&gt;&lt;strong&gt;From Control to Coordination&lt;/strong&gt;&lt;a class=&#34;anchor&#34; href=&#34;#from-control-to-coordination&#34;&gt;#&lt;/a&gt;&lt;/h3&gt;&#xA;&lt;p&gt;For years, architecture has centered on control: standards, reviews, governance.&lt;br&gt;&#xA;But in an agentic world, control alone is not enough.&lt;br&gt;&#xA;AI systems generate code, detect anomalies, and make real-time adjustments faster than any process can document.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>AI Agents as New Consumers and Producers of Data</title>
+      <link>http://localhost:1313/posts/ai-agents-new-consumers-producers-data/</link>
+      <pubDate>Tue, 19 Aug 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/ai-agents-new-consumers-producers-data/</guid>
+      <description>&lt;p&gt;For years, data platforms were designed around people. The main goal was to provide humans with dashboards, reports, and analytics so they could make better decisions. But this model is being reshaped. With the rise of AI agents, data platforms are entering a new era—one where the consumers of data are not only people but also autonomous systems.&lt;/p&gt;&#xA;&lt;p&gt;And here’s the important part: these agents don’t just consume. They also produce. They generate enriched datasets, annotations, and continuous insights. This dual role changes how we need to think about architecture, governance, and collaboration.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>AI Factories Meet Data Factories: Building the Supply Chains of Innovation</title>
+      <link>http://localhost:1313/posts/ai-data-factories-innovation-supply-chain/</link>
+      <pubDate>Tue, 19 Aug 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/ai-data-factories-innovation-supply-chain/</guid>
+      <description>&lt;p&gt;Over the past few years, we’ve seen organizations experiment with the concept of an &lt;strong&gt;AI Factory&lt;/strong&gt;—a structured way to industrialize the development and deployment of AI. At the same time, data leaders have embraced the idea of &lt;strong&gt;data products&lt;/strong&gt; and &lt;strong&gt;data fabrics&lt;/strong&gt; to make data more reusable, governed, and available at scale.&lt;/p&gt;&#xA;&lt;p&gt;It’s time to bring these two together!&lt;/p&gt;&#xA;&lt;p&gt;&lt;img src=&#34;ai-data-supply-chain-digital-logistics-visualization.png&#34; alt=&#34;AI Data Supply Chain&#34; /&gt;&lt;/p&gt;&#xA;&lt;h2 id=&#34;from-projects-to-production-lines&#34;&gt;&lt;strong&gt;From Projects to Production Lines&lt;/strong&gt;&lt;a class=&#34;anchor&#34; href=&#34;#from-projects-to-production-lines&#34;&gt;#&lt;/a&gt;&lt;/h2&gt;&#xA;&lt;p&gt;Think of how manufacturing evolved: from craft workshops to assembly lines, where processes were standardized and repeatable. We are witnessing a similar shift in data and AI. Instead of bespoke projects—each with its own tools, pipelines, and governance—organizations are moving toward &lt;strong&gt;industrialized AI + data factories&lt;/strong&gt;.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>
