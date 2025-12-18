@@ -4,7 +4,7 @@ title = "sjoukje.eth"
 theme = "hugo-book"
 
 relativeURLs = true
-canonifyURLs = false
+canonifyURLs = true
 
 [params]
     BookLogo = "images/avatar.png"
