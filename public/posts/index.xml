@@ -16,6 +16,13 @@
       <description>&lt;p&gt;We’re entering the agent era. Is your team ready?&lt;/p&gt;&#xA;&lt;p&gt;Large Language Models have already changed how we interact with data. But the rise of &lt;strong&gt;agentic AI&lt;/strong&gt; — systems that reason, take action, and adapt — goes even further.&lt;/p&gt;&#xA;&lt;p&gt;These agents don’t just answer questions. They perform tasks, orchestrate workflows, and make real-time decisions.&lt;br&gt;&#xA;That changes everything for data &amp;amp; AI teams.&lt;br&gt;&#xA;If you’re still focused on dashboards, isolated models, or batch pipelines, you’re building for the past.&lt;/p&gt;</description>
     </item>
     <item>
+      <title>Sovereign Cloud and Data Sovereignty: Why Your Organization Needs Control</title>
+      <link>http://localhost:1313/posts/sovereign-cloud-data-sovereignty-control/</link>
+      <pubDate>Thu, 18 Dec 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/sovereign-cloud-data-sovereignty-control/</guid>
+      <description>&lt;p&gt;The way organizations handle their data has changed forever. What started as a simple move to the cloud has become something much more complex, especially as global geopolitical tensions continue to reshape how nations view data and technology.&lt;/p&gt;&#xA;&lt;p&gt;Rising tensions between major economic powers have created new uncertainties around cross-border data flows. Countries are increasingly viewing data as a strategic national asset, leading to stricter controls on where information can be stored and processed. Trade disputes, security concerns, and regulatory conflicts have made it clear that organizations can no longer assume their data will flow freely between regions.&lt;/p&gt;</description>
+    </item>
+    <item>
       <title>Reclaiming Technology Leadership</title>
       <link>http://localhost:1313/posts/reclaiming-technology-leadership/</link>
       <pubDate>Sun, 09 Nov 2025 00:00:00 +0000</pubDate>
@@ -51,6 +58,13 @@
       <description>&lt;p&gt;We’re entering a phase where engineering is less about writing every instruction  and more about teaching systems how to think. The shift is clear: from procedural to declarative. From “write every line” to “explain the outcome.” From “code it” to “coach the model.”&lt;/p&gt;&#xA;&lt;p&gt;This isn’t just about GenAI. It changes how we design, build, and operate systems when AI becomes part of the team.&lt;/p&gt;&#xA;&lt;p&gt;&lt;img src=&#34;ai-governance-outcome-vs-steps.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;&#xA;&lt;h3 id=&#34;code-is-no-longer-the-core-output&#34;&gt;&lt;strong&gt;Code Is No Longer the Core Output&lt;/strong&gt;&lt;a class=&#34;anchor&#34; href=&#34;#code-is-no-longer-the-core-output&#34;&gt;#&lt;/a&gt;&lt;/h3&gt;&#xA;&lt;p&gt;Most engineering teams still measure productivity by the amount of code shipped. But with AI-generated code, low-code platforms, and autonomous agents, raw output is no longer the right metric.&lt;/p&gt;</description>
     </item>
     <item>
+      <title>AI is Moving Fast. Leadership Must Move Faster</title>
+      <link>http://localhost:1313/posts/ai-moving-fast-leadership-faster/</link>
+      <pubDate>Wed, 30 Jul 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/ai-moving-fast-leadership-faster/</guid>
+      <description>&lt;p&gt;Artificial Intelligence isn’t slowing down. In fact, it’s speeding up — reshaping how we work, how decisions are made, and how businesses compete. But while the technology keeps evolving, leadership often struggles to keep up. And that’s where the real risk lies.&lt;/p&gt;&#xA;&lt;p&gt;If you’re in a leadership role today — especially in tech, strategy, or operations — you can’t afford to treat AI as a distant future trend or a side experiment. It’s already here. The question is: are you moving fast enough to lead with it?&lt;/p&gt;</description>
+    </item>
+    <item>
       <title>AI Governance: Balancing Innovation and Responsibility</title>
       <link>http://localhost:1313/posts/ai-governance-innovation-responsibility/</link>
       <pubDate>Tue, 29 Jul 2025 00:00:00 +0000</pubDate>
@@ -65,11 +79,18 @@
       <description>&lt;p&gt;Many organizations still treat AI like it’s experimental. A side project. A shiny object in a lab that only a few experts are allowed to touch.&lt;br&gt;&#xA;That mindset is holding them back.&lt;br&gt;&#xA;If you want AI to drive real impact, it needs to move out of the lab and into the engine room of your organization. That’s what the AI Factory is about. Not experiments, but execution. Not proofs of concept, but products.&lt;/p&gt;</description>
     </item>
     <item>
-      <title></title>
-      <link>http://localhost:1313/posts/ai-moving-fast-leadership-faster/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/posts/ai-moving-fast-leadership-faster/</guid>
-      <description></description>
+      <title>How AI and Web3 Influence Each Other</title>
+      <link>http://localhost:1313/posts/how-ai-and-web3-influence-each-other/</link>
+      <pubDate>Sat, 12 Jul 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/how-ai-and-web3-influence-each-other/</guid>
+      <description>&lt;p&gt;AI and Web3 are often discussed as separate trends. But the way they’re starting to influence each other is where the real potential lies. For organizations building digital strategies, understanding how these technologies interact is becoming more important by the day.&lt;/p&gt;&#xA;&lt;p&gt;This isn’t about chasing hype — it’s about practical ways these two technologies can address each other’s current limitations and open up new business models.&lt;/p&gt;&#xA;&lt;h3 id=&#34;web3-can-help-solve-ais-trust-problem&#34;&gt;Web3 Can Help Solve AI’s Trust Problem&lt;a class=&#34;anchor&#34; href=&#34;#web3-can-help-solve-ais-trust-problem&#34;&gt;#&lt;/a&gt;&lt;/h3&gt;&#xA;&lt;p&gt;Trust is one of the biggest blockers for AI adoption. How can we prove that an AI model works as intended? How do we know decisions haven’t been tampered with?&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Emerging Tech Radar for CxOs: What’s Real and What’s Hype in 2025?</title>
+      <link>http://localhost:1313/posts/tech-radar-cxo-real-vs-hype-2025/</link>
+      <pubDate>Wed, 11 Jun 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/tech-radar-cxo-real-vs-hype-2025/</guid>
+      <description>&lt;p&gt;The pace of technology change hasn’t slowed down. In fact, it’s accelerating. Every week, new solutions are pitched that promise to transform your business, disrupt your industry, or unlock new revenue streams.&lt;/p&gt;&#xA;&lt;p&gt;For CxOs, this creates both opportunity and risk. It’s easy to get caught up in the latest buzzwords, but with budgets tighter and delivery pressure higher, making smart choices is critical.&lt;/p&gt;&#xA;&lt;p&gt;So what’s real in 2025 — and what’s still more noise than substance? Here’s my radar view, based on what I’m seeing across industries.&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>
