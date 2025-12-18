@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=61662&amp;path=livereload" data-no-instant defer></script>
+  <!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="For years, data platforms were designed around people. The main goal was to provide humans with dashboards, reports, and analytics so they could make better decisions. But this model is being reshaped. With the rise of AI agents, data platforms are entering a new era—one where the consumers of data are not only people but also autonomous systems.
+And here’s the important part: these agents don’t just consume. They also produce. They generate enriched datasets, annotations, and continuous insights. This dual role changes how we need to think about architecture, governance, and collaboration.
+">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:61662/posts/ai-agents-new-consumers-producers-data/">
+  <meta property="og:site_name" content="sjoukje.eth">
+  <meta property="og:title" content="AI Agents as New Consumers and Producers of Data">
+  <meta property="og:description" content="For years, data platforms were designed around people. The main goal was to provide humans with dashboards, reports, and analytics so they could make better decisions. But this model is being reshaped. With the rise of AI agents, data platforms are entering a new era—one where the consumers of data are not only people but also autonomous systems.
+And here’s the important part: these agents don’t just consume. They also produce. They generate enriched datasets, annotations, and continuous insights. This dual role changes how we need to think about architecture, governance, and collaboration.">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2025-08-19T00:00:00+00:00">
+    <meta property="article:modified_time" content="2025-08-19T00:00:00+00:00">
+
+
+  <meta itemprop="name" content="AI Agents as New Consumers and Producers of Data">
+  <meta itemprop="description" content="For years, data platforms were designed around people. The main goal was to provide humans with dashboards, reports, and analytics so they could make better decisions. But this model is being reshaped. With the rise of AI agents, data platforms are entering a new era—one where the consumers of data are not only people but also autonomous systems.
+And here’s the important part: these agents don’t just consume. They also produce. They generate enriched datasets, annotations, and continuous insights. This dual role changes how we need to think about architecture, governance, and collaboration.">
+  <meta itemprop="datePublished" content="2025-08-19T00:00:00+00:00">
+  <meta itemprop="dateModified" content="2025-08-19T00:00:00+00:00">
+  <meta itemprop="wordCount" content="712">
+
+<title>AI Agents as New Consumers and Producers of Data | sjoukje.eth</title>
+<link rel="icon" href="../../favicon.png" >
+<link rel="manifest" href="../../manifest.json">
+<link rel="canonical" href="http://localhost:61662/posts/ai-agents-new-consumers-producers-data/">
+<link rel="stylesheet" href="../../book.min.cc2c524ed250aac81b23d1f4af87344917b325208841feca0968fe450f570575.css" integrity="sha256-zCxSTtJQqsgbI9H0r4c0SRezJSCIQf7KCWj&#43;RQ9XBXU=" crossorigin="anonymous">
+
+
+  <script defer src="../../fuse.min.js"></script>
+  <script defer src="../../en.search.min.8cd5a2f09d3fcea80b828b955e6edd5ac0cbaa3b6d71c4e540c45bc40dffa006.js" integrity="sha256-jNWi8J0/zqgLgouVXm7dWsDLqjttccTlQMRbxA3/oAY=" crossorigin="anonymous"></script>
+
+
+
+  
+</head>
+<body dir="ltr" class="book-kind-page book-type-posts">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    
+<aside class="book-menu">
+  <div class="book-menu-content">
+    
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="../../"><img src="../../images/avatar.png" alt="Logo" /><span>sjoukje.eth</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input id="book-search-input" type="text" 
+    placeholder="Search"
+    aria-label="Search"
+    maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+
+
+
+<ul><li><a href="https://linkedin.com/in/sjoukjezaal" target="_blank" rel="noopener">LinkedIn</a></li><li><a href="https://x.com/sjoukjezaal" target="_blank" rel="noopener">X</a></li><li><a href="https://github.com/sjoukjezaal" target="_blank" rel="noopener">GitHub</a></li></ul>
+
+
+
+
+
+
+  
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-faa607fa7f76a313ffed1d01a1d5c817" class="toggle"  />
+    <label for="section-faa607fa7f76a313ffed1d01a1d5c817" class="flex">
+      <a href="../../books/" class="">
+        Books</a>
+      <img src="../../icons/chevron-right.svg" class="book-icon" alt="Expand" />
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Posts</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="../../posts/agentic-ai-reshaping-data-ai-teams/" class="">
+      How Agentic AI Will Reshape the Work of Data &amp; AI Teams — and What to Do About It</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="../../posts/sovereign-cloud-data-sovereignty-control/" class="">
+      Sovereign Cloud and Data Sovereignty: Why Your Organization Needs Control</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="../../posts/reclaiming-technology-leadership/" class="">
+      Reclaiming Technology Leadership</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="../../posts/the-new-role-of-the-architect-in-an-agentic-world/" class="">
+      The New Role of the Architect in an Agentic World</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="../../posts/ai-agents-new-consumers-producers-data/" class="active">
+      AI Agents as New Consumers and Producers of Data</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="../../posts/ai-data-factories-innovation-supply-chain/" class="">
+      AI Factories Meet Data Factories: Building the Supply Chains of Innovation</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="../../posts/stop-coding-start-coaching-declarative/" class="">
+      Stop Coding, Start Coaching: Why It’s Time to Think Declaratively</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="../../posts/ai-moving-fast-leadership-faster/" class="">
+      AI is Moving Fast. Leadership Must Move Faster</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="../../posts/ai-governance-innovation-responsibility/" class="">
+      AI Governance: Balancing Innovation and Responsibility</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="../../posts/ai-factory-engine-room-not-lab/" class="">
+      The AI Factory Is Not a Lab. It’s an Engine Room</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="../../posts/how-ai-and-web3-influence-each-other/" class="">
+      How AI and Web3 Influence Each Other</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="../../posts/tech-radar-cxo-real-vs-hype-2025/" class="">
+      Emerging Tech Radar for CxOs: What’s Real and What’s Hype in 2025?</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+
+  </div>
+</aside>
+ 
+
+    <div class="book-page">
+      <header class="book-header hidden">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="../../icons/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>AI Agents as New Consumers and Producers of Data</h3>
+
+  <label for="toc-control">
+    
+    <img src="../../icons/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#why-this-matters-now"><strong>Why This Matters Now</strong></a></li>
+    <li><a href="#opportunities-and-challenges-ahead"><strong>Opportunities and Challenges Ahead</strong></a>
+      <ul>
+        <li><a href="#1-a-two-way-data-flow"><strong>1. A Two-Way Data Flow</strong></a></li>
+        <li><a href="#2-lineage-and-trust-at-scale"><strong>2. Lineage and Trust at Scale</strong></a></li>
+        <li><a href="#3-governance-for-non-humans"><strong>3. Governance for Non-Humans</strong></a></li>
+        <li><a href="#4-human--agent-collaboration"><strong>4. Human + Agent Collaboration</strong></a></li>
+      </ul>
+    </li>
+    <li><a href="#what-data-platforms-need-to-evolve"><strong>What Data Platforms Need to Evolve</strong></a></li>
+    <li><a href="#a-future-of-mixed-ecosystems"><strong>A Future of Mixed Ecosystems</strong></a></li>
+    <li><a href="#final-thought"><strong>Final Thought</strong></a></li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+<article class="markdown book-post">
+  <h1>
+    AI Agents as New Consumers and Producers of Data
+  </h1>
+  
+  <div class="flex align-center text-small book-post-date">
+    <img src="../../icons/calendar.svg" class="book-icon" alt="Calendar" />
+    <span>August 19, 2025</span>
+  </div>
+
+
+
+  
+
+  
+
+
+  <div class="book-post-content markdown-inner"><p>For years, data platforms were designed around people. The main goal was to provide humans with dashboards, reports, and analytics so they could make better decisions. But this model is being reshaped. With the rise of AI agents, data platforms are entering a new era—one where the consumers of data are not only people but also autonomous systems.</p>
+<p>And here’s the important part: these agents don’t just consume. They also produce. They generate enriched datasets, annotations, and continuous insights. This dual role changes how we need to think about architecture, governance, and collaboration.</p>
+<p><img src="humans-and-ai-agents-collaborating-on-shared-data-canvas.png" alt="" /></p>
+<h2 id="why-this-matters-now"><strong>Why This Matters Now</strong><a class="anchor" href="#why-this-matters-now">#</a></h2>
+<p>Organizations have spent decades building systems to make data accessible and useful. From warehouses to lakes, from mesh to fabric, each wave aimed to improve scale, quality, and accessibility. But all of these designs assumed a human at the other end.</p>
+<p>Agents disrupt that assumption. They can query, reason, and act in real time. They can also create new knowledge artifacts that feed into the data platform itself. This is not a theoretical trend—already today, copilots, chatbots, and automated workflows are enriching datasets with tags, predictions, and classifications.</p>
+<p>If we don’t adapt our data platforms, we risk creating environments where humans and agents operate in silos, duplicating work and reducing trust.</p>
+<h2 id="opportunities-and-challenges-ahead"><strong>Opportunities and Challenges Ahead</strong><a class="anchor" href="#opportunities-and-challenges-ahead">#</a></h2>
+<h3 id="1-a-two-way-data-flow"><strong>1. A Two-Way Data Flow</strong><a class="anchor" href="#1-a-two-way-data-flow">#</a></h3>
+<p>Traditional data flows end with a human decision. In an agent-driven world, the loop closes: data goes in, actions and new data come out. For example, an AI agent monitoring energy grids might not just alert engineers about anomalies but also generate a new dataset of patterns that becomes valuable training material for future models.</p>
+<h3 id="2-lineage-and-trust-at-scale"><strong>2. Lineage and Trust at Scale</strong><a class="anchor" href="#2-lineage-and-trust-at-scale">#</a></h3>
+<p>When agents create data, the question of lineage becomes urgent. Which model produced this dataset? Which source data was used? Was the agent operating within its authorized scope? Without clear lineage, we risk a black box of agent-generated data, which undermines compliance and decision-making.</p>
+<h3 id="3-governance-for-non-humans"><strong>3. Governance for Non-Humans</strong><a class="anchor" href="#3-governance-for-non-humans">#</a></h3>
+<p>Most organizations today focus on user roles, access rights, and compliance rules for people. But agents are new actors. They need identities, access policies, and monitoring. Just as we don’t give every employee unrestricted access, we shouldn’t give agents blanket rights to read or write data. Fine-grained governance, combined with observability, will be critical.</p>
+<h3 id="4-human--agent-collaboration"><strong>4. Human + Agent Collaboration</strong><a class="anchor" href="#4-human--agent-collaboration">#</a></h3>
+<p>The real power lies in combining strengths. Agents can operate at scale and speed, processing volumes no human could. Humans bring context, ethical judgment, and strategic oversight. Data platforms must be designed for this hybrid model, where a compliance officer might validate a dataset enriched by an agent, or a product team might extend features based on agent-detected signals.</p>
+<h2 id="what-data-platforms-need-to-evolve"><strong>What Data Platforms Need to Evolve</strong><a class="anchor" href="#what-data-platforms-need-to-evolve">#</a></h2>
+<p>To support this shift, future platforms should:</p>
+<ul>
+<li>
+<p><strong>Treat agents as first-class citizens</strong> with identities, roles, and accountability.</p>
+</li>
+<li>
+<p><strong>Embed explainability</strong> so that both agent and human contributions are transparent.</p>
+</li>
+<li>
+<p><strong>Provide shared canvases</strong> where human and agent outputs coexist, with clear versioning and traceability.</p>
+</li>
+<li>
+<p><strong>Enable continuous governance</strong>, where policies apply equally to people and agents, across environments.</p>
+</li>
+</ul>
+<p>We can draw inspiration from service mesh and distributed architecture patterns—concepts designed to manage complexity, security, and scale in systems where many services interact. Data platforms now need their own “agent mesh,” ensuring that interactions between humans, agents, and datasets are reliable, secure, and explainable.</p>
+<h2 id="a-future-of-mixed-ecosystems"><strong>A Future of Mixed Ecosystems</strong><a class="anchor" href="#a-future-of-mixed-ecosystems">#</a></h2>
+<p>The enterprise of tomorrow will not be human-only or agent-only. It will be a mixed ecosystem where humans and agents collaborate side by side. Picture an operations center where human analysts and AI agents both monitor streams of data. The agents handle the noise, surfacing anomalies, while humans apply context and strategy. Both contribute datasets back to the platform, enriching it for the next cycle.</p>
+<p>Organizations that adapt early will gain an edge. They will have platforms ready not just for today’s dashboards and queries, but for tomorrow’s autonomous collaboration.</p>
+<h2 id="final-thought"><strong>Final Thought</strong><a class="anchor" href="#final-thought">#</a></h2>
+<p>Data platforms were once built for reporting. Then they were built for advanced analytics. Now they must be built for collaboration—between humans and agents alike.</p>
+<p>The question is no longer whether AI agents will join our data ecosystems. They already have. The question is whether we’re ready to treat them as active participants, with the structures, governance, and trust needed to make the collaboration productive.</p>
+</div>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+  <div>
+  
+    <a href="../../posts/the-new-role-of-the-architect-in-an-agentic-world/" class="flex align-center">
+      <img src="../../icons/backward.svg" class="book-icon" alt="Backward" />
+      <span>The New Role of the Architect in an Agentic World</span>
+    </a>
+  
+  </div>
+  <div>
+  
+    <a href="../../posts/ai-data-factories-innovation-supply-chain/" class="flex align-center">
+      <span>AI Factories Meet Data Factories: Building the Supply Chains of Innovation</span>
+      <img src="../../icons/forward.svg" class="book-icon" alt="Forward" />
+    </a>
+  
+  </div>
+</div>
+ 
+        
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+        
+        
+  
+ 
+        
+  
+  
+    <script>(function(){document.querySelectorAll("pre:has(code)").forEach(e=>{e.addEventListener("click",e.focus),e.addEventListener("copy",function(t){if(t.preventDefault(),navigator.clipboard){const t=window.getSelection().toString()||e.textContent;navigator.clipboard.writeText(t)}})})})()</script>
+  
+
+      </footer>
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+  
+  <aside class="book-toc">
+    <div class="book-toc-content">
+      
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#why-this-matters-now"><strong>Why This Matters Now</strong></a></li>
+    <li><a href="#opportunities-and-challenges-ahead"><strong>Opportunities and Challenges Ahead</strong></a>
+      <ul>
+        <li><a href="#1-a-two-way-data-flow"><strong>1. A Two-Way Data Flow</strong></a></li>
+        <li><a href="#2-lineage-and-trust-at-scale"><strong>2. Lineage and Trust at Scale</strong></a></li>
+        <li><a href="#3-governance-for-non-humans"><strong>3. Governance for Non-Humans</strong></a></li>
+        <li><a href="#4-human--agent-collaboration"><strong>4. Human + Agent Collaboration</strong></a></li>
+      </ul>
+    </li>
+    <li><a href="#what-data-platforms-need-to-evolve"><strong>What Data Platforms Need to Evolve</strong></a></li>
+    <li><a href="#a-future-of-mixed-ecosystems"><strong>A Future of Mixed Ecosystems</strong></a></li>
+    <li><a href="#final-thought"><strong>Final Thought</strong></a></li>
+  </ul>
+</nav>
+
+
+
+    </div>
+  </aside>
+  
+ 
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
