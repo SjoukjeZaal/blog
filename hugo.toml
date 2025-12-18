@@ -12,7 +12,7 @@ canonifyURLs = true
     BookDescription = "CTO Data & AI | Thought Leader | Author"
     BookRepo = "https://github.com/sjoukjezaal/blog"
     BookEditPath = "edit/main/content"
-    BookTheme = "auto"
+    BookTheme = "light"
     BookMenuBundle = "/menu"
     BookSection = "*"
     BookSearch = true
@@ -23,12 +23,12 @@ canonifyURLs = true
     weight = 10
 
 [[menu.before]]
-    name = "X (Twitter)"
+    name = "X"
     url = "https://x.com/sjoukjezaal"
     weight = 20
 
 [[menu.before]]
-    name = "GitHub Profile"
+    name = "GitHub"
     url = "https://github.com/sjoukjezaal"
     weight = 30
 
