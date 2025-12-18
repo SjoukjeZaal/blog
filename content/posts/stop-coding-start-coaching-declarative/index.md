@@ -7,7 +7,7 @@ We’re entering a phase where engineering is less about writing every instructi
 
 This isn’t just about GenAI. It changes how we design, build, and operate systems when AI becomes part of the team.
 
-![](ai-governance-outcome-vs-steps.png)
+![](ai-governance-outcome-vs-steps.jpg)
 
 ### **Code Is No Longer the Core Output**
 

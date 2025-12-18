@@ -7,7 +7,7 @@ Over the past few years, we’ve seen organizations experiment with the concept 
 
 It’s time to bring these two together!
 
-![AI Data Supply Chain](ai-data-supply-chain-digital-logistics-visualization.png)
+![AI Data Supply Chain](ai-data-supply-chain-digital-logistics-visualization.jpg)
 
 
 ## **From Projects to Production Lines**

@@ -7,7 +7,7 @@ For years, data platforms were designed around people. The main goal was to prov
 
 And here’s the important part: these agents don’t just consume. They also produce. They generate enriched datasets, annotations, and continuous insights. This dual role changes how we need to think about architecture, governance, and collaboration.
 
-![](humans-and-ai-agents-collaborating-on-shared-data-canvas.png)
+![](humans-and-ai-agents-collaborating-on-shared-data-canvas.jpg)
 
 ## **Why This Matters Now**
 

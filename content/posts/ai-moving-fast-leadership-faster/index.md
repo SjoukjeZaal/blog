@@ -7,7 +7,7 @@ Artificial Intelligence isn’t slowing down. In fact, it’s speeding up — re
 
 If you’re in a leadership role today — especially in tech, strategy, or operations — you can’t afford to treat AI as a distant future trend or a side experiment. It’s already here. The question is: are you moving fast enough to lead with it?
 
-![](Digital-Transformation-in-Progress-----AI-Powered-Cityscape-Reflecting-Future-Ready-Leadership.png)
+![](Digital-Transformation-in-Progress-----AI-Powered-Cityscape-Reflecting-Future-Ready-Leadership.jpg)
 
 # **The Acceleration Problem**
 

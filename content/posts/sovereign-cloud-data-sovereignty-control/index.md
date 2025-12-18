@@ -7,7 +7,7 @@ The way organizations handle their data has changed forever. What started as a s
 
 Rising tensions between major economic powers have created new uncertainties around cross-border data flows. Countries are increasingly viewing data as a strategic national asset, leading to stricter controls on where information can be stored and processed. Trade disputes, security concerns, and regulatory conflicts have made it clear that organizations can no longer assume their data will flow freely between regions.
 
-![](data-sovereignty-eu-compliance-tablet-lock.png)
+![](data-sovereignty-eu-compliance-tablet-lock.jpg)
 
 These global tensions are part of a broader shift toward data nationalism. Countries worldwide are implementing their own digital sovereignty requirements, making it nearly impossible for organizations to rely on simple, one-size-fits-all cloud solutions.
 

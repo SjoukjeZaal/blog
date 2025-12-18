@@ -7,7 +7,7 @@ Every company wants to move fast with AI. The real challenge isn’t adoption—
 
 The question is not whether to adopt AI — it’s about doing it right. AI governance helps organizations find the balance between driving innovation and managing risk. It gives you the structure to build solutions that serve your business and your customers, without losing control.
 
-![](ai-governance-balance-innovation-vs-risk.png)
+![](ai-governance-balance-innovation-vs-risk.jpg)
 
 ### **The Innovation Challenge**
 

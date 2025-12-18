@@ -15,7 +15,7 @@ Web3 brings a useful capability here: transparency. Blockchain provides immutabl
 
 Example: If an AI system is making credit decisions or processing sensitive financial data, every step of that process can be recorded on-chain. This gives auditors and regulators an independent view — without relying on any one company to “explain” what happened.
 
-![](AI-Neural-Network-Connected-with-Blockchain---Data-Flow-Visualization.png)
+![](AI-Neural-Network-Connected-with-Blockchain---Data-Flow-Visualization.jpg)
 
 ### AI Is Making Web3 Usable
 
