@@ -7,8 +7,6 @@ Many organizations still treat AI like it’s experimental. A side project. A sh
 That mindset is holding them back.  
 If you want AI to drive real impact, it needs to move out of the lab and into the engine room of your organization. That’s what the AI Factory is about. Not experiments, but execution. Not proofs of concept, but products.
 
-![](a_high-tech_industrial_engine_room.jpg)
-
 # **From Prototype to Production**
 
 We’ve all seen it before: a promising AI model built by a small data science team — but no plan to scale it, no ownership after handover, and no integration into business processes.  

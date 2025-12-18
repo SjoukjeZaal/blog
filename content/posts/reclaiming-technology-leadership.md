@@ -3,8 +3,6 @@ title: "Reclaiming Technology Leadership"
 date: 2025-11-09
 ---
 
-![Leadership Culture](The-Cost-of-Distance---When-Leadership-Drifts-Away-From-Technology.jpg)
-
 We’ve professionalized technology to the point where we’ve lost touch with it.  
 In many organizations, technology leadership has turned into governance, reporting, and compliance. The intent was good: control risk, manage complexity, scale globally.  
 But in doing so, many organizations created a gap between leadership and the actual technology.  

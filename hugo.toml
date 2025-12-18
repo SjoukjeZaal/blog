@@ -11,14 +11,15 @@ theme = "papermod"
     
     # PaperMod specifieke instellingen
     ShowReadingTime = true
-    ShowShareButtons = true
+    ShowShareButtons = false
     ShowPostNavLinks = true
     ShowBreadCrumbs = true
     ShowCodeCopyButtons = true
     
     [params.homeInfoParams]
         Title = "Hi there \U0001F44B"
-        Content = "Welcome to my decentralized archive on AI, Cloud, and Data Leadership."
+        Content = "This is my digital archive: a sovereign collection of insights on technology, leadership, and the decentralized web. It serves as a permanent record of my journey through AI, Cloud, and Data, tied to my digital identity."
+        
 
    [[params.socialIcons]]
         name = "x"
@@ -31,3 +32,21 @@ theme = "papermod"
     [[params.socialIcons]]
         name = "linkedin"
         url = "https://linkedin.com/in/sjoukjezaal"
+
+    [[menu.main]]
+        identifier = "posts"
+        name = "Posts"
+        url = "/posts/"
+        weight = 10
+
+    [[menu.main]]
+        identifier = "books"
+        name = "Books"
+        url = "/books/"
+        weight = 20
+
+      [[menu.main]]
+        identifier = "about"
+        name = "About"
+        url = "/about/"
+        weight = 30

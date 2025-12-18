@@ -9,8 +9,6 @@ For CxOs, this creates both opportunity and risk. It’s easy to get caught up i
 
 So what’s real in 2025 — and what’s still more noise than substance? Here’s my radar view, based on what I’m seeing across industries.
 
-![](female-business-leader-emerging-tech-ai-horizon-2025.png)
-
 ## AI Agents and GenAI Platforms — REAL, but maturing
 
 AI is no longer theoretical. We see agents handling workflows, customer interactions, data analysis, and even coding tasks.

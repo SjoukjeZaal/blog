@@ -1,0 +1,9 @@
+/* Zorg dat afbeeldingen op de boekenpagina niet beeldvullend zijn */
+.post-content img {
+    width: 180px !important; /* Pas de breedte naar wens aan */
+    height: auto;
+    display: block;
+    margin: 10px 0 20px 0;
+    border-radius: 4px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}

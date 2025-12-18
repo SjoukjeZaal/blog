@@ -9,8 +9,6 @@ Not by new frameworks or methodologies, but by intelligent systems that can desi
 As **AI agents**, **autonomous workflows**, and **generative tools** become part of daily operations, architecture itself becomes dynamic.  
 It’s no longer a static blueprint. It’s a living system that continuously adapts and improves.
 
-![Adaptive Architecture](Adaptive-Architecture-in-the-Age-of-AI-1.jpg)
-
 ### **From Control to Coordination**
 
 For years, architecture has centered on control: standards, reviews, governance.  

@@ -5,7 +5,7 @@ layout: "single"
 ---
 
 ### Azure Active Directory for Secure Application Development
-<img src="https://m.media-amazon.com/images/I/71dT-PsFOXL._SL1500_.jpg" width="200" />
+{{< figure src="https://m.media-amazon.com/images/I/71dT-PsFOXL._SL1500_.jpg" width="180px" >}}
 
 Develop secure applications using different features of Azure Active Directory along with modern authentication techniques and protocols.
 
@@ -14,7 +14,7 @@ Develop secure applications using different features of Azure Active Directory a
 ---
 
 ### Azure DevOps Explained
-<img src="https://m.media-amazon.com/images/I/71WdalrE3bL._SL1360_.jpg" width="200" />
+{{< figure src="https://m.media-amazon.com/images/I/71WdalrE3bL._SL1360_.jpg" width="180px" >}}
 
 Implement real-world DevOps and cloud deployment scenarios using Azure Repos, Azure Pipelines, and other Azure DevOps tools.
 
@@ -23,7 +23,7 @@ Implement real-world DevOps and cloud deployment scenarios using Azure Repos, Az
 ---
 
 ### Implementing Microsoft Azure Architect Technologies
-<img src="https://m.media-amazon.com/images/I/81clOOS68fL._SL1500_.jpg" width="200" />
+{{< figure src="https://m.media-amazon.com/images/I/81clOOS68fL._SL1500_.jpg" width="180px" >}}
 
 Become a certified Azure Architect and learn how to design effective solutions that span compute, security, networking, and development.
 
@@ -32,7 +32,7 @@ Become a certified Azure Architect and learn how to design effective solutions t
 ---
 
 ### Migrating Applications to the Cloud with Azure
-<img src="https://m.media-amazon.com/images/I/91CTbEqn7GL._SL1500_.jpg" width="200" />
+{{< figure src="https://m.media-amazon.com/images/I/91CTbEqn7GL._SL1500_.jpg" width="180px" >}}
 
 Modernize your apps with Microsoft Azure by moving web, desktop, and mobile apps to the cloud.
 
@@ -41,7 +41,7 @@ Modernize your apps with Microsoft Azure by moving web, desktop, and mobile apps
 ---
 
 ### Microsoft Azure Administrator – Exam Guide AZ-103
-<img src="https://m.media-amazon.com/images/I/91RC3xzhR3L._SL1500_.jpg" width="200" />
+{{< figure src="https://m.media-amazon.com/images/I/91RC3xzhR3L._SL1500_.jpg" width="180px" >}}
 
 Manage Microsoft Azure cloud services that span storage, security, networking, and compute capabilities and ace the AZ-103 Exam.
 
@@ -50,7 +50,7 @@ Manage Microsoft Azure cloud services that span storage, security, networking, a
 ---
 
 ### Microsoft Azure Architect Technologies: Exam Guide AZ-300
-<img src="https://m.media-amazon.com/images/I/91dlUkKh7-L._SL1500_.jpg" width="200" />
+{{< figure src="https://m.media-amazon.com/images/I/91dlUkKh7-L._SL1500_.jpg" width="180px" >}}
 
 Become a certified Azure Architect and learn to design effective solutions that span compute, security, networking, and development.
 
@@ -59,7 +59,7 @@ Become a certified Azure Architect and learn to design effective solutions that 
 ---
 
 ### Cloud Debugging and Profiling in Microsoft Azure
-<img src="https://m.media-amazon.com/images/I/61n42VV3HnL._SL1181_.jpg" width="200" />
+{{< figure src="https://m.media-amazon.com/images/I/61n42VV3HnL._SL1181_.jpg" width="180px" >}}
 
 Best practices for assessing the health of a solution. This book provides detailed techniques to quickly diagnose your Azure cloud solutions.
 
@@ -68,7 +68,7 @@ Best practices for assessing the health of a solution. This book provides detail
 ---
 
 ### Architecting Microsoft Azure Solutions – Exam Guide 70-535
-<img src="https://m.media-amazon.com/images/I/816mMXWMVyL._SL1500_.jpg" width="200" />
+{{< figure src="https://m.media-amazon.com/images/I/816mMXWMVyL._SL1500_.jpg" width="180px" >}}
 
 Get certified as an Azure architect by acing the 70-535 exam using this comprehensive guide with full coverage of exam objectives.
 

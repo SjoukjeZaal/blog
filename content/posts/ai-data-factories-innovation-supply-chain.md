@@ -7,9 +7,6 @@ Over the past few years, we’ve seen organizations experiment with the concept 
 
 It’s time to bring these two together!
 
-![AI Data Supply Chain](ai-data-supply-chain-digital-logistics-visualization.jpg)
-
-
 ## **From Projects to Production Lines**
 
 Think of how manufacturing evolved: from craft workshops to assembly lines, where processes were standardized and repeatable. We are witnessing a similar shift in data and AI. Instead of bespoke projects—each with its own tools, pipelines, and governance—organizations are moving toward **industrialized AI \+ data factories**.

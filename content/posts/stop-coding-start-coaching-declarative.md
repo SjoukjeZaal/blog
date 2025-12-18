@@ -7,8 +7,6 @@ We’re entering a phase where engineering is less about writing every instructi
 
 This isn’t just about GenAI. It changes how we design, build, and operate systems when AI becomes part of the team.
 
-![](ai-governance-outcome-vs-steps.jpg)
-
 ### **Code Is No Longer the Core Output**
 
 Most engineering teams still measure productivity by the amount of code shipped. But with AI-generated code, low-code platforms, and autonomous agents, raw output is no longer the right metric.

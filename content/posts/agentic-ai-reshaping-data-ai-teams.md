@@ -11,8 +11,6 @@ These agents don’t just answer questions. They perform tasks, orchestrate work
 That changes everything for data & AI teams.  
 If you’re still focused on dashboards, isolated models, or batch pipelines, you’re building for the past.
 
-![](diverse-ai-team-real-time-operations-center.jpg)
-
 From models and pipelines to intelligent systems
 
 Agentic AI shifts the purpose of the work we’ve done for years.
