@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="We’re entering a phase where engineering is less about writing every instruction and more about teaching systems how to think. The shift is clear: from procedural to declarative. From “write every line” to “explain the outcome.” From “code it” to “coach the model.”
+This isn’t just about GenAI. It changes how we design, build, and operate systems when AI becomes part of the team.
+Code Is No Longer the Core Output# Most engineering teams still measure productivity by the amount of code shipped. But with AI-generated code, low-code platforms, and autonomous agents, raw output is no longer the right metric.
+">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1313/posts/stop-coding-start-coaching-declarative/">
+  <meta property="og:site_name" content="sjoukje.eth">
+  <meta property="og:title" content="Stop Coding, Start Coaching: Why It’s Time to Think Declaratively">
+  <meta property="og:description" content="We’re entering a phase where engineering is less about writing every instruction and more about teaching systems how to think. The shift is clear: from procedural to declarative. From “write every line” to “explain the outcome.” From “code it” to “coach the model.”
+This isn’t just about GenAI. It changes how we design, build, and operate systems when AI becomes part of the team.
+Code Is No Longer the Core Output# Most engineering teams still measure productivity by the amount of code shipped. But with AI-generated code, low-code platforms, and autonomous agents, raw output is no longer the right metric.">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2025-08-06T00:00:00+00:00">
+    <meta property="article:modified_time" content="2025-08-06T00:00:00+00:00">
+
+
+  <meta itemprop="name" content="Stop Coding, Start Coaching: Why It’s Time to Think Declaratively">
+  <meta itemprop="description" content="We’re entering a phase where engineering is less about writing every instruction and more about teaching systems how to think. The shift is clear: from procedural to declarative. From “write every line” to “explain the outcome.” From “code it” to “coach the model.”
+This isn’t just about GenAI. It changes how we design, build, and operate systems when AI becomes part of the team.
+Code Is No Longer the Core Output# Most engineering teams still measure productivity by the amount of code shipped. But with AI-generated code, low-code platforms, and autonomous agents, raw output is no longer the right metric.">
+  <meta itemprop="datePublished" content="2025-08-06T00:00:00+00:00">
+  <meta itemprop="dateModified" content="2025-08-06T00:00:00+00:00">
+  <meta itemprop="wordCount" content="397">
+
+<title>Stop Coding, Start Coaching: Why It’s Time to Think Declaratively | sjoukje.eth</title>
+<link rel="icon" href="../../favicon.png" >
+<link rel="manifest" href="../../manifest.json">
+<link rel="canonical" href="http://localhost:1313/posts/stop-coding-start-coaching-declarative/">
+<link rel="stylesheet" href="../../book.min.cc2c524ed250aac81b23d1f4af87344917b325208841feca0968fe450f570575.css" integrity="sha256-zCxSTtJQqsgbI9H0r4c0SRezJSCIQf7KCWj&#43;RQ9XBXU=" crossorigin="anonymous">
+
+
+  <script defer src="../../fuse.min.js"></script>
+  <script defer src="../../en.search.min.b5e81334402b42ed750fa95e0540851a60334ac2d7bbabda8efcb03b00c36041.js" integrity="sha256-tegTNEArQu11D6leBUCFGmAzSsLXu6vajvywOwDDYEE=" crossorigin="anonymous"></script>
+
+
+
+  
+</head>
+<body dir="ltr" class="book-kind-page book-type-posts">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    
+<aside class="book-menu">
+  <div class="book-menu-content">
+    
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="../../"><img src="../../images/avatar.png" alt="Logo" /><span>sjoukje.eth</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input id="book-search-input" type="text" 
+    placeholder="Search"
+    aria-label="Search"
+    maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+
+
+
+<ul><li><a href="https://linkedin.com/in/sjoukjezaal" target="_blank" rel="noopener">LinkedIn</a></li><li><a href="https://x.com/sjoukjezaal" target="_blank" rel="noopener">X</a></li><li><a href="https://github.com/sjoukjezaal" target="_blank" rel="noopener">GitHub</a></li></ul>
+
+
+
+
+
+
+  
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-61ea499d1dc5d67d6510034229d9b2c4" class="toggle"  />
+    <label for="section-61ea499d1dc5d67d6510034229d9b2c4" class="flex">
+      <a href="../../books/" class="">
+        Books</a>
+      <img src="../../icons/chevron-right.svg" class="book-icon" alt="Expand" />
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Posts</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="../../posts/agentic-ai-reshaping-data-ai-teams/" class="">
+      How Agentic AI Will Reshape the Work of Data &amp; AI Teams — and What to Do About It</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="../../posts/reclaiming-technology-leadership/" class="">
+      Reclaiming Technology Leadership</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="../../posts/the-new-role-of-the-architect-in-an-agentic-world/" class="">
+      The New Role of the Architect in an Agentic World</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="../../posts/ai-agents-new-consumers-producers-data/" class="">
+      AI Agents as New Consumers and Producers of Data</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="../../posts/ai-data-factories-innovation-supply-chain/" class="">
+      AI Factories Meet Data Factories: Building the Supply Chains of Innovation</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="../../posts/stop-coding-start-coaching-declarative/" class="active">
+      Stop Coding, Start Coaching: Why It’s Time to Think Declaratively</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="../../posts/ai-governance-innovation-responsibility/" class="">
+      AI Governance: Balancing Innovation and Responsibility</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="../../posts/ai-factory-engine-room-not-lab/" class="">
+      The AI Factory Is Not a Lab. It’s an Engine Room</a>
+  
+
+        </li>
+      
+    
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-c4a44adf06bc3a9c06696c31edb6398c" class="toggle"  />
+    <label for="section-c4a44adf06bc3a9c06696c31edb6398c" class="flex">
+      <a role="button" class="">
+        Archive</a>
+      <img src="../../icons/chevron-right.svg" class="book-icon" alt="Expand" />
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+
+  </div>
+</aside>
+ 
+
+    <div class="book-page">
+      <header class="book-header hidden">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="../../icons/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>Stop Coding, Start Coaching: Why It’s Time to Think Declaratively</h3>
+
+  <label for="toc-control">
+    
+    <img src="../../icons/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#code-is-no-longer-the-core-output"><strong>Code Is No Longer the Core Output</strong></a></li>
+        <li><a href="#think-outcome-not-steps"><strong>Think Outcome, Not Steps</strong></a></li>
+        <li><a href="#coaching-ai-is-a-design-discipline"><strong>Coaching AI Is a Design Discipline</strong></a></li>
+        <li><a href="#what-this-means-for-engineering-teams"><strong>What This Means for Engineering Teams</strong></a></li>
+        <li><a href="#final-thought"><strong>Final Thought</strong></a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+<article class="markdown book-post">
+  <h1>
+    Stop Coding, Start Coaching: Why It’s Time to Think Declaratively
+  </h1>
+  
+  <div class="flex align-center text-small book-post-date">
+    <img src="../../icons/calendar.svg" class="book-icon" alt="Calendar" />
+    <span>August 6, 2025</span>
+  </div>
+
+
+
+  
+
+  
+
+
+  <div class="book-post-content markdown-inner"><p>We’re entering a phase where engineering is less about writing every instruction  and more about teaching systems how to think. The shift is clear: from procedural to declarative. From “write every line” to “explain the outcome.” From “code it” to “coach the model.”</p>
+<p>This isn’t just about GenAI. It changes how we design, build, and operate systems when AI becomes part of the team.</p>
+<p><img src="ai-governance-outcome-vs-steps.png" alt="" /></p>
+<h3 id="code-is-no-longer-the-core-output"><strong>Code Is No Longer the Core Output</strong><a class="anchor" href="#code-is-no-longer-the-core-output">#</a></h3>
+<p>Most engineering teams still measure productivity by the amount of code shipped. But with AI-generated code, low-code platforms, and autonomous agents, raw output is no longer the right metric.</p>
+<p>The value shifts to design clarity, intent, and oversight. Models don’t need detailed instructions — they need structure, context, and outcomes they can align to.</p>
+<h3 id="think-outcome-not-steps"><strong>Think Outcome, Not Steps</strong><a class="anchor" href="#think-outcome-not-steps">#</a></h3>
+<p>Traditional development relies on procedural thinking: describe every step, control the flow, handle every exception. But AI systems work better when you describe the destination and let them find the path.</p>
+<p>Declarative thinking means defining what you want — not how to get there. You already see this in tools like Terraform, Bicep, and serverless workflows. You define the desired state, and the system figures out how to get there.</p>
+<p>This isn’t just more efficient — it’s more scalable in a world where logic is co-authored by machines.</p>
+<h3 id="coaching-ai-is-a-design-discipline"><strong>Coaching AI Is a Design Discipline</strong><a class="anchor" href="#coaching-ai-is-a-design-discipline">#</a></h3>
+<p>To make AI useful, you don’t code logic — you shape behavior. That means:</p>
+<ul>
+<li>Framing clear objectives and constraints</li>
+<li>Providing relevant examples and signals</li>
+<li>Reviewing outputs and edge cases</li>
+<li>Adjusting based on feedback and changing conditions</li>
+</ul>
+<p>You’re not programming — you’re supervising. The ability to tune, guide, and iterate becomes more valuable than the ability to write perfect functions.</p>
+<h3 id="what-this-means-for-engineering-teams"><strong>What This Means for Engineering Teams</strong><a class="anchor" href="#what-this-means-for-engineering-teams">#</a></h3>
+<p>If your team is still optimizing for “how fast we can code,” you’re solving the wrong problem.</p>
+<p>Here’s what needs to change:</p>
+<ul>
+<li>Shift from function logic to system behavior</li>
+<li>Combine code review with prompt, model, and config review</li>
+<li>Train engineers to think like orchestrators, not implementers</li>
+<li>Use declarative tools where possible — especially in cloud, infra, and data workflows</li>
+<li>Define success in terms of outcomes, not just deployments</li>
+<li>The biggest challenge isn’t tooling. It’s mindset.</li>
+</ul>
+<h3 id="final-thought"><strong>Final Thought</strong><a class="anchor" href="#final-thought">#</a></h3>
+<p>Declarative thinking forces us to simplify, clarify, and trust the system to do its part. That’s how we scale in an AI-first world.</p>
+<p>We don’t need more code. We need better coaching.</p>
+</div>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+  <div>
+  
+    <a href="../../posts/ai-data-factories-innovation-supply-chain/" class="flex align-center">
+      <img src="../../icons/backward.svg" class="book-icon" alt="Backward" />
+      <span>AI Factories Meet Data Factories: Building the Supply Chains of Innovation</span>
+    </a>
+  
+  </div>
+  <div>
+  
+    <a href="../../posts/ai-governance-innovation-responsibility/" class="flex align-center">
+      <span>AI Governance: Balancing Innovation and Responsibility</span>
+      <img src="../../icons/forward.svg" class="book-icon" alt="Forward" />
+    </a>
+  
+  </div>
+</div>
+ 
+        
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+        
+        
+  
+ 
+        
+  
+  
+    <script>(function(){document.querySelectorAll("pre:has(code)").forEach(e=>{e.addEventListener("click",e.focus),e.addEventListener("copy",function(t){if(t.preventDefault(),navigator.clipboard){const t=window.getSelection().toString()||e.textContent;navigator.clipboard.writeText(t)}})})})()</script>
+  
+
+      </footer>
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+  
+  <aside class="book-toc">
+    <div class="book-toc-content">
+      
+  
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#code-is-no-longer-the-core-output"><strong>Code Is No Longer the Core Output</strong></a></li>
+        <li><a href="#think-outcome-not-steps"><strong>Think Outcome, Not Steps</strong></a></li>
+        <li><a href="#coaching-ai-is-a-design-discipline"><strong>Coaching AI Is a Design Discipline</strong></a></li>
+        <li><a href="#what-this-means-for-engineering-teams"><strong>What This Means for Engineering Teams</strong></a></li>
+        <li><a href="#final-thought"><strong>Final Thought</strong></a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+    </div>
+  </aside>
+  
+ 
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

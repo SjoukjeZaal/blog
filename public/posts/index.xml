@@ -6,8 +6,15 @@
     <description>Recent content in Posts on sjoukje.eth</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 09 Nov 2025 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 18 Dec 2025 00:00:00 +0000</lastBuildDate>
     <atom:link href="http://localhost:1313/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>How Agentic AI Will Reshape the Work of Data &amp; AI Teams — and What to Do About It</title>
+      <link>http://localhost:1313/posts/agentic-ai-reshaping-data-ai-teams/</link>
+      <pubDate>Thu, 18 Dec 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/agentic-ai-reshaping-data-ai-teams/</guid>
+      <description>&lt;p&gt;We’re entering the agent era. Is your team ready?&lt;/p&gt;&#xA;&lt;p&gt;Large Language Models have already changed how we interact with data. But the rise of &lt;strong&gt;agentic AI&lt;/strong&gt; — systems that reason, take action, and adapt — goes even further.&lt;/p&gt;&#xA;&lt;p&gt;These agents don’t just answer questions. They perform tasks, orchestrate workflows, and make real-time decisions.&lt;br&gt;&#xA;That changes everything for data &amp;amp; AI teams.&lt;br&gt;&#xA;If you’re still focused on dashboards, isolated models, or batch pipelines, you’re building for the past.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Reclaiming Technology Leadership</title>
       <link>http://localhost:1313/posts/reclaiming-technology-leadership/</link>
@@ -35,6 +42,34 @@
       <pubDate>Tue, 19 Aug 2025 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/posts/ai-data-factories-innovation-supply-chain/</guid>
       <description>&lt;p&gt;Over the past few years, we’ve seen organizations experiment with the concept of an &lt;strong&gt;AI Factory&lt;/strong&gt;—a structured way to industrialize the development and deployment of AI. At the same time, data leaders have embraced the idea of &lt;strong&gt;data products&lt;/strong&gt; and &lt;strong&gt;data fabrics&lt;/strong&gt; to make data more reusable, governed, and available at scale.&lt;/p&gt;&#xA;&lt;p&gt;It’s time to bring these two together!&lt;/p&gt;&#xA;&lt;p&gt;&lt;img src=&#34;ai-data-supply-chain-digital-logistics-visualization.png&#34; alt=&#34;AI Data Supply Chain&#34; /&gt;&lt;/p&gt;&#xA;&lt;h2 id=&#34;from-projects-to-production-lines&#34;&gt;&lt;strong&gt;From Projects to Production Lines&lt;/strong&gt;&lt;a class=&#34;anchor&#34; href=&#34;#from-projects-to-production-lines&#34;&gt;#&lt;/a&gt;&lt;/h2&gt;&#xA;&lt;p&gt;Think of how manufacturing evolved: from craft workshops to assembly lines, where processes were standardized and repeatable. We are witnessing a similar shift in data and AI. Instead of bespoke projects—each with its own tools, pipelines, and governance—organizations are moving toward &lt;strong&gt;industrialized AI + data factories&lt;/strong&gt;.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Stop Coding, Start Coaching: Why It’s Time to Think Declaratively</title>
+      <link>http://localhost:1313/posts/stop-coding-start-coaching-declarative/</link>
+      <pubDate>Wed, 06 Aug 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/stop-coding-start-coaching-declarative/</guid>
+      <description>&lt;p&gt;We’re entering a phase where engineering is less about writing every instruction  and more about teaching systems how to think. The shift is clear: from procedural to declarative. From “write every line” to “explain the outcome.” From “code it” to “coach the model.”&lt;/p&gt;&#xA;&lt;p&gt;This isn’t just about GenAI. It changes how we design, build, and operate systems when AI becomes part of the team.&lt;/p&gt;&#xA;&lt;p&gt;&lt;img src=&#34;ai-governance-outcome-vs-steps.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;&#xA;&lt;h3 id=&#34;code-is-no-longer-the-core-output&#34;&gt;&lt;strong&gt;Code Is No Longer the Core Output&lt;/strong&gt;&lt;a class=&#34;anchor&#34; href=&#34;#code-is-no-longer-the-core-output&#34;&gt;#&lt;/a&gt;&lt;/h3&gt;&#xA;&lt;p&gt;Most engineering teams still measure productivity by the amount of code shipped. But with AI-generated code, low-code platforms, and autonomous agents, raw output is no longer the right metric.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>AI Governance: Balancing Innovation and Responsibility</title>
+      <link>http://localhost:1313/posts/ai-governance-innovation-responsibility/</link>
+      <pubDate>Tue, 29 Jul 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/ai-governance-innovation-responsibility/</guid>
+      <description>&lt;p&gt;Every company wants to move fast with AI. The real challenge isn’t adoption—it’s making sure innovation is guided by responsibility and strong governance.&lt;/p&gt;&#xA;&lt;p&gt;The question is not whether to adopt AI — it’s about doing it right. AI governance helps organizations find the balance between driving innovation and managing risk. It gives you the structure to build solutions that serve your business and your customers, without losing control.&lt;/p&gt;&#xA;&lt;p&gt;&lt;img src=&#34;ai-governance-balance-innovation-vs-risk.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>The AI Factory Is Not a Lab. It’s an Engine Room</title>
+      <link>http://localhost:1313/posts/ai-factory-engine-room-not-lab/</link>
+      <pubDate>Fri, 25 Jul 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/ai-factory-engine-room-not-lab/</guid>
+      <description>&lt;p&gt;Many organizations still treat AI like it’s experimental. A side project. A shiny object in a lab that only a few experts are allowed to touch.&lt;br&gt;&#xA;That mindset is holding them back.&lt;br&gt;&#xA;If you want AI to drive real impact, it needs to move out of the lab and into the engine room of your organization. That’s what the AI Factory is about. Not experiments, but execution. Not proofs of concept, but products.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title></title>
+      <link>http://localhost:1313/posts/ai-moving-fast-leadership-faster/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/ai-moving-fast-leadership-faster/</guid>
+      <description></description>
     </item>
   </channel>
 </rss>
