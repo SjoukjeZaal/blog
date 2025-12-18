@@ -1,42 +1,33 @@
 baseURL = "/"
 languageCode = "en-us"
 title = "sjoukje.eth"
-theme = "hugo-book"
-
-relativeURLs = true
-canonifyURLs = true
+theme = "papermod"
 
 [params]
-    BookLogo = "images/avatar.png"
-    BookTitle = "sjoukje.eth"
-    BookDescription = "CTO Data & AI | Thought Leader | Author"
-    BookRepo = "https://github.com/sjoukjezaal/blog"
-    BookEditPath = "edit/main/content"
-    BookTheme = "light"
-    BookMenuBundle = "/menu"
-    BookSection = "*"
-    BookSearch = true
+    env = "production"
+    title = "sjoukje.eth"
+    description = "Thought leader in AI, cloud, data and digital sovereignty"
+    author = "sjoukje.eth"
+    
+    # PaperMod specifieke instellingen
+    ShowReadingTime = true
+    ShowShareButtons = true
+    ShowPostNavLinks = true
+    ShowBreadCrumbs = true
+    ShowCodeCopyButtons = true
+    
+    [params.homeInfoParams]
+        Title = "Hi there \U0001F44B"
+        Content = "Welcome to my decentralized archive on AI, Cloud, and Data Leadership."
 
-[[menu.after]]
-  name = "---"
-  url = ""
-  weight = 90
+   [[params.socialIcons]]
+        name = "x"
+        url = "https://x.com/sjoukjezaal"
 
-[[menu.after]]
-  name = "LinkedIn"
-  url = "https://www.linkedin.com/in/sjoukjezaal/"
-  weight = 100
+    [[params.socialIcons]]
+        name = "github"
+        url = "https://github.com/sjoukjezaal"
 
-[[menu.after]]
-  name = "X"
-  url = "https://x.com/sjoukjezaal"
-  weight = 110
-
-[[menu.after]]
-  name = "GitHub"
-  url = "https://github.com/sjoukjezaal"
-  weight = 120
-
-[taxonomies]
-    category = "categories"
-    tag = "tags"
+    [[params.socialIcons]]
+        name = "linkedin"
+        url = "https://linkedin.com/in/sjoukjezaal"
