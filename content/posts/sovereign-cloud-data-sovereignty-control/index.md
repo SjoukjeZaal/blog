@@ -1,6 +1,6 @@
 ---
 title: "Sovereign Cloud and Data Sovereignty: Why Your Organization Needs Control"
-date: 2025-12-18
+date: 2025-06-11
 ---
 
 The way organizations handle their data has changed forever. What started as a simple move to the cloud has become something much more complex, especially as global geopolitical tensions continue to reshape how nations view data and technology.

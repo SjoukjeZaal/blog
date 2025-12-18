@@ -2,95 +2,95 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>About on sjoukje.eth</title>
-    <link>http://localhost:1313/</link>
+    <link>//localhost:1313/</link>
     <description>Recent content in About on sjoukje.eth</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 18 Dec 2025 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>How Agentic AI Will Reshape the Work of Data &amp; AI Teams — and What to Do About It</title>
-      <link>http://localhost:1313/posts/agentic-ai-reshaping-data-ai-teams/</link>
-      <pubDate>Thu, 18 Dec 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/posts/agentic-ai-reshaping-data-ai-teams/</guid>
-      <description>&lt;p&gt;We’re entering the agent era. Is your team ready?&lt;/p&gt;&#xA;&lt;p&gt;Large Language Models have already changed how we interact with data. But the rise of &lt;strong&gt;agentic AI&lt;/strong&gt; — systems that reason, take action, and adapt — goes even further.&lt;/p&gt;&#xA;&lt;p&gt;These agents don’t just answer questions. They perform tasks, orchestrate workflows, and make real-time decisions.&lt;br&gt;&#xA;That changes everything for data &amp;amp; AI teams.&lt;br&gt;&#xA;If you’re still focused on dashboards, isolated models, or batch pipelines, you’re building for the past.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Sovereign Cloud and Data Sovereignty: Why Your Organization Needs Control</title>
-      <link>http://localhost:1313/posts/sovereign-cloud-data-sovereignty-control/</link>
-      <pubDate>Thu, 18 Dec 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/posts/sovereign-cloud-data-sovereignty-control/</guid>
-      <description>&lt;p&gt;The way organizations handle their data has changed forever. What started as a simple move to the cloud has become something much more complex, especially as global geopolitical tensions continue to reshape how nations view data and technology.&lt;/p&gt;&#xA;&lt;p&gt;Rising tensions between major economic powers have created new uncertainties around cross-border data flows. Countries are increasingly viewing data as a strategic national asset, leading to stricter controls on where information can be stored and processed. Trade disputes, security concerns, and regulatory conflicts have made it clear that organizations can no longer assume their data will flow freely between regions.&lt;/p&gt;</description>
-    </item>
+    <lastBuildDate>Sun, 09 Nov 2025 00:00:00 +0000</lastBuildDate>
+    <atom:link href="//localhost:1313/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Reclaiming Technology Leadership</title>
-      <link>http://localhost:1313/posts/reclaiming-technology-leadership/</link>
+      <link>//localhost:1313/posts/reclaiming-technology-leadership/</link>
       <pubDate>Sun, 09 Nov 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/posts/reclaiming-technology-leadership/</guid>
+      <guid>//localhost:1313/posts/reclaiming-technology-leadership/</guid>
       <description>&lt;p&gt;&lt;img src=&#34;The-Cost-of-Distance---When-Leadership-Drifts-Away-From-Technology.jpg&#34; alt=&#34;Leadership Culture&#34; /&gt;&lt;/p&gt;&#xA;&lt;p&gt;We’ve professionalized technology to the point where we’ve lost touch with it.&lt;br&gt;&#xA;In many organizations, technology leadership has turned into governance, reporting, and compliance. The intent was good: control risk, manage complexity, scale globally.&lt;br&gt;&#xA;But in doing so, many organizations created a gap between leadership and the actual technology.&lt;br&gt;&#xA;Decisions are now abstracted behind PowerPoint decks and KPIs instead of grounded in code, infrastructure, or architecture. When governance replaces guidance, you lose speed, context, and credibility. The result is a leadership layer that knows how to measure delivery but not how to drive it.&lt;/p&gt;</description>
     </item>
     <item>
       <title>The New Role of the Architect in an Agentic World</title>
-      <link>http://localhost:1313/posts/the-new-role-of-the-architect-in-an-agentic-world/</link>
+      <link>//localhost:1313/posts/the-new-role-of-the-architect-in-an-agentic-world/</link>
       <pubDate>Sun, 02 Nov 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/posts/the-new-role-of-the-architect-in-an-agentic-world/</guid>
+      <guid>//localhost:1313/posts/the-new-role-of-the-architect-in-an-agentic-world/</guid>
       <description>&lt;p&gt;The role of the architect is being rewritten.&lt;br&gt;&#xA;Not by new frameworks or methodologies, but by intelligent systems that can design, optimize, and learn on their own.&lt;/p&gt;&#xA;&lt;p&gt;As &lt;strong&gt;AI agents&lt;/strong&gt;, &lt;strong&gt;autonomous workflows&lt;/strong&gt;, and &lt;strong&gt;generative tools&lt;/strong&gt; become part of daily operations, architecture itself becomes dynamic.&lt;br&gt;&#xA;It’s no longer a static blueprint. It’s a living system that continuously adapts and improves.&lt;/p&gt;&#xA;&lt;p&gt;&lt;img src=&#34;Adaptive-Architecture-in-the-Age-of-AI-1.jpg&#34; alt=&#34;Adaptive Architecture&#34; /&gt;&lt;/p&gt;&#xA;&lt;h3 id=&#34;from-control-to-coordination&#34;&gt;&lt;strong&gt;From Control to Coordination&lt;/strong&gt;&lt;a class=&#34;anchor&#34; href=&#34;#from-control-to-coordination&#34;&gt;#&lt;/a&gt;&lt;/h3&gt;&#xA;&lt;p&gt;For years, architecture has centered on control: standards, reviews, governance.&lt;br&gt;&#xA;But in an agentic world, control alone is not enough.&lt;br&gt;&#xA;AI systems generate code, detect anomalies, and make real-time adjustments faster than any process can document.&lt;/p&gt;</description>
     </item>
     <item>
       <title>AI Agents as New Consumers and Producers of Data</title>
-      <link>http://localhost:1313/posts/ai-agents-new-consumers-producers-data/</link>
+      <link>//localhost:1313/posts/ai-agents-new-consumers-producers-data/</link>
       <pubDate>Tue, 19 Aug 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/posts/ai-agents-new-consumers-producers-data/</guid>
+      <guid>//localhost:1313/posts/ai-agents-new-consumers-producers-data/</guid>
       <description>&lt;p&gt;For years, data platforms were designed around people. The main goal was to provide humans with dashboards, reports, and analytics so they could make better decisions. But this model is being reshaped. With the rise of AI agents, data platforms are entering a new era—one where the consumers of data are not only people but also autonomous systems.&lt;/p&gt;&#xA;&lt;p&gt;And here’s the important part: these agents don’t just consume. They also produce. They generate enriched datasets, annotations, and continuous insights. This dual role changes how we need to think about architecture, governance, and collaboration.&lt;/p&gt;</description>
     </item>
     <item>
       <title>AI Factories Meet Data Factories: Building the Supply Chains of Innovation</title>
-      <link>http://localhost:1313/posts/ai-data-factories-innovation-supply-chain/</link>
+      <link>//localhost:1313/posts/ai-data-factories-innovation-supply-chain/</link>
       <pubDate>Tue, 19 Aug 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/posts/ai-data-factories-innovation-supply-chain/</guid>
+      <guid>//localhost:1313/posts/ai-data-factories-innovation-supply-chain/</guid>
       <description>&lt;p&gt;Over the past few years, we’ve seen organizations experiment with the concept of an &lt;strong&gt;AI Factory&lt;/strong&gt;—a structured way to industrialize the development and deployment of AI. At the same time, data leaders have embraced the idea of &lt;strong&gt;data products&lt;/strong&gt; and &lt;strong&gt;data fabrics&lt;/strong&gt; to make data more reusable, governed, and available at scale.&lt;/p&gt;&#xA;&lt;p&gt;It’s time to bring these two together!&lt;/p&gt;&#xA;&lt;p&gt;&lt;img src=&#34;ai-data-supply-chain-digital-logistics-visualization.jpg&#34; alt=&#34;AI Data Supply Chain&#34; /&gt;&lt;/p&gt;&#xA;&lt;h2 id=&#34;from-projects-to-production-lines&#34;&gt;&lt;strong&gt;From Projects to Production Lines&lt;/strong&gt;&lt;a class=&#34;anchor&#34; href=&#34;#from-projects-to-production-lines&#34;&gt;#&lt;/a&gt;&lt;/h2&gt;&#xA;&lt;p&gt;Think of how manufacturing evolved: from craft workshops to assembly lines, where processes were standardized and repeatable. We are witnessing a similar shift in data and AI. Instead of bespoke projects—each with its own tools, pipelines, and governance—organizations are moving toward &lt;strong&gt;industrialized AI + data factories&lt;/strong&gt;.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Stop Coding, Start Coaching: Why It’s Time to Think Declaratively</title>
-      <link>http://localhost:1313/posts/stop-coding-start-coaching-declarative/</link>
+      <link>//localhost:1313/posts/stop-coding-start-coaching-declarative/</link>
       <pubDate>Wed, 06 Aug 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/posts/stop-coding-start-coaching-declarative/</guid>
+      <guid>//localhost:1313/posts/stop-coding-start-coaching-declarative/</guid>
       <description>&lt;p&gt;We’re entering a phase where engineering is less about writing every instruction  and more about teaching systems how to think. The shift is clear: from procedural to declarative. From “write every line” to “explain the outcome.” From “code it” to “coach the model.”&lt;/p&gt;&#xA;&lt;p&gt;This isn’t just about GenAI. It changes how we design, build, and operate systems when AI becomes part of the team.&lt;/p&gt;&#xA;&lt;p&gt;&lt;img src=&#34;ai-governance-outcome-vs-steps.jpg&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;&#xA;&lt;h3 id=&#34;code-is-no-longer-the-core-output&#34;&gt;&lt;strong&gt;Code Is No Longer the Core Output&lt;/strong&gt;&lt;a class=&#34;anchor&#34; href=&#34;#code-is-no-longer-the-core-output&#34;&gt;#&lt;/a&gt;&lt;/h3&gt;&#xA;&lt;p&gt;Most engineering teams still measure productivity by the amount of code shipped. But with AI-generated code, low-code platforms, and autonomous agents, raw output is no longer the right metric.&lt;/p&gt;</description>
     </item>
     <item>
       <title>AI is Moving Fast. Leadership Must Move Faster</title>
-      <link>http://localhost:1313/posts/ai-moving-fast-leadership-faster/</link>
+      <link>//localhost:1313/posts/ai-moving-fast-leadership-faster/</link>
       <pubDate>Wed, 30 Jul 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/posts/ai-moving-fast-leadership-faster/</guid>
+      <guid>//localhost:1313/posts/ai-moving-fast-leadership-faster/</guid>
       <description>&lt;p&gt;Artificial Intelligence isn’t slowing down. In fact, it’s speeding up — reshaping how we work, how decisions are made, and how businesses compete. But while the technology keeps evolving, leadership often struggles to keep up. And that’s where the real risk lies.&lt;/p&gt;&#xA;&lt;p&gt;If you’re in a leadership role today — especially in tech, strategy, or operations — you can’t afford to treat AI as a distant future trend or a side experiment. It’s already here. The question is: are you moving fast enough to lead with it?&lt;/p&gt;</description>
     </item>
     <item>
       <title>AI Governance: Balancing Innovation and Responsibility</title>
-      <link>http://localhost:1313/posts/ai-governance-innovation-responsibility/</link>
+      <link>//localhost:1313/posts/ai-governance-innovation-responsibility/</link>
       <pubDate>Tue, 29 Jul 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/posts/ai-governance-innovation-responsibility/</guid>
+      <guid>//localhost:1313/posts/ai-governance-innovation-responsibility/</guid>
       <description>&lt;p&gt;Every company wants to move fast with AI. The real challenge isn’t adoption—it’s making sure innovation is guided by responsibility and strong governance.&lt;/p&gt;&#xA;&lt;p&gt;The question is not whether to adopt AI — it’s about doing it right. AI governance helps organizations find the balance between driving innovation and managing risk. It gives you the structure to build solutions that serve your business and your customers, without losing control.&lt;/p&gt;&#xA;&lt;p&gt;&lt;img src=&#34;ai-governance-balance-innovation-vs-risk.jpg&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;</description>
     </item>
     <item>
       <title>The AI Factory Is Not a Lab. It’s an Engine Room</title>
-      <link>http://localhost:1313/posts/ai-factory-engine-room-not-lab/</link>
+      <link>//localhost:1313/posts/ai-factory-engine-room-not-lab/</link>
       <pubDate>Fri, 25 Jul 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/posts/ai-factory-engine-room-not-lab/</guid>
+      <guid>//localhost:1313/posts/ai-factory-engine-room-not-lab/</guid>
       <description>&lt;p&gt;Many organizations still treat AI like it’s experimental. A side project. A shiny object in a lab that only a few experts are allowed to touch.&lt;br&gt;&#xA;That mindset is holding them back.&lt;br&gt;&#xA;If you want AI to drive real impact, it needs to move out of the lab and into the engine room of your organization. That’s what the AI Factory is about. Not experiments, but execution. Not proofs of concept, but products.&lt;/p&gt;</description>
     </item>
     <item>
       <title>How AI and Web3 Influence Each Other</title>
-      <link>http://localhost:1313/posts/how-ai-and-web3-influence-each-other/</link>
+      <link>//localhost:1313/posts/how-ai-and-web3-influence-each-other/</link>
       <pubDate>Sat, 12 Jul 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/posts/how-ai-and-web3-influence-each-other/</guid>
+      <guid>//localhost:1313/posts/how-ai-and-web3-influence-each-other/</guid>
       <description>&lt;p&gt;AI and Web3 are often discussed as separate trends. But the way they’re starting to influence each other is where the real potential lies. For organizations building digital strategies, understanding how these technologies interact is becoming more important by the day.&lt;/p&gt;&#xA;&lt;p&gt;This isn’t about chasing hype — it’s about practical ways these two technologies can address each other’s current limitations and open up new business models.&lt;/p&gt;&#xA;&lt;h3 id=&#34;web3-can-help-solve-ais-trust-problem&#34;&gt;Web3 Can Help Solve AI’s Trust Problem&lt;a class=&#34;anchor&#34; href=&#34;#web3-can-help-solve-ais-trust-problem&#34;&gt;#&lt;/a&gt;&lt;/h3&gt;&#xA;&lt;p&gt;Trust is one of the biggest blockers for AI adoption. How can we prove that an AI model works as intended? How do we know decisions haven’t been tampered with?&lt;/p&gt;</description>
     </item>
     <item>
+      <title>How Agentic AI Will Reshape the Work of Data &amp; AI Teams — and What to Do About It</title>
+      <link>//localhost:1313/posts/agentic-ai-reshaping-data-ai-teams/</link>
+      <pubDate>Fri, 04 Jul 2025 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/posts/agentic-ai-reshaping-data-ai-teams/</guid>
+      <description>&lt;p&gt;We’re entering the agent era. Is your team ready?&lt;/p&gt;&#xA;&lt;p&gt;Large Language Models have already changed how we interact with data. But the rise of &lt;strong&gt;agentic AI&lt;/strong&gt; — systems that reason, take action, and adapt — goes even further.&lt;/p&gt;&#xA;&lt;p&gt;These agents don’t just answer questions. They perform tasks, orchestrate workflows, and make real-time decisions.&lt;br&gt;&#xA;That changes everything for data &amp;amp; AI teams.&lt;br&gt;&#xA;If you’re still focused on dashboards, isolated models, or batch pipelines, you’re building for the past.&lt;/p&gt;</description>
+    </item>
+    <item>
       <title>Emerging Tech Radar for CxOs: What’s Real and What’s Hype in 2025?</title>
-      <link>http://localhost:1313/posts/tech-radar-cxo-real-vs-hype-2025/</link>
+      <link>//localhost:1313/posts/tech-radar-cxo-real-vs-hype-2025/</link>
       <pubDate>Wed, 11 Jun 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/posts/tech-radar-cxo-real-vs-hype-2025/</guid>
+      <guid>//localhost:1313/posts/tech-radar-cxo-real-vs-hype-2025/</guid>
       <description>&lt;p&gt;The pace of technology change hasn’t slowed down. In fact, it’s accelerating. Every week, new solutions are pitched that promise to transform your business, disrupt your industry, or unlock new revenue streams.&lt;/p&gt;&#xA;&lt;p&gt;For CxOs, this creates both opportunity and risk. It’s easy to get caught up in the latest buzzwords, but with budgets tighter and delivery pressure higher, making smart choices is critical.&lt;/p&gt;&#xA;&lt;p&gt;So what’s real in 2025 — and what’s still more noise than substance? Here’s my radar view, based on what I’m seeing across industries.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Sovereign Cloud and Data Sovereignty: Why Your Organization Needs Control</title>
+      <link>//localhost:1313/posts/sovereign-cloud-data-sovereignty-control/</link>
+      <pubDate>Wed, 11 Jun 2025 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/posts/sovereign-cloud-data-sovereignty-control/</guid>
+      <description>&lt;p&gt;The way organizations handle their data has changed forever. What started as a simple move to the cloud has become something much more complex, especially as global geopolitical tensions continue to reshape how nations view data and technology.&lt;/p&gt;&#xA;&lt;p&gt;Rising tensions between major economic powers have created new uncertainties around cross-border data flows. Countries are increasingly viewing data as a strategic national asset, leading to stricter controls on where information can be stored and processed. Trade disputes, security concerns, and regulatory conflicts have made it clear that organizations can no longer assume their data will flow freely between regions.&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

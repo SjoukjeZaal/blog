@@ -1,6 +1,6 @@
 ---
 title: "How Agentic AI Will Reshape the Work of Data & AI Teams — and What to Do About It"
-date: 2025-12-18
+date: 2025-07-04
 ---
 
 We’re entering the agent era. Is your team ready?

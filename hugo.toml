@@ -1,10 +1,10 @@
-baseURL = "https://sjoukje.eth.limo/"
+baseURL = "/"
 languageCode = "en-us"
 title = "sjoukje.eth"
 theme = "hugo-book"
 
 relativeURLs = true
-canonifyURLs = true
+canonifyURLs = false
 
 [params]
     BookLogo = "images/avatar.png"
@@ -17,20 +17,25 @@ canonifyURLs = true
     BookSection = "*"
     BookSearch = true
 
-[[menu.before]]
-    name = "LinkedIn"
-    url = "https://linkedin.com/in/sjoukjezaal"
-    weight = 10
+[[menu.after]]
+  name = "---"
+  url = ""
+  weight = 90
 
-[[menu.before]]
-    name = "X"
-    url = "https://x.com/sjoukjezaal"
-    weight = 20
+[[menu.after]]
+  name = "LinkedIn"
+  url = "https://www.linkedin.com/in/sjoukjezaal/"
+  weight = 100
 
-[[menu.before]]
-    name = "GitHub"
-    url = "https://github.com/sjoukjezaal"
-    weight = 30
+[[menu.after]]
+  name = "X"
+  url = "https://x.com/sjoukjezaal"
+  weight = 110
+
+[[menu.after]]
+  name = "GitHub"
+  url = "https://github.com/sjoukjezaal"
+  weight = 120
 
 [taxonomies]
     category = "categories"
