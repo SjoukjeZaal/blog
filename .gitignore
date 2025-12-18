@@ -1,0 +1,16 @@
+# macOS system files
+**/.DS_Store
+.AppleDouble
+.LSOverride
+
+# Hugo default build output
+public/
+resources/
+_vendor/
+
+# OS generated files
+.DS_Store
+.DS_Store?
+ehthumbs.db
+Icon?
+Thumbs.db
