@@ -3,14 +3,6 @@
 .AppleDouble
 .LSOverride
 
-# Hugo default build output
-resources/
-_vendor/
-.hugo_build.lock
-
 # OS generated files
 .DS_Store
 .DS_Store?
-ehthumbs.db
-Icon?
-Thumbs.db
