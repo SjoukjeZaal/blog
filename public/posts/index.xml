@@ -52,9 +52,9 @@
     </item>
     <item>
       <title>AI Governance: Balancing Innovation and Responsibility</title>
-      <link>//localhost:61662/posts/ai-governance-innovation-responsibility/</link>
+      <link>//localhost:61662/posts/ai-governance-balance-innovation-vs-risk/</link>
       <pubDate>Tue, 29 Jul 2025 00:00:00 +0000</pubDate>
-      <guid>//localhost:61662/posts/ai-governance-innovation-responsibility/</guid>
+      <guid>//localhost:61662/posts/ai-governance-balance-innovation-vs-risk/</guid>
       <description>&lt;p&gt;Every company wants to move fast with AI. The real challenge isn’t adoption—it’s making sure innovation is guided by responsibility and strong governance.&lt;/p&gt;&#xA;&lt;p&gt;The question is not whether to adopt AI — it’s about doing it right. AI governance helps organizations find the balance between driving innovation and managing risk. It gives you the structure to build solutions that serve your business and your customers, without losing control.&lt;/p&gt;&#xA;&lt;p&gt;&lt;img src=&#34;ai-governance-balance-innovation-vs-risk.jpg&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;</description>
     </item>
     <item>
@@ -84,13 +84,6 @@
       <pubDate>Wed, 11 Jun 2025 00:00:00 +0000</pubDate>
       <guid>//localhost:61662/posts/tech-radar-cxo-real-vs-hype-2025/</guid>
       <description>&lt;p&gt;The pace of technology change hasn’t slowed down. In fact, it’s accelerating. Every week, new solutions are pitched that promise to transform your business, disrupt your industry, or unlock new revenue streams.&lt;/p&gt;&#xA;&lt;p&gt;For CxOs, this creates both opportunity and risk. It’s easy to get caught up in the latest buzzwords, but with budgets tighter and delivery pressure higher, making smart choices is critical.&lt;/p&gt;&#xA;&lt;p&gt;So what’s real in 2025 — and what’s still more noise than substance? Here’s my radar view, based on what I’m seeing across industries.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Sovereign Cloud and Data Sovereignty: Why Your Organization Needs Control</title>
-      <link>//localhost:61662/posts/sovereign-cloud-data-sovereignty-control/</link>
-      <pubDate>Wed, 11 Jun 2025 00:00:00 +0000</pubDate>
-      <guid>//localhost:61662/posts/sovereign-cloud-data-sovereignty-control/</guid>
-      <description>&lt;p&gt;The way organizations handle their data has changed forever. What started as a simple move to the cloud has become something much more complex, especially as global geopolitical tensions continue to reshape how nations view data and technology.&lt;/p&gt;&#xA;&lt;p&gt;Rising tensions between major economic powers have created new uncertainties around cross-border data flows. Countries are increasingly viewing data as a strategic national asset, leading to stricter controls on where information can be stored and processed. Trade disputes, security concerns, and regulatory conflicts have made it clear that organizations can no longer assume their data will flow freely between regions.&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>
