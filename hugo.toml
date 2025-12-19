@@ -1,4 +1,4 @@
-baseURL = "https://www.sjoukje.zaal.xyz/"
+baseURL = "/"
 languageCode = "en-us"
 title = "sjoukje.eth"
 theme = "papermod"
@@ -55,8 +55,3 @@ canonifyURLs = false
         name = "About"
         url = "/about/"
         weight = 30
-
-    [taxonomies]
-        category = "categories"
-        tag = "tags"
-        series = "series"

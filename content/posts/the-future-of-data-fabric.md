@@ -1,7 +1,6 @@
 ---
 title: "The Future of Data Fabric"
 date: 2024-10-17
-categories: [Archive, Capgemini]
 ---
 
 In today’s data and AI era, organizations are facing a lot of complexities to become data driven. They are facing issues such as data silos, lack of collaboration between business and IT, high maintenance costs, increasing data privacy concerns and governance needs.
