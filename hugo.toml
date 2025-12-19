@@ -5,7 +5,7 @@ theme = "papermod"
 
 # IPFS/Limo support:
 relativeURLs = true
-canonifyURLs = true
+canonifyURLs = false
 
 [params]
     env = "production"
