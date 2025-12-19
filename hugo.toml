@@ -1,4 +1,4 @@
-baseURL = "/"
+baseURL = "https://www.sjoukje.zaal.xyz/"
 languageCode = "en-us"
 title = "sjoukje.eth"
 theme = "papermod"

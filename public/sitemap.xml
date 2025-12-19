@@ -2,63 +2,63 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>//localhost:1313/posts/</loc>
+    <loc>http://localhost:1313/posts/</loc>
     <lastmod>2025-11-09T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>//localhost:1313/posts/reclaiming-technology-leadership/</loc>
+    <loc>http://localhost:1313/posts/reclaiming-technology-leadership/</loc>
     <lastmod>2025-11-09T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>//localhost:1313/</loc>
+    <loc>http://localhost:1313/</loc>
     <lastmod>2025-11-09T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>//localhost:1313/posts/the-new-role-of-the-architect-in-an-agentic-world/</loc>
+    <loc>http://localhost:1313/posts/the-new-role-of-the-architect-in-an-agentic-world/</loc>
     <lastmod>2025-11-02T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>//localhost:1313/posts/ai-agents-new-consumers-producers-data/</loc>
+    <loc>http://localhost:1313/posts/ai-agents-new-consumers-producers-data/</loc>
     <lastmod>2025-08-19T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>//localhost:1313/posts/ai-data-factories-innovation-supply-chain/</loc>
+    <loc>http://localhost:1313/posts/ai-data-factories-innovation-supply-chain/</loc>
     <lastmod>2025-08-19T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>//localhost:1313/posts/stop-coding-start-coaching-declarative/</loc>
+    <loc>http://localhost:1313/posts/stop-coding-start-coaching-declarative/</loc>
     <lastmod>2025-08-06T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>//localhost:1313/posts/ai-moving-fast-leadership-faster/</loc>
+    <loc>http://localhost:1313/posts/ai-moving-fast-leadership-faster/</loc>
     <lastmod>2025-07-30T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>//localhost:1313/posts/ai-governance-balance-innovation-vs-risk/</loc>
+    <loc>http://localhost:1313/posts/ai-governance-balance-innovation-vs-risk/</loc>
     <lastmod>2025-07-29T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>//localhost:1313/posts/ai-factory-engine-room-not-lab/</loc>
+    <loc>http://localhost:1313/posts/ai-factory-engine-room-not-lab/</loc>
     <lastmod>2025-07-25T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>//localhost:1313/posts/how-ai-and-web3-influence-each-other/</loc>
+    <loc>http://localhost:1313/posts/how-ai-and-web3-influence-each-other/</loc>
     <lastmod>2025-07-12T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>//localhost:1313/posts/agentic-ai-reshaping-data-ai-teams/</loc>
+    <loc>http://localhost:1313/posts/agentic-ai-reshaping-data-ai-teams/</loc>
     <lastmod>2025-07-04T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>//localhost:1313/posts/tech-radar-cxo-real-vs-hype-2025/</loc>
+    <loc>http://localhost:1313/posts/tech-radar-cxo-real-vs-hype-2025/</loc>
     <lastmod>2025-06-11T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>//localhost:1313/categories/archive/</loc>
+    <loc>http://localhost:1313/categories/archive/</loc>
     <lastmod>2024-10-17T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>//localhost:1313/categories/capgemini/</loc>
+    <loc>http://localhost:1313/categories/capgemini/</loc>
     <lastmod>2024-10-17T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>//localhost:1313/categories/</loc>
+    <loc>http://localhost:1313/categories/</loc>
     <lastmod>2024-10-17T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>//localhost:1313/posts/the-future-of-data-fabric/</loc>
+    <loc>http://localhost:1313/posts/the-future-of-data-fabric/</loc>
     <lastmod>2024-10-17T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>//localhost:1313/about/</loc>
+    <loc>http://localhost:1313/about/</loc>
   </url><url>
-    <loc>//localhost:1313/books/</loc>
+    <loc>http://localhost:1313/books/</loc>
   </url><url>
-    <loc>//localhost:1313/series/</loc>
+    <loc>http://localhost:1313/series/</loc>
   </url><url>
-    <loc>//localhost:1313/tags/</loc>
+    <loc>http://localhost:1313/tags/</loc>
   </url>
 </urlset>

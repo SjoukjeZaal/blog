@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Archive on sjoukje.eth</title>
-    <link>//localhost:1313/categories/archive/</link>
+    <link>http://localhost:1313/categories/archive/</link>
     <description>Recent content in Archive on sjoukje.eth</description>
     <generator>Hugo -- 0.152.2</generator>
     <language>en-us</language>
     <lastBuildDate>Thu, 17 Oct 2024 00:00:00 +0000</lastBuildDate>
-    <atom:link href="//localhost:1313/categories/archive/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/categories/archive/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>The Future of Data Fabric</title>
-      <link>//localhost:1313/posts/the-future-of-data-fabric/</link>
+      <link>http://localhost:1313/posts/the-future-of-data-fabric/</link>
       <pubDate>Thu, 17 Oct 2024 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/posts/the-future-of-data-fabric/</guid>
+      <guid>http://localhost:1313/posts/the-future-of-data-fabric/</guid>
       <description>&lt;p&gt;In today’s data and AI era, organizations are facing a lot of complexities to become data driven. They are facing issues such as data silos, lack of collaboration between business and IT, high maintenance costs, increasing data privacy concerns and governance needs.&lt;/p&gt;
 &lt;p&gt;However, in today’s digital economy, data is the new oil. For organizations to remain competitive, relevant, and capable of rapid innovation, it is key to effectively use this extremely valuable resource. It helps to better understand the market and the competition, it improves processes, it helps to give more insights into performance, and ultimately make better decisions. Data is a vital asset that shapes business strategies, drives innovation, and provides a competitive edge in today&amp;rsquo;s dynamic economy.&lt;/p&gt;</description>
     </item>
