@@ -19,6 +19,7 @@ canonifyURLs = false
     ShowPostNavLinks = true
     ShowBreadCrumbs = true
     ShowCodeCopyButtons = true
+    showPostMeta = true
     
     [params.homeInfoParams]
         Title = "Hi there \U0001F44B"
@@ -54,3 +55,8 @@ canonifyURLs = false
         name = "About"
         url = "/about/"
         weight = 30
+
+    [taxonomies]
+        category = "categories"
+        tag = "tags"
+        series = "series"
