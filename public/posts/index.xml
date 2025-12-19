@@ -6,8 +6,17 @@
     <description>Recent content in Posts on sjoukje.eth</description>
     <generator>Hugo -- 0.152.2</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 09 Nov 2025 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 11 Dec 2025 00:00:00 +0000</lastBuildDate>
     <atom:link href="/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Open Standards as the Foundation of Future Data &amp; AI Platforms</title>
+      <link>/posts/open-standards-foundation-future-data-ai/</link>
+      <pubDate>Thu, 11 Dec 2025 00:00:00 +0000</pubDate>
+      <guid>/posts/open-standards-foundation-future-data-ai/</guid>
+      <description>&lt;p&gt;Data and AI platforms are at the heart of digital transformation. But too often, they are built on proprietary formats and closed models that create silos, raise costs, and limit flexibility. In a world where organizations need interoperability, sovereignty, and speed, this approach is no longer sustainable. Open standards offer a better path forward.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;From Lock-In to Openness&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Data and AI platforms used to be closed worlds. Proprietary formats, vendor-specific connectors, and black-box models accelerated adoption, but at a cost: lock-in, high switching barriers, and reduced sovereignty. Once data was stored in a proprietary format or models were trained in a closed environment, moving them became difficult and costly. Enterprises often found themselves redesigning workflows, rewriting code, or even discarding valuable assets when switching vendors.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Reclaiming Technology Leadership</title>
       <link>/posts/reclaiming-technology-leadership/</link>
@@ -116,6 +125,15 @@ If you’re still focused on dashboards, isolated models, or batch pipelines, yo
       <description>&lt;p&gt;The pace of technology change hasn’t slowed down. In fact, it’s accelerating. Every week, new solutions are pitched that promise to transform your business, disrupt your industry, or unlock new revenue streams.&lt;/p&gt;
 &lt;p&gt;For CxOs, this creates both opportunity and risk. It’s easy to get caught up in the latest buzzwords, but with budgets tighter and delivery pressure higher, making smart choices is critical.&lt;/p&gt;
 &lt;p&gt;So what’s real in 2025 — and what’s still more noise than substance? Here’s my radar view, based on what I’m seeing across industries.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Ø ETL - Automated Data Integration and the Future of ETL</title>
+      <link>/posts/automated-data-integration-future-etl/</link>
+      <pubDate>Thu, 17 Apr 2025 00:00:00 +0000</pubDate>
+      <guid>/posts/automated-data-integration-future-etl/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;Automated Data Integration and the Future of ETL&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Data is one of the most valuable assets for any organization. But turning raw data into useful insights is still a challenge. Traditional ETL (Extract, Transform, Load) processes are slow, rigid, and resource intensive. They require manual coding, monitoring, and maintenance. That’s not scalable in today’s data-driven world—especially with the speed and complexity of modern applications.&lt;/p&gt;
+&lt;p&gt;This is where generative AI steps in.&lt;/p&gt;</description>
     </item>
     <item>
       <title>The Future of Data Fabric</title>

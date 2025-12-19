@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>BizTalk on sjoukje.eth</title>
+    <link>//localhost:1313/tags/biztalk/</link>
+    <description>Recent content in BizTalk on sjoukje.eth</description>
+    <generator>Hugo -- 0.152.2</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 08 Nov 2016 00:00:00 +0000</lastBuildDate>
+    <atom:link href="//localhost:1313/tags/biztalk/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Certificates in BizTalk 2013 Part 1: How To Install SSL Certificates in the Certificate store</title>
+      <link>//localhost:1313/posts/biztalk-2013-install-ssl-certificates-store_1/</link>
+      <pubDate>Tue, 08 Nov 2016 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/posts/biztalk-2013-install-ssl-certificates-store_1/</guid>
+      <description>&lt;p&gt;This is the first part in a series on how to use SSL Certificates in your BizTalk Application to secure your data transfer when connecting to third party (web) services. In this post I&amp;rsquo;m going to explain how to install the certificates in the BizTalk servers certificate store.&lt;/p&gt;
+&lt;h2 id=&#34;ssl-certificates&#34;&gt;SSL Certificates&lt;/h2&gt;
+&lt;p&gt;SSL certificates contain a private (.pfx) and a public key (.cer) which will need to be installed in the appropriate certification stores. (For more information on SSL Certificates you can read the following article: &lt;a href=&#34;http://www.tldp.org/HOWTO/SSL-Certificates-HOWTO/x64.html&#34;&gt;http://www.tldp.org/HOWTO/SSL-Certificates-HOWTO/x64.html.)&lt;/a&gt;&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>
