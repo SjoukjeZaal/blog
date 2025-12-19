@@ -3,6 +3,10 @@ languageCode = "en-us"
 title = "sjoukje.eth"
 theme = "papermod"
 
+# IPFS/Limo support:
+relativeURLs = true
+canonifyURLs = true
+
 [params]
     env = "production"
     title = "sjoukje.eth"
