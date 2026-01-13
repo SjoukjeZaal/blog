@@ -12,6 +12,7 @@ canonifyURLs = false
     title = "sjoukje.eth"
     description = "Thought leader in AI, cloud, data and digital sovereignty"
     author = "sjoukje.eth"
+    mainSections = ["posts"]
     
     # PaperMod specifieke instellingen
     ShowReadingTime = true
