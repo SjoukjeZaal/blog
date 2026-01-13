@@ -12,7 +12,7 @@ Platforms change. Companies rebrand. Services shut down. Links decay. If your wo
 So I chose a different approach.
 
 This site is not “another blog”.  
-It is my personal digital archive — intentionally built to remain accessible beyond platforms, trends, and tooling choices.
+It is my personal digital archive, intentionally built to remain accessible beyond platforms, trends, and tooling choices.
 
 ---
 
@@ -79,8 +79,6 @@ This archive is also available through a traditional domain. Different access pa
 This archive is not about preserving the past for sentimental reasons.
 
 It is about professional continuity. Architecture decisions, lessons learned, and patterns that repeat over time only compound if they remain accessible.
-
-In a discipline that keeps reinventing itself, a stable personal knowledge base provides grounding.
 
 ---
 
