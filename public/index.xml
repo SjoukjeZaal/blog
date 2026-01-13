@@ -2,26 +2,26 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>sjoukje.eth</title>
-    <link>//localhost:1313/</link>
+    <link>http://localhost:1313/</link>
     <description>Recent content on sjoukje.eth</description>
     <generator>Hugo -- 0.152.2</generator>
     <language>en-us</language>
     <lastBuildDate>Thu, 11 Dec 2025 00:00:00 +0000</lastBuildDate>
-    <atom:link href="//localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Open Standards as the Foundation of Future Data &amp; AI Platforms</title>
-      <link>//localhost:1313/posts/open-standards-foundation-future-data-ai/</link>
+      <link>http://localhost:1313/posts/open-standards-foundation-future-data-ai/</link>
       <pubDate>Thu, 11 Dec 2025 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/posts/open-standards-foundation-future-data-ai/</guid>
+      <guid>http://localhost:1313/posts/open-standards-foundation-future-data-ai/</guid>
       <description>&lt;p&gt;Data and AI platforms are at the heart of digital transformation. But too often, they are built on proprietary formats and closed models that create silos, raise costs, and limit flexibility. In a world where organizations need interoperability, sovereignty, and speed, this approach is no longer sustainable. Open standards offer a better path forward.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;From Lock-In to Openness&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;Data and AI platforms used to be closed worlds. Proprietary formats, vendor-specific connectors, and black-box models accelerated adoption, but at a cost: lock-in, high switching barriers, and reduced sovereignty. Once data was stored in a proprietary format or models were trained in a closed environment, moving them became difficult and costly. Enterprises often found themselves redesigning workflows, rewriting code, or even discarding valuable assets when switching vendors.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Reclaiming Technology Leadership</title>
-      <link>//localhost:1313/posts/reclaiming-technology-leadership/</link>
+      <link>http://localhost:1313/posts/reclaiming-technology-leadership/</link>
       <pubDate>Sun, 09 Nov 2025 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/posts/reclaiming-technology-leadership/</guid>
+      <guid>http://localhost:1313/posts/reclaiming-technology-leadership/</guid>
       <description>&lt;p&gt;We’ve professionalized technology to the point where we’ve lost touch with it.&lt;br&gt;
 In many organizations, technology leadership has turned into governance, reporting, and compliance. The intent was good: control risk, manage complexity, scale globally.&lt;br&gt;
 But in doing so, many organizations created a gap between leadership and the actual technology.&lt;br&gt;
@@ -29,9 +29,9 @@ Decisions are now abstracted behind PowerPoint decks and KPIs instead of grounde
     </item>
     <item>
       <title>The New Role of the Architect in an Agentic World</title>
-      <link>//localhost:1313/posts/the-new-role-of-the-architect-in-an-agentic-world/</link>
+      <link>http://localhost:1313/posts/the-new-role-of-the-architect-in-an-agentic-world/</link>
       <pubDate>Sun, 02 Nov 2025 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/posts/the-new-role-of-the-architect-in-an-agentic-world/</guid>
+      <guid>http://localhost:1313/posts/the-new-role-of-the-architect-in-an-agentic-world/</guid>
       <description>&lt;p&gt;The role of the architect is being rewritten.&lt;br&gt;
 Not by new frameworks or methodologies, but by intelligent systems that can design, optimize, and learn on their own.&lt;/p&gt;
 &lt;p&gt;As &lt;strong&gt;AI agents&lt;/strong&gt;, &lt;strong&gt;autonomous workflows&lt;/strong&gt;, and &lt;strong&gt;generative tools&lt;/strong&gt; become part of daily operations, architecture itself becomes dynamic.&lt;br&gt;
@@ -43,17 +43,17 @@ AI systems generate code, detect anomalies, and make real-time adjustments faste
     </item>
     <item>
       <title>AI Agents as New Consumers and Producers of Data</title>
-      <link>//localhost:1313/posts/ai-agents-new-consumers-producers-data/</link>
+      <link>http://localhost:1313/posts/ai-agents-new-consumers-producers-data/</link>
       <pubDate>Tue, 19 Aug 2025 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/posts/ai-agents-new-consumers-producers-data/</guid>
+      <guid>http://localhost:1313/posts/ai-agents-new-consumers-producers-data/</guid>
       <description>&lt;p&gt;For years, data platforms were designed around people. The main goal was to provide humans with dashboards, reports, and analytics so they could make better decisions. But this model is being reshaped. With the rise of AI agents, data platforms are entering a new era—one where the consumers of data are not only people but also autonomous systems.&lt;/p&gt;
 &lt;p&gt;And here’s the important part: these agents don’t just consume. They also produce. They generate enriched datasets, annotations, and continuous insights. This dual role changes how we need to think about architecture, governance, and collaboration.&lt;/p&gt;</description>
     </item>
     <item>
       <title>AI Factories Meet Data Factories: Building the Supply Chains of Innovation</title>
-      <link>//localhost:1313/posts/ai-data-factories-innovation-supply-chain/</link>
+      <link>http://localhost:1313/posts/ai-data-factories-innovation-supply-chain/</link>
       <pubDate>Tue, 19 Aug 2025 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/posts/ai-data-factories-innovation-supply-chain/</guid>
+      <guid>http://localhost:1313/posts/ai-data-factories-innovation-supply-chain/</guid>
       <description>&lt;p&gt;Over the past few years, we’ve seen organizations experiment with the concept of an &lt;strong&gt;AI Factory&lt;/strong&gt;—a structured way to industrialize the development and deployment of AI. At the same time, data leaders have embraced the idea of &lt;strong&gt;data products&lt;/strong&gt; and &lt;strong&gt;data fabrics&lt;/strong&gt; to make data more reusable, governed, and available at scale.&lt;/p&gt;
 &lt;p&gt;It’s time to bring these two together!&lt;/p&gt;
 &lt;h2 id=&#34;from-projects-to-production-lines&#34;&gt;&lt;strong&gt;From Projects to Production Lines&lt;/strong&gt;&lt;/h2&gt;
@@ -61,9 +61,9 @@ AI systems generate code, detect anomalies, and make real-time adjustments faste
     </item>
     <item>
       <title>Stop Coding, Start Coaching: Why It’s Time to Think Declaratively</title>
-      <link>//localhost:1313/posts/stop-coding-start-coaching-declarative/</link>
+      <link>http://localhost:1313/posts/stop-coding-start-coaching-declarative/</link>
       <pubDate>Wed, 06 Aug 2025 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/posts/stop-coding-start-coaching-declarative/</guid>
+      <guid>http://localhost:1313/posts/stop-coding-start-coaching-declarative/</guid>
       <description>&lt;p&gt;We’re entering a phase where engineering is less about writing every instruction  and more about teaching systems how to think. The shift is clear: from procedural to declarative. From “write every line” to “explain the outcome.” From “code it” to “coach the model.”&lt;/p&gt;
 &lt;p&gt;This isn’t just about GenAI. It changes how we design, build, and operate systems when AI becomes part of the team.&lt;/p&gt;
 &lt;h3 id=&#34;code-is-no-longer-the-core-output&#34;&gt;&lt;strong&gt;Code Is No Longer the Core Output&lt;/strong&gt;&lt;/h3&gt;
@@ -71,17 +71,17 @@ AI systems generate code, detect anomalies, and make real-time adjustments faste
     </item>
     <item>
       <title>AI is Moving Fast. Leadership Must Move Faster</title>
-      <link>//localhost:1313/posts/ai-moving-fast-leadership-faster/</link>
+      <link>http://localhost:1313/posts/ai-moving-fast-leadership-faster/</link>
       <pubDate>Wed, 30 Jul 2025 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/posts/ai-moving-fast-leadership-faster/</guid>
+      <guid>http://localhost:1313/posts/ai-moving-fast-leadership-faster/</guid>
       <description>&lt;p&gt;Artificial Intelligence isn’t slowing down. In fact, it’s speeding up — reshaping how we work, how decisions are made, and how businesses compete. But while the technology keeps evolving, leadership often struggles to keep up. And that’s where the real risk lies.&lt;/p&gt;
 &lt;p&gt;If you’re in a leadership role today — especially in tech, strategy, or operations — you can’t afford to treat AI as a distant future trend or a side experiment. It’s already here. The question is: are you moving fast enough to lead with it?&lt;/p&gt;</description>
     </item>
     <item>
       <title>AI Governance: Balancing Innovation and Responsibility</title>
-      <link>//localhost:1313/posts/ai-governance-balance-innovation-vs-risk/</link>
+      <link>http://localhost:1313/posts/ai-governance-balance-innovation-vs-risk/</link>
       <pubDate>Tue, 29 Jul 2025 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/posts/ai-governance-balance-innovation-vs-risk/</guid>
+      <guid>http://localhost:1313/posts/ai-governance-balance-innovation-vs-risk/</guid>
       <description>&lt;p&gt;Every company wants to move fast with AI. The real challenge isn’t adoption—it’s making sure innovation is guided by responsibility and strong governance.&lt;/p&gt;
 &lt;p&gt;The question is not whether to adopt AI — it’s about doing it right. AI governance helps organizations find the balance between driving innovation and managing risk. It gives you the structure to build solutions that serve your business and your customers, without losing control.&lt;/p&gt;
 &lt;h3 id=&#34;the-innovation-challenge&#34;&gt;&lt;strong&gt;The Innovation Challenge&lt;/strong&gt;&lt;/h3&gt;
@@ -89,18 +89,18 @@ AI systems generate code, detect anomalies, and make real-time adjustments faste
     </item>
     <item>
       <title>The AI Factory Is Not a Lab. It’s an Engine Room</title>
-      <link>//localhost:1313/posts/ai-factory-engine-room-not-lab/</link>
+      <link>http://localhost:1313/posts/ai-factory-engine-room-not-lab/</link>
       <pubDate>Fri, 25 Jul 2025 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/posts/ai-factory-engine-room-not-lab/</guid>
+      <guid>http://localhost:1313/posts/ai-factory-engine-room-not-lab/</guid>
       <description>&lt;p&gt;Many organizations still treat AI like it’s experimental. A side project. A shiny object in a lab that only a few experts are allowed to touch.&lt;br&gt;
 That mindset is holding them back.&lt;br&gt;
 If you want AI to drive real impact, it needs to move out of the lab and into the engine room of your organization. That’s what the AI Factory is about. Not experiments, but execution. Not proofs of concept, but products.&lt;/p&gt;</description>
     </item>
     <item>
       <title>How AI and Web3 Influence Each Other</title>
-      <link>//localhost:1313/posts/how-ai-and-web3-influence-each-other/</link>
+      <link>http://localhost:1313/posts/how-ai-and-web3-influence-each-other/</link>
       <pubDate>Sat, 12 Jul 2025 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/posts/how-ai-and-web3-influence-each-other/</guid>
+      <guid>http://localhost:1313/posts/how-ai-and-web3-influence-each-other/</guid>
       <description>&lt;p&gt;AI and Web3 are often discussed as separate trends. But the way they’re starting to influence each other is where the real potential lies. For organizations building digital strategies, understanding how these technologies interact is becoming more important by the day.&lt;/p&gt;
 &lt;p&gt;This isn’t about chasing hype — it’s about practical ways these two technologies can address each other’s current limitations and open up new business models.&lt;/p&gt;
 &lt;h3 id=&#34;web3-can-help-solve-ais-trust-problem&#34;&gt;Web3 Can Help Solve AI’s Trust Problem&lt;/h3&gt;
@@ -108,9 +108,9 @@ If you want AI to drive real impact, it needs to move out of the lab and into th
     </item>
     <item>
       <title>How Agentic AI Will Reshape the Work of Data &amp; AI Teams — and What to Do About It</title>
-      <link>//localhost:1313/posts/agentic-ai-reshaping-data-ai-teams/</link>
+      <link>http://localhost:1313/posts/agentic-ai-reshaping-data-ai-teams/</link>
       <pubDate>Fri, 04 Jul 2025 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/posts/agentic-ai-reshaping-data-ai-teams/</guid>
+      <guid>http://localhost:1313/posts/agentic-ai-reshaping-data-ai-teams/</guid>
       <description>&lt;p&gt;We’re entering the agent era. Is your team ready?&lt;/p&gt;
 &lt;p&gt;Large Language Models have already changed how we interact with data. But the rise of &lt;strong&gt;agentic AI&lt;/strong&gt; — systems that reason, take action, and adapt — goes even further.&lt;/p&gt;
 &lt;p&gt;These agents don’t just answer questions. They perform tasks, orchestrate workflows, and make real-time decisions.&lt;br&gt;
@@ -119,114 +119,114 @@ If you’re still focused on dashboards, isolated models, or batch pipelines, yo
     </item>
     <item>
       <title>Emerging Tech Radar for CxOs: What’s Real and What’s Hype in 2025?</title>
-      <link>//localhost:1313/posts/tech-radar-cxo-real-vs-hype-2025/</link>
+      <link>http://localhost:1313/posts/tech-radar-cxo-real-vs-hype-2025/</link>
       <pubDate>Wed, 11 Jun 2025 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/posts/tech-radar-cxo-real-vs-hype-2025/</guid>
+      <guid>http://localhost:1313/posts/tech-radar-cxo-real-vs-hype-2025/</guid>
       <description>&lt;p&gt;The pace of technology change hasn’t slowed down. In fact, it’s accelerating. Every week, new solutions are pitched that promise to transform your business, disrupt your industry, or unlock new revenue streams.&lt;/p&gt;
 &lt;p&gt;For CxOs, this creates both opportunity and risk. It’s easy to get caught up in the latest buzzwords, but with budgets tighter and delivery pressure higher, making smart choices is critical.&lt;/p&gt;
 &lt;p&gt;So what’s real in 2025 — and what’s still more noise than substance? Here’s my radar view, based on what I’m seeing across industries.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Ø ETL - Automated Data Integration and the Future of ETL</title>
-      <link>//localhost:1313/posts/automated-data-integration-future-etl/</link>
+      <link>http://localhost:1313/posts/automated-data-integration-future-etl/</link>
       <pubDate>Thu, 17 Apr 2025 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/posts/automated-data-integration-future-etl/</guid>
+      <guid>http://localhost:1313/posts/automated-data-integration-future-etl/</guid>
       <description>&lt;p&gt;&lt;strong&gt;Automated Data Integration and the Future of ETL&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;Data is one of the most valuable assets for any organization. But turning raw data into useful insights is still a challenge. Traditional ETL (Extract, Transform, Load) processes are slow, rigid, and resource intensive. They require manual coding, monitoring, and maintenance. That’s not scalable in today’s data-driven world—especially with the speed and complexity of modern applications.&lt;/p&gt;
 &lt;p&gt;This is where generative AI steps in.&lt;/p&gt;</description>
     </item>
     <item>
       <title>The Future of Data Fabric</title>
-      <link>//localhost:1313/posts/the-future-of-data-fabric/</link>
+      <link>http://localhost:1313/posts/the-future-of-data-fabric/</link>
       <pubDate>Thu, 17 Oct 2024 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/posts/the-future-of-data-fabric/</guid>
+      <guid>http://localhost:1313/posts/the-future-of-data-fabric/</guid>
       <description>&lt;p&gt;In today’s data and AI era, organizations are facing a lot of complexities to become data driven. They are facing issues such as data silos, lack of collaboration between business and IT, high maintenance costs, increasing data privacy concerns and governance needs.&lt;/p&gt;
 &lt;p&gt;However, in today’s digital economy, data is the new oil. For organizations to remain competitive, relevant, and capable of rapid innovation, it is key to effectively use this extremely valuable resource. It helps to better understand the market and the competition, it improves processes, it helps to give more insights into performance, and ultimately make better decisions. Data is a vital asset that shapes business strategies, drives innovation, and provides a competitive edge in today&amp;rsquo;s dynamic economy.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Microsoft Cloud for Sovereignty - maintain control over strategic digital assets</title>
-      <link>//localhost:1313/archive/microsoft-cloud-for-sovereignty-maintain-control-over-strategic-digital-assets/</link>
+      <link>http://localhost:1313/archive/microsoft-cloud-for-sovereignty-maintain-control-over-strategic-digital-assets/</link>
       <pubDate>Thu, 25 Aug 2022 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/archive/microsoft-cloud-for-sovereignty-maintain-control-over-strategic-digital-assets/</guid>
+      <guid>http://localhost:1313/archive/microsoft-cloud-for-sovereignty-maintain-control-over-strategic-digital-assets/</guid>
       <description>&lt;p&gt;Governments and organizations are focusing on digital transformation to fundamentally transform the way they operate and deliver services to their customers. Cloud adoption has increased tremendously in the last couple of years, also due to the COVID-19 pandemic. But as they move to the cloud, organizations want to maintain the same level of control over their IT resources as they have in their datacenters. Concerns about cloud sovereignty, which includes data, operational, and technical issues, are not new and have been increasing because of rising geopolitical tensions; changing data and privacy laws in different countries; the dominant role of cloud players concentrated in a few regions; and the lessons learned through the pandemic. As a result, governments and organizations are re-evaluating their external exposure and looking for ways to maintain physical and digital control over strategic assets.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Sustainability cloud computing with Microsoft Azure </title>
-      <link>//localhost:1313/archive/sustainability-cloud-computing-with-microsoft-azure/</link>
+      <link>http://localhost:1313/archive/sustainability-cloud-computing-with-microsoft-azure/</link>
       <pubDate>Fri, 05 Nov 2021 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/archive/sustainability-cloud-computing-with-microsoft-azure/</guid>
+      <guid>http://localhost:1313/archive/sustainability-cloud-computing-with-microsoft-azure/</guid>
       <description>&lt;p&gt;Sustainability and humanity&amp;rsquo;s response to climate change is one of the biggest challenges of our lifetime. And luckily, this is becoming more important for most companies, across all different industries.&lt;/p&gt;
 &lt;p&gt;At Capgemini we set a bold &lt;a href=&#34;https://www.capgemini.com/our-company/our-corporate-social-responsibility-program/environmental-sustainability/&#34;&gt;ambition&lt;/a&gt;: We will achieve carbon neutrality no later than 2025 and become a net zero business by 2030. This means accelerating our approach to carbon reduction across our key impact areas. And together with reducing our own environmental impacts for a net zero future, we also want to help our clients to transform to a low carbon future.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Microsoft Azure Well-Architected Framework - five pillars of architecture excellence</title>
-      <link>//localhost:1313/archive/microsoft-azure-well-architected-framework-five-pillars-of-architecture-excellence-copy/</link>
+      <link>http://localhost:1313/archive/microsoft-azure-well-architected-framework-five-pillars-of-architecture-excellence-copy/</link>
       <pubDate>Mon, 24 Aug 2020 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/archive/microsoft-azure-well-architected-framework-five-pillars-of-architecture-excellence-copy/</guid>
+      <guid>http://localhost:1313/archive/microsoft-azure-well-architected-framework-five-pillars-of-architecture-excellence-copy/</guid>
       <description>&lt;p&gt;Microsoft recently introduced the &lt;a href=&#34;https://docs.microsoft.com/en-us/azure/architecture/framework/&#34;&gt;Microsoft Azure Well-Architected Framework&lt;/a&gt; which provides customers with a set of Azure best-practices to help them build and deliver well-architected solutions on top of the Azure platform.&lt;/p&gt;
 &lt;p&gt;The framework consists of five pillars of architecture excellence, that can be used as guiding to improve the quality of the workloads that run on Azure. These five pillars are: Cost Optimization, Operational Excellence, Performance Efficiency, Reliability, and Security. They will be explained in more detail in the following sections.&lt;/p&gt;</description>
     </item>
     <item>
       <title>What a Cloud Center of Excellence can do for your organization</title>
-      <link>//localhost:1313/archive/what-a-cloud-center-of-excellence-can-do-for-your-organization/</link>
+      <link>http://localhost:1313/archive/what-a-cloud-center-of-excellence-can-do-for-your-organization/</link>
       <pubDate>Thu, 20 Aug 2020 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/archive/what-a-cloud-center-of-excellence-can-do-for-your-organization/</guid>
+      <guid>http://localhost:1313/archive/what-a-cloud-center-of-excellence-can-do-for-your-organization/</guid>
       <description>&lt;p&gt;Most companies typically go through a set of phases the in their &lt;a href=&#34;https://www.capgemini.com/in-en/partner/microsoft/#applications-and-infrastructure&#34;&gt;Microsoft cloud journey&lt;/a&gt;. They start with experimenting with the cloud for rapid application development. A single subscription is manually created in the Azure portal, and a set of services is quickly deployed from the portal to serve business and the developer&amp;rsquo;s needs. It is even not uncommon in this phase, for the business or for developers to use their own credit card for creating this single subscription. The main goal in this phase is mostly serving business needs quickly, creating small proof of concepts, or avoiding the lengthy and time-consuming deployment strategies of bigger organizations.&lt;/p&gt;</description>
     </item>
     <item>
       <title>2 Different Ways of Using Azure Key Vault in Your Logic Apps</title>
-      <link>//localhost:1313/archive/2-ways-azure-key-vault-logic-apps/</link>
+      <link>http://localhost:1313/archive/2-ways-azure-key-vault-logic-apps/</link>
       <pubDate>Wed, 25 Oct 2017 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/archive/2-ways-azure-key-vault-logic-apps/</guid>
+      <guid>http://localhost:1313/archive/2-ways-azure-key-vault-logic-apps/</guid>
       <description>&lt;h1 id=&#34;2-different-ways-of-using-azure-key-vault-in-your-logic-apps&#34;&gt;2 different ways of using Azure Key Vault in your Logic Apps&lt;/h1&gt;
 &lt;p&gt;Security is key nowadays and this means that you should secure your applications to the max. Azure Key Vault offers you a way to safely store your credentials, certificates and hardware security modules in Azure. These values can also be used inside your custom applications, like in web applications, Azure Functions, and Azure Logic Apps.&lt;/p&gt;
 &lt;p&gt;Azure Logic Apps offers an out-of-the-box connector that you can use to retrieve values easily and use them in your Logic App. However, there is a caveat here. You cannot use Managed Identities to access the Key Vault using the connector. Managed Identities are service principals in Azure Active Directory that are used to connect different services. You can use the identity to authenticate to any service that supports Azure AD authentication, including Key Vault, without any credentials in your code.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Azure Active Directory Flavors</title>
-      <link>//localhost:1313/archive/azure-active-directory-flavors/</link>
+      <link>http://localhost:1313/archive/azure-active-directory-flavors/</link>
       <pubDate>Thu, 03 Aug 2017 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/archive/azure-active-directory-flavors/</guid>
+      <guid>http://localhost:1313/archive/azure-active-directory-flavors/</guid>
       <description>&lt;p&gt;Azure Active Directory is the heart of everything inside of Microsoft Azure. All Azure services are depending on it and using it for Identity Management in the Microsoft Cloud. Office 365, Intune, Exchange Online, Enterprise Mobility Suite, are all examples of Azure Services depending on Azure Active directory for both security and identity management. And when implemented right, all your custom applications, which are hosted in Azure or somehow are integrating with Azure services are using Azure Active Directory as well.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Certificates in BizTalk 2013 Part 2: How To Configure the BizTalk WCF Adapter to use the SSL Certificates</title>
-      <link>//localhost:1313/archive/biztalk-2013-configure-wcf-adapter-ssl-certificates/</link>
+      <link>http://localhost:1313/archive/biztalk-2013-configure-wcf-adapter-ssl-certificates/</link>
       <pubDate>Tue, 08 Nov 2016 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/archive/biztalk-2013-configure-wcf-adapter-ssl-certificates/</guid>
+      <guid>http://localhost:1313/archive/biztalk-2013-configure-wcf-adapter-ssl-certificates/</guid>
       <description>&lt;h2 id=&#34;certificates-in-biztalk-2013-part-2-how-to-configure-the-biztalk-wcf-adapter-to-use-the-ssl-certificates&#34;&gt;Certificates in BizTalk 2013 Part 2: How To Configure the BizTalk WCF Adapter to use the SSL Certificates&lt;/h2&gt;
 &lt;p&gt;In the previous post I explained hot how install SSL certificates in BizTalk to make a secure connection to a third party (web) service. In this article I will explain how you can configure the WCF Adapter to use these installed certificates to encrypt the message that is send to the service.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Certificates in BizTalk 2013 Part 1: How To Install SSL Certificates in the Certificate store</title>
-      <link>//localhost:1313/archive/biztalk-2013-install-ssl-certificates-store_1/</link>
+      <link>http://localhost:1313/archive/biztalk-2013-install-ssl-certificates-store_1/</link>
       <pubDate>Mon, 07 Nov 2016 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/archive/biztalk-2013-install-ssl-certificates-store_1/</guid>
+      <guid>http://localhost:1313/archive/biztalk-2013-install-ssl-certificates-store_1/</guid>
       <description>&lt;p&gt;This is the first part in a series on how to use SSL Certificates in your BizTalk Application to secure your data transfer when connecting to third party (web) services. In this post I&amp;rsquo;m going to explain how to install the certificates in the BizTalk servers certificate store.&lt;/p&gt;
 &lt;h2 id=&#34;ssl-certificates&#34;&gt;SSL Certificates&lt;/h2&gt;
 &lt;p&gt;SSL certificates contain a private (.pfx) and a public key (.cer) which will need to be installed in the appropriate certification stores. (For more information on SSL Certificates you can read the following article: &lt;a href=&#34;http://www.tldp.org/HOWTO/SSL-Certificates-HOWTO/x64.html&#34;&gt;http://www.tldp.org/HOWTO/SSL-Certificates-HOWTO/x64.html.)&lt;/a&gt;&lt;/p&gt;</description>
     </item>
     <item>
       <title>Azure App Services</title>
-      <link>//localhost:1313/archive/azure-app-services/</link>
+      <link>http://localhost:1313/archive/azure-app-services/</link>
       <pubDate>Mon, 08 Jun 2015 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/archive/azure-app-services/</guid>
+      <guid>http://localhost:1313/archive/azure-app-services/</guid>
       <description>&lt;p&gt;Afgelopen maart heeft Microsoft Azure App Services gelanceerd. App Services is een samenvoeging van verschillende services n.l., Web Apps (wat voorheen Azure Websites was), Mobile Apps (wat gebaseerd is op Azure Mobile Services) en 2 nieuwe services, Logic Apps en API Apps.&lt;/p&gt;
 &lt;p&gt;Met deze nieuwe services biedt Microsoft een breed scala aan mogelijkheden. Met Web Apps en Mobile Apps kunnen ontwikkelaars web applicaties en mobiele applicaties bouwen. Met Logic Apps is het mogelijk om integratieoplossingen te ontwikkelen en deze onderdelen kunnen onderling met elkaar communiceren d.m.v. API Apps.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Connecting to an Oracle Database using SSIS 2008</title>
-      <link>//localhost:1313/archive/connecting-oracle-database-ssis-2008/</link>
+      <link>http://localhost:1313/archive/connecting-oracle-database-ssis-2008/</link>
       <pubDate>Sat, 08 Nov 2014 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/archive/connecting-oracle-database-ssis-2008/</guid>
+      <guid>http://localhost:1313/archive/connecting-oracle-database-ssis-2008/</guid>
       <description>&lt;p&gt;Last week I had to connect to an Oracle Database using SSIS 2008. I had a couple of issues installing the Oracle Client tools, the Microsoft Connector for Oracle Provided by Attunity and the configuration on the client side (my SSIS server) and the server side (the Oracle Database server).&lt;/p&gt;
 &lt;p&gt;Besides that, it took me an awful lot of time reading the amount of information written on this subject before actually finding the right solution for making the connection.&lt;/p&gt;</description>
     </item>
     <item>
       <title>SharePoint 2013 Workflows Part 2: Installing and Configuring The Workflow Manager</title>
-      <link>//localhost:1313/archive/sharepoint-2013-workflows-install-configure-workflow-manager-copy/</link>
+      <link>http://localhost:1313/archive/sharepoint-2013-workflows-install-configure-workflow-manager-copy/</link>
       <pubDate>Sat, 08 Nov 2014 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/archive/sharepoint-2013-workflows-install-configure-workflow-manager-copy/</guid>
+      <guid>http://localhost:1313/archive/sharepoint-2013-workflows-install-configure-workflow-manager-copy/</guid>
       <description>&lt;p&gt;In this post I will guide you through installing and configuring the Workflow Manager for SharePoint 2013.&lt;/p&gt;
 &lt;p&gt;Before starting the installation of the Workflow Manager, make sure that at least the &lt;a href=&#34;http://support.microsoft.com/default.aspx?scid=kb;EN-US;2767999&#34;&gt;SharePoint 2013 March Public Update (KB 2767999)&lt;/a&gt; is installed on toy SharePoint Server. This update has some bug fixes and added extra support for the Workflow Manager and workflow.&lt;/p&gt;
 &lt;h2 id=&#34;installing-the-workflow-manager&#34;&gt;Installing the Workflow Manager&lt;/h2&gt;
@@ -234,9 +234,9 @@ If you’re still focused on dashboards, isolated models, or batch pipelines, yo
     </item>
     <item>
       <title>SharePoint 2013 Workflows Part 2: Installing and Configuring The Workflow Manager</title>
-      <link>//localhost:1313/archive/sharepoint-2013-workflows-using-sharepoint-2013-rest-api-introduction.md/</link>
+      <link>http://localhost:1313/archive/sharepoint-2013-workflows-using-sharepoint-2013-rest-api-introduction.md/</link>
       <pubDate>Sat, 08 Nov 2014 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/archive/sharepoint-2013-workflows-using-sharepoint-2013-rest-api-introduction.md/</guid>
+      <guid>http://localhost:1313/archive/sharepoint-2013-workflows-using-sharepoint-2013-rest-api-introduction.md/</guid>
       <description>&lt;p&gt;In this post I will guide you through installing and configuring the Workflow Manager for SharePoint 2013.&lt;/p&gt;
 &lt;p&gt;Before starting the installation of the Workflow Manager, make sure that at least the &lt;a href=&#34;http://support.microsoft.com/default.aspx?scid=kb;EN-US;2767999&#34;&gt;SharePoint 2013 March Public Update (KB 2767999)&lt;/a&gt; is installed on toy SharePoint Server. This update has some bug fixes and added extra support for the Workflow Manager and workflow.&lt;/p&gt;
 &lt;h2 id=&#34;installing-the-workflow-manager&#34;&gt;Installing the Workflow Manager&lt;/h2&gt;
@@ -244,9 +244,9 @@ If you’re still focused on dashboards, isolated models, or batch pipelines, yo
     </item>
     <item>
       <title>SharePoint 2013 Workflow Part 1: Workflow Manager Architecture</title>
-      <link>//localhost:1313/archive/sharepoint-2013-workflow-manager-architecture/</link>
+      <link>http://localhost:1313/archive/sharepoint-2013-workflow-manager-architecture/</link>
       <pubDate>Fri, 07 Nov 2014 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/archive/sharepoint-2013-workflow-manager-architecture/</guid>
+      <guid>http://localhost:1313/archive/sharepoint-2013-workflow-manager-architecture/</guid>
       <description>&lt;p&gt;This is the first part in a series of posts about SharePoint 2013 Workflows. In this post we will discuss the architecture and improvements of the new Workflow Model in SharePoint 2013.&lt;/p&gt;
 &lt;h2 id=&#34;workflow-architecture&#34;&gt;Workflow Architecture&lt;/h2&gt;
 &lt;p&gt;Besides the SharePoint 2010 workflow model, which is still part of the SharePoint 2013 installation, Microsoft introduced a new Workflow architecture in SharePoint 2013 (and Office 365).&lt;/p&gt;
@@ -254,39 +254,39 @@ If you’re still focused on dashboards, isolated models, or batch pipelines, yo
     </item>
     <item>
       <title>SharePoint 2013 Workflow Part 1: Workflow Manager Architecture</title>
-      <link>//localhost:1313/archive/microsoft-azure-a-cloud-native-success-story-copy/</link>
+      <link>http://localhost:1313/archive/microsoft-azure-a-cloud-native-success-story-copy/</link>
       <pubDate>Thu, 02 Feb 2012 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/archive/microsoft-azure-a-cloud-native-success-story-copy/</guid>
+      <guid>http://localhost:1313/archive/microsoft-azure-a-cloud-native-success-story-copy/</guid>
       <description>&lt;p&gt;&lt;strong&gt;Leveraging Azure Marketplace Data in SharePoint Part 1: Consuming Azure Marketplace Data in BCS&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;Windows Azure Marketplace data is a service by Microsoft that hosts WCF services in Windows Azure. Organizations and individuals can consume that data via a subscription model. These services expose data using REST services which can be leveraged in SharePoint using BCS.&lt;/p&gt;
 &lt;p&gt;For this example we are going to use US Crime data statistics Service (DATA.gov). By using BCS we can consume the Azure WCF Service and display this data in SharePoint via an External List.&lt;/p&gt;</description>
     </item>
     <item>
       <title></title>
-      <link>//localhost:1313/archive/adapt-and-thrive-with-microsoft-azure-for-industries-part-1-copy/</link>
+      <link>http://localhost:1313/archive/adapt-and-thrive-with-microsoft-azure-for-industries-part-1-copy/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/archive/adapt-and-thrive-with-microsoft-azure-for-industries-part-1-copy/</guid>
+      <guid>http://localhost:1313/archive/adapt-and-thrive-with-microsoft-azure-for-industries-part-1-copy/</guid>
       <description></description>
     </item>
     <item>
       <title></title>
-      <link>//localhost:1313/archive/adapt-and-thrive-with-microsoft-azure-for-industries-part-1/</link>
+      <link>http://localhost:1313/archive/adapt-and-thrive-with-microsoft-azure-for-industries-part-1/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/archive/adapt-and-thrive-with-microsoft-azure-for-industries-part-1/</guid>
+      <guid>http://localhost:1313/archive/adapt-and-thrive-with-microsoft-azure-for-industries-part-1/</guid>
       <description></description>
     </item>
     <item>
       <title></title>
-      <link>//localhost:1313/archive/leveraging-azure-marketplace-data-in-sharepoint-part-1-consuming-azure-marketplace-data-in-bcs-copy/</link>
+      <link>http://localhost:1313/archive/leveraging-azure-marketplace-data-in-sharepoint-part-1-consuming-azure-marketplace-data-in-bcs-copy/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/archive/leveraging-azure-marketplace-data-in-sharepoint-part-1-consuming-azure-marketplace-data-in-bcs-copy/</guid>
+      <guid>http://localhost:1313/archive/leveraging-azure-marketplace-data-in-sharepoint-part-1-consuming-azure-marketplace-data-in-bcs-copy/</guid>
       <description></description>
     </item>
     <item>
       <title></title>
-      <link>//localhost:1313/archive/thinking-cloud-native/</link>
+      <link>http://localhost:1313/archive/thinking-cloud-native/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/archive/thinking-cloud-native/</guid>
+      <guid>http://localhost:1313/archive/thinking-cloud-native/</guid>
       <description></description>
     </item>
   </channel>

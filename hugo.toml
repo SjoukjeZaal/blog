@@ -1,4 +1,5 @@
-baseURL = "/"
+# baseURL = "/"
+baseURL = "https://sjoukje.eth/"
 languageCode = "en-us"
 title = "sjoukje.eth"
 theme = "papermod"
