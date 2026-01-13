@@ -10,7 +10,7 @@ However, in today’s digital economy, data is the new oil. For organizations to
 **The need for data fabric**  
 A data fabric is a unified platform that integrates, manages, and secures data across various environments, such as on-premises, cloud, and hybrid environments. It is also capable of integrating structured, semi-structured, and unstructured data. It provides a consistent and scalable architecture, which can support organizations to get the highly needed insights in their data.
 
-![Data Fabric](images/TheFutureofDataFabric.jpg)
+{{< figure src="/images/TheFutureofDataFabric.jpg" width="100%" >}}
 
 **Foundation layer**  
 Data nowadays is everywhere, and the idea of moving all data to one single of truth is, is becoming less relevant in today's complex data environments. Today’s data architectures consist of distributed systems, multi-cloud environments, and real-time processing across various sources. This makes it nearly impossible to centralize everything into one data warehouse or other type of data repository. 

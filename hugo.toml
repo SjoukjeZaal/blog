@@ -55,3 +55,14 @@ canonifyURLs = false
         name = "About"
         url = "/about/"
         weight = 30
+
+      [[menu.main]]
+        identifier = "archive"
+        name = "Archive"
+        url = "/archive/"
+        weight = 40
+    
+[taxonomies]
+    category = "categories"
+    tag = "tags"
+    series = "series"

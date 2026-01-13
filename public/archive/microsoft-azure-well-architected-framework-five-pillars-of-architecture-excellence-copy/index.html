@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto" data-theme="auto">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Microsoft Azure Well-Architected Framework - five pillars of architecture excellence | sjoukje.eth</title>
+<meta name="keywords" content="">
+<meta name="description" content="Microsoft recently introduced the Microsoft Azure Well-Architected Framework which provides customers with a set of Azure best-practices to help them build and deliver well-architected solutions on top of the Azure platform.
+The framework consists of five pillars of architecture excellence, that can be used as guiding to improve the quality of the workloads that run on Azure. These five pillars are: Cost Optimization, Operational Excellence, Performance Efficiency, Reliability, and Security. They will be explained in more detail in the following sections.">
+<meta name="author" content="sjoukje.eth">
+<link rel="canonical" href="//localhost:1313/archive/microsoft-azure-well-architected-framework-five-pillars-of-architecture-excellence-copy/">
+<link crossorigin="anonymous" href="../../assets/css/stylesheet.36f09b336921909a5971cfa84422229fa3edb550fa46b7707cb5436b0983bdcf.css" integrity="sha256-NvCbM2khkJpZcc&#43;oRCIin6PttVD6RrdwfLVDawmDvc8=" rel="preload stylesheet" as="style">
+<link rel="icon" href="//localhost:1313/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="//localhost:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="//localhost:1313/favicon-32x32.png">
+<link rel="apple-touch-icon" href="//localhost:1313/apple-touch-icon.png">
+<link rel="mask-icon" href="//localhost:1313/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="//localhost:1313/archive/microsoft-azure-well-architected-framework-five-pillars-of-architecture-excellence-copy/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script><meta property="og:url" content="//localhost:1313/archive/microsoft-azure-well-architected-framework-five-pillars-of-architecture-excellence-copy/">
+  <meta property="og:site_name" content="sjoukje.eth">
+  <meta property="og:title" content="Microsoft Azure Well-Architected Framework - five pillars of architecture excellence">
+  <meta property="og:description" content="Microsoft recently introduced the Microsoft Azure Well-Architected Framework which provides customers with a set of Azure best-practices to help them build and deliver well-architected solutions on top of the Azure platform.
+The framework consists of five pillars of architecture excellence, that can be used as guiding to improve the quality of the workloads that run on Azure. These five pillars are: Cost Optimization, Operational Excellence, Performance Efficiency, Reliability, and Security. They will be explained in more detail in the following sections.">
+  <meta property="og:locale" content="en-us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="archive">
+    <meta property="article:published_time" content="2020-08-24T00:00:00+00:00">
+    <meta property="article:modified_time" content="2020-08-24T00:00:00+00:00">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Microsoft Azure Well-Architected Framework - five pillars of architecture excellence">
+<meta name="twitter:description" content="Microsoft recently introduced the Microsoft Azure Well-Architected Framework which provides customers with a set of Azure best-practices to help them build and deliver well-architected solutions on top of the Azure platform.
+The framework consists of five pillars of architecture excellence, that can be used as guiding to improve the quality of the workloads that run on Azure. These five pillars are: Cost Optimization, Operational Excellence, Performance Efficiency, Reliability, and Security. They will be explained in more detail in the following sections.">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Archives",
+      "item": "//localhost:1313/archive/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "Microsoft Azure Well-Architected Framework - five pillars of architecture excellence",
+      "item": "//localhost:1313/archive/microsoft-azure-well-architected-framework-five-pillars-of-architecture-excellence-copy/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Microsoft Azure Well-Architected Framework - five pillars of architecture excellence",
+  "name": "Microsoft Azure Well-Architected Framework - five pillars of architecture excellence",
+  "description": "Microsoft recently introduced the Microsoft Azure Well-Architected Framework which provides customers with a set of Azure best-practices to help them build and deliver well-architected solutions on top of the Azure platform.\nThe framework consists of five pillars of architecture excellence, that can be used as guiding to improve the quality of the workloads that run on Azure. These five pillars are: Cost Optimization, Operational Excellence, Performance Efficiency, Reliability, and Security. They will be explained in more detail in the following sections.\n",
+  "keywords": [
+    
+  ],
+  "articleBody": "Microsoft recently introduced the Microsoft Azure Well-Architected Framework which provides customers with a set of Azure best-practices to help them build and deliver well-architected solutions on top of the Azure platform.\nThe framework consists of five pillars of architecture excellence, that can be used as guiding to improve the quality of the workloads that run on Azure. These five pillars are: Cost Optimization, Operational Excellence, Performance Efficiency, Reliability, and Security. They will be explained in more detail in the following sections.\nCost Optimization One thing to focus on when architecting cloud solutions, is to generate incremental value early in the process. To accelerate the time to market while avoiding capital-intensive solutions, the principles of Build-Measure-Learn can be applied. This is one of the central principles of Lean Startup, which helps to create customer partnerships by building with customer empathy, measuring impact on customers, and learning with customers.\nBy using this pay-as-you-go strategy in your architecture, you will invest in scaling out after customer success, instead of delivering a large investment first version. Keep a balance in your architecture between costs for first mover advantage versus “fast follow”. For this, you can use the cost calculators to estimate the initial costs and the operational costs. Finally, establish policies, budgets, and controls that set cost limits for your solution.\nFor a detailed guidance on cost optimization, you can refer to the following articles:\nPrinciples of cost optimization\nDevelop a cost model\nSet budgets and alerts\nReview the cost optimization checklist\nOperational Excellence Operational Excellence involves the operations processes that keep applications running in production. To make deployments reliable and predictable, they should be fully automated to reduce human errors. This should be a fast and repeatable process, so they don’t slow down the release of new features or bug fixes. You should also need to be able to quickly roll back or roll forward when a release has problems or bugs.\nTo accomplish this, monitoring and diagnostics are crucial. You don’t have full control over the infrastructure and operating system when using Azure solutions. Monitoring and diagnostics will give you the insights to the systems and the solutions that run on top of it. Use a common and consistent logging schema that let’s you correlate events across different systems, Azure resources, and custom applications.\nA successful monitoring and diagnostics process has several distinct phases:\nInstrumentation: Log and generate the raw data, from all the different resources and services that you are using, such as application logs, web server logs, VM logs, diagnostics built in the Azure platform, and other sources.\nCollection and storage: Collect all the raw data and consolidate it into one place.\nAnalysis and diagnosis: Analyze the data that is collected to see the overall health of the platform, services, and your applications and to troubleshoot issues.\nVisualization and alerts: Visualize the data that is analyzed to spot trends or set up alerting to alert the operation teams.\nTo get more information and further guidance about operational excellence, you can refer to the following articles:\nDesign patterns for management and monitoring\nBest practices for monitoring cloud applications\nPerformance Efficiency With performance efficiency, you make sure that your workload can scale to meet the demands placed on it by the users in an effective manner. You can achieve by implementing PaaS offering that scale automatically or implementing scaling effectively in your solutions and applications.\nApplications can scale in two different ways: horizontally (scale out) where new instances of the resource is added, such as extra VMs or database instances. You can also scale vertically (scale up), where you increase the capacity of a single resource, for example by using a larger VM size.\nHorizontal scale needs to be architected into the system. You can scale out by placing VMs behind a load balancer. The applications that run on these VMs, also need to be able to scale. This can be accomplished by designing stateless applications or by storing state and data externally. Simply adding more instances, will not guarantee that your application will scale. Scaling can also lead to more additional measures and bottlenecks.\nTherefore, you should always conduct performance and load testing to find these potential bottlenecks. You can use the following articles for this:\nDesign patterns for scalability and performance\nBest practices: Autoscaling, Background jobs, Caching, CDN, Data partitioning\nPerformance efficiency checklist Reliability Reliable workloads are both resilient and available. Resilient applications are able to return to a fully functioning state after a failure occurs. Available applications can be accessed by the users when they need to.\nIn cloud computing a different mind set is needed then in traditional application development. Cloud applications are built as distributed systems, which means they are often more complex. The costs for cloud environments are kept low through the use of commodity hardware, so occasional hardware failures must be expected. Today, users also expect systems to be available 24/7 without ever going offline.\nThis means that cloud application must be architected differently. They need to be designed to expect occasional failures and need to be able to recover from them quickly. When designing your applications to be resilient, you first must understand availability requirements. How much downtime is acceptable for this application, how much downtime will cost your business, and how much should be invested in making the application highly available.\nIn the following articles you will get more information about how you can design and build reliable workloads and applications in Azure:\nOverview of the reliability pillar\nResiliency patterns\nBest practices: Transient fault handling, Retry guidance for specific services\nSecurity Security should be embedded throughout the entire lifecycle of an application. From the design phase all the way up to the deployments and operations phase. Protection against a variety of threats, such as DDoS attacks, is already provided by the Azure platform, but you are still responsible for building security into your application and into the DevOps processes.\nSecurity areas that need to be considered for application development are:\nIdentity Management: For authenticate and authorize users, Azure Active Directory should be considered. Azure AD is a fully managed identity and access management service, and it is integrated to Azure services, Office 365, Dynamics CRM Online, Active Directory on-premises in a hybrid deployment, and many third-party SaaS applications. For consumer-facing applications, Azure AD offers Azure AD Business to Consumer, which lets users authenticate with their existing social accounts, such as Facebook, Google, LinkedIn and more, as well as creating new accounts that is managed by Azure AD.\nApplication Security: Best practices for applications, such as SSL everywhere, protecting against CSRF and XSS attacks, preventing SQL injection attacks, and so on, still apply to the cloud. You should also store your application keys and secrets in Azure Key Vault.\nProtecting the infrastructure: Control access to all the Azure resources that you deploy. Every resource has a trust relationship with the Azure AD tenant. To grant the users in your organization the correct permissions to the Azure resources that are deployed, you can use Role Based Access Control (RBAC). These permissions can be added to different scopes, to subscriptions, resource groups, or single resources.\nData encryption: When you set up high availability in Azure, make sure that you store the data in the correct geopolitical zone. Azure geo-replicated uses the concept of paired regions, which stores the replicated data in the same geopolitical region. To store cryptographic keys and secrets, you can use Azure Key Vault. You can also use Key Vault to store that are protected by hardware security modules.\nFor more information about this, you can refer to the following articles:\nIdentity Management reference architectures.\nAzure Security Center provides integrated security monitoring and policy management across your Azure subscriptions.\nAzure Security Documentation\nMicrosoft Trust Center\nWrap up Azure Well-Architected Framework provides comprehensive architecture principles and guidelines to build cost effective, secure, reliable, and manageable solutions in Azure. If you want to get started with the Azure Well-Architected Framework:\nRead the framework content, reference material, and samples available in the Azure Architecture Center.\nTake the Azure Well-Architected Review on Microsoft Assessments.\nLearn how to Build great solutions with the Microsoft Azure Well-Architected Framework on Microsoft Learn.\n",
+  "wordCount" : "1362",
+  "inLanguage": "en",
+  "datePublished": "2020-08-24T00:00:00Z",
+  "dateModified": "2020-08-24T00:00:00Z",
+  "author":{
+    "@type": "Person",
+    "name": "sjoukje.eth"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "//localhost:1313/archive/microsoft-azure-well-architected-framework-five-pillars-of-architecture-excellence-copy/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "sjoukje.eth",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "//localhost:1313/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="//localhost:1313/" accesskey="h" title="sjoukje.eth (Alt + H)">sjoukje.eth</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="//localhost:1313/posts/" title="Posts">
+                    <span>Posts</span>
+                </a>
+            </li>
+            <li>
+                <a href="//localhost:1313/books/" title="Books">
+                    <span>Books</span>
+                </a>
+            </li>
+            <li>
+                <a href="//localhost:1313/about/" title="About">
+                    <span>About</span>
+                </a>
+            </li>
+            <li>
+                <a href="//localhost:1313/archive/" title="Archive">
+                    <span>Archive</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="//localhost:1313/">Home</a>&nbsp;»&nbsp;<a href="//localhost:1313/archive/">Archives</a></div>
+    <h1 class="post-title entry-hint-parent">
+      Microsoft Azure Well-Architected Framework - five pillars of architecture excellence
+    </h1>
+    <div class="post-meta"><span title='2020-08-24 00:00:00 +0000 UTC'>August 24, 2020</span>&nbsp;·&nbsp;<span>7 min</span>&nbsp;·&nbsp;<span>sjoukje.eth</span>
+
+</div>
+  </header> 
+  <div class="post-content"><p>Microsoft recently introduced the <a href="https://docs.microsoft.com/en-us/azure/architecture/framework/">Microsoft Azure Well-Architected Framework</a> which provides customers with a set of Azure best-practices to help them build and deliver well-architected solutions on top of the Azure platform.</p>
+<p>The framework consists of five pillars of architecture excellence, that can be used as guiding to improve the quality of the workloads that run on Azure. These five pillars are: Cost Optimization, Operational Excellence, Performance Efficiency, Reliability, and Security. They will be explained in more detail in the following sections.</p>
+<h2 id="cost-optimization">Cost Optimization<a hidden class="anchor" aria-hidden="true" href="#cost-optimization">#</a></h2>
+<p>One thing to focus on when architecting cloud solutions, is to generate incremental value early in the process. To accelerate the time to market while avoiding capital-intensive solutions, the principles of <a href="https://docs.microsoft.com/en-us/azure/cloud-adoption-framework/innovate/considerations/adoption">Build-Measure-Learn</a> can be applied. This is one of the central principles of Lean Startup, which helps to create customer partnerships by building with customer empathy, measuring impact on customers, and learning with customers.</p>
+<p>By using this pay-as-you-go strategy in your architecture, you will invest in scaling out after customer success, instead of delivering a large investment first version. Keep a balance in your architecture between costs for first mover advantage versus &ldquo;fast follow&rdquo;. For this, you can use the cost calculators to estimate the initial costs and the operational costs. Finally, establish policies, budgets, and controls that set cost limits for your solution.</p>
+<p>For a detailed guidance on cost optimization, you can refer to the following articles:</p>
+<ul>
+<li>
+<p><a href="https://docs.microsoft.com/en-us/azure/architecture/framework/cost/overview">Principles of cost optimization</a></p>
+</li>
+<li>
+<p><a href="https://docs.microsoft.com/en-us/azure/architecture/framework/cost/design-model">Develop a cost model</a></p>
+</li>
+<li>
+<p><a href="https://docs.microsoft.com/en-us/azure/architecture/framework/cost/monitor-alert">Set budgets and alerts</a></p>
+</li>
+<li>
+<p>Review the <a href="https://docs.microsoft.com/en-us/azure/architecture/framework/cost/optimize-checklist">cost optimization checklist</a></p>
+</li>
+</ul>
+<h2 id="operational-excellence">Operational Excellence<a hidden class="anchor" aria-hidden="true" href="#operational-excellence">#</a></h2>
+<p>Operational Excellence involves the operations processes that keep applications running in production. To make deployments reliable and predictable, they should be fully automated to reduce human errors. This should be a fast and repeatable process, so they don&rsquo;t slow down the release of new features or bug fixes. You should also need to be able to quickly roll back or roll forward when a release has problems or bugs.</p>
+<p>To accomplish this, monitoring and diagnostics are crucial. You don&rsquo;t have full control over the infrastructure and operating system when using Azure solutions. Monitoring and diagnostics will give you the insights to the systems and the solutions that run on top of it. Use a common and consistent logging schema that let&rsquo;s you correlate events across different systems, Azure resources, and custom applications.</p>
+<p>A successful monitoring and diagnostics process has several distinct phases:</p>
+<ol>
+<li>
+<p><strong>Instrumentation:</strong> Log and generate the raw data, from all the different resources and services that you are using, such as application logs, web server logs, VM logs, diagnostics built in the Azure platform, and other sources.</p>
+</li>
+<li>
+<p><strong>Collection and storage</strong>: Collect all the raw data and consolidate it into one place.</p>
+</li>
+<li>
+<p><strong>Analysis and diagnosis:</strong> Analyze the data that is collected to see the overall health of the platform, services, and your applications and to troubleshoot issues.</p>
+</li>
+<li>
+<p><strong>Visualization and alerts:</strong> Visualize the data that is analyzed to spot trends or set up alerting to alert the operation teams.</p>
+</li>
+</ol>
+<p>To get more information and further guidance about operational excellence, you can refer to the following articles:</p>
+<ul>
+<li>
+<p><a href="https://docs.microsoft.com/en-us/azure/architecture/patterns/category/management-monitoring">Design patterns for management and monitoring</a></p>
+</li>
+<li>
+<p><a href="https://docs.microsoft.com/en-us/azure/architecture/best-practices/monitoring">Best practices for monitoring cloud applications</a></p>
+</li>
+</ul>
+<h2 id="performance-efficiency">Performance Efficiency<a hidden class="anchor" aria-hidden="true" href="#performance-efficiency">#</a></h2>
+<p>With performance efficiency, you make sure that your workload can scale to meet the demands placed on it by the users in an effective manner. You can achieve by implementing PaaS offering that scale automatically or implementing scaling effectively in your solutions and applications.</p>
+<p>Applications can scale in two different ways: horizontally (scale out) where new instances of the resource is added, such as extra VMs or database instances. You can also scale vertically (scale up), where you increase the capacity of a single resource, for example by using a larger VM size.</p>
+<p>Horizontal scale needs to be architected into the system. You can scale out by placing VMs behind a load balancer. The applications that run on these VMs, also need to be able to scale. This can be accomplished by designing stateless applications or by storing state and data externally. Simply adding more instances, will not guarantee that your application will scale. Scaling can also lead to more additional measures and bottlenecks.</p>
+<p>Therefore, you should always conduct performance and load testing to find these potential bottlenecks. You can use the following articles for this:</p>
+<ul>
+<li>
+<p><a href="https://docs.microsoft.com/en-us/azure/architecture/patterns/category/performance-scalability">Design patterns for scalability and performance</a></p>
+</li>
+<li>
+<p>Best practices: <a href="https://docs.microsoft.com/en-us/azure/architecture/best-practices/auto-scaling">Autoscaling</a>, <a href="https://docs.microsoft.com/en-us/azure/architecture/best-practices/background-jobs">Background jobs</a>, <a href="https://docs.microsoft.com/en-us/azure/architecture/best-practices/caching">Caching</a>, <a href="https://docs.microsoft.com/en-us/azure/architecture/best-practices/cdn">CDN</a>, <a href="https://docs.microsoft.com/en-us/azure/architecture/best-practices/data-partitioning">Data partitioning</a></p>
+</li>
+<li>
+<p><a href="https://docs.microsoft.com/en-us/azure/architecture/framework/scalability/performance-efficiency">Performance efficiency checklist</a> </p>
+</li>
+</ul>
+<h2 id="reliability">Reliability<a hidden class="anchor" aria-hidden="true" href="#reliability">#</a></h2>
+<p>Reliable workloads are both resilient and available. Resilient applications are able to return to a fully functioning state after a failure occurs. Available applications can be accessed by the users when they need to.</p>
+<p>In cloud computing a different mind set is needed then in traditional application development. Cloud applications are built as distributed systems, which means they are often more complex. The costs for cloud environments are kept low through the use of commodity hardware, so occasional hardware failures must be expected. Today, users also expect systems to be available 24/7 without ever going offline.</p>
+<p>This means that cloud application must be architected differently. They need to be designed to expect occasional failures and need to be able to recover from them quickly. When designing your applications to be resilient, you first must understand availability requirements. How much downtime is acceptable for this application, how much downtime will cost your business, and how much should be invested in making the application highly available.</p>
+<p>In the following articles you will get more information about how you can design and build reliable workloads and applications in Azure:</p>
+<ul>
+<li>
+<p><a href="https://docs.microsoft.com/en-us/azure/architecture/framework/resiliency/overview">Overview of the reliability pillar</a></p>
+</li>
+<li>
+<p><a href="https://docs.microsoft.com/en-us/azure/architecture/patterns/category/resiliency">Resiliency patterns</a></p>
+</li>
+<li>
+<p>Best practices: <a href="https://docs.microsoft.com/en-us/azure/architecture/best-practices/transient-faults">Transient fault handling</a>, <a href="https://docs.microsoft.com/en-us/azure/architecture/best-practices/retry-service-specific">Retry guidance for specific services</a></p>
+</li>
+</ul>
+<h2 id="security">Security<a hidden class="anchor" aria-hidden="true" href="#security">#</a></h2>
+<p>Security should be embedded throughout the entire lifecycle of an application. From the design phase all the way up to the deployments and operations phase. Protection against a variety of threats, such as DDoS attacks, is already provided by the Azure platform, but you are still responsible for building security into your application and into the DevOps processes.</p>
+<p>Security areas that need to be considered for application development are:</p>
+<ul>
+<li>
+<p>Identity Management: For authenticate and authorize users, Azure Active Directory should be considered. Azure AD is a fully managed identity and access management service, and it is integrated to Azure services, Office 365, Dynamics CRM Online, Active Directory on-premises in a hybrid deployment, and many third-party SaaS applications. For consumer-facing applications, Azure AD offers Azure AD Business to Consumer, which lets users authenticate with their existing social accounts, such as Facebook, Google, LinkedIn and more, as well as creating new accounts that is managed by Azure AD.</p>
+</li>
+<li>
+<p>Application Security: Best practices for applications, such as SSL everywhere, protecting against CSRF and XSS attacks, preventing SQL injection attacks, and so on, still apply to the cloud. You should also store your application keys and secrets in Azure Key Vault.</p>
+</li>
+<li>
+<p>Protecting the infrastructure: Control access to all the Azure resources that you deploy. Every resource has a trust relationship with the Azure AD tenant. To grant the users in your organization the correct permissions to the Azure resources that are deployed, you can use Role Based Access Control (RBAC). These permissions can be added to different scopes, to subscriptions, resource groups, or single resources.</p>
+</li>
+<li>
+<p>Data encryption: When you set up high availability in Azure, make sure that you store the data in the correct geopolitical zone. Azure geo-replicated uses the concept of paired regions, which stores the replicated data in the same geopolitical region. To store cryptographic keys and secrets, you can use Azure Key Vault. You can also use Key Vault to store that are protected by hardware security modules.</p>
+</li>
+</ul>
+<p>For more information about this, you can refer to the following articles:</p>
+<ul>
+<li>
+<p><a href="https://docs.microsoft.com/en-us/azure/architecture/reference-architectures/identity/">Identity Management</a> reference architectures.</p>
+</li>
+<li>
+<p><a href="https://azure.microsoft.com/en-us/services/security-center/">Azure Security Center</a> provides integrated security monitoring and policy management across your Azure subscriptions.</p>
+</li>
+<li>
+<p><a href="https://docs.microsoft.com/en-us/azure/security/">Azure Security Documentation</a></p>
+</li>
+<li>
+<p><a href="https://azure.microsoft.com/en-us/overview/trusted-cloud/">Microsoft Trust Center</a></p>
+</li>
+</ul>
+<h2 id="wrap-up">Wrap up<a hidden class="anchor" aria-hidden="true" href="#wrap-up">#</a></h2>
+<p>Azure Well-Architected Framework provides comprehensive architecture principles and guidelines to build cost effective, secure, reliable, and manageable solutions in Azure. If you want to get started with the Azure Well-Architected Framework:</p>
+<ul>
+<li>
+<p>Read the framework content, reference material, and samples available in the <a href="https://docs.microsoft.com/azure/architecture/framework">Azure Architecture Center</a>.</p>
+</li>
+<li>
+<p>Take the <a href="https://aka.ms/architecture/review">Azure Well-Architected Review</a> on Microsoft Assessments.</p>
+</li>
+<li>
+<p>Learn how to <a href="https://aka.ms/architecture/learn">Build great solutions with the Microsoft Azure Well-Architected Framework</a> on Microsoft Learn.</p>
+</li>
+</ul>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+    </ul>
+<nav class="paginav">
+  <a class="prev" href="//localhost:1313/archive/sustainability-cloud-computing-with-microsoft-azure/">
+    <span class="title">« Prev</span>
+    <br>
+    <span>Sustainability cloud computing with Microsoft Azure </span>
+  </a>
+  <a class="next" href="//localhost:1313/archive/what-a-cloud-center-of-excellence-can-do-for-your-organization/">
+    <span class="title">Next »</span>
+    <br>
+    <span>What a Cloud Center of Excellence can do for your organization</span>
+  </a>
+</nav>
+
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="//localhost:1313/">sjoukje.eth</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerHTML = 'copy';
+
+        function copyingDone() {
+            copybutton.innerHTML = 'copied!';
+            setTimeout(() => {
+                copybutton.innerHTML = 'copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+</body>
+
+</html>
