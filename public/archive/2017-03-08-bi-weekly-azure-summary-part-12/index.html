@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto" data-theme="auto">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Bi-weekly Azure Summary – Part 12 | sjoukje.eth</title>
+<meta name="keywords" content="">
+<meta name="description" content="This bi-weekly update is a summary of trending Azure topics on social media, as well as other interesting content available on the internet.
+Below, you can see an overview of interesting blogs, articles, videos and more that are posted on social media and other channels:
+General
+
+Office 2007 Retirement
+Webinar – Understanding what you get with Office 365 E5
+New basics training to get the most out of Office
+New in Access 2016—Large Number (BigInt) support
+Exchange Server 2007 is About to Reach End of Life – What’s Your Plan?
+You lost access to your initial Office 365 admin?
+Yammer integration with Office 365 Groups now rolling out
+OneNote Audio linking ideas
+Learn how to protect your organization from the human element
+What’s new in Office 365 administration—new Service health dashboard now generally available
+Visio Online—anywhere, anytime access to your diagrams
+Outlook 2016 for Mac adds support for Google Calendar and Contacts
+Office 365 news in February—new and improved intelligent services
+Learning Tools for Word Online and OneNote Online now available, plus new languages
+New updates for SharePoint, Project Server, and Office 2013 Click-to-Run
+Getting started with Microsoft Flow and Dynamics 365
+Announcing the public preview of Azure AD group-based license management for Office 365 (and more)!
+
+Development / IT Pro
+
+SharePoint PnP Webcast – Provisioning SharePoint assets for your SharePoint Framework solution
+Calculate route with Azure Functions by triggering a Microsoft Flow button
+Episode 120 with MVP Mikael Svenson—Office 365 Developer Podcast
+SharePoint PnP Webcast – Automate custom solution deployment steps at Office 365 and Azure
+SharePoint Framework reaches general availability—build and deploy engaging web parts today
+New SharePoint CSOM version released for SharePoint Online - February 2017
+Episode 119 on expanding Azure skills with Kirk Evans—Office 365 Developer Podcast
+
+-Sjoukje">
+<meta name="author" content="sjoukje.eth">
+<link rel="canonical" href="//localhost:1313/archive/2017-03-08-bi-weekly-azure-summary-part-12/">
+<link crossorigin="anonymous" href="../../assets/css/stylesheet.36f09b336921909a5971cfa84422229fa3edb550fa46b7707cb5436b0983bdcf.css" integrity="sha256-NvCbM2khkJpZcc&#43;oRCIin6PttVD6RrdwfLVDawmDvc8=" rel="preload stylesheet" as="style">
+<link rel="icon" href="//localhost:1313/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="//localhost:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="//localhost:1313/favicon-32x32.png">
+<link rel="apple-touch-icon" href="//localhost:1313/apple-touch-icon.png">
+<link rel="mask-icon" href="//localhost:1313/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="//localhost:1313/archive/2017-03-08-bi-weekly-azure-summary-part-12/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script><meta property="og:url" content="//localhost:1313/archive/2017-03-08-bi-weekly-azure-summary-part-12/">
+  <meta property="og:site_name" content="sjoukje.eth">
+  <meta property="og:title" content="Bi-weekly Azure Summary – Part 12">
+  <meta property="og:description" content="This bi-weekly update is a summary of trending Azure topics on social media, as well as other interesting content available on the internet. Below, you can see an overview of interesting blogs, articles, videos and more that are posted on social media and other channels:
+General Office 2007 Retirement Webinar – Understanding what you get with Office 365 E5 New basics training to get the most out of Office New in Access 2016—Large Number (BigInt) support Exchange Server 2007 is About to Reach End of Life – What’s Your Plan? You lost access to your initial Office 365 admin? Yammer integration with Office 365 Groups now rolling out OneNote Audio linking ideas Learn how to protect your organization from the human element What’s new in Office 365 administration—new Service health dashboard now generally available Visio Online—anywhere, anytime access to your diagrams Outlook 2016 for Mac adds support for Google Calendar and Contacts Office 365 news in February—new and improved intelligent services Learning Tools for Word Online and OneNote Online now available, plus new languages New updates for SharePoint, Project Server, and Office 2013 Click-to-Run Getting started with Microsoft Flow and Dynamics 365 Announcing the public preview of Azure AD group-based license management for Office 365 (and more)! Development / IT Pro SharePoint PnP Webcast – Provisioning SharePoint assets for your SharePoint Framework solution Calculate route with Azure Functions by triggering a Microsoft Flow button Episode 120 with MVP Mikael Svenson—Office 365 Developer Podcast SharePoint PnP Webcast – Automate custom solution deployment steps at Office 365 and Azure SharePoint Framework reaches general availability—build and deploy engaging web parts today New SharePoint CSOM version released for SharePoint Online - February 2017 Episode 119 on expanding Azure skills with Kirk Evans—Office 365 Developer Podcast -Sjoukje">
+  <meta property="og:locale" content="en-us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="archive">
+    <meta property="article:published_time" content="2017-03-08T00:00:00+00:00">
+    <meta property="article:modified_time" content="2017-03-08T00:00:00+00:00">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Bi-weekly Azure Summary – Part 12">
+<meta name="twitter:description" content="This bi-weekly update is a summary of trending Azure topics on social media, as well as other interesting content available on the internet.
+Below, you can see an overview of interesting blogs, articles, videos and more that are posted on social media and other channels:
+General
+
+Office 2007 Retirement
+Webinar – Understanding what you get with Office 365 E5
+New basics training to get the most out of Office
+New in Access 2016—Large Number (BigInt) support
+Exchange Server 2007 is About to Reach End of Life – What’s Your Plan?
+You lost access to your initial Office 365 admin?
+Yammer integration with Office 365 Groups now rolling out
+OneNote Audio linking ideas
+Learn how to protect your organization from the human element
+What’s new in Office 365 administration—new Service health dashboard now generally available
+Visio Online—anywhere, anytime access to your diagrams
+Outlook 2016 for Mac adds support for Google Calendar and Contacts
+Office 365 news in February—new and improved intelligent services
+Learning Tools for Word Online and OneNote Online now available, plus new languages
+New updates for SharePoint, Project Server, and Office 2013 Click-to-Run
+Getting started with Microsoft Flow and Dynamics 365
+Announcing the public preview of Azure AD group-based license management for Office 365 (and more)!
+
+Development / IT Pro
+
+SharePoint PnP Webcast – Provisioning SharePoint assets for your SharePoint Framework solution
+Calculate route with Azure Functions by triggering a Microsoft Flow button
+Episode 120 with MVP Mikael Svenson—Office 365 Developer Podcast
+SharePoint PnP Webcast – Automate custom solution deployment steps at Office 365 and Azure
+SharePoint Framework reaches general availability—build and deploy engaging web parts today
+New SharePoint CSOM version released for SharePoint Online - February 2017
+Episode 119 on expanding Azure skills with Kirk Evans—Office 365 Developer Podcast
+
+-Sjoukje">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Archives",
+      "item": "//localhost:1313/archive/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "Bi-weekly Azure Summary – Part 12",
+      "item": "//localhost:1313/archive/2017-03-08-bi-weekly-azure-summary-part-12/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Bi-weekly Azure Summary – Part 12",
+  "name": "Bi-weekly Azure Summary – Part 12",
+  "description": "This bi-weekly update is a summary of trending Azure topics on social media, as well as other interesting content available on the internet. Below, you can see an overview of interesting blogs, articles, videos and more that are posted on social media and other channels:\nGeneral Office 2007 Retirement Webinar – Understanding what you get with Office 365 E5 New basics training to get the most out of Office New in Access 2016—Large Number (BigInt) support Exchange Server 2007 is About to Reach End of Life – What’s Your Plan? You lost access to your initial Office 365 admin? Yammer integration with Office 365 Groups now rolling out OneNote Audio linking ideas Learn how to protect your organization from the human element What’s new in Office 365 administration—new Service health dashboard now generally available Visio Online—anywhere, anytime access to your diagrams Outlook 2016 for Mac adds support for Google Calendar and Contacts Office 365 news in February—new and improved intelligent services Learning Tools for Word Online and OneNote Online now available, plus new languages New updates for SharePoint, Project Server, and Office 2013 Click-to-Run Getting started with Microsoft Flow and Dynamics 365 Announcing the public preview of Azure AD group-based license management for Office 365 (and more)! Development / IT Pro SharePoint PnP Webcast – Provisioning SharePoint assets for your SharePoint Framework solution Calculate route with Azure Functions by triggering a Microsoft Flow button Episode 120 with MVP Mikael Svenson—Office 365 Developer Podcast SharePoint PnP Webcast – Automate custom solution deployment steps at Office 365 and Azure SharePoint Framework reaches general availability—build and deploy engaging web parts today New SharePoint CSOM version released for SharePoint Online - February 2017 Episode 119 on expanding Azure skills with Kirk Evans—Office 365 Developer Podcast -Sjoukje\n",
+  "keywords": [
+    
+  ],
+  "articleBody": "This bi-weekly update is a summary of trending Azure topics on social media, as well as other interesting content available on the internet. Below, you can see an overview of interesting blogs, articles, videos and more that are posted on social media and other channels:\nGeneral Office 2007 Retirement Webinar – Understanding what you get with Office 365 E5 New basics training to get the most out of Office New in Access 2016—Large Number (BigInt) support Exchange Server 2007 is About to Reach End of Life – What’s Your Plan? You lost access to your initial Office 365 admin? Yammer integration with Office 365 Groups now rolling out OneNote Audio linking ideas Learn how to protect your organization from the human element What’s new in Office 365 administration—new Service health dashboard now generally available Visio Online—anywhere, anytime access to your diagrams Outlook 2016 for Mac adds support for Google Calendar and Contacts Office 365 news in February—new and improved intelligent services Learning Tools for Word Online and OneNote Online now available, plus new languages New updates for SharePoint, Project Server, and Office 2013 Click-to-Run Getting started with Microsoft Flow and Dynamics 365 Announcing the public preview of Azure AD group-based license management for Office 365 (and more)! Development / IT Pro SharePoint PnP Webcast – Provisioning SharePoint assets for your SharePoint Framework solution Calculate route with Azure Functions by triggering a Microsoft Flow button Episode 120 with MVP Mikael Svenson—Office 365 Developer Podcast SharePoint PnP Webcast – Automate custom solution deployment steps at Office 365 and Azure SharePoint Framework reaches general availability—build and deploy engaging web parts today New SharePoint CSOM version released for SharePoint Online - February 2017 Episode 119 on expanding Azure skills with Kirk Evans—Office 365 Developer Podcast -Sjoukje\n",
+  "wordCount" : "292",
+  "inLanguage": "en",
+  "datePublished": "2017-03-08T00:00:00Z",
+  "dateModified": "2017-03-08T00:00:00Z",
+  "author":{
+    "@type": "Person",
+    "name": "sjoukje.eth"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "//localhost:1313/archive/2017-03-08-bi-weekly-azure-summary-part-12/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "sjoukje.eth",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "//localhost:1313/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="//localhost:1313/" accesskey="h" title="sjoukje.eth (Alt + H)">sjoukje.eth</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="//localhost:1313/posts/" title="Posts">
+                    <span>Posts</span>
+                </a>
+            </li>
+            <li>
+                <a href="//localhost:1313/books/" title="Books">
+                    <span>Books</span>
+                </a>
+            </li>
+            <li>
+                <a href="//localhost:1313/about/" title="About">
+                    <span>About</span>
+                </a>
+            </li>
+            <li>
+                <a href="//localhost:1313/archive/" title="Archive">
+                    <span>Archive</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="//localhost:1313/">Home</a>&nbsp;»&nbsp;<a href="//localhost:1313/archive/">Archives</a></div>
+    <h1 class="post-title entry-hint-parent">
+      Bi-weekly Azure Summary – Part 12
+    </h1>
+    <div class="post-meta"><span title='2017-03-08 00:00:00 +0000 UTC'>March 8, 2017</span>&nbsp;·&nbsp;<span>2 min</span>&nbsp;·&nbsp;<span>sjoukje.eth</span>
+
+</div>
+  </header> 
+  <div class="post-content"><p>This bi-weekly update is a summary of trending Azure topics on social media, as well as other interesting content available on the internet.
+Below, you can see an overview of interesting blogs, articles, videos and more that are posted on social media and other channels:</p>
+<h3 id="general">General<a hidden class="anchor" aria-hidden="true" href="#general">#</a></h3>
+<ul>
+<li><a href="%22https://techcommunity.microsoft.com/t5/Office-Retirement/ct-p/OfficeRetirement%22">Office 2007 Retirement</a></li>
+<li><a href="%22http://www.stevieg.org/2017/03/webinar-understanding-what-you-get-with-office-365-e5/%22">Webinar – Understanding what you get with Office 365 E5</a></li>
+<li><a href="%22https://blogs.office.com/2017/03/06/new-basics-training-to-get-the-most-out-of-office/%22">New basics training to get the most out of Office</a></li>
+<li><a href="%22https://blogs.office.com/2017/03/06/new-in-access-2016-large-number-bigint-support/%22">New in Access 2016—Large Number (BigInt) support</a></li>
+<li><a href="%22http://practical365.com/blog/exchange-server-2007-end-of-life/%22">Exchange Server 2007 is About to Reach End of Life – What’s Your Plan?</a></li>
+<li><a href="%22https://identityunderground.wordpress.com/2017/03/03/note-to-self-you-lost-access-to-your-initial-office-365-admin/%22">You lost access to your initial Office 365 admin?</a></li>
+<li><a href="%22https://blogs.office.com/2017/03/02/yammer-integration-with-office-365-groups-now-rolling-out/%22">Yammer integration with Office 365 Groups now rolling out</a></li>
+<li><a href="%22https://efficiency365.com/2017/03/01/onenote-audio-linking-ideas/%22">OneNote Audio linking ideas</a></li>
+<li><a href="%22https://blogs.office.com/2017/03/01/learn-how-to-protect-your-organization-from-the-human-element/%22">Learn how to protect your organization from the human element</a></li>
+<li><a href="%22https://blogs.office.com/2017/03/01/whats-new-in-office-365-administration-new-service-health-dashboard-now-generally-available/%22">What’s new in Office 365 administration—new Service health dashboard now generally available</a></li>
+<li><a href="%22https://blogs.office.com/2017/03/01/visio-online-anywhere-anytime-access-to-your-diagrams/%22">Visio Online—anywhere, anytime access to your diagrams</a></li>
+<li><a href="%22https://blogs.office.com/2017/03/01/outlook-2016-for-mac-adds-support-for-google-calendar-and-contacts/%22">Outlook 2016 for Mac adds support for Google Calendar and Contacts</a></li>
+<li><a href="%22https://blogs.office.com/2017/02/28/office-365-news-in-february-new-and-improved-intelligent-services/%22">Office 365 news in February—new and improved intelligent services</a></li>
+<li><a href="%22https://blogs.office.com/2017/02/27/learning-tools-for-word-online-and-onenote-online-now-available-plus-new-languages/%22">Learning Tools for Word Online and OneNote Online now available, plus new languages</a></li>
+<li><a href="%22https://blogs.technet.microsoft.com/office_sustained_engineering/2017/02/22/new-updates-for-sharepoint-project-server-and-office-2013-click-to-run/%22">New updates for SharePoint, Project Server, and Office 2013 Click-to-Run</a></li>
+<li><a href="%22http://jopx.blogspot.nl/2017/02/getting-started-with-microsoft-flow-and.html?utm_content=buffer16391%22">Getting started with Microsoft Flow and Dynamics 365</a></li>
+<li><a href="%22https://blogs.technet.microsoft.com/enterprisemobility/2017/02/22/announcing-the-public-preview-of-azure-ad-group-based-license-management-for-office-365-and-more/%22">Announcing the public preview of Azure AD group-based license management for Office 365 (and more)!</a></li>
+</ul>
+<h3 id="development--it-pro">Development / IT Pro<a hidden class="anchor" aria-hidden="true" href="#development--it-pro">#</a></h3>
+<ul>
+<li><a href="%22https://dev.office.com/blogs/provisioning-sharepoint-assets-for-your-spfx-solution%22">SharePoint PnP Webcast – Provisioning SharePoint assets for your SharePoint Framework solution</a></li>
+<li><a href="%22https://www.eugenedauphin.com/2017/03/calculate-route-with-azure-functions-by-triggering-a-microsoft-flow-button/%22">Calculate route with Azure Functions by triggering a Microsoft Flow button</a></li>
+<li><a href="%22https://blogs.office.com/2017/03/02/episode-120-mvp-mikael-svenson-office-365-developer-podcast/?utm_content=buffer2c840%22">Episode 120 with MVP Mikael Svenson—Office 365 Developer Podcast</a></li>
+<li><a href="%22https://dev.office.com/blogs/automate-custom-solution-deployment-steps-at-office-365-and-azure%22">SharePoint PnP Webcast – Automate custom solution deployment steps at Office 365 and Azure</a></li>
+<li><a href="%22https://dev.office.com/blogs/sharepoint-framework-reaches-general-availability-build-and-deploy-engaging-web-parts-today%22">SharePoint Framework reaches general availability—build and deploy engaging web parts today</a></li>
+<li><a href="%22https://dev.office.com/blogs/new-sharepoint-csom-version-released-for-Office-365-february-2017%22">New SharePoint CSOM version released for SharePoint Online - February 2017</a></li>
+<li><a href="%22https://blogs.office.com/2017/02/23/episode-119-expanding-azure-skills-kirk-evans-office-365-developer-podcast/%22">Episode 119 on expanding Azure skills with Kirk Evans—Office 365 Developer Podcast</a></li>
+</ul>
+<p>-Sjoukje</p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+    </ul>
+
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="//localhost:1313/">sjoukje.eth</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerHTML = 'copy';
+
+        function copyingDone() {
+            copybutton.innerHTML = 'copied!';
+            setTimeout(() => {
+                copybutton.innerHTML = 'copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+</body>
+
+</html>

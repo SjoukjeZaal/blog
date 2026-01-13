@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto" data-theme="auto">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Bi-weekly Azure Summary – Part 17 | sjoukje.eth</title>
+<meta name="keywords" content="">
+<meta name="description" content="This bi-weekly update is a summary of trending Azure topics on social media, as well as other interesting content available on the internet.
+Below, you can see an overview of interesting blogs, articles, videos and more that are posted on social media and other channels:
+General
+
+PowerApps – Data Table Control
+PivotTables just got personal
+OneDrive for Business is Back in Business
+PowerApps community Plan
+Microsoft Teams Blog: Community Update #4
+Introducing OneDrive Files On-Demand and other features making it easy to access files
+Monitor SharePoint Online Activity with OMS and Power BI
+Increased Path Length for Files in SharePoint Online and OneDrive
+May 2017 Office Update Release
+
+Development / IT Pro
+
+Moving from Exchange 2010 to Office 365
+New Insights APIs and the discontinuation of the Office Graph GQL APIs
+SharePoint PnP Webcast – SharePoint &quot;Modern&quot; user interface experience scanner
+Configure a build and release pipeline for your SharePoint Framework solution deployments
+4 tips to improve performance of your AngularJS applications
+Throttling coming for Outlook API&rsquo;s and Outlook-related APIs in Microsoft Graph
+Your Guide to Teams and Office Add-ins at Microsoft Build 2017
+Microsoft Graph or the Azure AD Graph
+Deliver more powerful add-ins to Office with new opportunities via AppSource and the Office Store
+Build integrated user experiences with new capabilities of SharePoint and OneDrive
+Create more engaging conversations with new Actionable Messages updates announced at Microsoft Build
+New Opportunities with Microsoft Teams Announced for Developers at Build
+What’s new for Microsoft Graph Developers at Build 2017
+SharePoint Patterns &amp; Practices – May 2017 release
+SharePoint PnP Webcast – Calling external APIs securely from SharePoint Framework
+Microsoft Graph Explorer updated - now with sample queries
+
+ 
+-Sjoukje">
+<meta name="author" content="sjoukje.eth">
+<link rel="canonical" href="//localhost:1313/archive/2017-05-17-bi-weekly-azure-summary-part-17/">
+<link crossorigin="anonymous" href="../../assets/css/stylesheet.36f09b336921909a5971cfa84422229fa3edb550fa46b7707cb5436b0983bdcf.css" integrity="sha256-NvCbM2khkJpZcc&#43;oRCIin6PttVD6RrdwfLVDawmDvc8=" rel="preload stylesheet" as="style">
+<link rel="icon" href="//localhost:1313/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="//localhost:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="//localhost:1313/favicon-32x32.png">
+<link rel="apple-touch-icon" href="//localhost:1313/apple-touch-icon.png">
+<link rel="mask-icon" href="//localhost:1313/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="//localhost:1313/archive/2017-05-17-bi-weekly-azure-summary-part-17/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script><meta property="og:url" content="//localhost:1313/archive/2017-05-17-bi-weekly-azure-summary-part-17/">
+  <meta property="og:site_name" content="sjoukje.eth">
+  <meta property="og:title" content="Bi-weekly Azure Summary – Part 17">
+  <meta property="og:description" content="This bi-weekly update is a summary of trending Azure topics on social media, as well as other interesting content available on the internet. Below, you can see an overview of interesting blogs, articles, videos and more that are posted on social media and other channels:
+General PowerApps – Data Table Control PivotTables just got personal OneDrive for Business is Back in Business PowerApps community Plan Microsoft Teams Blog: Community Update #4 Introducing OneDrive Files On-Demand and other features making it easy to access files Monitor SharePoint Online Activity with OMS and Power BI Increased Path Length for Files in SharePoint Online and OneDrive May 2017 Office Update Release Development / IT Pro Moving from Exchange 2010 to Office 365 New Insights APIs and the discontinuation of the Office Graph GQL APIs SharePoint PnP Webcast – SharePoint &#34;Modern&#34; user interface experience scanner Configure a build and release pipeline for your SharePoint Framework solution deployments 4 tips to improve performance of your AngularJS applications Throttling coming for Outlook API’s and Outlook-related APIs in Microsoft Graph Your Guide to Teams and Office Add-ins at Microsoft Build 2017 Microsoft Graph or the Azure AD Graph Deliver more powerful add-ins to Office with new opportunities via AppSource and the Office Store Build integrated user experiences with new capabilities of SharePoint and OneDrive Create more engaging conversations with new Actionable Messages updates announced at Microsoft Build New Opportunities with Microsoft Teams Announced for Developers at Build What’s new for Microsoft Graph Developers at Build 2017 SharePoint Patterns &amp; Practices – May 2017 release SharePoint PnP Webcast – Calling external APIs securely from SharePoint Framework Microsoft Graph Explorer updated - now with sample queries -Sjoukje">
+  <meta property="og:locale" content="en-us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="archive">
+    <meta property="article:published_time" content="2017-05-17T00:00:00+00:00">
+    <meta property="article:modified_time" content="2017-05-17T00:00:00+00:00">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Bi-weekly Azure Summary – Part 17">
+<meta name="twitter:description" content="This bi-weekly update is a summary of trending Azure topics on social media, as well as other interesting content available on the internet.
+Below, you can see an overview of interesting blogs, articles, videos and more that are posted on social media and other channels:
+General
+
+PowerApps – Data Table Control
+PivotTables just got personal
+OneDrive for Business is Back in Business
+PowerApps community Plan
+Microsoft Teams Blog: Community Update #4
+Introducing OneDrive Files On-Demand and other features making it easy to access files
+Monitor SharePoint Online Activity with OMS and Power BI
+Increased Path Length for Files in SharePoint Online and OneDrive
+May 2017 Office Update Release
+
+Development / IT Pro
+
+Moving from Exchange 2010 to Office 365
+New Insights APIs and the discontinuation of the Office Graph GQL APIs
+SharePoint PnP Webcast – SharePoint &quot;Modern&quot; user interface experience scanner
+Configure a build and release pipeline for your SharePoint Framework solution deployments
+4 tips to improve performance of your AngularJS applications
+Throttling coming for Outlook API&rsquo;s and Outlook-related APIs in Microsoft Graph
+Your Guide to Teams and Office Add-ins at Microsoft Build 2017
+Microsoft Graph or the Azure AD Graph
+Deliver more powerful add-ins to Office with new opportunities via AppSource and the Office Store
+Build integrated user experiences with new capabilities of SharePoint and OneDrive
+Create more engaging conversations with new Actionable Messages updates announced at Microsoft Build
+New Opportunities with Microsoft Teams Announced for Developers at Build
+What’s new for Microsoft Graph Developers at Build 2017
+SharePoint Patterns &amp; Practices – May 2017 release
+SharePoint PnP Webcast – Calling external APIs securely from SharePoint Framework
+Microsoft Graph Explorer updated - now with sample queries
+
+ 
+-Sjoukje">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Archives",
+      "item": "//localhost:1313/archive/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "Bi-weekly Azure Summary – Part 17",
+      "item": "//localhost:1313/archive/2017-05-17-bi-weekly-azure-summary-part-17/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Bi-weekly Azure Summary – Part 17",
+  "name": "Bi-weekly Azure Summary – Part 17",
+  "description": "This bi-weekly update is a summary of trending Azure topics on social media, as well as other interesting content available on the internet. Below, you can see an overview of interesting blogs, articles, videos and more that are posted on social media and other channels:\nGeneral PowerApps – Data Table Control PivotTables just got personal OneDrive for Business is Back in Business PowerApps community Plan Microsoft Teams Blog: Community Update #4 Introducing OneDrive Files On-Demand and other features making it easy to access files Monitor SharePoint Online Activity with OMS and Power BI Increased Path Length for Files in SharePoint Online and OneDrive May 2017 Office Update Release Development / IT Pro Moving from Exchange 2010 to Office 365 New Insights APIs and the discontinuation of the Office Graph GQL APIs SharePoint PnP Webcast – SharePoint \u0026quot;Modern\u0026quot; user interface experience scanner Configure a build and release pipeline for your SharePoint Framework solution deployments 4 tips to improve performance of your AngularJS applications Throttling coming for Outlook API\u0026rsquo;s and Outlook-related APIs in Microsoft Graph Your Guide to Teams and Office Add-ins at Microsoft Build 2017 Microsoft Graph or the Azure AD Graph Deliver more powerful add-ins to Office with new opportunities via AppSource and the Office Store Build integrated user experiences with new capabilities of SharePoint and OneDrive Create more engaging conversations with new Actionable Messages updates announced at Microsoft Build New Opportunities with Microsoft Teams Announced for Developers at Build What’s new for Microsoft Graph Developers at Build 2017 SharePoint Patterns \u0026amp; Practices – May 2017 release SharePoint PnP Webcast – Calling external APIs securely from SharePoint Framework Microsoft Graph Explorer updated - now with sample queries -Sjoukje\n",
+  "keywords": [
+    
+  ],
+  "articleBody": "This bi-weekly update is a summary of trending Azure topics on social media, as well as other interesting content available on the internet. Below, you can see an overview of interesting blogs, articles, videos and more that are posted on social media and other channels:\nGeneral PowerApps – Data Table Control PivotTables just got personal OneDrive for Business is Back in Business PowerApps community Plan Microsoft Teams Blog: Community Update #4 Introducing OneDrive Files On-Demand and other features making it easy to access files Monitor SharePoint Online Activity with OMS and Power BI Increased Path Length for Files in SharePoint Online and OneDrive May 2017 Office Update Release Development / IT Pro Moving from Exchange 2010 to Office 365 New Insights APIs and the discontinuation of the Office Graph GQL APIs SharePoint PnP Webcast – SharePoint \"Modern\" user interface experience scanner Configure a build and release pipeline for your SharePoint Framework solution deployments 4 tips to improve performance of your AngularJS applications Throttling coming for Outlook API’s and Outlook-related APIs in Microsoft Graph Your Guide to Teams and Office Add-ins at Microsoft Build 2017 Microsoft Graph or the Azure AD Graph Deliver more powerful add-ins to Office with new opportunities via AppSource and the Office Store Build integrated user experiences with new capabilities of SharePoint and OneDrive Create more engaging conversations with new Actionable Messages updates announced at Microsoft Build New Opportunities with Microsoft Teams Announced for Developers at Build What’s new for Microsoft Graph Developers at Build 2017 SharePoint Patterns \u0026 Practices – May 2017 release SharePoint PnP Webcast – Calling external APIs securely from SharePoint Framework Microsoft Graph Explorer updated - now with sample queries -Sjoukje\n",
+  "wordCount" : "278",
+  "inLanguage": "en",
+  "datePublished": "2017-05-17T00:00:00Z",
+  "dateModified": "2017-05-17T00:00:00Z",
+  "author":{
+    "@type": "Person",
+    "name": "sjoukje.eth"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "//localhost:1313/archive/2017-05-17-bi-weekly-azure-summary-part-17/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "sjoukje.eth",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "//localhost:1313/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="//localhost:1313/" accesskey="h" title="sjoukje.eth (Alt + H)">sjoukje.eth</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="//localhost:1313/posts/" title="Posts">
+                    <span>Posts</span>
+                </a>
+            </li>
+            <li>
+                <a href="//localhost:1313/books/" title="Books">
+                    <span>Books</span>
+                </a>
+            </li>
+            <li>
+                <a href="//localhost:1313/about/" title="About">
+                    <span>About</span>
+                </a>
+            </li>
+            <li>
+                <a href="//localhost:1313/archive/" title="Archive">
+                    <span>Archive</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="//localhost:1313/">Home</a>&nbsp;»&nbsp;<a href="//localhost:1313/archive/">Archives</a></div>
+    <h1 class="post-title entry-hint-parent">
+      Bi-weekly Azure Summary – Part 17
+    </h1>
+    <div class="post-meta"><span title='2017-05-17 00:00:00 +0000 UTC'>May 17, 2017</span>&nbsp;·&nbsp;<span>2 min</span>&nbsp;·&nbsp;<span>sjoukje.eth</span>
+
+</div>
+  </header> 
+  <div class="post-content"><p>This bi-weekly update is a summary of trending Azure topics on social media, as well as other interesting content available on the internet.
+Below, you can see an overview of interesting blogs, articles, videos and more that are posted on social media and other channels:</p>
+<h3 id="general">General<a hidden class="anchor" aria-hidden="true" href="#general">#</a></h3>
+<ul>
+<li><a href="%22http://www.idubbs.com/blog/2017/powerapps-data-table-control/%22">PowerApps – Data Table Control</a></li>
+<li><a href="%22https://blogs.office.com/2017/05/15/pivottables-just-got-personal/%22">PivotTables just got personal</a></li>
+<li><a href="%22http://www.jasperoosterveld.com/2017/05/sharegate-blog-onedrive-for-business-is-back-in-business/%22">OneDrive for Business is Back in Business</a></li>
+<li><a href="%22http://www.idubbs.com/blog/2017/powerapps-community-plan%22">PowerApps community Plan</a></li>
+<li><a href="%22https://techcommunity.microsoft.com/t5/Microsoft-Teams-Blog/Community-Update-4/ba-p/69666%22">Microsoft Teams Blog: Community Update #4</a></li>
+<li><a href="%22https://blogs.office.com/2017/05/11/introducing-onedrive-files-on-demand-and-additional-features-making-it-easier-to-access-and-share-files/%22">Introducing OneDrive Files On-Demand and other features making it easy to access files</a></li>
+<li><a href="%22https://blog.kloud.com.au/2017/05/11/monitor-sharepoint-online-activity-with-oms-and-power-bi/%22">Monitor SharePoint Online Activity with OMS and Power BI</a></li>
+<li><a href="%22https://modery.net/increased-path-length-for-files-in-sharepoint-online-and-onedrive/%22">Increased Path Length for Files in SharePoint Online and OneDrive</a></li>
+<li><a href="%22https://blogs.technet.microsoft.com/office_sustained_engineering/2017/05/09/may-2017-office-update-release/%22">May 2017 Office Update Release</a></li>
+</ul>
+<h3 id="development--it-pro">Development / IT Pro<a hidden class="anchor" aria-hidden="true" href="#development--it-pro">#</a></h3>
+<ul>
+<li><a href="%22https://jaapwesselius.com/2017/05/15/moving-from-exchange-2010-to-office-365/%22">Moving from Exchange 2010 to Office 365</a></li>
+<li><a href="%22https://dev.office.com/blogs/new-insights-api-s-and-the-discontinuation-of-the-office-graph-gqls-apis%22">New Insights APIs and the discontinuation of the Office Graph GQL APIs</a></li>
+<li><a href="%22https://dev.office.com/blogs/sharepoint-modern-user-interface-experience-scanner%22">SharePoint PnP Webcast – SharePoint &quot;Modern&quot; user interface experience scanner</a></li>
+<li><a href="%22https://www.eliostruyf.com/configure-a-build-and-release-pipeline-for-your-sharepoint-framework-solution-deployments/%22">Configure a build and release pipeline for your SharePoint Framework solution deployments</a></li>
+<li><a href="%22https://blog.mastykarz.nl/tips-improve-performance-angularjs-applications/%22">4 tips to improve performance of your AngularJS applications</a></li>
+<li><a href="%22https://dev.office.com/blogs/throttling-for-outlook-api-and-microsoft-graph%22">Throttling coming for Outlook API&rsquo;s and Outlook-related APIs in Microsoft Graph</a></li>
+<li><a href="%22https://dev.office.com/blogs/guide-to-office-and-teams-at-microsoft-build%22">Your Guide to Teams and Office Add-ins at Microsoft Build 2017</a></li>
+<li><a href="%22https://dev.office.com/blogs/microsoft-graph-or-azure-ad-graph%22">Microsoft Graph or the Azure AD Graph</a></li>
+<li><a href="%22https://dev.office.com/blogs/deliver-more-powerful-add-ins-to-office-with-new-opportunities-via-appsource-and-the-office-store%22">Deliver more powerful add-ins to Office with new opportunities via AppSource and the Office Store</a></li>
+<li><a href="%22https://dev.office.com/blogs/build-integrated-user-experiences-with-new-capabilities-of-sharepoint-and-onedrive%22">Build integrated user experiences with new capabilities of SharePoint and OneDrive</a></li>
+<li><a href="%22https://dev.office.com/blogs/create-more-engaging-conversations-with-new-actionable-messages-updates-announced-at-microsoft-build%22">Create more engaging conversations with new Actionable Messages updates announced at Microsoft Build</a></li>
+<li><a href="%22https://dev.office.com/blogs/new-opportunities-on-microsoft-teams-for-developers-at-build-2017%22">New Opportunities with Microsoft Teams Announced for Developers at Build</a></li>
+<li><a href="%22https://dev.office.com/blogs/microsoft-graph-at-build-2017%22">What’s new for Microsoft Graph Developers at Build 2017</a></li>
+<li><a href="%22https://dev.office.com/blogs/pnp-may-2017-release%22">SharePoint Patterns &amp; Practices – May 2017 release</a></li>
+<li><a href="%22https://dev.office.com/blogs/calling-external-apis-securely-from-sharepoint-framework%22">SharePoint PnP Webcast – Calling external APIs securely from SharePoint Framework</a></li>
+<li><a href="%22https://dev.office.com/blogs/microsoft-graph-explorer-updated-with-sample-queries%22">Microsoft Graph Explorer updated - now with sample queries</a></li>
+</ul>
+<p> 
+-Sjoukje</p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+    </ul>
+
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="//localhost:1313/">sjoukje.eth</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerHTML = 'copy';
+
+        function copyingDone() {
+            copybutton.innerHTML = 'copied!';
+            setTimeout(() => {
+                copybutton.innerHTML = 'copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+</body>
+
+</html>

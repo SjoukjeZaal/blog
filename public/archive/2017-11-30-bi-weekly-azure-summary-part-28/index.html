@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto" data-theme="auto">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Bi-weekly Azure Summary – Part 28 | sjoukje.eth</title>
+<meta name="keywords" content="">
+<meta name="description" content="This bi-weekly update is a summary of trending Azure topics on social media, as well as other interesting content available on the internet.
+Below, you can see an overview of interesting blogs, articles, videos and more that are posted on social media and other channels:
+General
+
+Public preview: Azure Automation watcher tasks
+Announcing Azure Location Based Services public preview
+Part 1: Enable your business stakeholders with a successful Microsoft 365 adoption
+Part 2: Recruit key stakeholders to help with your adoption
+Part 3: Identify business needs and prioritize Microsoft 365 scenarios
+Part 4: Promote Microsoft 365 awareness and enable end users with training
+Launching preview of Azure Migrate
+Microsoft Announces New Migration Tool
+Teams On Air Q&amp;A Roundup: Behind the scenes of Skype Meeting Broadcast
+SharePoint mobile notifications keep you up-to-date
+The new Azure AD sign-in and “Keep me signed in” experiences rolling out now!
+
+
+Development / IT Pro
+
+SharePoint PnP Webcast – ALM APIs for SharePoint Framework solutions and add-ins
+Moving an Office 365 domain to a new tenant
+Exclude your mock data and other modules from your production bundle in SPFx
+Azure AD B2B Users and Access to Azure AD Application Proxy Apps
+Update on retirement of Azure AD classic portal experience and migration of conditional access policies
+Azure Content Spotlight – IoT Edge
+New SharePoint CSOM version released for SharePoint Online - November 2017
+Azure CDN: Dynamic Site Acceleration
+Resetting passwords on Azure AD-joined devices is much easier with the latest Windows update
+Angular application – Architecture Overview
+Microsoft Teams now supports AAD Conditional Access on the MAC Platform
+Authentication in Microsoft Teams Apps: Tabs
+
+ 
+ 
+-Sjoukje">
+<meta name="author" content="sjoukje.eth">
+<link rel="canonical" href="//localhost:1313/archive/2017-11-30-bi-weekly-azure-summary-part-28/">
+<link crossorigin="anonymous" href="../../assets/css/stylesheet.36f09b336921909a5971cfa84422229fa3edb550fa46b7707cb5436b0983bdcf.css" integrity="sha256-NvCbM2khkJpZcc&#43;oRCIin6PttVD6RrdwfLVDawmDvc8=" rel="preload stylesheet" as="style">
+<link rel="icon" href="//localhost:1313/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="//localhost:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="//localhost:1313/favicon-32x32.png">
+<link rel="apple-touch-icon" href="//localhost:1313/apple-touch-icon.png">
+<link rel="mask-icon" href="//localhost:1313/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="//localhost:1313/archive/2017-11-30-bi-weekly-azure-summary-part-28/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script><meta property="og:url" content="//localhost:1313/archive/2017-11-30-bi-weekly-azure-summary-part-28/">
+  <meta property="og:site_name" content="sjoukje.eth">
+  <meta property="og:title" content="Bi-weekly Azure Summary – Part 28">
+  <meta property="og:description" content="This bi-weekly update is a summary of trending Azure topics on social media, as well as other interesting content available on the internet. Below, you can see an overview of interesting blogs, articles, videos and more that are posted on social media and other channels:
+General Public preview: Azure Automation watcher tasks Announcing Azure Location Based Services public preview Part 1: Enable your business stakeholders with a successful Microsoft 365 adoption Part 2: Recruit key stakeholders to help with your adoption Part 3: Identify business needs and prioritize Microsoft 365 scenarios Part 4: Promote Microsoft 365 awareness and enable end users with training Launching preview of Azure Migrate Microsoft Announces New Migration Tool Teams On Air Q&amp;A Roundup: Behind the scenes of Skype Meeting Broadcast SharePoint mobile notifications keep you up-to-date The new Azure AD sign-in and “Keep me signed in” experiences rolling out now! Development / IT Pro SharePoint PnP Webcast – ALM APIs for SharePoint Framework solutions and add-ins Moving an Office 365 domain to a new tenant Exclude your mock data and other modules from your production bundle in SPFx Azure AD B2B Users and Access to Azure AD Application Proxy Apps Update on retirement of Azure AD classic portal experience and migration of conditional access policies Azure Content Spotlight – IoT Edge New SharePoint CSOM version released for SharePoint Online - November 2017 Azure CDN: Dynamic Site Acceleration Resetting passwords on Azure AD-joined devices is much easier with the latest Windows update Angular application – Architecture Overview Microsoft Teams now supports AAD Conditional Access on the MAC Platform Authentication in Microsoft Teams Apps: Tabs -Sjoukje">
+  <meta property="og:locale" content="en-us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="archive">
+    <meta property="article:published_time" content="2017-11-30T00:00:00+00:00">
+    <meta property="article:modified_time" content="2017-11-30T00:00:00+00:00">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Bi-weekly Azure Summary – Part 28">
+<meta name="twitter:description" content="This bi-weekly update is a summary of trending Azure topics on social media, as well as other interesting content available on the internet.
+Below, you can see an overview of interesting blogs, articles, videos and more that are posted on social media and other channels:
+General
+
+Public preview: Azure Automation watcher tasks
+Announcing Azure Location Based Services public preview
+Part 1: Enable your business stakeholders with a successful Microsoft 365 adoption
+Part 2: Recruit key stakeholders to help with your adoption
+Part 3: Identify business needs and prioritize Microsoft 365 scenarios
+Part 4: Promote Microsoft 365 awareness and enable end users with training
+Launching preview of Azure Migrate
+Microsoft Announces New Migration Tool
+Teams On Air Q&amp;A Roundup: Behind the scenes of Skype Meeting Broadcast
+SharePoint mobile notifications keep you up-to-date
+The new Azure AD sign-in and “Keep me signed in” experiences rolling out now!
+
+
+Development / IT Pro
+
+SharePoint PnP Webcast – ALM APIs for SharePoint Framework solutions and add-ins
+Moving an Office 365 domain to a new tenant
+Exclude your mock data and other modules from your production bundle in SPFx
+Azure AD B2B Users and Access to Azure AD Application Proxy Apps
+Update on retirement of Azure AD classic portal experience and migration of conditional access policies
+Azure Content Spotlight – IoT Edge
+New SharePoint CSOM version released for SharePoint Online - November 2017
+Azure CDN: Dynamic Site Acceleration
+Resetting passwords on Azure AD-joined devices is much easier with the latest Windows update
+Angular application – Architecture Overview
+Microsoft Teams now supports AAD Conditional Access on the MAC Platform
+Authentication in Microsoft Teams Apps: Tabs
+
+ 
+ 
+-Sjoukje">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Archives",
+      "item": "//localhost:1313/archive/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "Bi-weekly Azure Summary – Part 28",
+      "item": "//localhost:1313/archive/2017-11-30-bi-weekly-azure-summary-part-28/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Bi-weekly Azure Summary – Part 28",
+  "name": "Bi-weekly Azure Summary – Part 28",
+  "description": "This bi-weekly update is a summary of trending Azure topics on social media, as well as other interesting content available on the internet. Below, you can see an overview of interesting blogs, articles, videos and more that are posted on social media and other channels:\nGeneral Public preview: Azure Automation watcher tasks Announcing Azure Location Based Services public preview Part 1: Enable your business stakeholders with a successful Microsoft 365 adoption Part 2: Recruit key stakeholders to help with your adoption Part 3: Identify business needs and prioritize Microsoft 365 scenarios Part 4: Promote Microsoft 365 awareness and enable end users with training Launching preview of Azure Migrate Microsoft Announces New Migration Tool Teams On Air Q\u0026amp;A Roundup: Behind the scenes of Skype Meeting Broadcast SharePoint mobile notifications keep you up-to-date The new Azure AD sign-in and “Keep me signed in” experiences rolling out now! Development / IT Pro SharePoint PnP Webcast – ALM APIs for SharePoint Framework solutions and add-ins Moving an Office 365 domain to a new tenant Exclude your mock data and other modules from your production bundle in SPFx Azure AD B2B Users and Access to Azure AD Application Proxy Apps Update on retirement of Azure AD classic portal experience and migration of conditional access policies Azure Content Spotlight – IoT Edge New SharePoint CSOM version released for SharePoint Online - November 2017 Azure CDN: Dynamic Site Acceleration Resetting passwords on Azure AD-joined devices is much easier with the latest Windows update Angular application – Architecture Overview Microsoft Teams now supports AAD Conditional Access on the MAC Platform Authentication in Microsoft Teams Apps: Tabs -Sjoukje\n",
+  "keywords": [
+    
+  ],
+  "articleBody": "This bi-weekly update is a summary of trending Azure topics on social media, as well as other interesting content available on the internet. Below, you can see an overview of interesting blogs, articles, videos and more that are posted on social media and other channels:\nGeneral Public preview: Azure Automation watcher tasks Announcing Azure Location Based Services public preview Part 1: Enable your business stakeholders with a successful Microsoft 365 adoption Part 2: Recruit key stakeholders to help with your adoption Part 3: Identify business needs and prioritize Microsoft 365 scenarios Part 4: Promote Microsoft 365 awareness and enable end users with training Launching preview of Azure Migrate Microsoft Announces New Migration Tool Teams On Air Q\u0026A Roundup: Behind the scenes of Skype Meeting Broadcast SharePoint mobile notifications keep you up-to-date The new Azure AD sign-in and “Keep me signed in” experiences rolling out now! Development / IT Pro SharePoint PnP Webcast – ALM APIs for SharePoint Framework solutions and add-ins Moving an Office 365 domain to a new tenant Exclude your mock data and other modules from your production bundle in SPFx Azure AD B2B Users and Access to Azure AD Application Proxy Apps Update on retirement of Azure AD classic portal experience and migration of conditional access policies Azure Content Spotlight – IoT Edge New SharePoint CSOM version released for SharePoint Online - November 2017 Azure CDN: Dynamic Site Acceleration Resetting passwords on Azure AD-joined devices is much easier with the latest Windows update Angular application – Architecture Overview Microsoft Teams now supports AAD Conditional Access on the MAC Platform Authentication in Microsoft Teams Apps: Tabs -Sjoukje\n",
+  "wordCount" : "269",
+  "inLanguage": "en",
+  "datePublished": "2017-11-30T00:00:00Z",
+  "dateModified": "2017-11-30T00:00:00Z",
+  "author":{
+    "@type": "Person",
+    "name": "sjoukje.eth"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "//localhost:1313/archive/2017-11-30-bi-weekly-azure-summary-part-28/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "sjoukje.eth",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "//localhost:1313/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="//localhost:1313/" accesskey="h" title="sjoukje.eth (Alt + H)">sjoukje.eth</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="//localhost:1313/posts/" title="Posts">
+                    <span>Posts</span>
+                </a>
+            </li>
+            <li>
+                <a href="//localhost:1313/books/" title="Books">
+                    <span>Books</span>
+                </a>
+            </li>
+            <li>
+                <a href="//localhost:1313/about/" title="About">
+                    <span>About</span>
+                </a>
+            </li>
+            <li>
+                <a href="//localhost:1313/archive/" title="Archive">
+                    <span>Archive</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="//localhost:1313/">Home</a>&nbsp;»&nbsp;<a href="//localhost:1313/archive/">Archives</a></div>
+    <h1 class="post-title entry-hint-parent">
+      Bi-weekly Azure Summary – Part 28
+    </h1>
+    <div class="post-meta"><span title='2017-11-30 00:00:00 +0000 UTC'>November 30, 2017</span>&nbsp;·&nbsp;<span>2 min</span>&nbsp;·&nbsp;<span>sjoukje.eth</span>
+
+</div>
+  </header> 
+  <div class="post-content"><p>This bi-weekly update is a summary of trending Azure topics on social media, as well as other interesting content available on the internet.
+Below, you can see an overview of interesting blogs, articles, videos and more that are posted on social media and other channels:</p>
+<h3 id="general">General<a hidden class="anchor" aria-hidden="true" href="#general">#</a></h3>
+<ul>
+<li><a href="%22https://azure.microsoft.com/en-us/updates/azure-automation-watcher-tasks-public-preview-now-available/%22">Public preview: Azure Automation watcher tasks</a></li>
+<li><a href="%22https://azure.microsoft.com/en-us/blog/announcing-azure-location-based-services-public-preview/%22">Announcing Azure Location Based Services public preview</a></li>
+<li><a href="%22https://techcommunity.microsoft.com/t5/Office-365-Blog/Four-Success-Factors-for-Driving-Microsoft-365-Adoption/ba-p/125098%22">Part 1: Enable your business stakeholders with a successful Microsoft 365 adoption</a></li>
+<li><a href="%22https://techcommunity.microsoft.com/t5/Office-365-Blog/Part-2-Recruit-key-stakeholders-to-help-with-your-adoption/ba-p/123604%22">Part 2: Recruit key stakeholders to help with your adoption</a></li>
+<li><a href="%22https://techcommunity.microsoft.com/t5/Office-365-Blog/Part-3-Identify-business-needs-and-prioritize-Microsoft-365/ba-p/123620%22">Part 3: Identify business needs and prioritize Microsoft 365 scenarios</a></li>
+<li><a href="%22https://techcommunity.microsoft.com/t5/Office-365-Blog/Part-4-Promote-Microsoft-365-awareness-and-enable-end-users-with/ba-p/123629%22">Part 4: Promote Microsoft 365 awareness and enable end users with training</a></li>
+<li><a href="%22https://azure.microsoft.com/en-us/blog/launching-preview-of-azure-migrate/%22">Launching preview of Azure Migrate</a></li>
+<li><a href="%22https://en.share-gate.com/blog/microsoft-announces-new-migration-tool%22">Microsoft Announces New Migration Tool</a></li>
+<li><a href="%22https://techcommunity.microsoft.com/t5/Microsoft-Teams-Blog/Teams-On-Air-Q-amp-A-Roundup-Behind-the-scenes-of-Skype-Meeting/ba-p/129986%22">Teams On Air Q&amp;A Roundup: Behind the scenes of Skype Meeting Broadcast</a></li>
+<li><a href="%22https://techcommunity.microsoft.com/t5/SharePoint-Blog/SharePoint-mobile-notifications-keep-you-up-to-date/ba-p/128763%22">SharePoint mobile notifications keep you up-to-date</a></li>
+<li><a href="%22https://cloudblogs.microsoft.com/enterprisemobility/2017/11/15/the-new-azure-ad-sign-in-and-keep-me-signed-in-experiences-rolling-out-now/%22">The new Azure AD sign-in and “Keep me signed in” experiences rolling out now!</a></li>
+</ul>
+<h3></h3>
+<h3 id="development--it-pro">Development / IT Pro<a hidden class="anchor" aria-hidden="true" href="#development--it-pro">#</a></h3>
+<ul>
+<li><a href="%22https://dev.office.com/blogs/alm-apis-for-sharepoint-framework-solutions-and-add-ins%22">SharePoint PnP Webcast – ALM APIs for SharePoint Framework solutions and add-ins</a></li>
+<li><a href="%22https://blog.kloud.com.au/2017/11/26/moving-an-office-365-domain-to-a-new-tenant/%22">Moving an Office 365 domain to a new tenant</a></li>
+<li><a href="%22https://www.eliostruyf.com/exclude-your-mock-data-and-other-modules-from-your-production-bundle-in-spfx/%22">Exclude your mock data and other modules from your production bundle in SPFx</a></li>
+<li><a href="%22https://gotoguy.blog/2017/11/23/azure-ad-b2b-users-and-access-to-azure-ad-application-proxy-apps/%22">Azure AD B2B Users and Access to Azure AD Application Proxy Apps</a></li>
+<li><a href="%22https://cloudblogs.microsoft.com/enterprisemobility/2017/11/29/update-on-retirement-of-azure-ad-classic-portal-experience-and-migration-of-conditional-access-policies/%22">Update on retirement of Azure AD classic portal experience and migration of conditional access policies</a></li>
+<li><a href="%22https://blogs.msdn.microsoft.com/azuredev/2017/11/23/azure-content-spotlight-iot-edge/%22">Azure Content Spotlight – IoT Edge</a></li>
+<li><a href="%22https://dev.office.com/blogs/new-sharepoint-csom-version-released-for-Office-365-november-2017%22">New SharePoint CSOM version released for SharePoint Online - November 2017</a></li>
+<li><a href="%22https://channel9.msdn.com/Shows/Azure-Friday/Azure-CDN-Dynamic-Site-Acceleration%22">Azure CDN: Dynamic Site Acceleration</a></li>
+<li><a href="%22https://cloudblogs.microsoft.com/enterprisemobility/2017/11/20/resetting-passwords-on-azure-ad-joined-devices-is-much-easier-with-the-latest-windows-update/%22">Resetting passwords on Azure AD-joined devices is much easier with the latest Windows update</a></li>
+<li><a href="%22http://www.dotnetcurry.com/angularjs/1400/angular-application-architecture%22">Angular application – Architecture Overview</a></li>
+<li><a href="%22https://techcommunity.microsoft.com/t5/Microsoft-Teams-Blog/Microsoft-Teams-now-supports-AAD-Conditional-Access-on-the-MAC/ba-p/129044%22">Microsoft Teams now supports AAD Conditional Access on the MAC Platform</a></li>
+<li><a href="%22https://dev.office.com/blogs/authentication-in-microsoft-teams-apps-tabs%22">Authentication in Microsoft Teams Apps: Tabs</a></li>
+</ul>
+<p> 
+ 
+-Sjoukje</p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+    </ul>
+
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="//localhost:1313/">sjoukje.eth</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerHTML = 'copy';
+
+        function copyingDone() {
+            copybutton.innerHTML = 'copied!';
+            setTimeout(() => {
+                copybutton.innerHTML = 'copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+</body>
+
+</html>

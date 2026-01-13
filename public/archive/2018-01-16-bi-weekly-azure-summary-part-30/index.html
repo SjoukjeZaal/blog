@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto" data-theme="auto">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Bi-weekly Azure Summary – Part 30 | sjoukje.eth</title>
+<meta name="keywords" content="">
+<meta name="description" content="This bi-weekly update is a summary of trending Azure topics on social media, as well as other interesting content available on the internet.
+Below, you can see an overview of interesting blogs, articles, videos and more that are posted on social media and other channels:
+General
+
+Tech Tips for Microsoft Teams including community management with Yammer
+Microsoft returns to Las Vegas at SharePoint Conference (NA) 2018 (&amp; Call for Content)
+General Availability of the SharePoint Migration Tool &amp; SharePoint Migration Assessment Tool Updates
+Automatically apply labels to sensitive files in cloud apps
+Azure Marketplace new offers in December 2017
+Data protection beyond backup and recovery with Office 36
+New toolkits for security and GDPR
+SharePoint pages and image editing updates in Office 365
+Insider Slow: Outlook for Mac now supports creating tables
+Insider Fast: Outlook for Mac now supports creation of Office 365 Groups!
+6 Steps to Prepare for General Data Protection Regulation (GDPR)
+GDPR How-to: Get organized and implement the right processes
+
+
+Development / IT Pro
+
+Microsoft Teams Csharp Sample App
+SharePoint Framework snippets extension for Visual Studio Code
+Inconvenient no-script sites and SharePoint Framework
+How to add a new a alias to an existing Office 365 group
+January 2018 Office Update Release
+SharePoint Dev Ecosystem / Patterns and Practices - January 2018 monthly community call recording
+Create and use custom SharePoint site designs in Office 365
+Using Cognitive Search to Understand the JFK Documents
+New version of Office 365 CLI (v0.4.0)
+Customizing Office 365 ProPlus using the Office Customization Tool for Click-to-Run
+Public preview: Application security groups in all regions
+Azure Security Center and Microsoft Web Application Firewall Integration
+Last week in Azure: Securing Azure infrastructure from CPU vulnerability, and more
+SharePoint Patterns &amp; Practices – January 2018 update
+SharePoint PnP Webcast – Asynchronous Pattern for Creating Modern SharePoint Sites
+Azure Advisor Updates
+Expanded options for accessing Cloud Shell
+
+ 
+ 
+-Sjoukje">
+<meta name="author" content="sjoukje.eth">
+<link rel="canonical" href="//localhost:1313/archive/2018-01-16-bi-weekly-azure-summary-part-30/">
+<link crossorigin="anonymous" href="../../assets/css/stylesheet.36f09b336921909a5971cfa84422229fa3edb550fa46b7707cb5436b0983bdcf.css" integrity="sha256-NvCbM2khkJpZcc&#43;oRCIin6PttVD6RrdwfLVDawmDvc8=" rel="preload stylesheet" as="style">
+<link rel="icon" href="//localhost:1313/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="//localhost:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="//localhost:1313/favicon-32x32.png">
+<link rel="apple-touch-icon" href="//localhost:1313/apple-touch-icon.png">
+<link rel="mask-icon" href="//localhost:1313/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="//localhost:1313/archive/2018-01-16-bi-weekly-azure-summary-part-30/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script><meta property="og:url" content="//localhost:1313/archive/2018-01-16-bi-weekly-azure-summary-part-30/">
+  <meta property="og:site_name" content="sjoukje.eth">
+  <meta property="og:title" content="Bi-weekly Azure Summary – Part 30">
+  <meta property="og:description" content="This bi-weekly update is a summary of trending Azure topics on social media, as well as other interesting content available on the internet. Below, you can see an overview of interesting blogs, articles, videos and more that are posted on social media and other channels:
+General Tech Tips for Microsoft Teams including community management with Yammer Microsoft returns to Las Vegas at SharePoint Conference (NA) 2018 (&amp; Call for Content) General Availability of the SharePoint Migration Tool &amp; SharePoint Migration Assessment Tool Updates Automatically apply labels to sensitive files in cloud apps Azure Marketplace new offers in December 2017 Data protection beyond backup and recovery with Office 36 New toolkits for security and GDPR SharePoint pages and image editing updates in Office 365 Insider Slow: Outlook for Mac now supports creating tables Insider Fast: Outlook for Mac now supports creation of Office 365 Groups! 6 Steps to Prepare for General Data Protection Regulation (GDPR) GDPR How-to: Get organized and implement the right processes Development / IT Pro Microsoft Teams Csharp Sample App SharePoint Framework snippets extension for Visual Studio Code Inconvenient no-script sites and SharePoint Framework How to add a new a alias to an existing Office 365 group January 2018 Office Update Release SharePoint Dev Ecosystem / Patterns and Practices - January 2018 monthly community call recording Create and use custom SharePoint site designs in Office 365 Using Cognitive Search to Understand the JFK Documents New version of Office 365 CLI (v0.4.0) Customizing Office 365 ProPlus using the Office Customization Tool for Click-to-Run Public preview: Application security groups in all regions Azure Security Center and Microsoft Web Application Firewall Integration Last week in Azure: Securing Azure infrastructure from CPU vulnerability, and more SharePoint Patterns &amp; Practices – January 2018 update SharePoint PnP Webcast – Asynchronous Pattern for Creating Modern SharePoint Sites Azure Advisor Updates Expanded options for accessing Cloud Shell -Sjoukje">
+  <meta property="og:locale" content="en-us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="archive">
+    <meta property="article:published_time" content="2018-01-16T00:00:00+00:00">
+    <meta property="article:modified_time" content="2018-01-16T00:00:00+00:00">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Bi-weekly Azure Summary – Part 30">
+<meta name="twitter:description" content="This bi-weekly update is a summary of trending Azure topics on social media, as well as other interesting content available on the internet.
+Below, you can see an overview of interesting blogs, articles, videos and more that are posted on social media and other channels:
+General
+
+Tech Tips for Microsoft Teams including community management with Yammer
+Microsoft returns to Las Vegas at SharePoint Conference (NA) 2018 (&amp; Call for Content)
+General Availability of the SharePoint Migration Tool &amp; SharePoint Migration Assessment Tool Updates
+Automatically apply labels to sensitive files in cloud apps
+Azure Marketplace new offers in December 2017
+Data protection beyond backup and recovery with Office 36
+New toolkits for security and GDPR
+SharePoint pages and image editing updates in Office 365
+Insider Slow: Outlook for Mac now supports creating tables
+Insider Fast: Outlook for Mac now supports creation of Office 365 Groups!
+6 Steps to Prepare for General Data Protection Regulation (GDPR)
+GDPR How-to: Get organized and implement the right processes
+
+
+Development / IT Pro
+
+Microsoft Teams Csharp Sample App
+SharePoint Framework snippets extension for Visual Studio Code
+Inconvenient no-script sites and SharePoint Framework
+How to add a new a alias to an existing Office 365 group
+January 2018 Office Update Release
+SharePoint Dev Ecosystem / Patterns and Practices - January 2018 monthly community call recording
+Create and use custom SharePoint site designs in Office 365
+Using Cognitive Search to Understand the JFK Documents
+New version of Office 365 CLI (v0.4.0)
+Customizing Office 365 ProPlus using the Office Customization Tool for Click-to-Run
+Public preview: Application security groups in all regions
+Azure Security Center and Microsoft Web Application Firewall Integration
+Last week in Azure: Securing Azure infrastructure from CPU vulnerability, and more
+SharePoint Patterns &amp; Practices – January 2018 update
+SharePoint PnP Webcast – Asynchronous Pattern for Creating Modern SharePoint Sites
+Azure Advisor Updates
+Expanded options for accessing Cloud Shell
+
+ 
+ 
+-Sjoukje">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Archives",
+      "item": "//localhost:1313/archive/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "Bi-weekly Azure Summary – Part 30",
+      "item": "//localhost:1313/archive/2018-01-16-bi-weekly-azure-summary-part-30/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Bi-weekly Azure Summary – Part 30",
+  "name": "Bi-weekly Azure Summary – Part 30",
+  "description": "This bi-weekly update is a summary of trending Azure topics on social media, as well as other interesting content available on the internet. Below, you can see an overview of interesting blogs, articles, videos and more that are posted on social media and other channels:\nGeneral Tech Tips for Microsoft Teams including community management with Yammer Microsoft returns to Las Vegas at SharePoint Conference (NA) 2018 (\u0026amp; Call for Content) General Availability of the SharePoint Migration Tool \u0026amp; SharePoint Migration Assessment Tool Updates Automatically apply labels to sensitive files in cloud apps Azure Marketplace new offers in December 2017 Data protection beyond backup and recovery with Office 36 New toolkits for security and GDPR SharePoint pages and image editing updates in Office 365 Insider Slow: Outlook for Mac now supports creating tables Insider Fast: Outlook for Mac now supports creation of Office 365 Groups! 6 Steps to Prepare for General Data Protection Regulation (GDPR) GDPR How-to: Get organized and implement the right processes Development / IT Pro Microsoft Teams Csharp Sample App SharePoint Framework snippets extension for Visual Studio Code Inconvenient no-script sites and SharePoint Framework How to add a new a alias to an existing Office 365 group January 2018 Office Update Release SharePoint Dev Ecosystem / Patterns and Practices - January 2018 monthly community call recording Create and use custom SharePoint site designs in Office 365 Using Cognitive Search to Understand the JFK Documents New version of Office 365 CLI (v0.4.0) Customizing Office 365 ProPlus using the Office Customization Tool for Click-to-Run Public preview: Application security groups in all regions Azure Security Center and Microsoft Web Application Firewall Integration Last week in Azure: Securing Azure infrastructure from CPU vulnerability, and more SharePoint Patterns \u0026amp; Practices – January 2018 update SharePoint PnP Webcast – Asynchronous Pattern for Creating Modern SharePoint Sites Azure Advisor Updates Expanded options for accessing Cloud Shell -Sjoukje\n",
+  "keywords": [
+    
+  ],
+  "articleBody": "This bi-weekly update is a summary of trending Azure topics on social media, as well as other interesting content available on the internet. Below, you can see an overview of interesting blogs, articles, videos and more that are posted on social media and other channels:\nGeneral Tech Tips for Microsoft Teams including community management with Yammer Microsoft returns to Las Vegas at SharePoint Conference (NA) 2018 (\u0026 Call for Content) General Availability of the SharePoint Migration Tool \u0026 SharePoint Migration Assessment Tool Updates Automatically apply labels to sensitive files in cloud apps Azure Marketplace new offers in December 2017 Data protection beyond backup and recovery with Office 36 New toolkits for security and GDPR SharePoint pages and image editing updates in Office 365 Insider Slow: Outlook for Mac now supports creating tables Insider Fast: Outlook for Mac now supports creation of Office 365 Groups! 6 Steps to Prepare for General Data Protection Regulation (GDPR) GDPR How-to: Get organized and implement the right processes Development / IT Pro Microsoft Teams Csharp Sample App SharePoint Framework snippets extension for Visual Studio Code Inconvenient no-script sites and SharePoint Framework How to add a new a alias to an existing Office 365 group January 2018 Office Update Release SharePoint Dev Ecosystem / Patterns and Practices - January 2018 monthly community call recording Create and use custom SharePoint site designs in Office 365 Using Cognitive Search to Understand the JFK Documents New version of Office 365 CLI (v0.4.0) Customizing Office 365 ProPlus using the Office Customization Tool for Click-to-Run Public preview: Application security groups in all regions Azure Security Center and Microsoft Web Application Firewall Integration Last week in Azure: Securing Azure infrastructure from CPU vulnerability, and more SharePoint Patterns \u0026 Practices – January 2018 update SharePoint PnP Webcast – Asynchronous Pattern for Creating Modern SharePoint Sites Azure Advisor Updates Expanded options for accessing Cloud Shell -Sjoukje\n",
+  "wordCount" : "312",
+  "inLanguage": "en",
+  "datePublished": "2018-01-16T00:00:00Z",
+  "dateModified": "2018-01-16T00:00:00Z",
+  "author":{
+    "@type": "Person",
+    "name": "sjoukje.eth"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "//localhost:1313/archive/2018-01-16-bi-weekly-azure-summary-part-30/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "sjoukje.eth",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "//localhost:1313/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="//localhost:1313/" accesskey="h" title="sjoukje.eth (Alt + H)">sjoukje.eth</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="//localhost:1313/posts/" title="Posts">
+                    <span>Posts</span>
+                </a>
+            </li>
+            <li>
+                <a href="//localhost:1313/books/" title="Books">
+                    <span>Books</span>
+                </a>
+            </li>
+            <li>
+                <a href="//localhost:1313/about/" title="About">
+                    <span>About</span>
+                </a>
+            </li>
+            <li>
+                <a href="//localhost:1313/archive/" title="Archive">
+                    <span>Archive</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="//localhost:1313/">Home</a>&nbsp;»&nbsp;<a href="//localhost:1313/archive/">Archives</a></div>
+    <h1 class="post-title entry-hint-parent">
+      Bi-weekly Azure Summary – Part 30
+    </h1>
+    <div class="post-meta"><span title='2018-01-16 00:00:00 +0000 UTC'>January 16, 2018</span>&nbsp;·&nbsp;<span>2 min</span>&nbsp;·&nbsp;<span>sjoukje.eth</span>
+
+</div>
+  </header> 
+  <div class="post-content"><p>This bi-weekly update is a summary of trending Azure topics on social media, as well as other interesting content available on the internet.
+Below, you can see an overview of interesting blogs, articles, videos and more that are posted on social media and other channels:</p>
+<h3 id="general">General<a hidden class="anchor" aria-hidden="true" href="#general">#</a></h3>
+<ul>
+<li><a href="%22https://techcommunity.microsoft.com/t5/Microsoft-Teams-Blog/Tech-Tips-for-Microsoft-Teams-including-community-management/ba-p/134459%22">Tech Tips for Microsoft Teams including community management with Yammer</a></li>
+<li><a href="%22https://techcommunity.microsoft.com/t5/SharePoint-Blog/Microsoft-returns-to-Las-Vegas-at-SharePoint-Conference-NA-2018/ba-p/143723%22">Microsoft returns to Las Vegas at SharePoint Conference (NA) 2018 (&amp; Call for Content)</a></li>
+<li><a href="%22https://techcommunity.microsoft.com/t5/SharePoint-Blog/General-Availability-of-the-SharePoint-Migration-Tool-amp/ba-p/143689%22">General Availability of the SharePoint Migration Tool &amp; SharePoint Migration Assessment Tool Updates</a></li>
+<li><a href="%22https://cloudblogs.microsoft.com/enterprisemobility/2018/01/10/automatically-apply-labels-to-sensitive-files-in-cloud-apps%22">Automatically apply labels to sensitive files in cloud apps</a></li>
+<li><a href="%22https://azure.microsoft.com/en-us/blog/azure-marketplace-new-offers-in-december-2017/%22">Azure Marketplace new offers in December 2017</a></li>
+<li><a href="%22https://techcommunity.microsoft.com/t5/Office-365-Blog/Data-protection-beyond-backup-and-recovery-with-Office-365/ba-p/142871%22">Data protection beyond backup and recovery with Office 36</a></li>
+<li><a href="%22https://blogs.technet.microsoft.com/msuspartner/2018/01/08/new-toolkits-for-security-and-gdpr/%22">New toolkits for security and GDPR</a></li>
+<li><a href="%22https://techcommunity.microsoft.com/t5/SharePoint-Blog/SharePoint-pages-and-image-editing-updates-in-Office-365/ba-p/143104%22">SharePoint pages and image editing updates in Office 365</a></li>
+<li><a href="%22https://techcommunity.microsoft.com/t5/Outlook-Blog/Insider-Slow-Outlook-for-Mac-now-supports-creating-tables/ba-p/142844%22">Insider Slow: Outlook for Mac now supports creating tables</a></li>
+<li><a href="%22https://techcommunity.microsoft.com/t5/Outlook-Blog/Insider-Fast-Outlook-for-Mac-now-supports-creation-of-Office-365/ba-p/141064%22">Insider Fast: Outlook for Mac now supports creation of Office 365 Groups!</a></li>
+<li><a href="%22https://www.sharepointeurope.com/general-data-protection-regulation-gdpr/%22">6 Steps to Prepare for General Data Protection Regulation (GDPR)</a></li>
+<li><a href="%22https://azure.microsoft.com/en-us/blog/gdpr-how-to-get-organized-and-implement-the-right-processes/%22">GDPR How-to: Get organized and implement the right processes</a></li>
+</ul>
+<h3></h3>
+<h3 id="development--it-pro">Development / IT Pro<a hidden class="anchor" aria-hidden="true" href="#development--it-pro">#</a></h3>
+<ul>
+<li><a href="%22https://techcommunity.microsoft.com/t5/Microsoft-Teams-Blog/Microsoft-Teams-Csharp-Sample-App/ba-p/144451%22">Microsoft Teams Csharp Sample App</a></li>
+<li><a href="%22https://www.eliostruyf.com/sharepoint-framework-snippets-extension-visual-studio-code/%22">SharePoint Framework snippets extension for Visual Studio Code</a></li>
+<li><a href="%22https://blog.mastykarz.nl/inconvenient-no-script-sites-sharepoint-framework/%22">Inconvenient no-script sites and SharePoint Framework</a></li>
+<li><a href="%22https://blogs.technet.microsoft.com/exovoice/2018/01/11/how-to-add-a-new-a-alias-to-an-existing-office-365-group%22">How to add a new a alias to an existing Office 365 group</a></li>
+<li><a href="%22https://blogs.technet.microsoft.com/office_sustained_engineering/2018/01/09/january-2018-office-update-release%22">January 2018 Office Update Release</a></li>
+<li><a href="%22https://dev.office.com/blogs/sp-dev-january-2018-monthly-community-call-recording%22">SharePoint Dev Ecosystem / Patterns and Practices - January 2018 monthly community call recording</a></li>
+<li><a href="%22https://techcommunity.microsoft.com/t5/SharePoint-Blog/Create-and-use-custom-SharePoint-site-designs-in-Office-365/ba-p/143243%22">Create and use custom SharePoint site designs in Office 365</a></li>
+<li><a href="%22https://channel9.msdn.com/Shows/AI-Show/Using-Cognitive-Search-to-Understand-the-JFK-Documents%22">Using Cognitive Search to Understand the JFK Documents</a></li>
+<li><a href="%22https://dev.office.com/blogs/new-version-of-office-365-cli-040%22">New version of Office 365 CLI (v0.4.0)</a></li>
+<li><a href="%22https://techcommunity.microsoft.com/t5/Office-365-Blog/Customizing-Office-365-ProPlus-using-the-Office-Customization/ba-p/141932%22">Customizing Office 365 ProPlus using the Office Customization Tool for Click-to-Run</a></li>
+<li><a href="%22https://azure.microsoft.com/en-us/updates/public-preview-for-asg/%22">Public preview: Application security groups in all regions</a></li>
+<li><a href="%22https://azure.microsoft.com/en-us/blog/azure-security-center-and-microsoft-web-application-firewall-integration/%22">Azure Security Center and Microsoft Web Application Firewall Integration</a></li>
+<li><a href="%22https://azure.microsoft.com/en-us/blog/last-week-in-azure-week-of-2018-01-01/%22">Last week in Azure: Securing Azure infrastructure from CPU vulnerability, and more</a></li>
+<li><a href="%22https://dev.office.com/blogs/pnp-january-2018-update%22">SharePoint Patterns &amp; Practices – January 2018 update</a></li>
+<li><a href="%22https://dev.office.com/blogs/asynchronous-pattern-for-creating-modern-sharepoint-sites%22">SharePoint PnP Webcast – Asynchronous Pattern for Creating Modern SharePoint Sites</a></li>
+<li><a href="%22https://channel9.msdn.com/Shows/Azure-Friday/Azure-Advisor-Updates%22">Azure Advisor Updates</a></li>
+<li><a href="%22https://azure.microsoft.com/en-us/updates/expanded-options-for-accessing-cloud-shell/%22">Expanded options for accessing Cloud Shell</a></li>
+</ul>
+<p> 
+ 
+-Sjoukje</p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+    </ul>
+
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="//localhost:1313/">sjoukje.eth</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerHTML = 'copy';
+
+        function copyingDone() {
+            copybutton.innerHTML = 'copied!';
+            setTimeout(() => {
+                copybutton.innerHTML = 'copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+</body>
+
+</html>

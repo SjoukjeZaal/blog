@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto" data-theme="auto">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Sustainability cloud computing with Microsoft Azure | sjoukje.eth</title>
+<meta name="keywords" content="">
+<meta name="description" content="Embracing cloud services and migrating workloads from on-premises data centers to the cloud, is one step that will have a positive impact.
+Sustainability and humanity’s response to climate change are among the biggest challenges of our lifetime. Luckily, this is becoming more important for most companies across industries.
+At Capgemini, we have a bold ambition: we will achieve carbon neutrality no later than 2025 and become a net-zero business by 2030.This means accelerating our approach to carbon reduction across our key impact areas. And together with reducing our own environmental impact for a net-zero future, we also want to help our clients to transform to a low-carbon future.">
+<meta name="author" content="sjoukje.eth">
+<link rel="canonical" href="//localhost:1313/archive/2021-05-25-sustainability-cloud-computing-with-microsoft-azur/">
+<link crossorigin="anonymous" href="../../assets/css/stylesheet.36f09b336921909a5971cfa84422229fa3edb550fa46b7707cb5436b0983bdcf.css" integrity="sha256-NvCbM2khkJpZcc&#43;oRCIin6PttVD6RrdwfLVDawmDvc8=" rel="preload stylesheet" as="style">
+<link rel="icon" href="//localhost:1313/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="//localhost:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="//localhost:1313/favicon-32x32.png">
+<link rel="apple-touch-icon" href="//localhost:1313/apple-touch-icon.png">
+<link rel="mask-icon" href="//localhost:1313/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="//localhost:1313/archive/2021-05-25-sustainability-cloud-computing-with-microsoft-azur/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script><meta property="og:url" content="//localhost:1313/archive/2021-05-25-sustainability-cloud-computing-with-microsoft-azur/">
+  <meta property="og:site_name" content="sjoukje.eth">
+  <meta property="og:title" content="Sustainability cloud computing with Microsoft Azure">
+  <meta property="og:description" content="Embracing cloud services and migrating workloads from on-premises data centers to the cloud, is one step that will have a positive impact.
+Sustainability and humanity’s response to climate change are among the biggest challenges of our lifetime. Luckily, this is becoming more important for most companies across industries.
+At Capgemini, we have a bold ambition: we will achieve carbon neutrality no later than 2025 and become a net-zero business by 2030.This means accelerating our approach to carbon reduction across our key impact areas. And together with reducing our own environmental impact for a net-zero future, we also want to help our clients to transform to a low-carbon future.">
+  <meta property="og:locale" content="en-us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="archive">
+    <meta property="article:published_time" content="2021-05-25T00:00:00+00:00">
+    <meta property="article:modified_time" content="2021-05-25T00:00:00+00:00">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Sustainability cloud computing with Microsoft Azure">
+<meta name="twitter:description" content="Embracing cloud services and migrating workloads from on-premises data centers to the cloud, is one step that will have a positive impact.
+Sustainability and humanity’s response to climate change are among the biggest challenges of our lifetime. Luckily, this is becoming more important for most companies across industries.
+At Capgemini, we have a bold ambition: we will achieve carbon neutrality no later than 2025 and become a net-zero business by 2030.This means accelerating our approach to carbon reduction across our key impact areas. And together with reducing our own environmental impact for a net-zero future, we also want to help our clients to transform to a low-carbon future.">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Archives",
+      "item": "//localhost:1313/archive/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "Sustainability cloud computing with Microsoft Azure",
+      "item": "//localhost:1313/archive/2021-05-25-sustainability-cloud-computing-with-microsoft-azur/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Sustainability cloud computing with Microsoft Azure",
+  "name": "Sustainability cloud computing with Microsoft Azure",
+  "description": "Embracing cloud services and migrating workloads from on-premises data centers to the cloud, is one step that will have a positive impact.\nSustainability and humanity’s response to climate change are among the biggest challenges of our lifetime. Luckily, this is becoming more important for most companies across industries.\nAt Capgemini, we have a bold ambition: we will achieve carbon neutrality no later than 2025 and become a net-zero business by 2030.This means accelerating our approach to carbon reduction across our key impact areas. And together with reducing our own environmental impact for a net-zero future, we also want to help our clients to transform to a low-carbon future.\n",
+  "keywords": [
+    
+  ],
+  "articleBody": "Embracing cloud services and migrating workloads from on-premises data centers to the cloud, is one step that will have a positive impact.\nSustainability and humanity’s response to climate change are among the biggest challenges of our lifetime. Luckily, this is becoming more important for most companies across industries.\nAt Capgemini, we have a bold ambition: we will achieve carbon neutrality no later than 2025 and become a net-zero business by 2030.This means accelerating our approach to carbon reduction across our key impact areas. And together with reducing our own environmental impact for a net-zero future, we also want to help our clients to transform to a low-carbon future.\nOne way organizations can become more carbon efficient is by using public cloud services, such as Microsoft Azure. A study from 2018 found that using the Microsoft Azure cloud platform can be up to 93% more energy efficient and up to 98% more carbon efficient than on-premises solutions. This study looked at four services, which are responsible for nearly half of the energy consumed in the Microsoft datacenters: Azure Compute, Azure Storage, Exchange Online, and SharePoint Online. In January 2020, Microsoft announced its intention to become carbon negative by 2030.\nTo help achieve this goal, Microsoft Azure data centers provide an incredible opportunity to give back to all the communities in which they operate. To these ends, Microsoft Azure will focus on the following key areas of environmental impact:\nCarbon: 100% renewable energy by 2025 Water: Water positive by 2030, replenish more water than is consumed Waste: Zero- waste certification by 2030 Ecosystems: Net-zero deforestation from new construction. These commitments and investments will not only help Microsoft reach its goals and reduce its environmental impact, but it will also bring huge opportunities for clients and partners to achieve their own sustainability goals.\nIn addition to the benefits that on-premises data-center migration to cloud solutions can bring, enterprises are also looking for additional insights into the carbon impact of their cloud workloads. These impacts can then help them to make sustainable computer decisions. Microsoft has released a Power BI application, Microsoft Sustainability Calculator, to provide clients these new insights.\nThe Microsoft Sustainability Calculator for valuable insights The Microsoft Sustainability Calculator gives clients valuable insights about their carbon emissions data associated with their Azure services. It provides the ability to quantify the carbon impact of each Azure subscription over a period, datacenter regions, and the estimated savings from running those workloads in on-premises datacenters vs Azure.\nThe calculations are based on Azure consumption, and it uses the energy requirements of the Azure services, the energy mix of the electric grid serving the hosting data centers, Microsoft’s procurement of renewable energy in those datacenters, and the emissions associated with the transfer of data over the internet as input. The result is an estimate of the greenhouse gas (GHG) emissions, measured in total metric tons of carbon equivalent (MTCO2e), related to a customer’s consumption of Azure.\nThe calculator will also give a granular overview of all the estimated emissions savings from your running workloads on Azure. For this, it takes into account Microsoft’s IT operational efficiency, IT equipment efficiency, and data-center infrastructure efficiency compared to that of a typical on-premises deployment.\nGet started with the Microsoft Sustainability Calculator Azure Enterprise customers can get started with the Microsoft Sustainability Calculator by downloading the Power BI application from AppSource. There, you can download and install the application.\nOne thing to note is that you need to have access to the Azure Enterprise Portal as an admin and you need to have the current tenant ID of your Azure tenant.\nTo get started, you can use the following sources:\nMicrosoft Sustainability Calculator: https://appsource.microsoft.com/en-us/product/power-bi/coi-sustainability.sustainability_dashboard Microsoft Sustainability Calculator Support Page: https://docs.microsoft.com/en-us/power-bi/connect-data/service-connect-to-microsoft-sustainability-calculator An excellent way to become more carbon efficient We want to help our clients to transform to a low-carbon future. Embracing cloud services and migrating workloads from on-premises data centers to the cloud, is one step that will have a positive impact on achieving these goals.\nIn line with Capgemini’s sustainable transformation and vision, Microsoft is committed to a sustainable future and has invested heavily in achieving this. Microsoft Azure brings you the benefits of these investments and commitments to help achieve your own sustainability goals.\nIf you would like more information about our investments and commitments to environmental sustainability, have a look at our website, or download our Environmental Sustainability report.\nIf you want more information about how we implement cloud solutions for our clients using Microsoft Azure, contact me on LinkedIn or Twitter.\nYou can also read my other articles here.\n",
+  "wordCount" : "763",
+  "inLanguage": "en",
+  "datePublished": "2021-05-25T00:00:00Z",
+  "dateModified": "2021-05-25T00:00:00Z",
+  "author":{
+    "@type": "Person",
+    "name": "sjoukje.eth"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "//localhost:1313/archive/2021-05-25-sustainability-cloud-computing-with-microsoft-azur/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "sjoukje.eth",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "//localhost:1313/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="//localhost:1313/" accesskey="h" title="sjoukje.eth (Alt + H)">sjoukje.eth</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="//localhost:1313/posts/" title="Posts">
+                    <span>Posts</span>
+                </a>
+            </li>
+            <li>
+                <a href="//localhost:1313/books/" title="Books">
+                    <span>Books</span>
+                </a>
+            </li>
+            <li>
+                <a href="//localhost:1313/about/" title="About">
+                    <span>About</span>
+                </a>
+            </li>
+            <li>
+                <a href="//localhost:1313/archive/" title="Archive">
+                    <span>Archive</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="//localhost:1313/">Home</a>&nbsp;»&nbsp;<a href="//localhost:1313/archive/">Archives</a></div>
+    <h1 class="post-title entry-hint-parent">
+      Sustainability cloud computing with Microsoft Azure
+    </h1>
+    <div class="post-meta"><span title='2021-05-25 00:00:00 +0000 UTC'>May 25, 2021</span>&nbsp;·&nbsp;<span>4 min</span>&nbsp;·&nbsp;<span>sjoukje.eth</span>
+
+</div>
+  </header> 
+  <div class="post-content"><p>Embracing cloud services and migrating workloads from on-premises data centers to the cloud, is one step that will have a positive impact.</p>
+<p>Sustainability and humanity’s response to climate change are among the biggest challenges of our lifetime. Luckily, this is becoming more important for most companies across industries.</p>
+<p>At Capgemini, we have a bold <a href="%22https://www.capgemini.com/our-company/our-corporate-social-responsibility-program/environmental-sustainability/%22">ambition</a>: we will achieve carbon neutrality no later than 2025 and become a net-zero business by 2030.This means accelerating our approach to carbon reduction across our key impact areas. And together with reducing our own environmental impact for a net-zero future, we also want to help our clients to transform to a low-carbon future.</p>
+<p>One way organizations can become more carbon efficient is by using public cloud services, such as Microsoft Azure. A <a href="%22https://www.microsoft.com/download/details.aspx?id=56950%22">study</a> from 2018 found that using the Microsoft Azure cloud platform can be up to 93% more energy efficient and up to 98% more carbon efficient than on-premises solutions. This study looked at four services, which are responsible for nearly half of the energy consumed in the Microsoft datacenters: Azure Compute, Azure Storage, Exchange Online, and SharePoint Online. In January 2020, Microsoft announced its intention to become carbon negative by 2030.</p>
+<p>To help achieve this goal, Microsoft Azure data centers provide an incredible opportunity to give back to all the communities in which they operate. To these ends, Microsoft Azure will focus on the following key areas of environmental impact:</p>
+<ul>
+<li>Carbon: 100% renewable energy by 2025</li>
+<li>Water: Water positive by 2030, replenish more water than is consumed</li>
+<li>Waste: Zero- waste certification by 2030</li>
+<li>Ecosystems: Net-zero deforestation from new construction.</li>
+</ul>
+<p>These commitments and investments will not only help Microsoft reach its goals and reduce its environmental impact, but it will also bring huge opportunities for clients and partners to achieve their own sustainability goals.</p>
+<p>In addition to the benefits that on-premises data-center migration to cloud solutions can bring, enterprises are also looking for additional insights into the carbon impact of their cloud workloads. These impacts can then help them to make sustainable computer decisions. Microsoft has released a Power BI application, Microsoft Sustainability Calculator, to provide clients these new insights.</p>
+<h2 id="the-microsoft-sustainability-calculator-for-valuable-insights">The Microsoft Sustainability Calculator for valuable insights<a hidden class="anchor" aria-hidden="true" href="#the-microsoft-sustainability-calculator-for-valuable-insights">#</a></h2>
+<p>The Microsoft Sustainability Calculator gives clients valuable insights about their carbon emissions data associated with their Azure services. It provides the ability to quantify the carbon impact of each Azure subscription over a period, datacenter regions, and the estimated savings from running those workloads in on-premises datacenters vs Azure.</p>
+<p>The calculations are based on Azure consumption, and it uses the energy requirements of the Azure services, the energy mix of the electric grid serving the hosting data centers, Microsoft’s procurement of renewable energy in those datacenters, and the emissions associated with the transfer of data over the internet as input. The result is an estimate of the greenhouse gas (GHG) emissions, measured in total metric tons of carbon equivalent (MTCO2e), related to a customer’s consumption of Azure.</p>
+<p>The calculator will also give a granular overview of all the estimated emissions savings from your running workloads on Azure. For this, it takes into account Microsoft’s IT operational efficiency, IT equipment efficiency, and data-center infrastructure efficiency compared to that of a typical on-premises deployment.</p>
+<h2 id="get-started-with-the-microsoft-sustainability-calculator">Get started with the Microsoft Sustainability Calculator<a hidden class="anchor" aria-hidden="true" href="#get-started-with-the-microsoft-sustainability-calculator">#</a></h2>
+<p>Azure Enterprise customers can get started with the Microsoft Sustainability Calculator by downloading the Power BI application from AppSource. There, you can download and install the application.</p>
+<p>One thing to note is that you need to have access to the Azure Enterprise Portal as an admin and you need to have the current tenant ID of your Azure tenant.</p>
+<p>To get started, you can use the following sources:</p>
+<ul>
+<li>Microsoft Sustainability Calculator: <a href="%22https://appsource.microsoft.com/en-us/product/power-bi/coi-sustainability.sustainability_dashboard%22">https://appsource.microsoft.com/en-us/product/power-bi/coi-sustainability.sustainability_dashboard</a></li>
+<li>Microsoft Sustainability Calculator Support Page: <a href="%22https://docs.microsoft.com/en-us/power-bi/connect-data/service-connect-to-microsoft-sustainability-calculator%22">https://docs.microsoft.com/en-us/power-bi/connect-data/service-connect-to-microsoft-sustainability-calculator</a></li>
+</ul>
+<h2 id="an-excellent-way-to-become-more-carbon-efficient">An excellent way to become more carbon efficient<a hidden class="anchor" aria-hidden="true" href="#an-excellent-way-to-become-more-carbon-efficient">#</a></h2>
+<p>We want to help our clients to transform to a low-carbon future. Embracing cloud services and migrating workloads from on-premises data centers to the cloud, is one step that will have a positive impact on achieving these goals.</p>
+<p>In line with Capgemini’s sustainable transformation and vision, Microsoft is committed to a sustainable future and has invested heavily in achieving this. Microsoft Azure brings you the benefits of these investments and commitments to help achieve your own sustainability goals.</p>
+<p>If you would like more information about our investments and commitments to environmental sustainability, have a look at our <a href="%22https://www.capgemini.com/our-company/our-corporate-social-responsibility-program/environmental-sustainability/%22">website</a>, or download our <a href="%22https://www.capgemini.com/wp-content/uploads/2019/06/Capgemini-Environment-Report-18-19.pdf%22">Environmental Sustainability report</a>.</p>
+<p>If you want more information about how we implement cloud solutions for our clients using Microsoft Azure, contact me on <a href="%22https://www.linkedin.com/in/sjoukjezaal/%22">LinkedIn</a> or <a href="%22https://twitter.com/sjoukjezaal%22">Twitter</a>.</p>
+<p>You can also read my other articles <a href="%22https://sjoukjezaal.com/blogs/%22">here</a>.</p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+    </ul>
+
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="//localhost:1313/">sjoukje.eth</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerHTML = 'copy';
+
+        function copyingDone() {
+            copybutton.innerHTML = 'copied!';
+            setTimeout(() => {
+                copybutton.innerHTML = 'copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+</body>
+
+</html>

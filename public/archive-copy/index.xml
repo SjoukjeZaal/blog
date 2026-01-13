@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Archive Copies on sjoukje.eth</title>
+    <link>//localhost:1313/archive-copy/</link>
+    <description>Recent content in Archive Copies on sjoukje.eth</description>
+    <generator>Hugo -- 0.152.2</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 25 Oct 2017 00:00:00 +0000</lastBuildDate>
+    <atom:link href="//localhost:1313/archive-copy/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>2 Different Ways of Using Azure Key Vault in Your Logic Apps</title>
+      <link>//localhost:1313/archive-copy/2-ways-azure-key-vault-logic-apps/</link>
+      <pubDate>Wed, 25 Oct 2017 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/archive-copy/2-ways-azure-key-vault-logic-apps/</guid>
+      <description>&lt;h1 id=&#34;2-different-ways-of-using-azure-key-vault-in-your-logic-apps&#34;&gt;2 different ways of using Azure Key Vault in your Logic Apps&lt;/h1&gt;
+&lt;p&gt;Security is key nowadays and this means that you should secure your applications to the max. Azure Key Vault offers you a way to safely store your credentials, certificates and hardware security modules in Azure. These values can also be used inside your custom applications, like in web applications, Azure Functions, and Azure Logic Apps.&lt;/p&gt;
+&lt;p&gt;Azure Logic Apps offers an out-of-the-box connector that you can use to retrieve values easily and use them in your Logic App. However, there is a caveat here. You cannot use Managed Identities to access the Key Vault using the connector. Managed Identities are service principals in Azure Active Directory that are used to connect different services. You can use the identity to authenticate to any service that supports Azure AD authentication, including Key Vault, without any credentials in your code.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>
