@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto" data-theme="auto">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>SharePoint 2013 Workflows Part 2: Installing and Configuring The Workflow Manager | sjoukje.eth</title>
+<meta name="keywords" content="">
+<meta name="description" content="In this post I will guide you through installing and configuring the Workflow Manager for SharePoint 2013.
+Before starting the installation of the Workflow Manager, make sure that at least the SharePoint 2013 March Public Update (KB 2767999) is installed on toy SharePoint Server. This update has some bug fixes and added extra support for the Workflow Manager and workflow.
+Installing the Workflow Manager
+It is best to install the Workflow Manager using the Web Platform Installer tool. This will automatically install all the prerequisites like Service Bus 1.0.">
+<meta name="author" content="sjoukje.eth">
+<link rel="canonical" href="//localhost:1313/archive/sharepoint-2013-workflows-install-configure-workflow-manager-copy/">
+<link crossorigin="anonymous" href="../../assets/css/stylesheet.36f09b336921909a5971cfa84422229fa3edb550fa46b7707cb5436b0983bdcf.css" integrity="sha256-NvCbM2khkJpZcc&#43;oRCIin6PttVD6RrdwfLVDawmDvc8=" rel="preload stylesheet" as="style">
+<link rel="icon" href="//localhost:1313/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="//localhost:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="//localhost:1313/favicon-32x32.png">
+<link rel="apple-touch-icon" href="//localhost:1313/apple-touch-icon.png">
+<link rel="mask-icon" href="//localhost:1313/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="//localhost:1313/archive/sharepoint-2013-workflows-install-configure-workflow-manager-copy/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script><meta property="og:url" content="//localhost:1313/archive/sharepoint-2013-workflows-install-configure-workflow-manager-copy/">
+  <meta property="og:site_name" content="sjoukje.eth">
+  <meta property="og:title" content="SharePoint 2013 Workflows Part 2: Installing and Configuring The Workflow Manager">
+  <meta property="og:description" content="In this post I will guide you through installing and configuring the Workflow Manager for SharePoint 2013.
+Before starting the installation of the Workflow Manager, make sure that at least the SharePoint 2013 March Public Update (KB 2767999) is installed on toy SharePoint Server. This update has some bug fixes and added extra support for the Workflow Manager and workflow.
+Installing the Workflow Manager It is best to install the Workflow Manager using the Web Platform Installer tool. This will automatically install all the prerequisites like Service Bus 1.0.">
+  <meta property="og:locale" content="en-us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="archive">
+    <meta property="article:published_time" content="2014-11-08T00:00:00+00:00">
+    <meta property="article:modified_time" content="2014-11-08T00:00:00+00:00">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="SharePoint 2013 Workflows Part 2: Installing and Configuring The Workflow Manager">
+<meta name="twitter:description" content="In this post I will guide you through installing and configuring the Workflow Manager for SharePoint 2013.
+Before starting the installation of the Workflow Manager, make sure that at least the SharePoint 2013 March Public Update (KB 2767999) is installed on toy SharePoint Server. This update has some bug fixes and added extra support for the Workflow Manager and workflow.
+Installing the Workflow Manager
+It is best to install the Workflow Manager using the Web Platform Installer tool. This will automatically install all the prerequisites like Service Bus 1.0.">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Archives",
+      "item": "//localhost:1313/archive/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "SharePoint 2013 Workflows Part 2: Installing and Configuring The Workflow Manager",
+      "item": "//localhost:1313/archive/sharepoint-2013-workflows-install-configure-workflow-manager-copy/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "SharePoint 2013 Workflows Part 2: Installing and Configuring The Workflow Manager",
+  "name": "SharePoint 2013 Workflows Part 2: Installing and Configuring The Workflow Manager",
+  "description": "In this post I will guide you through installing and configuring the Workflow Manager for SharePoint 2013.\nBefore starting the installation of the Workflow Manager, make sure that at least the SharePoint 2013 March Public Update (KB 2767999) is installed on toy SharePoint Server. This update has some bug fixes and added extra support for the Workflow Manager and workflow.\nInstalling the Workflow Manager It is best to install the Workflow Manager using the Web Platform Installer tool. This will automatically install all the prerequisites like Service Bus 1.0.\n",
+  "keywords": [
+    
+  ],
+  "articleBody": "In this post I will guide you through installing and configuring the Workflow Manager for SharePoint 2013.\nBefore starting the installation of the Workflow Manager, make sure that at least the SharePoint 2013 March Public Update (KB 2767999) is installed on toy SharePoint Server. This update has some bug fixes and added extra support for the Workflow Manager and workflow.\nInstalling the Workflow Manager It is best to install the Workflow Manager using the Web Platform Installer tool. This will automatically install all the prerequisites like Service Bus 1.0.\nYou can download Workflow Manager 1.0 from here: http://www.microsoft.com/en-us/download/details.aspx?id=35375\nYou can also download the Web Platform Installer Tools Command Line for offline installation: http://www.iis.net/learn/install/web-platform-installer/web-platform-installer-v4-command-line-webpicmdexe-rtw-release\nWhen workflow manager is installed, the Web Platform Installer will also install the workflow Manager Client 1.0. SharePoint uses this client to communicate with the Workflow Manager.\nIf the Workflow Manager is installed on a separate server, this client will still need to be installed (manually) on the SharePoint Server. You can download the Workflow Manager Client 1.0 from the same website as the Workflow Manager.\nThe Web Platform installer will also automatically install the Workflow Manager Tools 1.0 for Visual Studio if Visual Studio is already installed on the system.\nRun the Workflow Manager installer. This will launch the Web Platform Installer and click “Install” and follow the installation steps.\nFigure 1: Installing Workflow Manager 1.0 using the Web Platform installer.\nConfiguring the Workflow Manager After the installation the configuring screen is automatically opened. This configuration wizard creates the databases and Workflow Manager farm and provisions the Service Bus. It also provides a PowerShell which can be used to configure other server installations as well.\nFigure 2: Configuring Workflow Manager 1.0.\nFor this installation choose Configure Workflow Manager With Custom Settings and in the next screen enter the name of the SQL Server Instance, you can change the database name or leave the default if you like, and you can test the connection.\nFigure 3: Configuring Workflow Manager 1.0.\nIf you scroll down you can configure the service account. Best Practice is to create a new Service account for the workflow manager.\nFigure 4: Configuring Workflow Manager 1.0.\nIn the next section add a certification Generation Key and confirm. You need this key if you want to join extra servers to the workflow farm so memorize it!\nFigure 5: Configuring Workflow Manager 1.0.\nScroll down again and in the next section you can configure the ports. Leave the default settings and for developing purposes you can check the Allow Workflow Management over HTTP on this Computer box.\nFigure 6: Configuring Workflow Manager 1.0.\nClick on the right arrow to go to the next screen to configure the Service Bus.\nHere you can provide the database settings for the Service Bus. I used the default settings here for my development environment.\nFigure 7: Configuring Workflow Manager 1.0.\nHere you can provide the Service Account Settings. You can choose the same Service Account credentials as you used for the Workflow Manager or add different credentials. The same for the Certificate key, I used the same key as I entered for the Workflow Manager.\nFigure 8: Configuring Workflow Manager 1.0.\nLeave the default ports in the next section and click the right arrow.\nFigure 9: Configuring Workflow Manager 1.0.\nThe next screen provides you with an overview of the settings. Review them and Click Apply. You can also download the PowerShell Script here for installing.\nIf everything went right you will see the following screen after the installation:\nFigure 10: Configuring Workflow Manager 1.0.\nAfter installing and configuring the workflow manager and creating the SharePoint Manager Farm you need to connect both environments to communicate with each other.\nThis is done by running a PowerShell script on the SharePoint 2013 farm. It configures the SharePoint farm to send all workflow related tasks to the Workflow Manager Frontend Service.\nOpen the SharePoint Management Console and type the following Powershell cmdlet:\nFor communicating over HTTP (only recommended for a development environment)\n1 Register-SPWorkflowService –SPSite http://sp-siteurl –WorkflowHostUri http://workflowhostURI:12291 –AllowOAuthHttp\nFor communicating over HTTPS\n1 Register-SPWorkflowService –SPSite http://sp-siteurl –WorkflowHostUri https://workflowhostURI:12290\nTo Retrieve the Workflowhost Url open IIS, look for the Workflow Management Site check the settings.\nAfter running this command the Workflow Manager is connected to the SharePoint farm and you can begin to create custom Workflows.\nMicrosoft released a Workflow Manager Best Practice analyzer which scans your Workflow Environment and provides best practices on installing and configuring. For more information see this site: http://msdn.microsoft.com/library/azure/jj730571%28v=azure.10%29.aspx\nUpdating Workflow Manager 1.0 The Workflow Manager Service and the Service Bus are released prior to the RTM release of SharePoint 2013. Since then, some things changed and some bugs where found and resolved in below updates.\nInstall the Azure Services February 2013 Cumulative Updates:\nCumulative Update for Service Bus 1.0 (KB2799752)\nCumulative Update for Workflow Manager 1.0 (KB2799754)\nSummary In this article I explained how to install and configure the Workflow Manager 1.0. The steps are already explained in several other articles on the internet, but in most cases some settings and steps are left out of it, so I wasn’t able to connect the workflow manager to the SharePoint farm.\nAlso running the SharePoint updates before installing the Workflow Manager and installing the Windows Azure February updates afterwards is a critical step, which will solve a lot of problems using the SharePoint 2013 Workflow Manager and creating Workflows.\nThis was the last article in this series on Workflows in SharePoint 2013. In my upcoming posts on this topic I will focus on leveraging the SharePoint REST API in Visual Studio Workflows. I will provide some workflow examples as well as a couple of custom activities which you can use in your own workflows.\n– Sjoukje\n",
+  "wordCount" : "959",
+  "inLanguage": "en",
+  "datePublished": "2014-11-08T00:00:00Z",
+  "dateModified": "2014-11-08T00:00:00Z",
+  "author":{
+    "@type": "Person",
+    "name": "sjoukje.eth"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "//localhost:1313/archive/sharepoint-2013-workflows-install-configure-workflow-manager-copy/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "sjoukje.eth",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "//localhost:1313/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="//localhost:1313/" accesskey="h" title="sjoukje.eth (Alt + H)">sjoukje.eth</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="//localhost:1313/posts/" title="Posts">
+                    <span>Posts</span>
+                </a>
+            </li>
+            <li>
+                <a href="//localhost:1313/books/" title="Books">
+                    <span>Books</span>
+                </a>
+            </li>
+            <li>
+                <a href="//localhost:1313/about/" title="About">
+                    <span>About</span>
+                </a>
+            </li>
+            <li>
+                <a href="//localhost:1313/archive/" title="Archive">
+                    <span>Archive</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="//localhost:1313/">Home</a>&nbsp;»&nbsp;<a href="//localhost:1313/archive/">Archives</a></div>
+    <h1 class="post-title entry-hint-parent">
+      SharePoint 2013 Workflows Part 2: Installing and Configuring The Workflow Manager
+    </h1>
+    <div class="post-meta"><span title='2014-11-08 00:00:00 +0000 UTC'>November 8, 2014</span>&nbsp;·&nbsp;<span>5 min</span>&nbsp;·&nbsp;<span>sjoukje.eth</span>
+
+</div>
+  </header> 
+  <div class="post-content"><p>In this post I will guide you through installing and configuring the Workflow Manager for SharePoint 2013.</p>
+<p>Before starting the installation of the Workflow Manager, make sure that at least the <a href="http://support.microsoft.com/default.aspx?scid=kb;EN-US;2767999">SharePoint 2013 March Public Update (KB 2767999)</a> is installed on toy SharePoint Server. This update has some bug fixes and added extra support for the Workflow Manager and workflow.</p>
+<h2 id="installing-the-workflow-manager">Installing the Workflow Manager<a hidden class="anchor" aria-hidden="true" href="#installing-the-workflow-manager">#</a></h2>
+<p>It is best to install the Workflow Manager using the Web Platform Installer tool. This will automatically install all the prerequisites like Service Bus 1.0.</p>
+<ul>
+<li>
+<p>You can download Workflow Manager 1.0 from here: <a href="http://www.microsoft.com/en-us/download/details.aspx?id=35375">http://www.microsoft.com/en-us/download/details.aspx?id=35375</a></p>
+</li>
+<li>
+<p>You can also download the Web Platform Installer Tools Command Line for offline installation: <a href="http://www.iis.net/learn/install/web-platform-installer/web-platform-installer-v4-command-line-webpicmdexe-rtw-release">http://www.iis.net/learn/install/web-platform-installer/web-platform-installer-v4-command-line-webpicmdexe-rtw-release</a></p>
+</li>
+</ul>
+<p>When workflow manager is installed, the Web Platform Installer will also install the workflow Manager Client 1.0. SharePoint uses this client to communicate with the Workflow Manager.</p>
+<p>If the Workflow Manager is installed on a separate server, this client will still need to be installed (manually) on the SharePoint Server. You can download the Workflow Manager Client 1.0 from the same website as the Workflow Manager.</p>
+<p>The Web Platform installer will also automatically install the Workflow Manager Tools 1.0 for Visual Studio if Visual Studio is already installed on the system.</p>
+<p>Run the Workflow Manager installer. This will launch the Web Platform Installer and click &ldquo;<strong>Install&rdquo;</strong> and follow the installation steps.</p>
+<p><strong>Figure 1: Installing Workflow Manager 1.0 using the Web Platform installer.</strong></p>
+<h2 id="configuring-the-workflow-manager">Configuring the Workflow Manager<a hidden class="anchor" aria-hidden="true" href="#configuring-the-workflow-manager">#</a></h2>
+<p>After the installation the configuring screen is automatically opened. This configuration wizard creates the databases and Workflow Manager farm and provisions the Service Bus. It also provides a PowerShell which can be used to configure other server installations as well.</p>
+<p><strong>Figure 2: Configuring Workflow Manager 1.0.</strong></p>
+<p>For this installation choose <strong>Configure Workflow Manager With Custom Settings</strong> and in the next screen enter the name of the SQL Server Instance, you can change the database name or leave the default if you like, and you can test the connection.</p>
+<p><strong>Figure 3: Configuring Workflow Manager 1.0.</strong></p>
+<p>If you scroll down you can configure the service account. Best Practice is to create a new Service account for the workflow manager.</p>
+<p><strong>Figure 4: Configuring Workflow Manager 1.0.</strong></p>
+<p>In the next section add a certification Generation Key and confirm. You need this key if you want to join extra servers to the workflow farm so memorize it!</p>
+<p><strong>Figure 5: Configuring Workflow Manager 1.0.</strong></p>
+<p>Scroll down again and in the next section you can configure the ports. Leave the default settings and for developing purposes you can check the <strong>Allow Workflow Management over HTTP on this Computer</strong> box.</p>
+<p><strong>Figure 6: Configuring Workflow Manager 1.0.</strong></p>
+<p>Click on the right arrow to go to the next screen to configure the Service Bus.</p>
+<p>Here you can provide the database settings for the Service Bus. I used the default settings here for my development environment.</p>
+<p><strong>Figure 7: Configuring Workflow Manager 1.0.</strong></p>
+<p>Here you can provide the Service Account Settings. You can choose the same Service Account credentials as you used for the Workflow Manager or add different credentials. The same for the Certificate key, I used the same key as I entered for the Workflow Manager.</p>
+<p><strong>Figure 8: Configuring Workflow Manager 1.0.</strong></p>
+<p>Leave the default ports in the next section and click the right arrow.</p>
+<p><strong>Figure 9: Configuring Workflow Manager 1.0.</strong></p>
+<p>The next screen provides you with an overview of the settings. Review them and Click <strong>Apply.</strong> You can also download the PowerShell Script here for installing.</p>
+<p>If everything went right you will see the following screen after the installation:</p>
+<p><strong>Figure 10: Configuring Workflow Manager 1.0.</strong></p>
+<p>After installing and configuring the workflow manager and creating the SharePoint Manager Farm you need to connect both environments to communicate with each other.</p>
+<p>This is done by running a PowerShell script on the SharePoint 2013 farm. It configures the SharePoint farm to send all workflow related tasks to the Workflow Manager Frontend Service.</p>
+<p>Open the SharePoint Management Console and type the following Powershell cmdlet:</p>
+<p><strong>For communicating over HTTP (only recommended for a development environment)</strong></p>
+<hr>
+<p>1                                   Register-SPWorkflowService &ndash;SPSite <a href="http://sp-siteurl">http://sp-siteurl</a> &ndash;WorkflowHostUri <a href="http://workflowhosturi:12291/">http://workflowhostURI:12291</a> &ndash;AllowOAuthHttp</p>
+<hr>
+<hr>
+<p><strong>For communicating over HTTPS</strong></p>
+<hr>
+<p>1                                   Register-SPWorkflowService &ndash;SPSite <a href="http://sp-siteurl">http://sp-siteurl</a> &ndash;WorkflowHostUri <a href="https://workflowhosturi:12290/">https://workflowhostURI:12290</a></p>
+<hr>
+<hr>
+<p>To Retrieve the Workflowhost Url open IIS, look for the Workflow Management Site check the settings.</p>
+<p>After running this command the Workflow Manager is connected to the SharePoint farm and you can begin to create custom Workflows.</p>
+<p>Microsoft released a Workflow Manager Best Practice analyzer which scans your Workflow Environment and provides best practices on installing and configuring. For more information see this site: <a href="http://msdn.microsoft.com/library/azure/jj730571%28v=azure.10%29.aspx">http://msdn.microsoft.com/library/azure/jj730571%28v=azure.10%29.aspx</a></p>
+<h2 id="updating-workflow-manager-10">Updating Workflow Manager 1.0<a hidden class="anchor" aria-hidden="true" href="#updating-workflow-manager-10">#</a></h2>
+<p>The Workflow Manager Service and the Service Bus are released prior to the RTM release of SharePoint 2013. Since then, some things changed and some bugs where found and resolved in below updates.</p>
+<p>Install the Azure Services February 2013 Cumulative Updates:</p>
+<ul>
+<li>
+<p><a href="http://www.microsoft.com/en-us/download/confirmation.aspx?id=36794">Cumulative Update for Service Bus 1.0 (KB2799752)</a></p>
+</li>
+<li>
+<p><a href="http://www.microsoft.com/en-us/download/details.aspx?id=36800">Cumulative Update for Workflow Manager 1.0 (KB2799754)</a></p>
+</li>
+</ul>
+<h2 id="summary">Summary<a hidden class="anchor" aria-hidden="true" href="#summary">#</a></h2>
+<p>In this article I explained how to install and configure the Workflow Manager 1.0. The steps are already explained in several other articles on the internet, but in most cases some settings and steps are left out of it, so I wasn&rsquo;t able to connect the workflow manager to the SharePoint farm.</p>
+<p>Also running the SharePoint updates before installing the Workflow Manager and installing the Windows Azure February updates afterwards is a critical step, which will solve a lot of problems using the SharePoint 2013 Workflow Manager and creating Workflows.</p>
+<p>This was the last article in this series on Workflows in SharePoint 2013. In my upcoming posts on this topic I will focus on leveraging the SharePoint REST API in Visual Studio Workflows. I will provide some workflow examples as well as a couple of custom activities which you can use in your own workflows.</p>
+<p>&ndash; Sjoukje</p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+    </ul>
+
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="//localhost:1313/">sjoukje.eth</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerHTML = 'copy';
+
+        function copyingDone() {
+            copybutton.innerHTML = 'copied!';
+            setTimeout(() => {
+                copybutton.innerHTML = 'copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+</body>
+
+</html>
