@@ -3,6 +3,10 @@ languageCode = "en-us"
 title = "sjoukje.eth"
 theme = "papermod"
 
+# Controls the number of posts per page (homepage and list pages)
+[pagination]
+    pagerSize = 20
+
 # IPFS/Limo support:
 relativeURLs = true
 canonifyURLs = false
@@ -60,7 +64,7 @@ canonifyURLs = false
       [[menu.main]]
         identifier = "archive"
         name = "Archive"
-        url = "/archive/"
+        url = "/archives/"
         weight = 40
     
 [taxonomies]
