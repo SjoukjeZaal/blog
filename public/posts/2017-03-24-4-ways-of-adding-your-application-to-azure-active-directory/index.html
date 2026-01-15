@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto" data-theme="auto">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>4 ways of adding your application to Azure Active Directory | sjoukje.eth</title>
+<meta name="keywords" content="">
+<meta name="description" content="When you are developing apps for Azure or Office 365, there comes a time
+that the app needs to be added to Azure Active Directory for
+authentication. There is written a lot about the manual approach of
+doing this. But maybe there are other ways to do this, and maybe can we
+do this even quicker?
+In this article, I&rsquo;m going to show four different ways of adding your
+application to Azure AD. I will cover both manually as programmatically
+and provide some samples on how to do this. Let&rsquo;s start with the easiest
+one, directly from Visual Studio.">
+<meta name="author" content="sjoukje.eth">
+<link rel="canonical" href="//localhost:1313/posts/2017-03-24-4-ways-of-adding-your-application-to-azure-active-directory/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.36f09b336921909a5971cfa84422229fa3edb550fa46b7707cb5436b0983bdcf.css" integrity="sha256-NvCbM2khkJpZcc&#43;oRCIin6PttVD6RrdwfLVDawmDvc8=" rel="preload stylesheet" as="style">
+<link rel="icon" href="//localhost:1313/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="//localhost:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="//localhost:1313/favicon-32x32.png">
+<link rel="apple-touch-icon" href="//localhost:1313/apple-touch-icon.png">
+<link rel="mask-icon" href="//localhost:1313/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="//localhost:1313/posts/2017-03-24-4-ways-of-adding-your-application-to-azure-active-directory/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script><meta property="og:url" content="//localhost:1313/posts/2017-03-24-4-ways-of-adding-your-application-to-azure-active-directory/">
+  <meta property="og:site_name" content="sjoukje.eth">
+  <meta property="og:title" content="4 ways of adding your application to Azure Active Directory">
+  <meta property="og:description" content="When you are developing apps for Azure or Office 365, there comes a time that the app needs to be added to Azure Active Directory for authentication. There is written a lot about the manual approach of doing this. But maybe there are other ways to do this, and maybe can we do this even quicker?
+In this article, I’m going to show four different ways of adding your application to Azure AD. I will cover both manually as programmatically and provide some samples on how to do this. Let’s start with the easiest one, directly from Visual Studio.">
+  <meta property="og:locale" content="en-us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2017-03-24T00:00:00+00:00">
+    <meta property="article:modified_time" content="2017-03-24T00:00:00+00:00">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="4 ways of adding your application to Azure Active Directory">
+<meta name="twitter:description" content="When you are developing apps for Azure or Office 365, there comes a time
+that the app needs to be added to Azure Active Directory for
+authentication. There is written a lot about the manual approach of
+doing this. But maybe there are other ways to do this, and maybe can we
+do this even quicker?
+In this article, I&rsquo;m going to show four different ways of adding your
+application to Azure AD. I will cover both manually as programmatically
+and provide some samples on how to do this. Let&rsquo;s start with the easiest
+one, directly from Visual Studio.">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "//localhost:1313/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "4 ways of adding your application to Azure Active Directory",
+      "item": "//localhost:1313/posts/2017-03-24-4-ways-of-adding-your-application-to-azure-active-directory/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "4 ways of adding your application to Azure Active Directory",
+  "name": "4 ways of adding your application to Azure Active Directory",
+  "description": "When you are developing apps for Azure or Office 365, there comes a time that the app needs to be added to Azure Active Directory for authentication. There is written a lot about the manual approach of doing this. But maybe there are other ways to do this, and maybe can we do this even quicker?\nIn this article, I\u0026rsquo;m going to show four different ways of adding your application to Azure AD. I will cover both manually as programmatically and provide some samples on how to do this. Let\u0026rsquo;s start with the easiest one, directly from Visual Studio.\n",
+  "keywords": [
+    
+  ],
+  "articleBody": "When you are developing apps for Azure or Office 365, there comes a time that the app needs to be added to Azure Active Directory for authentication. There is written a lot about the manual approach of doing this. But maybe there are other ways to do this, and maybe can we do this even quicker?\nIn this article, I’m going to show four different ways of adding your application to Azure AD. I will cover both manually as programmatically and provide some samples on how to do this. Let’s start with the easiest one, directly from Visual Studio.\nVisual Studio The easiest option is to register your application from within Visual Studio. Take the following steps to do this.\nOpen Visual Studio and create an new application. Create a ASP.Net Web Application and choose the MVC template in the project creation wizard. Click the Change Authentication button.\nOn the next screen, there are four different options. But if you want to use Azure AD for authentication, you have to choose Work and School Accounts.\nNext you have to provide the tenant information. Select Cloud – Single Organization, pick the tenant where you want to add your app and select Read Directory Data. Click Ok. And again, click OK.\nThe application is created for you and added to Azure AD with permissions to access Azure AD for authentication purposes and reading user information.\nOpen the web.config and you will see the below Azure AD related entries added to the AppSetttings:\nBelow a brief explanation of the AppSettings items:\nida:ClientId: The ClientId from an OAuth 2.0 perspective.\nida:AADInstance: The base URL of the authorization server (this is always https://login.windows.net).\nida:ClientSecret: The shared secret of the app.\nida:Domain: The Azure AD reference domain name.\nida:TenantId: The tenant Id, which can be concatenated to the ida:AADInstance.\nida:PostLogoutRedirectUri: The URL to which the browsers will be redirected after logout.\nIf you now press F5, the application is started and you will be asked to fill in your Azure credentials. Accept the App permissions by clicking the Accept button.\nYou can log in to the Azure Portal and check the settings which are created for your App by Visual Studio. In the permission tab, you can also see the permissions you’ve granted in the above step. If you want to give your application additional permissions, you can set them in here.\nManually Next is adding the App manually to Azure AD.\nOpen the Azure Portal and navigate to your active directory. We are using the new Azure portal for this. Azure AD is in preview there (if you want to use the “Old” Azure Portal, you can take a look at the steps provided by Andreas in his post: Azure AD Developer Tips and Tricks – Part 3). Select “More Services” at the bottom of the menu and then “Azure Active Directory”.\nIt will open up the AD of the selected tenant by default. If you have access to multiple tenants and want to select another one, click your profile button at the top right side of the screen. Here you can select a different directory.\nClick App Registrations at the left and then click the Add button.\nThe App registration wizard is opened. Fill in a name for your app. Choose an application type. You have to choose between a Web app /API or a native application. The former defines an application that has a web-based UI. The latter defines a native one, like for instance a tablet or phone application. For now, choose Web app / API.\nFor the Sign-On URL, you can fill in the exact same URL that was filled in automatically by Visual Studio in the previous section. In my case, this is: https://localhost:44358/ . Azure AD will not send tokens to URL’s that aren’t registered.\nI personally find this setting quite confusing because when you enter complete nonsense in there, the authentication still works. But you can think of this as the URL where the whole sign-in process starts. That will be the app URL. If a user is not signed in, he or she then will be send to login.windows.net. So, after you have deployed your application for production to Azure, you can change this URL to the production URL.\nClick create to add the Application.\nPowerShell Adding your application using PowerShell is very easy and results in only a couple of lines of code:\nLogin-AzureRmAccount\nSelect-AzureRmSubscription -TenantId \"your-tenant-id\"\nNew-AzureRmADApplication -DisplayName \"AppAddedWithPS\" -HomePage \"https://localhost:44358/\" -IdentifierUris \"https://your-tenant-url/6958490c-21ae-4885-804c-f03b3add87ad\"\nFirst login with your Azure credentials. This is done by calling the Login-AzureRmAccount method. Second, select the Azure AD tenant by calling the Select-AzureRmSubscription and passing it the TenantId (you can find this inside the Azure Portal under Properties:\nThe Select-AzureRmSubscription method is not mandatory. If you don’t add this, the default Azure AD tenant will be selected. So, if have only one tenant bound to your subscription, you can remove this from your script.\nThe third line calling the New-AzureRmADApplication created the application inside your Azure AD. Below an explanation of the used parameters:\nDisplayName: The name of your application.\nHomePage: The homepage of your application (I think this is a much better name than Sign-On URL, which is used in the portal.\nIdentifierUris: This is the App Id. Out-of-the box Azure AD uses the tenant URL followed by a Guid.\nWhen you execute this script, the application is created in Azure AD.\nGraph API The last approach is creating the application by using the Graph API. The Graph API is an OData 4.0 compliant REST API that provides programmatic access to directory objects in Azure AD.\nWe do this by leveraging the Graph Explorer.\nOpen your browser and go to https://graphexplorer.azurewebsites.net . You can login using your Azure credentials. One thing to note is that you have to use a school or work account to login.\nWhen navigated to the Graph Explorer set the method to POST and type the following to the query field:\nhttps://graph.windows.net/myorganization/applications/\nin the body field add the following:\n{\n\"displayName\": \"MyApplication\",\n\"homepage\": \" https://localhost:44358/\",\n\"identifierUris\":\n[\n\"https://https://your-tenant-url/6958490c-21ae-4885-804c-f03b3add87ad\"\n]\n}\nClick the Go button. Your application is created in Azure AD.\n",
+  "wordCount" : "1051",
+  "inLanguage": "en",
+  "datePublished": "2017-03-24T00:00:00Z",
+  "dateModified": "2017-03-24T00:00:00Z",
+  "author":{
+    "@type": "Person",
+    "name": "sjoukje.eth"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "//localhost:1313/posts/2017-03-24-4-ways-of-adding-your-application-to-azure-active-directory/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "sjoukje.eth",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "//localhost:1313/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="//localhost:1313/" accesskey="h" title="sjoukje.eth (Alt + H)">sjoukje.eth</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="//localhost:1313/posts/" title="Posts">
+                    <span>Posts</span>
+                </a>
+            </li>
+            <li>
+                <a href="//localhost:1313/books/" title="Books">
+                    <span>Books</span>
+                </a>
+            </li>
+            <li>
+                <a href="//localhost:1313/about/" title="About">
+                    <span>About</span>
+                </a>
+            </li>
+            <li>
+                <a href="//localhost:1313/archives/" title="Archive">
+                    <span>Archive</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="//localhost:1313/">Home</a>&nbsp;»&nbsp;<a href="//localhost:1313/posts/">Posts</a></div>
+    <h1 class="post-title entry-hint-parent">
+      4 ways of adding your application to Azure Active Directory
+    </h1>
+    <div class="post-meta"><span title='2017-03-24 00:00:00 +0000 UTC'>March 24, 2017</span>&nbsp;·&nbsp;<span>5 min</span>&nbsp;·&nbsp;<span>sjoukje.eth</span>
+
+</div>
+  </header> 
+  <div class="post-content"><p>When you are developing apps for Azure or Office 365, there comes a time
+that the app needs to be added to Azure Active Directory for
+authentication. There is written a lot about the manual approach of
+doing this. But maybe there are other ways to do this, and maybe can we
+do this even quicker?</p>
+<p>In this article, I&rsquo;m going to show four different ways of adding your
+application to Azure AD. I will cover both manually as programmatically
+and provide some samples on how to do this. Let&rsquo;s start with the easiest
+one, directly from Visual Studio.</p>
+<h2 id="visual-studio">Visual Studio<a hidden class="anchor" aria-hidden="true" href="#visual-studio">#</a></h2>
+<p>The easiest option is to register your application from within Visual
+Studio. Take the following steps to do this.</p>
+<p>Open Visual Studio and create an new application. Create a ASP.Net Web
+Application and choose the MVC template in the project creation wizard.
+Click the <strong>Change Authentication</strong> button.</p>
+<p>On the next screen, there are four different options. But if you want to
+use Azure AD for authentication, you have to choose <strong>Work and School
+Accounts</strong>.</p>
+<p>Next you have to provide the tenant information. Select <strong>Cloud &ndash;
+Single Organization</strong>, pick the tenant where you want to add your app
+and select <strong>Read Directory Data.</strong> Click Ok. And again, click OK.</p>
+<p>The application is created for you and added to Azure AD with
+permissions to access Azure AD for authentication purposes and reading
+user information.</p>
+<p>Open the web.config and you will see the below Azure AD related entries
+added to the AppSetttings:</p>
+<p>&lt;appSettings&gt;</p>
+<p>&lt;add key=&quot;ida:ClientId&quot;
+value=&quot;e0ea5425-740f-4108-b384-c365a48a32fa&quot; /&gt;</p>
+<p>&lt;add key=&quot;ida:AADInstance&quot;
+value=&quot;https://login.microsoftonline.com/&quot; /&gt;</p>
+<p>&lt;add key=&quot;ida:ClientSecret&quot; value=&quot;--your-client-secret--&quot; /&gt;</p>
+<p>&lt;add key=&quot;ida:Domain&quot; value=&quot;--your-domain.onmicrosoft.com--&quot; /&gt;</p>
+<p>&lt;add key=&quot;ida:TenantId&quot;
+value=&quot;233f4bcb-abf8-402b-989f-57d6500ed422&quot; /&gt;</p>
+<p>&lt;add key=&quot;ida:PostLogoutRedirectUri&quot;
+value=&quot;https://localhost:44358/&quot; /&gt;</p>
+<p>&lt;/appSettings&gt;</p>
+<p>Below a brief explanation of the AppSettings items:</p>
+<p><strong>ida:ClientId:</strong> The ClientId from an OAuth 2.0 perspective.<br>
+<strong>ida:AADInstance:</strong> The base URL of the authorization server (this is
+always <a href="https://login.windows.net">https://login.windows.net</a>).<strong><br>
+ida:ClientSecret:</strong> The shared secret of the app.<strong><br>
+ida:Domain:</strong> The Azure AD reference domain name.<strong><br>
+ida:TenantId:</strong> The tenant Id, which can be concatenated to the
+ida:AADInstance.<strong><br>
+ida:PostLogoutRedirectUri:</strong> The URL to which the browsers will be
+redirected after logout.</p>
+<p>If you now press F5, the application is started and you will be asked to
+fill in your Azure credentials. Accept the App permissions by clicking
+the <strong>Accept</strong> button.</p>
+<p>You can log in to the Azure Portal and check the settings which are
+created for your App by Visual Studio. In the permission tab, you can
+also see the permissions you&rsquo;ve granted in the above step. If you want
+to give your application additional permissions, you can set them in
+here.</p>
+<h2></h2>
+<h2 id="manually">Manually<a hidden class="anchor" aria-hidden="true" href="#manually">#</a></h2>
+<p>Next is adding the App manually to Azure AD.</p>
+<p>Open the <a href="https://portal.azure.com/#dashboard/private/adcdf07a-faf9-41d4-9ff4-28b3ca655018">Azure
+Portal</a>
+and navigate to your active directory. We are using the new Azure portal
+for this. Azure AD is in preview there (if you want to use the &ldquo;Old&rdquo;
+Azure Portal, you can take a look at the steps provided by Andreas in
+his post: <a href="https://blogs.msdn.microsoft.com/azuredev/2017/02/28/azure-ad-developer-tips-and-tricks-part-3/">Azure AD Developer Tips and Tricks &ndash; Part
+3</a>).
+Select &ldquo;More Services&rdquo; at the bottom of the menu and then &ldquo;Azure Active
+Directory&rdquo;.</p>
+<p>It will open up the AD of the selected tenant by default. If you have
+access to multiple tenants and want to select another one, click your
+profile button at the top right side of the screen. Here you can select
+a different directory.</p>
+<p>Click <strong>App Registrations</strong> at the left and then click the <strong>Add</strong>
+button.</p>
+<p>The App registration wizard is opened. Fill in a name for your app.
+Choose an application type. You have to choose between a Web app /API or
+a native application. The former defines an application that has a
+web-based UI. The latter defines a native one, like for instance a
+tablet or phone application. For now, choose Web app / API.</p>
+<p>For the Sign-On URL, you can fill in the exact same URL that was filled
+in automatically by Visual Studio in the previous section. In my case,
+this is: <a href="https://localhost:44358/">https://localhost:44358/</a> . Azure AD will not send tokens to
+URL&rsquo;s that aren&rsquo;t registered.</p>
+<p>I personally find this setting quite confusing because when you enter
+complete nonsense in there, the authentication still works. But you can
+think of this as the URL where the whole sign-in process starts. That
+will be the app URL. If a user is not signed in, he or she then will be
+send to login.windows.net. So, after you have deployed your application
+for production to Azure, you can change this URL to the production URL.</p>
+<p>Click create to add the Application.</p>
+<h2 id="powershell">PowerShell<a hidden class="anchor" aria-hidden="true" href="#powershell">#</a></h2>
+<p>Adding your application using PowerShell is very easy and results in
+only a couple of lines of code:</p>
+<p>Login-AzureRmAccount<br>
+Select-AzureRmSubscription -TenantId &quot;your-tenant-id&quot;<br>
+<br>
+New-AzureRmADApplication -DisplayName &quot;AppAddedWithPS&quot; -HomePage
+&quot;https://localhost:44358/&quot; -IdentifierUris
+&quot;https://your-tenant-url/6958490c-21ae-4885-804c-f03b3add87ad&quot;</p>
+<p>First login with your Azure credentials. This is done by calling the
+Login-AzureRmAccount method. Second, select the Azure AD tenant by
+calling the Select-AzureRmSubscription and passing it the TenantId (you
+can find this inside the Azure Portal under Properties:</p>
+<p>The Select-AzureRmSubscription method is not mandatory. If you don&rsquo;t add
+this, the default Azure AD tenant will be selected. So, if have only one
+tenant bound to your subscription, you can remove this from your script.</p>
+<p>The third line calling the New-AzureRmADApplication created the
+application inside your Azure AD. Below an explanation of the used
+parameters:</p>
+<p><strong>DisplayName:</strong> The name of your application.<br>
+<strong>HomePage:</strong> The homepage of your application (I think this is a much
+better name than <strong>Sign-On URL</strong>, which is used in the portal.<br>
+<strong>IdentifierUris:</strong> This is the App Id. Out-of-the box Azure AD uses the
+tenant URL followed by a Guid.</p>
+<p>When you execute this script, the application is created in Azure AD.</p>
+<h2 id="graph-api">Graph API<a hidden class="anchor" aria-hidden="true" href="#graph-api">#</a></h2>
+<p>The last approach is creating the application by using the Graph API.
+The Graph API is an OData 4.0 compliant REST API that provides
+programmatic access to directory objects in Azure AD.</p>
+<p>We do this by leveraging the Graph Explorer.</p>
+<p>Open your browser and go to <a href="https://graphexplorer.azurewebsites.net">https://graphexplorer.azurewebsites.net</a> .
+You can login using your Azure credentials. One thing to note is that
+you have to use a school or work account to login.</p>
+<p>When navigated to the Graph Explorer set the method to <strong>POST</strong> and type
+the following to the query field:</p>
+<p><a href="https://graph.windows.net/myorganization/applications/">https://graph.windows.net/myorganization/applications/</a></p>
+<p>in the body field add the following:</p>
+<p>{</p>
+<p>&quot;displayName&quot;: &quot;MyApplication&quot;,</p>
+<p>&quot;homepage&quot;: &quot; https://localhost:44358/&quot;,</p>
+<p>&quot;identifierUris&quot;:</p>
+<p>[</p>
+<p>&quot;https://https://your-tenant-url/6958490c-21ae-4885-804c-f03b3add87ad&quot;</p>
+<p>]</p>
+<p>}</p>
+<p>Click the <strong>Go</strong> button. Your application is created in Azure AD.</p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+    </ul>
+<nav class="paginav">
+  <a class="prev" href="//localhost:1313/posts/2017-04-25-azure-admanually-create-authentication-code-part-2/">
+    <span class="title">« Prev</span>
+    <br>
+    <span>Azure AD -- Manually add authentication code to your app Part 2</span>
+  </a>
+  <a class="next" href="//localhost:1313/posts/2017-03-24-azure-ad-manually-create-authentication-code-part-1/">
+    <span class="title">Next »</span>
+    <br>
+    <span>Azure AD: Manually Create Authentication Code Part 1</span>
+  </a>
+</nav>
+
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="//localhost:1313/">sjoukje.eth</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerHTML = 'copy';
+
+        function copyingDone() {
+            copybutton.innerHTML = 'copied!';
+            setTimeout(() => {
+                copybutton.innerHTML = 'copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+</body>
+
+</html>

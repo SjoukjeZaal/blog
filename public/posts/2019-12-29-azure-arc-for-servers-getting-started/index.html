@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto" data-theme="auto">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Azure Arc for Servers: Getting started | sjoukje.eth</title>
+<meta name="keywords" content="">
+<meta name="description" content="Most organizations embrace a hybrid and multi cloud approach for their businesses. This will give them the full benefits of their on-premises investments, the ability to innovate using cloud technologies, and the ability to avoid vendor lock-in.
+For the last two years, Microsoft is investing enormously in enabling seamless hybrid capabilities. They released Azure Stack, which enables a consistent cloud model, but is deployed on-premises. They enabled security threat protection for any infrastructure, which is fully powered from the cloud, and they enabled the ability to run Microsoft Azure Cognitive Services AI models anywhere. Microsoft recently released Azure Arc, which unlocks new hybrid scenarios for organizations by bringing new Azure services and management features to any infrastructure.
+Azure Arc extends the Azure Resource Manager capabilities to Linux and Windows servers, and Kubernetes clusters on any infrastructure across on-premises, multi-cloud, and the edge. You can use Azure Arc to run Azure data services anywhere, which includes always up-to-date data capabilities, deployment in seconds, and dynamic scalability on any infrastructure. Azure Arc for Servers is currently in preview, and that is what we are going to cover in this post.">
+<meta name="author" content="sjoukje.eth">
+<link rel="canonical" href="//localhost:1313/posts/2019-12-29-azure-arc-for-servers-getting-started/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.36f09b336921909a5971cfa84422229fa3edb550fa46b7707cb5436b0983bdcf.css" integrity="sha256-NvCbM2khkJpZcc&#43;oRCIin6PttVD6RrdwfLVDawmDvc8=" rel="preload stylesheet" as="style">
+<link rel="icon" href="//localhost:1313/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="//localhost:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="//localhost:1313/favicon-32x32.png">
+<link rel="apple-touch-icon" href="//localhost:1313/apple-touch-icon.png">
+<link rel="mask-icon" href="//localhost:1313/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="//localhost:1313/posts/2019-12-29-azure-arc-for-servers-getting-started/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script><meta property="og:url" content="//localhost:1313/posts/2019-12-29-azure-arc-for-servers-getting-started/">
+  <meta property="og:site_name" content="sjoukje.eth">
+  <meta property="og:title" content="Azure Arc for Servers: Getting started">
+  <meta property="og:description" content="Most organizations embrace a hybrid and multi cloud approach for their businesses. This will give them the full benefits of their on-premises investments, the ability to innovate using cloud technologies, and the ability to avoid vendor lock-in. For the last two years, Microsoft is investing enormously in enabling seamless hybrid capabilities. They released Azure Stack, which enables a consistent cloud model, but is deployed on-premises. They enabled security threat protection for any infrastructure, which is fully powered from the cloud, and they enabled the ability to run Microsoft Azure Cognitive Services AI models anywhere. Microsoft recently released Azure Arc, which unlocks new hybrid scenarios for organizations by bringing new Azure services and management features to any infrastructure. Azure Arc extends the Azure Resource Manager capabilities to Linux and Windows servers, and Kubernetes clusters on any infrastructure across on-premises, multi-cloud, and the edge. You can use Azure Arc to run Azure data services anywhere, which includes always up-to-date data capabilities, deployment in seconds, and dynamic scalability on any infrastructure. Azure Arc for Servers is currently in preview, and that is what we are going to cover in this post.">
+  <meta property="og:locale" content="en-us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2019-12-29T00:00:00+00:00">
+    <meta property="article:modified_time" content="2019-12-29T00:00:00+00:00">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Azure Arc for Servers: Getting started">
+<meta name="twitter:description" content="Most organizations embrace a hybrid and multi cloud approach for their businesses. This will give them the full benefits of their on-premises investments, the ability to innovate using cloud technologies, and the ability to avoid vendor lock-in.
+For the last two years, Microsoft is investing enormously in enabling seamless hybrid capabilities. They released Azure Stack, which enables a consistent cloud model, but is deployed on-premises. They enabled security threat protection for any infrastructure, which is fully powered from the cloud, and they enabled the ability to run Microsoft Azure Cognitive Services AI models anywhere. Microsoft recently released Azure Arc, which unlocks new hybrid scenarios for organizations by bringing new Azure services and management features to any infrastructure.
+Azure Arc extends the Azure Resource Manager capabilities to Linux and Windows servers, and Kubernetes clusters on any infrastructure across on-premises, multi-cloud, and the edge. You can use Azure Arc to run Azure data services anywhere, which includes always up-to-date data capabilities, deployment in seconds, and dynamic scalability on any infrastructure. Azure Arc for Servers is currently in preview, and that is what we are going to cover in this post.">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "//localhost:1313/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "Azure Arc for Servers: Getting started",
+      "item": "//localhost:1313/posts/2019-12-29-azure-arc-for-servers-getting-started/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Azure Arc for Servers: Getting started",
+  "name": "Azure Arc for Servers: Getting started",
+  "description": "Most organizations embrace a hybrid and multi cloud approach for their businesses. This will give them the full benefits of their on-premises investments, the ability to innovate using cloud technologies, and the ability to avoid vendor lock-in. For the last two years, Microsoft is investing enormously in enabling seamless hybrid capabilities. They released Azure Stack, which enables a consistent cloud model, but is deployed on-premises. They enabled security threat protection for any infrastructure, which is fully powered from the cloud, and they enabled the ability to run Microsoft Azure Cognitive Services AI models anywhere. Microsoft recently released Azure Arc, which unlocks new hybrid scenarios for organizations by bringing new Azure services and management features to any infrastructure. Azure Arc extends the Azure Resource Manager capabilities to Linux and Windows servers, and Kubernetes clusters on any infrastructure across on-premises, multi-cloud, and the edge. You can use Azure Arc to run Azure data services anywhere, which includes always up-to-date data capabilities, deployment in seconds, and dynamic scalability on any infrastructure. Azure Arc for Servers is currently in preview, and that is what we are going to cover in this post.\n",
+  "keywords": [
+    
+  ],
+  "articleBody": "Most organizations embrace a hybrid and multi cloud approach for their businesses. This will give them the full benefits of their on-premises investments, the ability to innovate using cloud technologies, and the ability to avoid vendor lock-in. For the last two years, Microsoft is investing enormously in enabling seamless hybrid capabilities. They released Azure Stack, which enables a consistent cloud model, but is deployed on-premises. They enabled security threat protection for any infrastructure, which is fully powered from the cloud, and they enabled the ability to run Microsoft Azure Cognitive Services AI models anywhere. Microsoft recently released Azure Arc, which unlocks new hybrid scenarios for organizations by bringing new Azure services and management features to any infrastructure. Azure Arc extends the Azure Resource Manager capabilities to Linux and Windows servers, and Kubernetes clusters on any infrastructure across on-premises, multi-cloud, and the edge. You can use Azure Arc to run Azure data services anywhere, which includes always up-to-date data capabilities, deployment in seconds, and dynamic scalability on any infrastructure. Azure Arc for Servers is currently in preview, and that is what we are going to cover in this post.\nAzure Arc for Servers With Azure Arc for servers, you can manage machines that are hosted outside of Azure. When these types of machines are connected to Azure using Azure Arc for servers, they become **Connected Machines,**and they will be treated as native resources in Azure. Each Connected machine will get a Resource ID during registration in Azure and it will be managed as part of a Resource group inside an Azure subscription. This will enable the ability to benefit from Azure features and capabilities, such as Azure Policies, and tagging. For each machine that you want to connect to Azure, an agent package needs to be installed. Based on how recently the agent has checked in, the machine will have a status of Connected or Disconnected. If a machine has not checked-in within the past 5 minutes, it will show as Disconnected until connectivity is restored. This check-in is called a heartbeat. The Azure Resource Manager service limits are also applicable to Azure Arc for server, which means that there is a limit of 800 servers per resource group.\nSupported Operating Systems By the time of writing this post, the public preview supports the following operating systems:\nWindows Server 2012 R2 and newer Ubuntu 16.04 and 18.04 Networking During installation and runtime, the agent requires connectivity to Azure Arc service endpoints. If outbound connectivity is blocked by the firewall, make sure that the following URLs are not blocked:\nDomain Environment Required Azure service endpoints management.azure.com Azure Resource Manager login.windows.net Azure Active Directory dc.services.visualstudio.com Application Insights agentserviceapi.azure-automation.net Guest Configuration *-agentservice-prod-1.azure-automation.net Guest Configuration *.his.hybridcompute.azure-automation.net Hybrid Identity Service In the next part of this post, we are going to connect an on-premises machine in Azure using Azure Arc. For this demonstration, I have an on-premises Hyper-V environment with one Windows Server 2016 machine.\nRegister the required Resource Providers in Azure First, we need to register the required resource providers in Azure. Therefore, take the following steps:\nOpen a browser and navigate to the Azure portal at: https://portal.azure.com/\nLogin with your administrator credentials.\nOpen Cloud Shell in the top right menu, and add the following lines of code to register the Microsoft.HybridCompute and the Microsoft.GuestConfiguration resource providers:\nRegister-AzResourceProvider -ProviderNamespace Microsoft.HybridCompute Register-AzResourceProvider -ProviderNamespace Microsoft.GuestConfiguration This will result in the following output.\nNote that the resource providers are only registered in specific locations.\nIn the next part, we are going to connect the server to Azure Arc.\nConnect the machine to Azure Arc for Servers There are two different ways to connect on-premises machines to Azure Arc. You can download a script and run it manually on the server. This is the best approach when you are adding single servers to Azure Arc. You can also follow the PowerShell Quickstart for adding multiple machines using a Service Principal. You can find the quickstart here: https://docs.microsoft.com/en-us/azure/azure-arc/servers/quickstart-onboard-powershell. We are adding one machine in this demo, so we are going to follow the Portal Quickstart. To connect the machine to Azure, we need to generate the agent install script in the Azure portal. This script is going to download the Azure Connected Machine Agent (AzCMAgent) installation package, install it on the on-premises machine and register the machine in Azure Arc.\nGenerate the agent install script using the Azure portal To generate the agent install script, take the following steps:\nNavigate to the Azure portal and type Azure Arc in the search box. Or you can launch https://aka.ms/hybridmachineportal\nClick on +Add.\nSelect Add machines using interactive script:\nIn the Basicsblade, keep the default settings and click Review + generate. If you want, you can create a new resource group for your machines that are connected to Azure Arc:\nThe last page has a script generated which you can copy (or download). This script needs to be executed on the on-premises machine:\nConnect the on-premises machine to Azure Arc To connect the on-premises machine to Azure Arc, we first need install the agent on the on-premises machine. Therefore, take the following steps:\nOpen Windows PowerShell ISE as an administrator.\nPaste the script, that is generated in the previous step in PowerShell, in the window and execute it.\nThe machine will be onboarded to Azure, which can take a few minutes to complete.\nYou will receive a registration code during script execution. Navigate to https://microsoft.com/devicelogin.\nPaste in the code from PowerShell and click Next:\nYou will receive a confirmation that the device is registered in Azure Arc.\nYou can now close the browser window.\nIf you now go back to the Azure portal and refresh the page, you will see that the server is added to Azure with the Connectedstatus.\nManaging the machine in Azure Arc To manage the machine from Azure, click on the machine in the overview blade, like in the previous image. In the overview blade, you can add tags to the machine. You can also Manage access, and apply policies to the machine from here. Summary In this post, we’ve covered how to connect an on-premises machine to Azure Arc for servers. I find it extremely easy to connect the on-premises machine to Azure. By generating the script in the Azure portal, which includes downloading and installing the agent on the on-premises machine, makes it easy to connect it to Azure. Once connected, the machine can be managed as if it is a native Azure VM.\n-Sjoukje\n",
+  "wordCount" : "1078",
+  "inLanguage": "en",
+  "datePublished": "2019-12-29T00:00:00Z",
+  "dateModified": "2019-12-29T00:00:00Z",
+  "author":{
+    "@type": "Person",
+    "name": "sjoukje.eth"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "//localhost:1313/posts/2019-12-29-azure-arc-for-servers-getting-started/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "sjoukje.eth",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "//localhost:1313/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="//localhost:1313/" accesskey="h" title="sjoukje.eth (Alt + H)">sjoukje.eth</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="//localhost:1313/posts/" title="Posts">
+                    <span>Posts</span>
+                </a>
+            </li>
+            <li>
+                <a href="//localhost:1313/books/" title="Books">
+                    <span>Books</span>
+                </a>
+            </li>
+            <li>
+                <a href="//localhost:1313/about/" title="About">
+                    <span>About</span>
+                </a>
+            </li>
+            <li>
+                <a href="//localhost:1313/archives/" title="Archive">
+                    <span>Archive</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="//localhost:1313/">Home</a>&nbsp;»&nbsp;<a href="//localhost:1313/posts/">Posts</a></div>
+    <h1 class="post-title entry-hint-parent">
+      Azure Arc for Servers: Getting started
+    </h1>
+    <div class="post-meta"><span title='2019-12-29 00:00:00 +0000 UTC'>December 29, 2019</span>&nbsp;·&nbsp;<span>6 min</span>&nbsp;·&nbsp;<span>sjoukje.eth</span>
+
+</div>
+  </header> 
+  <div class="post-content"><p>Most organizations embrace a hybrid and multi cloud approach for their businesses. This will give them the full benefits of their on-premises investments, the ability to innovate using cloud technologies, and the ability to avoid vendor lock-in.
+For the last two years, Microsoft is investing enormously in enabling seamless hybrid capabilities. They released Azure Stack, which enables a consistent cloud model, but is deployed on-premises. They enabled security threat protection for any infrastructure, which is fully powered from the cloud, and they enabled the ability to run Microsoft Azure Cognitive Services AI models anywhere. Microsoft recently released Azure Arc, which unlocks new hybrid scenarios for organizations by bringing new Azure services and management features to any infrastructure.
+Azure Arc extends the Azure Resource Manager capabilities to Linux and Windows servers, and Kubernetes clusters on any infrastructure across on-premises, multi-cloud, and the edge. You can use Azure Arc to run Azure data services anywhere, which includes always up-to-date data capabilities, deployment in seconds, and dynamic scalability on any infrastructure. Azure Arc for Servers is currently in preview, and that is what we are going to cover in this post.</p>
+<h2 id="azure-arc-for-servers">Azure Arc for Servers<a hidden class="anchor" aria-hidden="true" href="#azure-arc-for-servers">#</a></h2>
+<p>With Azure Arc for servers, you can manage machines that are hosted outside of Azure. When these types of machines are connected to Azure using Azure Arc for servers, they become **Connected Machines,**and they will be treated as native resources in Azure. Each Connected machine will get a Resource ID during registration in Azure and it will be managed as part of a Resource group inside an Azure subscription. This will enable the ability to benefit from Azure features and capabilities, such as Azure Policies, and tagging.
+For each machine that you want to connect to Azure, an agent package needs to be installed. Based on how recently the agent has checked in, the machine will have a status of <strong>Connected</strong> or <strong>Disconnected.</strong> If a machine has not checked-in within the past 5 minutes, it will show as Disconnected until connectivity is restored. This check-in is called a heartbeat. The Azure Resource Manager service limits are also applicable to Azure Arc for server, which means that there is a limit of 800 servers per resource group.</p>
+<h3 id="supported-operating-systems">Supported Operating Systems<a hidden class="anchor" aria-hidden="true" href="#supported-operating-systems">#</a></h3>
+<p>By the time of writing this post, the public preview supports the following operating systems:</p>
+<ul>
+<li>Windows Server 2012 R2 and newer</li>
+<li>Ubuntu 16.04 and 18.04</li>
+</ul>
+<h3 id="networking">Networking<a hidden class="anchor" aria-hidden="true" href="#networking">#</a></h3>
+<p>During installation and runtime, the agent requires connectivity to Azure Arc service endpoints. If outbound connectivity is blocked by the firewall, make sure that the following URLs are not blocked:</p>
+<table>
+  <thead>
+      <tr>
+          <th>Domain Environment</th>
+          <th>Required Azure service endpoints</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>management.azure.com</td>
+          <td>Azure Resource Manager</td>
+      </tr>
+      <tr>
+          <td>login.windows.net</td>
+          <td>Azure Active Directory</td>
+      </tr>
+      <tr>
+          <td>dc.services.visualstudio.com</td>
+          <td>Application Insights</td>
+      </tr>
+      <tr>
+          <td>agentserviceapi.azure-automation.net</td>
+          <td>Guest Configuration</td>
+      </tr>
+      <tr>
+          <td>*-agentservice-prod-1.azure-automation.net</td>
+          <td>Guest Configuration</td>
+      </tr>
+      <tr>
+          <td>*.his.hybridcompute.azure-automation.net</td>
+          <td>Hybrid Identity Service</td>
+      </tr>
+  </tbody>
+</table>
+<p> 
+In the next part of this post, we are going to connect an on-premises machine in Azure using Azure Arc. For this demonstration, I have an on-premises Hyper-V environment with one Windows Server 2016 machine.</p>
+<h2 id="register-the-required-resource-providers-in-azure">Register the required Resource Providers in Azure<a hidden class="anchor" aria-hidden="true" href="#register-the-required-resource-providers-in-azure">#</a></h2>
+<p>First, we need to register the required resource providers in Azure. Therefore, take the following steps:</p>
+<ul>
+<li>
+<p>Open a browser and navigate to the Azure portal at: <a href="%22https://portal.azure.com/%22">https://portal.azure.com/</a></p>
+</li>
+<li>
+<p>Login with your administrator credentials.</p>
+</li>
+<li>
+<p>Open Cloud Shell in the top right menu, and add the following lines of code to register the <strong>Microsoft.HybridCompute</strong> and the <strong>Microsoft.GuestConfiguration</strong> resource providers:</p>
+<pre tabindex="0"><code>Register-AzResourceProvider -ProviderNamespace Microsoft.HybridCompute
+Register-AzResourceProvider -ProviderNamespace Microsoft.GuestConfiguration
+</code></pre></li>
+<li>
+<p>This will result in the following output.</p>
+</li>
+<li>
+<p>Note that the resource providers are only registered in specific locations.</p>
+</li>
+</ul>
+<p> 
+In the next part, we are going to connect the server to Azure Arc.</p>
+<h2 id="connect-the-machine-to-azure-arc-for-servers">Connect the machine to Azure Arc for Servers<a hidden class="anchor" aria-hidden="true" href="#connect-the-machine-to-azure-arc-for-servers">#</a></h2>
+<p>There are two different ways to connect on-premises machines to Azure Arc. You can download a script and run it manually on the server. This is the best approach when you are adding single servers to Azure Arc. You can also follow the PowerShell Quickstart for adding multiple machines using a Service Principal. You can find the quickstart here: <a href="%22https://docs.microsoft.com/en-us/azure/azure-arc/servers/quickstart-onboard-powershell%22">https://docs.microsoft.com/en-us/azure/azure-arc/servers/quickstart-onboard-powershell.</a>
+We are adding one machine in this demo, so we are going to follow the <a href="%22https://docs.microsoft.com/en-us/azure/azure-arc/servers/quickstart-onboard-portal%22">Portal Quickstart</a>.
+To connect the machine to Azure, we need to generate the agent install script in the Azure portal. This script is going to download the <strong>Azure Connected Machine Agent (AzCMAgent)</strong> installation package, install it on the on-premises machine and register the machine in Azure Arc.</p>
+<h3 id="generate-the-agent-install-script-using-the-azure-portal">Generate the agent install script using the Azure portal<a hidden class="anchor" aria-hidden="true" href="#generate-the-agent-install-script-using-the-azure-portal">#</a></h3>
+<p>To generate the agent install script, take the following steps:</p>
+<ul>
+<li>
+<p>Navigate to the Azure portal  and type <strong>Azure Arc</strong> in the search box. Or you can launch <a href="%22https://aka.ms/hybridmachineportal%22">https://aka.ms/hybridmachineportal</a></p>
+</li>
+<li>
+<p>Click on <strong><strong>+Add.</strong></strong></p>
+</li>
+<li>
+<p>Select <strong><strong><strong>Add machines using interactive script:</strong></strong></strong></p>
+</li>
+<li>
+<p>In the <strong>Basics</strong>blade, keep the default settings and click <strong>Review + generate</strong>. If you want, you can create a new resource group for your machines that are connected to Azure Arc:</p>
+</li>
+<li>
+<p>The last page has a script generated which you can copy (or download). This script needs to be executed on the on-premises machine:</p>
+</li>
+</ul>
+<h3 id="connect-the-on-premises-machine-to-azure-arc">Connect the on-premises machine to Azure Arc<a hidden class="anchor" aria-hidden="true" href="#connect-the-on-premises-machine-to-azure-arc">#</a></h3>
+<p>To connect the on-premises machine to Azure Arc, we first need install the agent on the on-premises machine. Therefore, take the following steps:</p>
+<ul>
+<li>
+<p>Open Windows PowerShell ISE as an administrator.</p>
+</li>
+<li>
+<p>Paste the script, that is generated in the previous step in PowerShell, in the window and execute it.</p>
+</li>
+<li>
+<p>The machine will be onboarded to Azure, which can take a few minutes to complete.</p>
+</li>
+<li>
+<p>You will receive a registration code during script execution. Navigate to <a href="%22https://microsoft.com/devicelogin%22">https://microsoft.com/devicelogin</a>.</p>
+</li>
+<li>
+<p>Paste in the code from PowerShell and click <strong><strong>Next:</strong></strong></p>
+</li>
+<li>
+<p>You will receive a confirmation that the device is registered in Azure Arc.</p>
+</li>
+<li>
+<p>You can now close the browser window.</p>
+</li>
+<li>
+<p>If you now go back to the Azure portal and refresh the page, you will see that the server is added to Azure with the <strong>Connected</strong>status.</p>
+</li>
+</ul>
+<h2 id="managing-the-machine-in-azure-arc">Managing the machine in Azure Arc<a hidden class="anchor" aria-hidden="true" href="#managing-the-machine-in-azure-arc">#</a></h2>
+<ul>
+<li>To manage the machine from Azure, click on the machine in the overview blade, like in the previous image.</li>
+<li>In the overview blade, you can add tags to the machine. You can also Manage access, and apply policies to the machine from here.</li>
+</ul>
+<h2 id="summary">Summary<a hidden class="anchor" aria-hidden="true" href="#summary">#</a></h2>
+<p>In this post, we&rsquo;ve covered how to connect an on-premises machine to Azure Arc for servers. I find it extremely easy to connect the on-premises machine to Azure. By generating the script in the Azure portal, which includes downloading and installing the agent on the on-premises machine, makes it easy to connect it to Azure. Once connected, the machine can be managed as if it is a native Azure VM.</p>
+<p>-Sjoukje</p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+    </ul>
+<nav class="paginav">
+  <a class="prev" href="//localhost:1313/posts/2020-08-20-what-a-cloud-center-of-excellence-can-do-for-your-organization/">
+    <span class="title">« Prev</span>
+    <br>
+    <span>What a Cloud Center of Excellence can do for your organization</span>
+  </a>
+  <a class="next" href="//localhost:1313/posts/2019-10-17-polarconf-the-slides-of-my-session-the-steps-to-ef/">
+    <span class="title">Next »</span>
+    <br>
+    <span>PolarConf: The slides of my session The steps to effective Azure governance</span>
+  </a>
+</nav>
+
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="//localhost:1313/">sjoukje.eth</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerHTML = 'copy';
+
+        function copyingDone() {
+            copybutton.innerHTML = 'copied!';
+            setTimeout(() => {
+                copybutton.innerHTML = 'copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+</body>
+
+</html>

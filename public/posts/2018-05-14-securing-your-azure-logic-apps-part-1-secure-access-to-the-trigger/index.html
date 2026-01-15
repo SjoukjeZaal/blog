@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto" data-theme="auto">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Securing Your Azure Logic Apps Part 1: Secure access to the trigger | sjoukje.eth</title>
+<meta name="keywords" content="">
+<meta name="description" content="I think Azure Logic Apps is a great way to implement scalable
+integrations in the Cloud. It comes with over 100
+connectors
+for integrating applications and data in the cloud and on-premises. You
+can now choose to use the Logic App designer or create your apps from
+Visual Studio, call Azure Functions from inside of your Logic App,
+easily scale up and down, and all this for a fair price. I truly believe
+this is going to be the future of Enterprise Integration and when I get
+the chance, I&rsquo;m using them in all my client projects.">
+<meta name="author" content="sjoukje.eth">
+<link rel="canonical" href="//localhost:1313/posts/2018-05-14-securing-your-azure-logic-apps-part-1-secure-access-to-the-trigger/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.36f09b336921909a5971cfa84422229fa3edb550fa46b7707cb5436b0983bdcf.css" integrity="sha256-NvCbM2khkJpZcc&#43;oRCIin6PttVD6RrdwfLVDawmDvc8=" rel="preload stylesheet" as="style">
+<link rel="icon" href="//localhost:1313/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="//localhost:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="//localhost:1313/favicon-32x32.png">
+<link rel="apple-touch-icon" href="//localhost:1313/apple-touch-icon.png">
+<link rel="mask-icon" href="//localhost:1313/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="//localhost:1313/posts/2018-05-14-securing-your-azure-logic-apps-part-1-secure-access-to-the-trigger/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script><meta property="og:url" content="//localhost:1313/posts/2018-05-14-securing-your-azure-logic-apps-part-1-secure-access-to-the-trigger/">
+  <meta property="og:site_name" content="sjoukje.eth">
+  <meta property="og:title" content="Securing Your Azure Logic Apps Part 1: Secure access to the trigger">
+  <meta property="og:description" content="I think Azure Logic Apps is a great way to implement scalable integrations in the Cloud. It comes with over 100 connectors for integrating applications and data in the cloud and on-premises. You can now choose to use the Logic App designer or create your apps from Visual Studio, call Azure Functions from inside of your Logic App, easily scale up and down, and all this for a fair price. I truly believe this is going to be the future of Enterprise Integration and when I get the chance, I’m using them in all my client projects.">
+  <meta property="og:locale" content="en-us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2018-05-14T00:00:00+00:00">
+    <meta property="article:modified_time" content="2018-05-14T00:00:00+00:00">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Securing Your Azure Logic Apps Part 1: Secure access to the trigger">
+<meta name="twitter:description" content="I think Azure Logic Apps is a great way to implement scalable
+integrations in the Cloud. It comes with over 100
+connectors
+for integrating applications and data in the cloud and on-premises. You
+can now choose to use the Logic App designer or create your apps from
+Visual Studio, call Azure Functions from inside of your Logic App,
+easily scale up and down, and all this for a fair price. I truly believe
+this is going to be the future of Enterprise Integration and when I get
+the chance, I&rsquo;m using them in all my client projects.">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "//localhost:1313/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "Securing Your Azure Logic Apps Part 1: Secure access to the trigger",
+      "item": "//localhost:1313/posts/2018-05-14-securing-your-azure-logic-apps-part-1-secure-access-to-the-trigger/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Securing Your Azure Logic Apps Part 1: Secure access to the trigger",
+  "name": "Securing Your Azure Logic Apps Part 1: Secure access to the trigger",
+  "description": "I think Azure Logic Apps is a great way to implement scalable integrations in the Cloud. It comes with over 100 connectors for integrating applications and data in the cloud and on-premises. You can now choose to use the Logic App designer or create your apps from Visual Studio, call Azure Functions from inside of your Logic App, easily scale up and down, and all this for a fair price. I truly believe this is going to be the future of Enterprise Integration and when I get the chance, I\u0026rsquo;m using them in all my client projects.\n",
+  "keywords": [
+    
+  ],
+  "articleBody": "I think Azure Logic Apps is a great way to implement scalable integrations in the Cloud. It comes with over 100 connectors for integrating applications and data in the cloud and on-premises. You can now choose to use the Logic App designer or create your apps from Visual Studio, call Azure Functions from inside of your Logic App, easily scale up and down, and all this for a fair price. I truly believe this is going to be the future of Enterprise Integration and when I get the chance, I’m using them in all my client projects.\nBut how can you make these applications secure? There are a couple of ways you can achieve this. You can:\nSecure access to the trigger.\nSecure your Logic App using API Management.\nAnd in this first post, I will show you how to secure the access to the trigger of the Logic App.\nSetting up the sample solution For this, I am going to create a Logic App Solution in Visual Studio. For more information about the prerequisites and how to create such a solution, follow the steps described here. You have to install the Azure Logic Apps Tools for Visual Studio 2017 as well.\nThis app does nothing more than respond to a HTTP request and then sending an email to my own email address using my Outlook.com account. If you don’t have a Outlook.com or Hotmail account, you can use Gmail as well.\nSo, create a new project in Visual Studio and in the Solution Explorer, right click the LogicApp.json file and select Open with Logic App Designer.\nSelect your Azure subscription and the Resource Group in the next widget screen. The Logic App designer is opened in Visual Studio after clicking OK (How cool is that!).\nSelect the HTTP Trigger, this will be added to the design canvas. Click on the action and fill in the below JSON request body:\n{\n\"type\": \"object\",\n\"properties\": {\n\"text\": {\n\"type\": \"string\"\n}\n},\n\"required\": [\"text\"]\n}\nClick the advanced option body and select POST from the Method dropdownlist. The request action will look the below image:\nClick the Next Step button, and then Add an action.\nIn the Search Box type, Outlook.com (or Gmail) and select the Outlook.com connector.\nThe Connector is added to the canvas. Fill in your credentials, and fill in a receiver email address, a subject and body. As a body, I’ve selected the body from the request.\nThe sample application is now ready. Right Click the project in the Solution Explorer and click Deploy 🡪 New. Fill in the correct Resource Group information in the wizard, which is opened and click Deploy.\nSecure Access to the Trigger This sample logic app fires on a HTTP Request (this can be a Webook as well). You can restrict access to the app, so that only authorized clients can fire the logic app. All requests into a logic app are encrypted and secured via SSL.\nEvery Logic App request endpoint includes a Shared Access Signature (SAS) as part of the URL, like https://prod-13.westeurope.logic.azure.com:443/workflows//triggers/manual/paths/invoke?api-version=2016-06-01\u0026sp=%2Ftriggers%2Fmanual%2Frun\u0026sv=1.0\u0026sig=xTG65EBWRwxxQXyqRUn7MDjbc4KFDm_Q-R6v9zOvmVU . The URL contains the following:\nsp: Permissions are specified here.\nsv: this is the version used to generate.\nsig: this is used for authenticating the trigger.\nThe Signature (sig) is generated using a SHA256 algorithm with a secret key on all the URL paths and properties. The secret key is never exposed and published, and your Logic App only accepts triggers that contain a valid signature created with the secret key.\nRegenerating an Access Key When deployed from Visual Studio, there is already an SAS generated automatically. If you want to regenerate the Access Key, take the following steps:\nNavigate to the Azure Portal and open the Logic App which is deployed from Visual Studio earlier. Click the Access Keys menu item under Settings. In here you can regenerate the Access Key, as shown in the image below.\nAfter generating the key, you can obtain the URL including the newly generated SAS from the Overview page under Callback url (POST).\nCallback URLs with an expiration date You can also create Callback URLs with an expiration date. This way you can restrict your app for a certain timeframe.\nYou first need to create a App Service Principal in Azure, to add to the header of the POST request. I created this using the Azure Cloud Shell (Preview). To do this, open the Azure Portal and click on the Azure Cloud Shell item. Add the following code to the Cloud Shell to create the Service Principal:\nazure ad sp create -n SecureLogicApp -p “test”\nAs you can see in the Cloud Shell, the Service Principal is created. Copy the Object Id from the Shell to the clipboard, and type the below code into the Cloud Shell:\nazure role assignment create --objectId 3a9448e9-7fd4-4ff6-a09d-744a066545ae -o Reader\nYou now have granted the service principal permissions on your subscription and you have added the service principal to the Reader role, which grants permission to read all resources in the subscription.\nTo add an expiration date to the trigger of the Logic App, open the LogicApp.json in code view in Visual Studio. Locate the triggers section and add the following to it inside the ‘schema’ section:\n\"NotAfter\": \"2017-07-26T11:00:00.511Z\",\nAdjust the date and time to your needs. The triggers section will now look like below:\n\"triggers\": {\n\"manual\": {\n\"type\": \"Request\",\n\"kind\": \"Http\",\n\"inputs\": {\n\"schema\": {\n\"NotAfter\": \"2017-07-26T11:00:00.511Z\",\n\"type\": \"object\",\n\"properties\": {\n\"text\": {\n\"type\": \"string\"\n}\n},\n\"required\": [\n\"text\"\n]\n},\n\"method\": \"POST\"\n}\n}\n},\nNow, redeploy the project to Azure.\nNote: If you call the API from Postman, don’t forget to add the Authorization token to the header.\nRestrict incoming IP addresses In addition to the Shared Access Signature, you can restrict calling a Logic App only from specific clients, like from a certain IP address or range of IP addresses.\nThis setting can be configured from the Azure Portal or from Visual Studio.\nInside the Azure Portal, from the settings menu of the Logic App select Access Control Configuration, and select Specific IP Ranges from the dropdown. Here, provide the IP address or range addresses and click the Save button:\nConclusion When you are using Azure Logic Applications in a production environment you want to secure them as best as possible. However, there are multiple ways to secure your Logic Apps. In this post, I’ve described how security can be applied to the Trigger level of the Logic App. In the next post, I will give more details about securing your Logic App using API Management.\n-Sjoukje\n",
+  "wordCount" : "1100",
+  "inLanguage": "en",
+  "datePublished": "2018-05-14T00:00:00Z",
+  "dateModified": "2018-05-14T00:00:00Z",
+  "author":{
+    "@type": "Person",
+    "name": "sjoukje.eth"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "//localhost:1313/posts/2018-05-14-securing-your-azure-logic-apps-part-1-secure-access-to-the-trigger/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "sjoukje.eth",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "//localhost:1313/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="//localhost:1313/" accesskey="h" title="sjoukje.eth (Alt + H)">sjoukje.eth</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="//localhost:1313/posts/" title="Posts">
+                    <span>Posts</span>
+                </a>
+            </li>
+            <li>
+                <a href="//localhost:1313/books/" title="Books">
+                    <span>Books</span>
+                </a>
+            </li>
+            <li>
+                <a href="//localhost:1313/about/" title="About">
+                    <span>About</span>
+                </a>
+            </li>
+            <li>
+                <a href="//localhost:1313/archives/" title="Archive">
+                    <span>Archive</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="//localhost:1313/">Home</a>&nbsp;»&nbsp;<a href="//localhost:1313/posts/">Posts</a></div>
+    <h1 class="post-title entry-hint-parent">
+      Securing Your Azure Logic Apps Part 1: Secure access to the trigger
+    </h1>
+    <div class="post-meta"><span title='2018-05-14 00:00:00 +0000 UTC'>May 14, 2018</span>&nbsp;·&nbsp;<span>6 min</span>&nbsp;·&nbsp;<span>sjoukje.eth</span>
+
+</div>
+  </header> 
+  <div class="post-content"><p>I think Azure Logic Apps is a great way to implement scalable
+integrations in the Cloud. It comes with over 100
+<a href="https://docs.microsoft.com/en-us/azure/connectors/apis-list">connectors</a>
+for integrating applications and data in the cloud and on-premises. You
+can now choose to use the Logic App designer or create your apps from
+Visual Studio, call Azure Functions from inside of your Logic App,
+easily scale up and down, and all this for a fair price. I truly believe
+this is going to be the future of Enterprise Integration and when I get
+the chance, I&rsquo;m using them in all my client projects.</p>
+<p>But how can you make these applications secure? There are a couple of
+ways you can achieve this. You can:</p>
+<ul>
+<li>
+<p>Secure access to the trigger.</p>
+</li>
+<li>
+<p>Secure your Logic App using API Management.</p>
+</li>
+</ul>
+<p>And in this first post, I will show you how to secure the access to the
+trigger of the Logic App.</p>
+<h2 id="setting-up-the-sample-solution">Setting up the sample solution<a hidden class="anchor" aria-hidden="true" href="#setting-up-the-sample-solution">#</a></h2>
+<p>For this, I am going to create a Logic App Solution in Visual Studio.
+For more information about the prerequisites and how to create such a
+solution, follow the steps described
+<a href="https://docs.microsoft.com/en-us/azure/logic-apps/logic-apps-deploy-from-vs">here</a>.
+You have to install the <a href="https://marketplace.visualstudio.com/items?itemName=VinaySinghMSFT.AzureLogicAppsToolsforVisualStudio-18551">Azure Logic Apps Tools for Visual Studio
+2017</a>
+as well.</p>
+<p>This app does nothing more than respond to a HTTP request and then
+sending an email to my own email address using my Outlook.com account.
+If you don&rsquo;t have a Outlook.com or Hotmail account, you can use Gmail as
+well.</p>
+<p>So, create a new project in Visual Studio and in the Solution Explorer,
+right click the <strong>LogicApp.json</strong> file and select <strong>Open with Logic App
+Designer.</strong></p>
+<p>Select your Azure subscription and the Resource Group in the next widget
+screen. The Logic App designer is opened in Visual Studio after clicking
+OK (How cool is that!).</p>
+<p>Select the HTTP Trigger, this will be added to the design canvas. Click
+on the action and fill in the below JSON request body:</p>
+<p>{</p>
+<p>&quot;type&quot;: &quot;object&quot;,</p>
+<p>&quot;properties&quot;: {</p>
+<p>&quot;text&quot;: {</p>
+<p>&quot;type&quot;: &quot;string&quot;</p>
+<p>}</p>
+<p>},</p>
+<p>&quot;required&quot;: [&quot;text&quot;]</p>
+<p>}</p>
+<p>Click the advanced option body and select POST from the Method
+dropdownlist. The request action will look the below image:</p>
+<p>Click the <strong>Next Step</strong> button, and then <strong>Add an action</strong>.</p>
+<p>In the Search Box type, Outlook.com (or Gmail) and select the
+<strong>Outlook.com</strong> connector.</p>
+<p>The Connector is added to the canvas. Fill in your credentials, and fill
+in a receiver email address, a subject and body. As a body, I&rsquo;ve
+selected the body from the request.</p>
+<p>The sample application is now ready. Right Click the project in the
+Solution Explorer and click <strong>Deploy 🡪 New</strong>. Fill in the correct
+Resource Group information in the wizard, which is opened and click
+Deploy.</p>
+<h2 id="secure-access-to-the-trigger">Secure Access to the Trigger<a hidden class="anchor" aria-hidden="true" href="#secure-access-to-the-trigger">#</a></h2>
+<p>This sample logic app fires on a HTTP Request (this can be a Webook as
+well). You can restrict access to the app, so that only authorized
+clients can fire the logic app. All requests into a logic app are
+encrypted and secured via SSL.</p>
+<p>Every Logic App request endpoint includes a <a href="https://docs.microsoft.com/en-us/azure/storage/storage-dotnet-shared-access-signature-part-1">Shared Access Signature
+(SAS)</a>
+as part of the URL, like
+<a href="https://prod-13.westeurope.logic.azure.com:443/workflows/%3clogic%20app%20id%3e/triggers/manual/paths/invoke?api-version=2016-06-01&amp;sp=%2Ftriggers%2Fmanual%2Frun&amp;sv=1.0&amp;sig=xTG65EBWRwxxQXyqRUn7MDjbc4KFDm_Q-R6v9zOvmVU">https://prod-13.westeurope.logic.azure.com:443/workflows/&lt;logic app
+id&gt;/triggers/manual/paths/invoke?api-version=2016-06-01&amp;sp=%2Ftriggers%2Fmanual%2Frun&amp;sv=1.0&amp;sig=xTG65EBWRwxxQXyqRUn7MDjbc4KFDm_Q-R6v9zOvmVU</a>
+. The URL contains the following:</p>
+<ul>
+<li>
+<p><strong>sp</strong>: Permissions are specified here.</p>
+</li>
+<li>
+<p><strong>sv</strong>: this is the version used to generate.</p>
+</li>
+<li>
+<p><strong>sig:</strong> this is used for authenticating the trigger.</p>
+</li>
+</ul>
+<p>The Signature (sig) is generated using a SHA256 algorithm with a secret
+key on all the URL paths and properties. The secret key is never exposed
+and published, and your Logic App only accepts triggers that contain a
+valid signature created with the secret key.</p>
+<h3 id="regenerating-an-access-key">Regenerating an Access Key<a hidden class="anchor" aria-hidden="true" href="#regenerating-an-access-key">#</a></h3>
+<p>When deployed from Visual Studio, there is already an SAS generated
+automatically. If you want to regenerate the Access Key, take the
+following steps:</p>
+<p>Navigate to the Azure Portal and open the Logic App which is deployed
+from Visual Studio earlier. Click the <strong>Access Keys</strong> menu item under
+<strong>Settings</strong>. In here you can regenerate the Access Key, as shown in the
+image below.</p>
+<p>After generating the key, you can obtain the URL including the newly
+generated SAS from the <strong>Overview</strong> page under <strong>Callback url (POST)</strong>.</p>
+<h3 id="callback-urls-with-an-expiration-date">Callback URLs with an expiration date<a hidden class="anchor" aria-hidden="true" href="#callback-urls-with-an-expiration-date">#</a></h3>
+<p>You can also create Callback URLs with an expiration date. This way you
+can restrict your app for a certain timeframe.</p>
+<p>You first need to create a App Service Principal in Azure, to add to the
+header of the POST request. I created this using the <a href="https://blogs.msdn.microsoft.com/azuredev/2017/05/11/azure-content-spotlight-azure-cloud-shell-preview/">Azure Cloud Shell
+(Preview)</a>.
+To do this, open the Azure Portal and click on the Azure Cloud Shell
+item. Add the following code to the Cloud Shell to create the Service
+Principal:</p>
+<p>azure ad sp create -n SecureLogicApp -p &ldquo;test&rdquo;</p>
+<p>As you can see in the Cloud Shell, the Service Principal is created.
+Copy the Object Id from the Shell to the clipboard, and type the below
+code into the Cloud Shell:</p>
+<p>azure role assignment create --objectId
+3a9448e9-7fd4-4ff6-a09d-744a066545ae -o Reader</p>
+<p>You now have granted the service principal permissions on your
+subscription and you have added the service principal to the Reader
+role, which grants permission to read all resources in the subscription.</p>
+<p>To add an expiration date to the trigger of the Logic App, open the
+LogicApp.json in code view in Visual Studio. Locate the triggers section
+and add the following to it inside the <strong>&lsquo;schema&rsquo;</strong> section:</p>
+<p>&quot;NotAfter&quot;: &quot;2017-07-26T11:00:00.511Z&quot;,</p>
+<p>Adjust the date and time to your needs. The triggers section will now
+look like below:</p>
+<p>&quot;triggers&quot;: {</p>
+<p>&quot;manual&quot;: {</p>
+<p>&quot;type&quot;: &quot;Request&quot;,</p>
+<p>&quot;kind&quot;: &quot;Http&quot;,</p>
+<p>&quot;inputs&quot;: {</p>
+<p>&quot;schema&quot;: {</p>
+<p>&quot;NotAfter&quot;: &quot;2017-07-26T11:00:00.511Z&quot;,</p>
+<p>&quot;type&quot;: &quot;object&quot;,</p>
+<p>&quot;properties&quot;: {</p>
+<p>&quot;text&quot;: {</p>
+<p>&quot;type&quot;: &quot;string&quot;</p>
+<p>}</p>
+<p>},</p>
+<p>&quot;required&quot;: [</p>
+<p>&quot;text&quot;</p>
+<p>]</p>
+<p>},</p>
+<p>&quot;method&quot;: &quot;POST&quot;</p>
+<p>}</p>
+<p>}</p>
+<p>},</p>
+<p>Now, redeploy the project to Azure.</p>
+<p>Note: If you call the API from Postman, don&rsquo;t forget to add the
+Authorization token to the header.</p>
+<h3 id="restrict-incoming-ip-addresses">Restrict incoming IP addresses<a hidden class="anchor" aria-hidden="true" href="#restrict-incoming-ip-addresses">#</a></h3>
+<p>In addition to the Shared Access Signature, you can restrict calling a
+Logic App only from specific clients, like from a certain IP address or
+range of IP addresses.</p>
+<p>This setting can be configured from the Azure Portal or from Visual
+Studio.</p>
+<p>Inside the Azure Portal, from the settings menu of the Logic App select
+<strong>Access Control Configuration,</strong> and select <strong>Specific IP Ranges</strong> from
+the dropdown. Here, provide the IP address or range addresses and click
+the <strong>Save</strong> button:</p>
+<h2 id="conclusion">Conclusion<a hidden class="anchor" aria-hidden="true" href="#conclusion">#</a></h2>
+<p>When you are using Azure Logic Applications in a production environment
+you want to secure them as best as possible. However, there are multiple
+ways to secure your Logic Apps. In this post, I&rsquo;ve described how
+security can be applied to the Trigger level of the Logic App. In the
+next post, I will give more details about securing your Logic App using
+API Management.</p>
+<p>-Sjoukje</p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+    </ul>
+<nav class="paginav">
+  <a class="prev" href="//localhost:1313/posts/2018-05-15-securing-your-azure-logic-apps-part-2-secure-your-logic-app-using-api-management/">
+    <span class="title">« Prev</span>
+    <br>
+    <span>Securing Your Azure Logic Apps Part 2: Secure your Logic App using API Management -- Access Restriction Policies</span>
+  </a>
+  <a class="next" href="//localhost:1313/posts/2018-04-26-azure-content-spotlight-password-less-sign-in-to-a/">
+    <span class="title">Next »</span>
+    <br>
+    <span>Azure Content Spotlight – Password-less Sign-in to Azure &amp; Windows 10</span>
+  </a>
+</nav>
+
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="//localhost:1313/">sjoukje.eth</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerHTML = 'copy';
+
+        function copyingDone() {
+            copybutton.innerHTML = 'copied!';
+            setTimeout(() => {
+                copybutton.innerHTML = 'copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+</body>
+
+</html>

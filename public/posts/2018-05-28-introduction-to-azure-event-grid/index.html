@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto" data-theme="auto">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Introduction to Azure Event Grid | sjoukje.eth</title>
+<meta name="keywords" content="">
+<meta name="description" content="Modern computing today is all distributed and Azure is designed from the
+ground up using distributed services and resources. Examples of those
+services and resources are, Azure Functions, Logic Apps, Azure Services
+Bus, IoT Hub, and more. But, all those services and resources are
+operating on their own island and to let those different resources,
+communicate with each other, Azure Event Grid comes into place.
+Azure Event Grid offers a fully-managed intelligent event routing
+service, which can be used to glue all these different distributed
+services and resources together. It is part of the messaging landscape
+of Azure and it offers a cross cloud eventing platform from the
+Microsoft Cloud.">
+<meta name="author" content="sjoukje.eth">
+<link rel="canonical" href="//localhost:1313/posts/2018-05-28-introduction-to-azure-event-grid/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.36f09b336921909a5971cfa84422229fa3edb550fa46b7707cb5436b0983bdcf.css" integrity="sha256-NvCbM2khkJpZcc&#43;oRCIin6PttVD6RrdwfLVDawmDvc8=" rel="preload stylesheet" as="style">
+<link rel="icon" href="//localhost:1313/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="//localhost:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="//localhost:1313/favicon-32x32.png">
+<link rel="apple-touch-icon" href="//localhost:1313/apple-touch-icon.png">
+<link rel="mask-icon" href="//localhost:1313/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="//localhost:1313/posts/2018-05-28-introduction-to-azure-event-grid/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script><meta property="og:url" content="//localhost:1313/posts/2018-05-28-introduction-to-azure-event-grid/">
+  <meta property="og:site_name" content="sjoukje.eth">
+  <meta property="og:title" content="Introduction to Azure Event Grid">
+  <meta property="og:description" content="Modern computing today is all distributed and Azure is designed from the ground up using distributed services and resources. Examples of those services and resources are, Azure Functions, Logic Apps, Azure Services Bus, IoT Hub, and more. But, all those services and resources are operating on their own island and to let those different resources, communicate with each other, Azure Event Grid comes into place.
+Azure Event Grid offers a fully-managed intelligent event routing service, which can be used to glue all these different distributed services and resources together. It is part of the messaging landscape of Azure and it offers a cross cloud eventing platform from the Microsoft Cloud.">
+  <meta property="og:locale" content="en-us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2018-05-28T00:00:00+00:00">
+    <meta property="article:modified_time" content="2018-05-28T00:00:00+00:00">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Introduction to Azure Event Grid">
+<meta name="twitter:description" content="Modern computing today is all distributed and Azure is designed from the
+ground up using distributed services and resources. Examples of those
+services and resources are, Azure Functions, Logic Apps, Azure Services
+Bus, IoT Hub, and more. But, all those services and resources are
+operating on their own island and to let those different resources,
+communicate with each other, Azure Event Grid comes into place.
+Azure Event Grid offers a fully-managed intelligent event routing
+service, which can be used to glue all these different distributed
+services and resources together. It is part of the messaging landscape
+of Azure and it offers a cross cloud eventing platform from the
+Microsoft Cloud.">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "//localhost:1313/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "Introduction to Azure Event Grid",
+      "item": "//localhost:1313/posts/2018-05-28-introduction-to-azure-event-grid/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Introduction to Azure Event Grid",
+  "name": "Introduction to Azure Event Grid",
+  "description": "Modern computing today is all distributed and Azure is designed from the ground up using distributed services and resources. Examples of those services and resources are, Azure Functions, Logic Apps, Azure Services Bus, IoT Hub, and more. But, all those services and resources are operating on their own island and to let those different resources, communicate with each other, Azure Event Grid comes into place.\nAzure Event Grid offers a fully-managed intelligent event routing service, which can be used to glue all these different distributed services and resources together. It is part of the messaging landscape of Azure and it offers a cross cloud eventing platform from the Microsoft Cloud.\n",
+  "keywords": [
+    
+  ],
+  "articleBody": "Modern computing today is all distributed and Azure is designed from the ground up using distributed services and resources. Examples of those services and resources are, Azure Functions, Logic Apps, Azure Services Bus, IoT Hub, and more. But, all those services and resources are operating on their own island and to let those different resources, communicate with each other, Azure Event Grid comes into place.\nAzure Event Grid offers a fully-managed intelligent event routing service, which can be used to glue all these different distributed services and resources together. It is part of the messaging landscape of Azure and it offers a cross cloud eventing platform from the Microsoft Cloud.\nAzure Event Grid simplifies the creation of event-based applications by managing all routing of events from any source, to any destination, for any application and Azure resource. Using Event Grid, you don’t have to create all these connections and integrations manually. You can subscribe to any event that is happening across the different Azure resources in your subscription, and act on that event using Azure Functions, Logic Apps, different apps and services included in Office 365, custom applications and more.\nIn Azure Event Grid, you can easily select the resource you would like to subscribe to and specify the event handler or WebHook to publish the event to. You can use filters to select specific events or use filters to route specific events to specific endpoints as well.\nAzure Event Grid Concepts Azure Event Grid uses the below concepts:\nEvents An event is a piece of information that describes something that happened inside a system or application. Each event has common information like a unique identifier, the source of the event and the time the event took place. It has relevant information about the type of the event as well. For example, an event that is created after a new file or image is being uploaded to Azure Blob Storage, has specific details about that file as well, like BlobType, which described the type of Blob. This can be a Block Blob or a Page Blob, for instance.\nEvent Sources/ Publishers The Event Source is the initiator or creator of the event. For example, Azure Blob Storage is the event source for Blob created events. The Event sources are responsible for publishing the events to Event Grid.\nBy the time of writing this post, the following Azure Services support publishing events to Event Grid:\nAzure Subscriptions and Resource Groups (management operations)\nEvent Hubs\nMedia Services\nBlob Storage\nService Bus\nStorage General-purpose v2 (GPv2)\nIoT Hub\nCustom Topics\nTopics Events are categorized into topics by the publisher. Azure Event Grid offers an endpoint where the publisher can send events to. When the event is published to Event Grid, the subscriber can decide to which topic it described to. Topics also provide a schema, so the subscribers can know how to subscribe to the event accordingly.\nEvent Subscriptions The subscription tells Event Grid where the events on a topic are sent to. It also gives information about which specific events the subscriber is interested in. It provides information about how the event needs to be delivered to the subscriber as well.\nEvent Handlers The Event Handler is the receiver of the event and it is responsible of further processing the event and take further action on the event. Azure Event Grid offers different mechanisms for delivering the event to the Event Handler. It offers a retrying mechanism for HTTP and WebHooks.\nBy the time of writing this post, the following Event handlers are available:\nEvent Hubs\nHybrid Connections\nAzure Automation\nAzure Functions\nLogic Apps\nMicrosoft Flow\nQueue Storage\nWebHooks\nSecurity Event Grid offers security for subscribing for, and publishing topics. Subscribers need to have sufficient permissions (Write permissions) on the resource or topics. For publishing events, a SAS token or key authentication is needed for the topic.\nSee below the overview image of the different Topics and Subscribers. This image is taken from the following Azure Event Grid documentation website: https://docs.microsoft.com/en-us/azure/event-grid/overview\nWrap-up In this post, I’ve described Azure Event Grid from a high level, briefly talked about how Azure is designed from the ground up using distributed components and what Azure Event Grid has to offer to let all those components communicate with each other from a single service. In the upcoming posts, we will work out some scenarios where Event Grid is used to glue the different services and resources together.\n-Sjoukje\n",
+  "wordCount" : "741",
+  "inLanguage": "en",
+  "datePublished": "2018-05-28T00:00:00Z",
+  "dateModified": "2018-05-28T00:00:00Z",
+  "author":{
+    "@type": "Person",
+    "name": "sjoukje.eth"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "//localhost:1313/posts/2018-05-28-introduction-to-azure-event-grid/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "sjoukje.eth",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "//localhost:1313/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="//localhost:1313/" accesskey="h" title="sjoukje.eth (Alt + H)">sjoukje.eth</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="//localhost:1313/posts/" title="Posts">
+                    <span>Posts</span>
+                </a>
+            </li>
+            <li>
+                <a href="//localhost:1313/books/" title="Books">
+                    <span>Books</span>
+                </a>
+            </li>
+            <li>
+                <a href="//localhost:1313/about/" title="About">
+                    <span>About</span>
+                </a>
+            </li>
+            <li>
+                <a href="//localhost:1313/archives/" title="Archive">
+                    <span>Archive</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="//localhost:1313/">Home</a>&nbsp;»&nbsp;<a href="//localhost:1313/posts/">Posts</a></div>
+    <h1 class="post-title entry-hint-parent">
+      Introduction to Azure Event Grid
+    </h1>
+    <div class="post-meta"><span title='2018-05-28 00:00:00 +0000 UTC'>May 28, 2018</span>&nbsp;·&nbsp;<span>4 min</span>&nbsp;·&nbsp;<span>sjoukje.eth</span>
+
+</div>
+  </header> 
+  <div class="post-content"><p>Modern computing today is all distributed and Azure is designed from the
+ground up using distributed services and resources. Examples of those
+services and resources are, Azure Functions, Logic Apps, Azure Services
+Bus, IoT Hub, and more. But, all those services and resources are
+operating on their own island and to let those different resources,
+communicate with each other, Azure Event Grid comes into place.</p>
+<p>Azure Event Grid offers a fully-managed intelligent event routing
+service, which can be used to glue all these different distributed
+services and resources together. It is part of the messaging landscape
+of Azure and it offers a cross cloud eventing platform from the
+Microsoft Cloud.</p>
+<p>Azure Event Grid simplifies the creation of event-based applications by
+managing all routing of events from any source, to any destination, for
+any application and Azure resource. Using Event Grid, you don&rsquo;t have to
+create all these connections and integrations manually. You can
+subscribe to any event that is happening across the different Azure
+resources in your subscription, and act on that event using Azure
+Functions, Logic Apps, different apps and services included in Office
+365, custom applications and more.</p>
+<p>In Azure Event Grid, you can easily select the resource you would like
+to subscribe to and specify the event handler or WebHook to publish the
+event to. You can use filters to select specific events or use filters
+to route specific events to specific endpoints as well.</p>
+<h1 id="azure-event-grid-concepts">Azure Event Grid Concepts<a hidden class="anchor" aria-hidden="true" href="#azure-event-grid-concepts">#</a></h1>
+<p>Azure Event Grid uses the below concepts:</p>
+<h2 id="events">Events<a hidden class="anchor" aria-hidden="true" href="#events">#</a></h2>
+<p>An event is a piece of information that describes something that
+happened inside a system or application. Each event has common
+information like a unique identifier, the source of the event and the
+time the event took place. It has relevant information about the type of
+the event as well. For example, an event that is created after a new
+file or image is being uploaded to Azure Blob Storage, has specific
+details about that file as well, like BlobType, which described the type
+of Blob. This can be a Block Blob or a Page Blob, for instance.</p>
+<h2 id="event-sources-publishers">Event Sources/ Publishers<a hidden class="anchor" aria-hidden="true" href="#event-sources-publishers">#</a></h2>
+<p>The Event Source is the initiator or creator of the event. For example,
+Azure Blob Storage is the event source for Blob created events. The
+Event sources are responsible for publishing the events to Event Grid.</p>
+<p>By the time of writing this post, the following Azure Services support
+publishing events to Event Grid:</p>
+<ul>
+<li>
+<p>Azure Subscriptions and Resource Groups (management operations)</p>
+</li>
+<li>
+<p>Event Hubs</p>
+</li>
+<li>
+<p>Media Services</p>
+</li>
+<li>
+<p>Blob Storage</p>
+</li>
+<li>
+<p>Service Bus</p>
+</li>
+<li>
+<p>Storage General-purpose v2 (GPv2)</p>
+</li>
+<li>
+<p>IoT Hub</p>
+</li>
+<li>
+<p>Custom Topics</p>
+</li>
+</ul>
+<h2 id="topics">Topics<a hidden class="anchor" aria-hidden="true" href="#topics">#</a></h2>
+<p>Events are categorized into topics by the publisher. Azure Event Grid
+offers an endpoint where the publisher can send events to. When the
+event is published to Event Grid, the subscriber can decide to which
+topic it described to. Topics also provide a schema, so the subscribers
+can know how to subscribe to the event accordingly.</p>
+<h2 id="event-subscriptions">Event Subscriptions<a hidden class="anchor" aria-hidden="true" href="#event-subscriptions">#</a></h2>
+<p>The subscription tells Event Grid where the events on a topic are sent
+to. It also gives information about which specific events the subscriber
+is interested in. It provides information about how the event needs to
+be delivered to the subscriber as well.</p>
+<h2></h2>
+<h2 id="event-handlers">Event Handlers<a hidden class="anchor" aria-hidden="true" href="#event-handlers">#</a></h2>
+<p>The Event Handler is the receiver of the event and it is responsible of
+further processing the event and take further action on the event. Azure
+Event Grid offers different mechanisms for delivering the event to the
+Event Handler. It offers a retrying mechanism for HTTP and WebHooks.</p>
+<p>By the time of writing this post, the following Event handlers are
+available:</p>
+<ul>
+<li>
+<p>Event Hubs</p>
+</li>
+<li>
+<p>Hybrid Connections</p>
+</li>
+<li>
+<p>Azure Automation</p>
+</li>
+<li>
+<p>Azure Functions</p>
+</li>
+<li>
+<p>Logic Apps</p>
+</li>
+<li>
+<p>Microsoft Flow</p>
+</li>
+<li>
+<p>Queue Storage</p>
+</li>
+<li>
+<p>WebHooks</p>
+</li>
+</ul>
+<h2 id="security">Security<a hidden class="anchor" aria-hidden="true" href="#security">#</a></h2>
+<p>Event Grid offers security for subscribing for, and publishing topics.
+Subscribers need to have sufficient permissions (<strong>Write</strong> permissions)
+on the resource or topics. For publishing events, a SAS token or key
+authentication is needed for the topic.</p>
+<p>See below the overview image of the different Topics and Subscribers.
+This image is taken from the following Azure Event Grid documentation
+website: <a href="https://docs.microsoft.com/en-us/azure/event-grid/overview">https://docs.microsoft.com/en-us/azure/event-grid/overview</a></p>
+<h1 id="wrap-up">Wrap-up<a hidden class="anchor" aria-hidden="true" href="#wrap-up">#</a></h1>
+<p>In this post, I&rsquo;ve described Azure Event Grid from a high level, briefly
+talked about how Azure is designed from the ground up using distributed
+components and what Azure Event Grid has to offer to let all those
+components communicate with each other from a single service. In the
+upcoming posts, we will work out some scenarios where Event Grid is used
+to glue the different services and resources together.</p>
+<p>-Sjoukje</p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+    </ul>
+<nav class="paginav">
+  <a class="prev" href="//localhost:1313/posts/2018-05-31-azure-content-spotlight-azure-iot-interactive-deve/">
+    <span class="title">« Prev</span>
+    <br>
+    <span>Azure Content Spotlight – Azure IoT Interactive Development Guide</span>
+  </a>
+  <a class="next" href="//localhost:1313/posts/2018-05-18-securing-your-azure-logic-apps-part-5-secure-your-logic-app-using-an-app-service-environment/">
+    <span class="title">Next »</span>
+    <br>
+    <span>Securing Your Azure Logic Apps Part 5: Secure your Logic App using an App Service Environment</span>
+  </a>
+</nav>
+
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="//localhost:1313/">sjoukje.eth</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerHTML = 'copy';
+
+        function copyingDone() {
+            copybutton.innerHTML = 'copied!';
+            setTimeout(() => {
+                copybutton.innerHTML = 'copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+</body>
+
+</html>

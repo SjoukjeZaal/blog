@@ -1,0 +1,813 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto" data-theme="auto">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>SharePoint 2013 Workflow Part 1: Workflow Manager Architecture | sjoukje.eth</title>
+<meta name="keywords" content="">
+<meta name="description" content="Leveraging Azure Marketplace Data in SharePoint Part 1: Consuming Azure Marketplace Data in BCS
+Windows Azure Marketplace data is a service by Microsoft that hosts WCF services in Windows Azure. Organizations and individuals can consume that data via a subscription model. These services expose data using REST services which can be leveraged in SharePoint using BCS.
+For this example we are going to use US Crime data statistics Service (DATA.gov). By using BCS we can consume the Azure WCF Service and display this data in SharePoint via an External List.">
+<meta name="author" content="sjoukje.eth">
+<link rel="canonical" href="//localhost:1313/posts/2012-02-02-microsoft-azure-a-cloud-native-success-story-copy/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.36f09b336921909a5971cfa84422229fa3edb550fa46b7707cb5436b0983bdcf.css" integrity="sha256-NvCbM2khkJpZcc&#43;oRCIin6PttVD6RrdwfLVDawmDvc8=" rel="preload stylesheet" as="style">
+<link rel="icon" href="//localhost:1313/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="//localhost:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="//localhost:1313/favicon-32x32.png">
+<link rel="apple-touch-icon" href="//localhost:1313/apple-touch-icon.png">
+<link rel="mask-icon" href="//localhost:1313/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="//localhost:1313/posts/2012-02-02-microsoft-azure-a-cloud-native-success-story-copy/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script><meta property="og:url" content="//localhost:1313/posts/2012-02-02-microsoft-azure-a-cloud-native-success-story-copy/">
+  <meta property="og:site_name" content="sjoukje.eth">
+  <meta property="og:title" content="SharePoint 2013 Workflow Part 1: Workflow Manager Architecture">
+  <meta property="og:description" content="Leveraging Azure Marketplace Data in SharePoint Part 1: Consuming Azure Marketplace Data in BCS
+Windows Azure Marketplace data is a service by Microsoft that hosts WCF services in Windows Azure. Organizations and individuals can consume that data via a subscription model. These services expose data using REST services which can be leveraged in SharePoint using BCS.
+For this example we are going to use US Crime data statistics Service (DATA.gov). By using BCS we can consume the Azure WCF Service and display this data in SharePoint via an External List.">
+  <meta property="og:locale" content="en-us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2012-02-02T00:00:00+00:00">
+    <meta property="article:modified_time" content="2012-02-02T00:00:00+00:00">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="SharePoint 2013 Workflow Part 1: Workflow Manager Architecture">
+<meta name="twitter:description" content="Leveraging Azure Marketplace Data in SharePoint Part 1: Consuming Azure Marketplace Data in BCS
+Windows Azure Marketplace data is a service by Microsoft that hosts WCF services in Windows Azure. Organizations and individuals can consume that data via a subscription model. These services expose data using REST services which can be leveraged in SharePoint using BCS.
+For this example we are going to use US Crime data statistics Service (DATA.gov). By using BCS we can consume the Azure WCF Service and display this data in SharePoint via an External List.">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "//localhost:1313/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "SharePoint 2013 Workflow Part 1: Workflow Manager Architecture",
+      "item": "//localhost:1313/posts/2012-02-02-microsoft-azure-a-cloud-native-success-story-copy/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "SharePoint 2013 Workflow Part 1: Workflow Manager Architecture",
+  "name": "SharePoint 2013 Workflow Part 1: Workflow Manager Architecture",
+  "description": "Leveraging Azure Marketplace Data in SharePoint Part 1: Consuming Azure Marketplace Data in BCS\nWindows Azure Marketplace data is a service by Microsoft that hosts WCF services in Windows Azure. Organizations and individuals can consume that data via a subscription model. These services expose data using REST services which can be leveraged in SharePoint using BCS.\nFor this example we are going to use US Crime data statistics Service (DATA.gov). By using BCS we can consume the Azure WCF Service and display this data in SharePoint via an External List.\n",
+  "keywords": [
+    
+  ],
+  "articleBody": "Leveraging Azure Marketplace Data in SharePoint Part 1: Consuming Azure Marketplace Data in BCS\nWindows Azure Marketplace data is a service by Microsoft that hosts WCF services in Windows Azure. Organizations and individuals can consume that data via a subscription model. These services expose data using REST services which can be leveraged in SharePoint using BCS.\nFor this example we are going to use US Crime data statistics Service (DATA.gov). By using BCS we can consume the Azure WCF Service and display this data in SharePoint via an External List.\nFor achieving the above we are going to take the following steps:\nCreate an Azure Marketplace account and consume the data.\nCreate a Custom .Net Connector to leverage this data in BCS.\nUse the Secure Store Service for Azure Marketplace authentication (part 2).\nIn the first part of this series we are going to register for an Azure Marketplace account so we can subscribe to a service. After this, we are going to create a BCS Custom .Net Connector for adding that data to SharePoint’s BCS. In the next part of this series we are going to use Secure Store Service for Azure Marketplace Authentication.\nAzure Marketplace Data\nTo get started navigate to [https://datamarket.azure.com/]{.underline} and register for an account by using your Windows Live ID. Click the Windows Live Sign in the upper right corner, add your information, accept the license agreement and click register. Get a developer account, search for the US Crime Data Statistics Service and add it to your account. (some data sets cost money, so be aware). After you found the data feed click on it for more details. Then click the Sign Up button on the right. After this the data feed will be added to your account. Click the “My Account” button in the top navigation and click on “My Data” in the left navigation. You will see the newly added subscription on the page. Click on the title of the service which sends you to the details page of the Crime Service. Click on “Explore the dataset”. A new window is opened and here you can filter the service data using the web browser. Add “Washington” to the “City” Textbox and click on “Run Query”.\nClick on the “Develop” Button next to the Build Query window. This URL contains the address of the service together with the filter we’ve added earlier in the Query Box. You can use the whole URL if you like but you can also use the root service URL and filter the data using LINQ in the custom .Net Connector. At the top of the screen locate the Service Root URL and copy it. Create a Custom .Net Connector for Connecting to the Azure Service\nAfter registering for an Azure Marketplace account we are going to create a custom .Net Connector to connect the data feed with SharePoint. The build in WCF connector is not suitable for this scenario because the marketplace feed expects the developer key for consuming the service. So in this case a custom connector needs to be developed using Visual Studio.\nFor this example we are going to create a .Net Assembly Connector. This type of connector is used when the External System Schema is fixed, like the data schema of the Crime data feed.\nOpen Visual Studio and create a new project.\nChoose the “Business Data Connectivity Model” as the project type. Call it “USCrimeDataConnector” (or call it anything you like) and click “OK”.\nChoose the SharePoint Server URL on which you’re going to debug and click Finish.\nRename the default BDCModel and call it “CrimeDataModel”.\nWe start by creating an External List for the Azure Crime Data. Right click the existing Entity1 and select Delete.\nSelect Entity1.cs and EntityService1.cs in the Solution Explorer and delete them.\nRight click the canvas and select Add -\u003e Entity. Right click the new Entity and select Properties. In the properties window set the Name to CrimeData.\nRight click the CrimeData entity and select Add -\u003e Identifier.\nSelect the Identifier and set the Name to Id using the Properties Window.\nAdd a ReadList method to the CrimeData Entity. Right click the CrimeData Entity and select Add -\u003e Method. Rename the method to ReadList. In the BDC Method Details pane locate the ReadList Method and expand its parameters. Click the dropdown in and choose Create Parameter. Set the following properties in the properties window:\nName to ReturnParameter\nParameterDirection to Return.\nIn the BDC Method Details pane locate the Instances node, select and choose Create Finder Instance. Set the following properties in the Properties Window:\nName to ReadList\nDefault to True\nDefaultDisplay Name to Read List\nReturn Parameter name to returnParameter.\nOpen the BDC Explorer Window, expand the ReadList message and select the returnParameterTypeDescriptor. Set the following properties in the Properties Window:\nName = CrimeDataList\nTypeName = System.Collections.Generic.IEnumerable`1[[USCrimeDataConnector.CrimeDataModel.CrimeData, CrimeDataModel]]\nIsCollection = True.\nIn the BDC Explorer, right click CrimeDataList and select Add Type Descriptor. Set the following properties in the Properties Window:\nName = CrimeData\nTypeName = USCrimeDataConnector.CrimeDataModel.CrimeData, CrimeDataModel.\nIn the BDC Explorer, right click CrimeData and select Add Type Descriptor. Set the following properties in the Properties Window:\nName = Id\nTypeName = System.Int32\nIdentifier = Id.\nAdd 3 more type descriptors and set the following properties (same as above):\nName = City\nTypeName = System.String\nName = State\nTypeName = System.String\nName = Year\nTypeName = System.Int32\nThe next step is to define the ReadItem method. Right click the CrimeData Enitity in the canvas and select Add -\u003e Method. Rename the method to ReadItem.\nSwitch to the BDC Method Details Pane and select the ReadItem node. Click the dropdown in and choose Create Parameter. Set the following properties in the properties window:\nName = ReturnParameter\nParameterDirection = Return.\nAdd another parameter and set the following properties:\nName = Id\nParameterDirection = In.\nIn the ReadItem method instances node add a new Create Finder instance and set the following properties:\nName = ReadItem.\nType = Specific Finder\nDefault = True\nDefaultDisplayName = ReadItem\nReturn Parameter = ReturnParameter\nIn the BDC Explorer Window locate the ReadItem parameters and expand them both.\nSelect idTypeDescriptor under the ReadItem’s id parameter and set the following values in the Properties window:\nName = CrimeDataId.\nTypeName = System. Int32.\nIdentifier = Id.\nRight Click CrimeData under ReadList -\u003e ReturnParameter -\u003e CrimeDataList -\u003e CrimeData and select Copy.\nRight Click ReturnParameter under ReadItem and select Paste.\nClick Yes.\nLocate the Model and rename it from BDCModel1 to CrimeDataModel. Repeat this for the LobSystem and the LobSystemInstance.\nthe BDC Explorer Window will look like the following figure:\nThe BDC Model is ready. The next step is adding the Azure Marketplace Service Reference. Switch to the Solution Explorer and a Service Reference.\nAdd the Azure Marketplace URL to the Address box and Call the Service CrimeDataServiceReference. Click OK.\nSwitch back to the Solution Explorer and add a new class to the project. Call it CrimeData.\nAdd the following code to the CrimeData class:\n+—+————————————+ | 1 | public class CrimeData { | | | | | 2 | public int Id { get; set; } | | | | | 3 | public string City { get; set; } | | | | | 4 | public string State { get; set; } | | | | | 5 | public int Year { get; set; } | | | | | 6 | | | | | | 7 | } | +===+====================================+\nAdd a new class to the project and call it CrimeDataService. Add the following code to the CrimeDataService class: +—-+——————————————————————————————————————————————————————————————————————————+ | 1 | public partial class CrimeDataService { | | | | | 2 | | | | | | 3 | private string _url = \"[https://api.datamarket.azure.com/data.gov/Crimes/]{.underline}\"; | | | | | 4 | | | | | | 5 | private string _liveID = \"{Your LiveID}\"; | | | | | 6 | | | | | | 7 | private string _accountID = \"{Your AccountKey}\"; | | | | | 8 | | | | | | 9 | private static CrimeDataServiceReference.datagovCrimesContainer _context; | | | | | 10 | | | | | | 11 | public CrimeDataService() { | | | | | 12 | | | | | | 13 | _context = new CrimeDataServiceReference.datagovCrimesContainer(new Uri(_url)) Credentials = new NetworkCredential(_liveID, _accountID) | | | | | 14 | | | | | | 15 | }; | | | | | 16 | | | | | | 17 | /// The underlying connection was closed: Could not establish trust relationship for the SSL/TLS secure channel. | | | | | 18 | | | | | | 19 | /// ---\u003e System.Security.Authentication.AuthenticationException: The remote certificate is invalid according to the validation procedure. | | | | | 20 | | | | | | 21 | ServicePointManager.ServerCertificateValidationCallback += (sender1, certificate, chain, sslPolicyErrors) =\u003e true; | | | | | 22 | | | | | | 23 | } | | | | | 24 | | | | | | 25 | public static IEnumerable ReadList() { | | | | | 26 | | | | | | 27 | try { | | | | | 28 | | | | | | 29 | var crimeData = (from c in _context.CityCrime | | | | | 30 | | | | | | 31 | where c.City == \"Washington\" | | | | | 32 | | | | | | 33 | select new CrimeData { | | | | | 34 | | | | | | 35 | Id = c.ROWID, | | | | | 36 | | | | | | 37 | City = c.City, | | | | | 38 | | | | | | 39 | State = c.State, | | | | | 40 | | | | | | 41 | Year = c.Year | | | | | 42 | | | | | | 43 | }).ToList(); | | | | | 44 | | | | | | 45 | return crimeData; | | | | | 46 | | | | | | 47 | } catch (Exception ex) { | | | | | 48 | | | | | | 49 | SPDiagnosticsService.Local.WriteTrace(0, new SPDiagnosticsCategory(\"Azure BCS connector: failed to fetch read list\", TraceSeverity.Unexpected, EventSeverity.Error), TraceSeverity.Unexpected, ex.Message, ex.StackTrace); | | | | | 50 | | | | | | 51 | } | | | | | 52 | | | | | | 53 | return null; | | | | | 54 | | | | | | 55 | } | | | | | 56 | | | | | | 57 | \u0026amp;amp;amp;nbsp; | | | | | 58 | | | | | | 59 | public static CrimeData ReadItem(int Id) { | | | | | 60 | | | | | | 61 | try { | | | | | 62 | | | | | | 63 | var item = _context.CityCrime.Where(x =\u003e x.ROWID == Id).ToList().First(); | | | | | 64 | | | | | | 65 | var crimeData = new CrimeData { | | | | | 66 | | | | | | 67 | Id = item.ROWID, | | | | | 68 | | | | | | 69 | City = item.City, | | | | | 70 | | | | | | 71 | State = item.State, | | | | | 72 | | | | | | 73 | Year = item.Year | | | | | 74 | | | | | | 75 | }; | | | | | 76 | | | | | | 77 | return crimeData; | | | | | 78 | | | | | | 79 | } catch (Exception ex) { | | | | | 80 | | | | | | 81 | SPDiagnosticsService.Local.WriteTrace(0, new SPDiagnosticsCategory(\"Azure BCS connector: failed to fetch read item\", TraceSeverity.Unexpected, EventSeverity.Error), TraceSeverity.Unexpected, ex.Message, ex.StackTrace); | | | | | 82 | | | | | | 83 | } | | | | | 84 | | | | | | 85 | return null; | | | | | 86 | | | | | | 87 | } | +====+==============================================================================================================================================================================================================================+\nPress F5;\nAfter deploying the external Content Type we first need to set the permissions in the BDC Service Application. Browse to Central Administration. Go to Application Management -\u003e Service Applications and click the BDC Service application. Select the CrimeData ECT and click Set Object Permissions.\nAdd yourself and assign all the permissions.\nNext is creating an external list for the CrimeData ECT. Creating an external list can be done by using SharePoint Designer or the browser. We will use the browser for this sample.\nBrowse to the SharePoint site, click on Site Actions -\u003e View All Site Content -\u003e Create.\nChoose External List and Click Create.\nName the List CrimeData, click on select Select External Content Type and choose the CrimeData external content type from the dialog. Click the Create button.\nAfter creating the External list verify that the Azure Marketplace CrimeData is visible in the page.\nClick on one of the list items to see the details.\n",
+  "wordCount" : "2242",
+  "inLanguage": "en",
+  "datePublished": "2012-02-02T00:00:00Z",
+  "dateModified": "2012-02-02T00:00:00Z",
+  "author":{
+    "@type": "Person",
+    "name": "sjoukje.eth"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "//localhost:1313/posts/2012-02-02-microsoft-azure-a-cloud-native-success-story-copy/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "sjoukje.eth",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "//localhost:1313/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="//localhost:1313/" accesskey="h" title="sjoukje.eth (Alt + H)">sjoukje.eth</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="//localhost:1313/posts/" title="Posts">
+                    <span>Posts</span>
+                </a>
+            </li>
+            <li>
+                <a href="//localhost:1313/books/" title="Books">
+                    <span>Books</span>
+                </a>
+            </li>
+            <li>
+                <a href="//localhost:1313/about/" title="About">
+                    <span>About</span>
+                </a>
+            </li>
+            <li>
+                <a href="//localhost:1313/archives/" title="Archive">
+                    <span>Archive</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="//localhost:1313/">Home</a>&nbsp;»&nbsp;<a href="//localhost:1313/posts/">Posts</a></div>
+    <h1 class="post-title entry-hint-parent">
+      SharePoint 2013 Workflow Part 1: Workflow Manager Architecture
+    </h1>
+    <div class="post-meta"><span title='2012-02-02 00:00:00 +0000 UTC'>February 2, 2012</span>&nbsp;·&nbsp;<span>11 min</span>&nbsp;·&nbsp;<span>sjoukje.eth</span>
+
+</div>
+  </header> 
+  <div class="post-content"><p><strong>Leveraging Azure Marketplace Data in SharePoint Part 1: Consuming Azure Marketplace Data in BCS</strong></p>
+<p>Windows Azure Marketplace data is a service by Microsoft that hosts WCF services in Windows Azure. Organizations and individuals can consume that data via a subscription model. These services expose data using REST services which can be leveraged in SharePoint using BCS.</p>
+<p>For this example we are going to use US Crime data statistics Service (DATA.gov). By using BCS we can consume the Azure WCF Service and display this data in SharePoint via an External List.</p>
+<p>For achieving the above we are going to take the following steps:</p>
+<ul>
+<li>
+<p>Create an Azure Marketplace account and consume the data.</p>
+</li>
+<li>
+<p>Create a Custom .Net Connector to leverage this data in BCS.</p>
+</li>
+<li>
+<p>Use the Secure Store Service for Azure Marketplace authentication (part 2).</p>
+</li>
+</ul>
+<p>In the first part of this series we are going to register for an Azure Marketplace account so we can subscribe to a service. After this, we are going to create a BCS Custom .Net Connector for adding that data to SharePoint&rsquo;s BCS. In the next part of this series we are going to use Secure Store Service for Azure Marketplace Authentication.</p>
+<p><strong>Azure Marketplace Data</strong></p>
+<p>To get started navigate to <a href="https://datamarket.azure.com/">[https://datamarket.azure.com/]{.underline}</a> and register for an account by using your Windows Live ID. Click the Windows Live Sign in the upper right corner, add your information, accept the license agreement and click register. Get a developer account, search for the US Crime Data Statistics Service and add it to your account. (some data sets cost money, so be aware). After you found the data feed click on it for more details. Then click the Sign Up button on the right. After this the data feed will be added to your account. Click the &ldquo;My Account&rdquo; button in the top navigation and click on &ldquo;My Data&rdquo; in the left navigation. You will see the newly added subscription on the page. Click on the title of the service which sends you to the details page of the Crime Service. Click on &ldquo;Explore the dataset&rdquo;. A new window is opened and here you can filter the service data using the web browser. Add &ldquo;Washington&rdquo; to the &ldquo;City&rdquo; Textbox and click on &ldquo;Run Query&rdquo;.</p>
+<ul>
+<li>Click on the &ldquo;Develop&rdquo; Button next to the Build Query window. This URL contains the address of the service together with the filter we&rsquo;ve added earlier in the Query Box. You can use the whole URL if you like but you can also use the root service URL and filter the data using LINQ in the custom .Net Connector. At the top of the screen locate the Service Root URL and copy it.</li>
+</ul>
+<p><strong>Create a Custom .Net Connector for Connecting to the Azure Service</strong></p>
+<p>After registering for an Azure Marketplace account we are going to create a custom .Net Connector to connect the data feed with SharePoint. The build in WCF connector is not suitable for this scenario because the marketplace feed expects the developer key for consuming the service. So in this case a custom connector needs to be developed using Visual Studio.</p>
+<p>For this example we are going to create a .Net Assembly Connector. This type of connector is used when the External System Schema is fixed, like the data schema of the Crime data feed.</p>
+<ul>
+<li>
+<p>Open Visual Studio and create a new project.</p>
+</li>
+<li>
+<p>Choose the &ldquo;Business Data Connectivity Model&rdquo; as the project type. Call it &ldquo;USCrimeDataConnector&rdquo; (or call it anything you like) and click &ldquo;OK&rdquo;.</p>
+</li>
+<li>
+<p>Choose the SharePoint Server URL on which you&rsquo;re going to debug and click Finish.</p>
+</li>
+<li>
+<p>Rename the default BDCModel and call it &ldquo;CrimeDataModel&rdquo;.</p>
+</li>
+<li>
+<p>We start by creating an External List for the Azure Crime Data. Right click the existing <strong>Entity1</strong> and select <strong>Delete</strong>.</p>
+</li>
+<li>
+<p>Select <strong>Entity1.cs</strong> and <strong>EntityService1.cs</strong> in the <strong>Solution Explorer</strong> and delete them.</p>
+</li>
+<li>
+<p>Right click the canvas and select <strong>Add -&gt; Entity</strong>. Right click the new Entity and select <strong>Properties.</strong> In the properties window set the <strong>Name</strong> to <strong>CrimeData.</strong></p>
+</li>
+<li>
+<p>Right click the CrimeData entity and select <strong>Add -&gt; Identifier</strong>.</p>
+</li>
+<li>
+<p>Select the Identifier and set the <strong>Name</strong> to <strong>Id</strong> using the <strong>Properties Window</strong>.</p>
+</li>
+<li>
+<p>Add a <strong>ReadList</strong> method to the CrimeData Entity. Right click the CrimeData Entity and select <strong>Add -&gt; Method.</strong> Rename the method to <strong>ReadList</strong>. In the <strong>BDC Method Details</strong> pane locate the <strong>ReadList</strong> Method and expand its parameters. Click the dropdown in <strong>&lt;Add a Parameter&gt;</strong> and choose <strong>Create Parameter.</strong> Set the following properties in the properties window:</p>
+<ul>
+<li>
+<p><strong>Name</strong> to <strong>ReturnParameter</strong></p>
+</li>
+<li>
+<p><strong>ParameterDirection</strong> to <strong>Return</strong>.</p>
+</li>
+</ul>
+</li>
+<li>
+<p>In the BDC Method Details pane locate the <strong>Instances</strong> node, select <strong>&lt;Add a Method Instance&gt;</strong> and choose <strong>Create Finder Instance.</strong> Set the following properties in the <strong>Properties Window</strong>:</p>
+<ul>
+<li>
+<p><strong>Name</strong> to <strong>ReadList</strong></p>
+</li>
+<li>
+<p><strong>Default</strong> to <strong>True</strong></p>
+</li>
+<li>
+<p><strong>DefaultDisplay Name</strong> to <strong>Read List</strong></p>
+</li>
+<li>
+<p><strong>Return Parameter</strong> name to <strong>returnParameter.</strong></p>
+</li>
+</ul>
+</li>
+<li>
+<p>Open the <strong>BDC Explorer Window</strong>, expand the <strong>ReadList</strong> message and select the <strong>returnParameterTypeDescriptor</strong>. Set the following properties in the <strong>Properties Window</strong>:</p>
+<ul>
+<li>
+<p><strong>Name</strong> = <strong>CrimeDataList</strong></p>
+</li>
+<li>
+<p><strong>TypeName</strong> = <strong>System.Collections.Generic.IEnumerable`1[[USCrimeDataConnector.CrimeDataModel.CrimeData, CrimeDataModel]]</strong></p>
+</li>
+<li>
+<p><strong>IsCollection</strong> = <strong>True.</strong></p>
+</li>
+</ul>
+</li>
+<li>
+<p>In the <strong>BDC Explorer</strong>, right click <strong>CrimeDataList</strong> and select <strong>Add Type Descriptor</strong>. Set the following properties in the <strong>Properties Window:</strong></p>
+<ul>
+<li>
+<p><strong>Name</strong> = <strong>CrimeData</strong></p>
+</li>
+<li>
+<p><strong>TypeName</strong> = <strong>USCrimeDataConnector.CrimeDataModel.CrimeData, CrimeDataModel</strong>.</p>
+</li>
+</ul>
+</li>
+<li>
+<p>In the <strong>BDC Explorer</strong>, right click <strong>CrimeData</strong> and select <strong>Add Type Descriptor</strong>. Set the following properties in the <strong>Properties Window:</strong></p>
+<ul>
+<li>
+<p><strong>Name</strong> = <strong>Id</strong></p>
+</li>
+<li>
+<p><strong>TypeName</strong> = <strong>System.Int32</strong></p>
+</li>
+<li>
+<p><strong>Identifier</strong> = <strong>Id.</strong></p>
+</li>
+</ul>
+</li>
+<li>
+<p>Add 3 more type descriptors and set the following properties (same as above):</p>
+<ul>
+<li>
+<p><strong>Name</strong> = <strong>City</strong></p>
+</li>
+<li>
+<p><strong>TypeName</strong> = <strong>System.String</strong></p>
+</li>
+<li>
+<p><strong>Name</strong> = <strong>State</strong></p>
+</li>
+<li>
+<p><strong>TypeName</strong> = <strong>System.String</strong></p>
+</li>
+<li>
+<p><strong>Name</strong> = <strong>Year</strong></p>
+</li>
+<li>
+<p><strong>TypeName</strong> = <strong>System.Int32</strong></p>
+</li>
+</ul>
+</li>
+<li>
+<p>The next step is to define the <strong>ReadItem</strong> method. Right click the CrimeData Enitity in the canvas and select <strong>Add -&gt; Method</strong>. Rename the method to <strong>ReadItem.</strong></p>
+</li>
+<li>
+<p>Switch to the <strong>BDC Method Details Pane</strong> and select the <strong>ReadItem</strong> node. Click the dropdown in <strong>&lt;Add a Parameter&gt;</strong> and choose <strong>Create Parameter.</strong> Set the following properties in the properties window:</p>
+<ul>
+<li>
+<p><strong>Name</strong> = <strong>ReturnParameter</strong></p>
+</li>
+<li>
+<p><strong>ParameterDirection</strong> = <strong>Return</strong>.</p>
+</li>
+</ul>
+</li>
+<li>
+<p>Add another parameter and set the following properties:</p>
+<ul>
+<li>
+<p><strong>Name</strong> = <strong>Id</strong></p>
+</li>
+<li>
+<p><strong>ParameterDirection</strong> = <strong>In.</strong></p>
+</li>
+</ul>
+</li>
+<li>
+<p>In the <strong>ReadItem</strong> method <strong>instances</strong> node add a new <strong>Create Finder</strong> instance and set the following properties:</p>
+<ul>
+<li>
+<p><strong>Name</strong> = <strong>ReadItem</strong>.</p>
+</li>
+<li>
+<p><strong>Type</strong> = <strong>Specific Finder</strong></p>
+</li>
+<li>
+<p><strong>Default</strong> = <strong>True</strong></p>
+</li>
+<li>
+<p><strong>DefaultDisplayName = ReadItem</strong></p>
+</li>
+<li>
+<p><strong>Return Parameter</strong> = <strong>ReturnParameter</strong></p>
+</li>
+</ul>
+</li>
+<li>
+<p>In the BDC Explorer Window locate the ReadItem parameters and expand them both.</p>
+</li>
+<li>
+<p>Select <strong>idTypeDescriptor</strong> under the <strong>ReadItem&rsquo;s</strong> id parameter and set the following values in the <strong>Properties</strong> window:</p>
+<ul>
+<li>
+<p><strong>Name</strong> = <strong>CrimeDataId</strong>.</p>
+</li>
+<li>
+<p><strong>TypeName</strong> = <strong>System</strong>. <strong>Int32.</strong></p>
+</li>
+<li>
+<p><strong>Identifier</strong> = <strong>Id.</strong></p>
+</li>
+</ul>
+</li>
+<li>
+<p>Right Click <strong>CrimeData</strong> under <strong>ReadList</strong> -&gt; <strong>ReturnParameter</strong> -&gt; <strong>CrimeDataList</strong> -&gt; <strong>CrimeData</strong> and select <strong>Copy.</strong></p>
+</li>
+<li>
+<p>Right Click <strong>ReturnParameter</strong> under <strong>ReadItem</strong> and select <strong>Paste.</strong></p>
+</li>
+<li>
+<p>Click <strong>Yes.</strong></p>
+</li>
+<li>
+<p>Locate the <strong>Model</strong> and rename it from <strong>BDCModel1</strong> to <strong>CrimeDataModel.</strong> Repeat this for the <strong>LobSystem</strong> and the <strong>LobSystemInstance.</strong></p>
+</li>
+<li>
+<p>the BDC Explorer Window will look like the following figure:</p>
+</li>
+<li>
+<p>The BDC Model is ready. The next step is adding the Azure Marketplace Service Reference. Switch to the Solution Explorer and a <strong>Service Reference.</strong></p>
+</li>
+<li>
+<p>Add the Azure Marketplace URL to the Address box and Call the Service <strong>CrimeDataServiceReference</strong>. Click <strong>OK.</strong></p>
+</li>
+<li>
+<p>Switch back to the <strong>Solution Explorer</strong> and add a new class to the project. Call it <strong>CrimeData.</strong></p>
+</li>
+<li>
+<p>Add the following code to the <strong>CrimeData</strong> class:</p>
+</li>
+</ul>
+<p>+&mdash;+&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;+
+| 1 | public class CrimeData {           |
+|   |                                    |
+| 2 |  public int Id { get; set; }       |
+|   |                                    |
+| 3 |  public string City { get; set; }  |
+|   |                                    |
+| 4 |  public string State { get; set; } |
+|   |                                    |
+| 5 |  public int Year { get; set; }     |
+|   |                                    |
+| 6 |                                    |
+|   |                                    |
+| 7 | }                                  |
++===+====================================+</p>
+<ul>
+<li>Add a new class to the project and call it <strong>CrimeDataService</strong>. Add the following code to the CrimeDataService class:</li>
+</ul>
+<p>+&mdash;-+&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;+
+| 1  | public partial class CrimeDataService {                                                                                                                                                                                      |
+|    |                                                                                                                                                                                                                              |
+| 2  |                                                                                                                                                                                                                              |
+|    |                                                                                                                                                                                                                              |
+| 3  | private string _url = &quot;<a href="https://api.datamarket.azure.com/data.gov/Crimes/">[https://api.datamarket.azure.com/data.gov/Crimes/]{.underline}</a>&quot;;                                                                             |
+|    |                                                                                                                                                                                                                              |
+| 4  |                                                                                                                                                                                                                              |
+|    |                                                                                                                                                                                                                              |
+| 5  | private string _liveID = &quot;{Your LiveID}&quot;;                                                                                                                                                                                 |
+|    |                                                                                                                                                                                                                              |
+| 6  |                                                                                                                                                                                                                              |
+|    |                                                                                                                                                                                                                              |
+| 7  | private string _accountID = &quot;{Your AccountKey}&quot;;                                                                                                                                                                          |
+|    |                                                                                                                                                                                                                              |
+| 8  |                                                                                                                                                                                                                              |
+|    |                                                                                                                                                                                                                              |
+| 9  | private static CrimeDataServiceReference.datagovCrimesContainer _context;                                                                                                                                                   |
+|    |                                                                                                                                                                                                                              |
+| 10 |                                                                                                                                                                                                                              |
+|    |                                                                                                                                                                                                                              |
+| 11 | public CrimeDataService() {                                                                                                                                                                                                  |
+|    |                                                                                                                                                                                                                              |
+| 12 |                                                                                                                                                                                                                              |
+|    |                                                                                                                                                                                                                              |
+| 13 | _context = new CrimeDataServiceReference.datagovCrimesContainer(new Uri(_url))  Credentials = new NetworkCredential(_liveID, _accountID)                                                                                 |
+|    |                                                                                                                                                                                                                              |
+| 14 |                                                                                                                                                                                                                              |
+|    |                                                                                                                                                                                                                              |
+| 15 | };                                                                                                                                                                                                                           |
+|    |                                                                                                                                                                                                                              |
+| 16 |                                                                                                                                                                                                                              |
+|    |                                                                                                                                                                                                                              |
+| 17 | /// The underlying connection was closed: Could not establish trust relationship for the SSL/TLS secure channel.                                                                                                             |
+|    |                                                                                                                                                                                                                              |
+| 18 |                                                                                                                                                                                                                              |
+|    |                                                                                                                                                                                                                              |
+| 19 | /// ---&gt; System.Security.Authentication.AuthenticationException: The remote certificate is invalid according to the validation procedure.                                                                                 |
+|    |                                                                                                                                                                                                                              |
+| 20 |                                                                                                                                                                                                                              |
+|    |                                                                                                                                                                                                                              |
+| 21 | ServicePointManager.ServerCertificateValidationCallback += (sender1, certificate, chain, sslPolicyErrors) =&gt; true;                                                                                                          |
+|    |                                                                                                                                                                                                                              |
+| 22 |                                                                                                                                                                                                                              |
+|    |                                                                                                                                                                                                                              |
+| 23 | }                                                                                                                                                                                                                            |
+|    |                                                                                                                                                                                                                              |
+| 24 |                                                                                                                                                                                                                              |
+|    |                                                                                                                                                                                                                              |
+| 25 | public static IEnumerable&lt;CrimeData&gt; ReadList() {                                                                                                                                                                          |
+|    |                                                                                                                                                                                                                              |
+| 26 |                                                                                                                                                                                                                              |
+|    |                                                                                                                                                                                                                              |
+| 27 | try {                                                                                                                                                                                                                        |
+|    |                                                                                                                                                                                                                              |
+| 28 |                                                                                                                                                                                                                              |
+|    |                                                                                                                                                                                                                              |
+| 29 | var crimeData = (from c in _context.CityCrime                                                                                                                                                                               |
+|    |                                                                                                                                                                                                                              |
+| 30 |                                                                                                                                                                                                                              |
+|    |                                                                                                                                                                                                                              |
+| 31 | where c.City == &quot;Washington&quot;                                                                                                                                                                                               |
+|    |                                                                                                                                                                                                                              |
+| 32 |                                                                                                                                                                                                                              |
+|    |                                                                                                                                                                                                                              |
+| 33 | select new CrimeData {                                                                                                                                                                                                       |
+|    |                                                                                                                                                                                                                              |
+| 34 |                                                                                                                                                                                                                              |
+|    |                                                                                                                                                                                                                              |
+| 35 | Id = c.ROWID,                                                                                                                                                                                                                |
+|    |                                                                                                                                                                                                                              |
+| 36 |                                                                                                                                                                                                                              |
+|    |                                                                                                                                                                                                                              |
+| 37 | City = c.City,                                                                                                                                                                                                               |
+|    |                                                                                                                                                                                                                              |
+| 38 |                                                                                                                                                                                                                              |
+|    |                                                                                                                                                                                                                              |
+| 39 | State = c.State,                                                                                                                                                                                                             |
+|    |                                                                                                                                                                                                                              |
+| 40 |                                                                                                                                                                                                                              |
+|    |                                                                                                                                                                                                                              |
+| 41 | Year = c.Year                                                                                                                                                                                                                |
+|    |                                                                                                                                                                                                                              |
+| 42 |                                                                                                                                                                                                                              |
+|    |                                                                                                                                                                                                                              |
+| 43 | }).ToList();                                                                                                                                                                                                                 |
+|    |                                                                                                                                                                                                                              |
+| 44 |                                                                                                                                                                                                                              |
+|    |                                                                                                                                                                                                                              |
+| 45 | return crimeData;                                                                                                                                                                                                            |
+|    |                                                                                                                                                                                                                              |
+| 46 |                                                                                                                                                                                                                              |
+|    |                                                                                                                                                                                                                              |
+| 47 | } catch (Exception ex) {                                                                                                                                                                                                     |
+|    |                                                                                                                                                                                                                              |
+| 48 |                                                                                                                                                                                                                              |
+|    |                                                                                                                                                                                                                              |
+| 49 | SPDiagnosticsService.Local.WriteTrace(0, new SPDiagnosticsCategory(&quot;Azure BCS connector: failed to fetch read list&quot;, TraceSeverity.Unexpected, EventSeverity.Error), TraceSeverity.Unexpected, ex.Message, ex.StackTrace); |
+|    |                                                                                                                                                                                                                              |
+| 50 |                                                                                                                                                                                                                              |
+|    |                                                                                                                                                                                                                              |
+| 51 | }                                                                                                                                                                                                                            |
+|    |                                                                                                                                                                                                                              |
+| 52 |                                                                                                                                                                                                                              |
+|    |                                                                                                                                                                                                                              |
+| 53 | return null;                                                                                                                                                                                                                 |
+|    |                                                                                                                                                                                                                              |
+| 54 |                                                                                                                                                                                                                              |
+|    |                                                                                                                                                                                                                              |
+| 55 | }                                                                                                                                                                                                                            |
+|    |                                                                                                                                                                                                                              |
+| 56 |                                                                                                                                                                                                                              |
+|    |                                                                                                                                                                                                                              |
+| 57 | &amp;amp;amp;amp;nbsp;                                                                                                                                                                                                       |
+|    |                                                                                                                                                                                                                              |
+| 58 |                                                                                                                                                                                                                              |
+|    |                                                                                                                                                                                                                              |
+| 59 | public static CrimeData ReadItem(int Id) {                                                                                                                                                                                   |
+|    |                                                                                                                                                                                                                              |
+| 60 |                                                                                                                                                                                                                              |
+|    |                                                                                                                                                                                                                              |
+| 61 | try {                                                                                                                                                                                                                        |
+|    |                                                                                                                                                                                                                              |
+| 62 |                                                                                                                                                                                                                              |
+|    |                                                                                                                                                                                                                              |
+| 63 | var item = _context.CityCrime.Where(x =&gt; x.ROWID == Id).ToList().First();                                                                                                                                                  |
+|    |                                                                                                                                                                                                                              |
+| 64 |                                                                                                                                                                                                                              |
+|    |                                                                                                                                                                                                                              |
+| 65 | var crimeData = new CrimeData {                                                                                                                                                                                              |
+|    |                                                                                                                                                                                                                              |
+| 66 |                                                                                                                                                                                                                              |
+|    |                                                                                                                                                                                                                              |
+| 67 | Id = item.ROWID,                                                                                                                                                                                                             |
+|    |                                                                                                                                                                                                                              |
+| 68 |                                                                                                                                                                                                                              |
+|    |                                                                                                                                                                                                                              |
+| 69 | City = item.City,                                                                                                                                                                                                            |
+|    |                                                                                                                                                                                                                              |
+| 70 |                                                                                                                                                                                                                              |
+|    |                                                                                                                                                                                                                              |
+| 71 | State = item.State,                                                                                                                                                                                                          |
+|    |                                                                                                                                                                                                                              |
+| 72 |                                                                                                                                                                                                                              |
+|    |                                                                                                                                                                                                                              |
+| 73 | Year = item.Year                                                                                                                                                                                                             |
+|    |                                                                                                                                                                                                                              |
+| 74 |                                                                                                                                                                                                                              |
+|    |                                                                                                                                                                                                                              |
+| 75 | };                                                                                                                                                                                                                           |
+|    |                                                                                                                                                                                                                              |
+| 76 |                                                                                                                                                                                                                              |
+|    |                                                                                                                                                                                                                              |
+| 77 | return crimeData;                                                                                                                                                                                                            |
+|    |                                                                                                                                                                                                                              |
+| 78 |                                                                                                                                                                                                                              |
+|    |                                                                                                                                                                                                                              |
+| 79 | } catch (Exception ex) {                                                                                                                                                                                                     |
+|    |                                                                                                                                                                                                                              |
+| 80 |                                                                                                                                                                                                                              |
+|    |                                                                                                                                                                                                                              |
+| 81 | SPDiagnosticsService.Local.WriteTrace(0, new SPDiagnosticsCategory(&quot;Azure BCS connector: failed to fetch read item&quot;, TraceSeverity.Unexpected, EventSeverity.Error), TraceSeverity.Unexpected, ex.Message, ex.StackTrace); |
+|    |                                                                                                                                                                                                                              |
+| 82 |                                                                                                                                                                                                                              |
+|    |                                                                                                                                                                                                                              |
+| 83 | }                                                                                                                                                                                                                            |
+|    |                                                                                                                                                                                                                              |
+| 84 |                                                                                                                                                                                                                              |
+|    |                                                                                                                                                                                                                              |
+| 85 | return null;                                                                                                                                                                                                                 |
+|    |                                                                                                                                                                                                                              |
+| 86 |                                                                                                                                                                                                                              |
+|    |                                                                                                                                                                                                                              |
+| 87 | }                                                                                                                                                                                                                            |
++====+==============================================================================================================================================================================================================================+</p>
+<ul>
+<li>
+<p>Press F5;</p>
+</li>
+<li>
+<p>After deploying the external Content Type we first need to set the permissions in the BDC Service Application. Browse to Central Administration. Go to <strong>Application Management</strong> -&gt; <strong>Service Applications</strong> and click the BDC Service application. Select the <strong>CrimeData</strong> ECT and click <strong>Set Object Permissions</strong>.</p>
+</li>
+<li>
+<p>Add yourself and assign all the permissions.</p>
+</li>
+<li>
+<p>Next is creating an external list for the CrimeData ECT. Creating an external list can be done by using SharePoint Designer or the browser. We will use the browser for this sample.</p>
+</li>
+<li>
+<p>Browse to the SharePoint site, click on <strong>Site Actions -&gt; View All Site Content -&gt; Create.</strong></p>
+</li>
+<li>
+<p>Choose <strong>External List</strong> and Click <strong>Create.</strong></p>
+</li>
+<li>
+<p>Name the List <strong>CrimeData,</strong> click on select <strong>Select External Content Type</strong> and choose the CrimeData external content type from the dialog. Click the <strong>Create</strong> button.</p>
+</li>
+<li>
+<p>After creating the External list verify that the Azure Marketplace CrimeData is visible in the page.</p>
+</li>
+<li>
+<p>Click on one of the list items to see the details.</p>
+</li>
+</ul>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+    </ul>
+<nav class="paginav">
+  <a class="prev" href="//localhost:1313/posts/2012-02-02-leveraging-azure-marketplace-data-in-sharepoint-part-1-consuming-azure-marketplace-data-in-bcs-copy/">
+    <span class="title">« Prev</span>
+    <br>
+    <span>SharePoint 2013 Workflow Part 1: Workflow Manager Architecture</span>
+  </a>
+  <a class="next" href="//localhost:1313/posts/interview-european-cloud-conference/">
+    <span class="title">Next »</span>
+    <br>
+    <span></span>
+  </a>
+</nav>
+
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="//localhost:1313/">sjoukje.eth</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerHTML = 'copy';
+
+        function copyingDone() {
+            copybutton.innerHTML = 'copied!';
+            setTimeout(() => {
+                copybutton.innerHTML = 'copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+</body>
+
+</html>

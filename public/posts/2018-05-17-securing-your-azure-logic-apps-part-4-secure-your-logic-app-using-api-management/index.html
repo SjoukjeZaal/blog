@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto" data-theme="auto">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Securing Your Azure Logic Apps Part 4: Secure your Logic App using API Management -- Validate JWT Access Restriction Policy | sjoukje.eth</title>
+<meta name="keywords" content="">
+<meta name="description" content="This is the fourth part in the series about securing your Logic Apps. In
+the previous post, I&rsquo;ve described how to secure your logic app using
+Azure Active Directory. In this post, I&rsquo;m going to show you how you can
+leverage the Validate JWT Access Restriction Policy for your Logic App
+inside the API Management Service.
+In this series:
+
+
+Secure access to the
+trigger.
+
+
+Secure your Logic App using API Management &ndash; Access Restriction
+Policies.">
+<meta name="author" content="sjoukje.eth">
+<link rel="canonical" href="//localhost:1313/posts/2018-05-17-securing-your-azure-logic-apps-part-4-secure-your-logic-app-using-api-management/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.36f09b336921909a5971cfa84422229fa3edb550fa46b7707cb5436b0983bdcf.css" integrity="sha256-NvCbM2khkJpZcc&#43;oRCIin6PttVD6RrdwfLVDawmDvc8=" rel="preload stylesheet" as="style">
+<link rel="icon" href="//localhost:1313/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="//localhost:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="//localhost:1313/favicon-32x32.png">
+<link rel="apple-touch-icon" href="//localhost:1313/apple-touch-icon.png">
+<link rel="mask-icon" href="//localhost:1313/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="//localhost:1313/posts/2018-05-17-securing-your-azure-logic-apps-part-4-secure-your-logic-app-using-api-management/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script><meta property="og:url" content="//localhost:1313/posts/2018-05-17-securing-your-azure-logic-apps-part-4-secure-your-logic-app-using-api-management/">
+  <meta property="og:site_name" content="sjoukje.eth">
+  <meta property="og:title" content="Securing Your Azure Logic Apps Part 4: Secure your Logic App using API Management -- Validate JWT Access Restriction Policy">
+  <meta property="og:description" content="This is the fourth part in the series about securing your Logic Apps. In the previous post, I’ve described how to secure your logic app using Azure Active Directory. In this post, I’m going to show you how you can leverage the Validate JWT Access Restriction Policy for your Logic App inside the API Management Service.
+In this series:
+Secure access to the trigger.
+Secure your Logic App using API Management – Access Restriction Policies.">
+  <meta property="og:locale" content="en-us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2018-05-17T00:00:00+00:00">
+    <meta property="article:modified_time" content="2018-05-17T00:00:00+00:00">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Securing Your Azure Logic Apps Part 4: Secure your Logic App using API Management -- Validate JWT Access Restriction Policy">
+<meta name="twitter:description" content="This is the fourth part in the series about securing your Logic Apps. In
+the previous post, I&rsquo;ve described how to secure your logic app using
+Azure Active Directory. In this post, I&rsquo;m going to show you how you can
+leverage the Validate JWT Access Restriction Policy for your Logic App
+inside the API Management Service.
+In this series:
+
+
+Secure access to the
+trigger.
+
+
+Secure your Logic App using API Management &ndash; Access Restriction
+Policies.">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "//localhost:1313/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "Securing Your Azure Logic Apps Part 4: Secure your Logic App using API Management -- Validate JWT Access Restriction Policy",
+      "item": "//localhost:1313/posts/2018-05-17-securing-your-azure-logic-apps-part-4-secure-your-logic-app-using-api-management/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Securing Your Azure Logic Apps Part 4: Secure your Logic App using API Management -- Validate JWT Access Restriction Policy",
+  "name": "Securing Your Azure Logic Apps Part 4: Secure your Logic App using API Management -- Validate JWT Access Restriction Policy",
+  "description": "This is the fourth part in the series about securing your Logic Apps. In the previous post, I\u0026rsquo;ve described how to secure your logic app using Azure Active Directory. In this post, I\u0026rsquo;m going to show you how you can leverage the Validate JWT Access Restriction Policy for your Logic App inside the API Management Service.\nIn this series:\nSecure access to the trigger.\nSecure your Logic App using API Management \u0026ndash; Access Restriction Policies.\n",
+  "keywords": [
+    
+  ],
+  "articleBody": "This is the fourth part in the series about securing your Logic Apps. In the previous post, I’ve described how to secure your logic app using Azure Active Directory. In this post, I’m going to show you how you can leverage the Validate JWT Access Restriction Policy for your Logic App inside the API Management Service.\nIn this series:\nSecure access to the trigger.\nSecure your Logic App using API Management – Access Restriction Policies.\nSecure your Logic App using Azure Active Directory.\nSecure your Logic App using API Management – Validate JWT Access Restriction Policy (this post).\nSecure your Logic App using API Management – Authentication Policies.\nThe Validate JWT policy enforces existence and validity of a JSON Web Token (JWT) extracted from either a specified HTTP Header or a specified query parameter. It is based on oAuth 2.0, which is basically the standard nowadays for API’s.\nIf you use SDK’s in your code, like the Facebook, Twitter or the Office 365 JavaScript API, they will all use oAuth 2.0 and the JWT token for authentication. This policy can also be used if you want your API to be secured using Azure Active Directory. And that is exactly what we have done in the previous post, so we can use this authentication method as an example for this post as well.\nFor this article, I’ve used the Logic App which is created in the first post of this series, the API Management service which is created in the second post and the Logic App uses Azure Active Directory for authentication, which is described step-by-step in my previous post.\nValidate JWT Policy In this example, we are going to add a Validate JWT policy which checks the audience inside the JWT token. When the audience is correct, then the call is made to Azure Active Directory to authenticate the user.\nRetrieve JWT Token The first step is to retrieve the JWT token when a call is made to the Logic App which is already registered inside Azure Active Directory. This way we can investigate what is inside of the JWT token and use certain claims from the token in our policy. This way we can reject calls that don’t contain a certain claim right at the door without doing a request to Azure AD. For this example, we are going to use the “Audience” claim. We can obtain the token using Fiddler and the API Management Developer portal.\nOpen the Developer portal by navigating to the Azure API Management Service inside the Azure Portal. In there, click APIs in the left menu.\nClick Developer Portal.\nThen, click APIs in the top menu, click SecureLogicApp and click the Try It button under manual-invoke.\nOpen Fiddler.\nSwitch back to the API Management Portal where the test page for the API is opened now. Scroll down a bit and under Authorization, and from the dropdown select the OAuth 2.0 server which is configured in the previous article.\nA login window pops up. Log in with your Azure AD credentials and switch back to Fiddler. Select the GET request to the Azure AD API from fiddler which contains the following URL: /oauth2/authorizationcode/acquiretoken. Open the inspectors view and copy the Access Token which is returned from Azure AD after login in using your Azure AD credentials.\nJWT Token Details We now have obtained the Access Token and to look into it in further detail, we can use a site called “JWT” (http://jwt.io). Click the Debugger menu item in the top menu and past the Access token inside the Encoded text box.\nThe token gets decoded and on the right side you can see all the claims that are inside of it. Like mentioned before, we are going to use the audience for this example, which is “http://SecureLogicApp” in my case.\nIf you want more information about the JWT token and all the properties inside of it, you can refer to the home page of the JWT website.\nSetting up the Validate JWT Token policy Switch back to the Azure API Management Service inside the Azure Portal, and again, click APIs in the left menu.\nSelect the SecureLogicApp and click on the arrow next to Inbound Processing. Select Form-based Editor.\nClick Code View at the right side of the screen.\nAdd the below code inside the tag to check the audience inside the JWT token from the caller of the endpoint. If the audience does not match, the API Management Service will simply block the request.\nhttp://SecureLogicApp\nIt will look like below image:\nClick the Save button.\nTo test this policy, switch over to the Developer Portal of the API Management Service. Under the Authorization section, reset the OAuth2 Server to No auth, like show in the below image.\nClick the Send button and you will get a 401 Unauthorized response with the response message which is specified in the policy:\nConclusion This is the last Access Restriction Policy in this series, that you can use to secure your Logic App using API Management. The other ones are described in the second post of this series.\nThe JWT Validate Policy is, in my opinion, a very effective way of securing your API. Based on certain claims, or even certain permissions, you can block your API right at the door even without making a call to your authentication provider to check if the caller has permissions to access the API. This reduces unnecessary time and traffic, which will result in a better experience for the requestor of the API.\nSjoukje ",
+  "wordCount" : "943",
+  "inLanguage": "en",
+  "datePublished": "2018-05-17T00:00:00Z",
+  "dateModified": "2018-05-17T00:00:00Z",
+  "author":{
+    "@type": "Person",
+    "name": "sjoukje.eth"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "//localhost:1313/posts/2018-05-17-securing-your-azure-logic-apps-part-4-secure-your-logic-app-using-api-management/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "sjoukje.eth",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "//localhost:1313/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="//localhost:1313/" accesskey="h" title="sjoukje.eth (Alt + H)">sjoukje.eth</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="//localhost:1313/posts/" title="Posts">
+                    <span>Posts</span>
+                </a>
+            </li>
+            <li>
+                <a href="//localhost:1313/books/" title="Books">
+                    <span>Books</span>
+                </a>
+            </li>
+            <li>
+                <a href="//localhost:1313/about/" title="About">
+                    <span>About</span>
+                </a>
+            </li>
+            <li>
+                <a href="//localhost:1313/archives/" title="Archive">
+                    <span>Archive</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="//localhost:1313/">Home</a>&nbsp;»&nbsp;<a href="//localhost:1313/posts/">Posts</a></div>
+    <h1 class="post-title entry-hint-parent">
+      Securing Your Azure Logic Apps Part 4: Secure your Logic App using API Management -- Validate JWT Access Restriction Policy
+    </h1>
+    <div class="post-meta"><span title='2018-05-17 00:00:00 +0000 UTC'>May 17, 2018</span>&nbsp;·&nbsp;<span>5 min</span>&nbsp;·&nbsp;<span>sjoukje.eth</span>
+
+</div>
+  </header> 
+  <div class="post-content"><p>This is the fourth part in the series about securing your Logic Apps. In
+the previous post, I&rsquo;ve described how to secure your logic app using
+Azure Active Directory. In this post, I&rsquo;m going to show you how you can
+leverage the Validate JWT Access Restriction Policy for your Logic App
+inside the API Management Service.</p>
+<p>In this series:</p>
+<ul>
+<li>
+<p><a href="https://blogs.msdn.microsoft.com/azuredev/2017/07/26/securing-your-azure-logic-apps-part-1-secure-access-to-the-trigger/">Secure access to the
+trigger</a>.</p>
+</li>
+<li>
+<p><a href="https://blogs.msdn.microsoft.com/azuredev/2017/08/16/part-2-secure-your-logic-app-using-api-management-access-restriction-policies/">Secure your Logic App using API Management &ndash; Access Restriction
+Policies.</a></p>
+</li>
+<li>
+<p><a href="mailto:https://blogs.msdn.microsoft.com/azuredev/2017/09/21/part-3-secure-your-logic-app-with-azure-active-directory-using-azure-api-management/">Secure your Logic App using Azure Active
+Directory</a>.</p>
+</li>
+<li>
+<p>Secure your Logic App using API Management &ndash; Validate JWT Access
+Restriction Policy (this post).</p>
+</li>
+<li>
+<p>Secure your Logic App using API Management &ndash; Authentication Policies.</p>
+</li>
+</ul>
+<p>The Validate JWT policy enforces existence and validity of a JSON Web
+Token (JWT) extracted from either a specified HTTP Header or a specified
+query parameter. It is based on oAuth 2.0, which is basically the
+standard nowadays for API&rsquo;s.</p>
+<p>If you use SDK&rsquo;s in your code, like the Facebook, Twitter or the Office
+365 JavaScript API, they will all use oAuth 2.0 and the JWT token for
+authentication. This policy can also be used if you want your API to be
+secured using Azure Active Directory. And that is exactly what we have
+done in the <a href="mailto:https://blogs.msdn.microsoft.com/azuredev/2017/09/21/part-3-secure-your-logic-app-with-azure-active-directory-using-azure-api-management/">previous
+post</a>,
+so we can use this authentication method as an example for this post as
+well.</p>
+<p>For this article, I&rsquo;ve used the Logic App which is created in the <a href="https://blogs.msdn.microsoft.com/azuredev/2017/08/16/part-2-secure-your-logic-app-using-api-management-access-restriction-policies/">first
+post</a>
+of this series, the API Management service which is created in the
+<a href="https://blogs.msdn.microsoft.com/azuredev/2017/08/16/part-2-secure-your-logic-app-using-api-management-access-restriction-policies/">second
+post</a>
+and the Logic App uses Azure Active Directory for authentication, which
+is described step-by-step in my <a href="mailto:https://blogs.msdn.microsoft.com/azuredev/2017/09/21/part-3-secure-your-logic-app-with-azure-active-directory-using-azure-api-management/">previous
+post</a>.</p>
+<h1 id="validate-jwt-policy">Validate JWT Policy<a hidden class="anchor" aria-hidden="true" href="#validate-jwt-policy">#</a></h1>
+<p>In this example, we are going to add a Validate JWT policy which checks
+the audience inside the JWT token. When the audience is correct, then
+the call is made to Azure Active Directory to authenticate the user.</p>
+<h2 id="retrieve-jwt-token">Retrieve JWT Token<a hidden class="anchor" aria-hidden="true" href="#retrieve-jwt-token">#</a></h2>
+<p>The first step is to retrieve the JWT token when a call is made to the
+Logic App which is already registered inside Azure Active Directory.
+This way we can investigate what is inside of the JWT token and use
+certain claims from the token in our policy. This way we can reject
+calls that don&rsquo;t contain a certain claim right at the door without doing
+a request to Azure AD. For this example, we are going to use the
+&ldquo;Audience&rdquo; claim. We can obtain the token using Fiddler and the API
+Management Developer portal.</p>
+<p>Open the Developer portal by navigating to the Azure API Management
+Service inside the Azure Portal. In there, click <strong>APIs</strong> in the left
+menu.</p>
+<p>Click <strong>Developer Portal</strong>.</p>
+<p>Then, click APIs in the top menu, click <strong>SecureLogicApp</strong> and click the
+<strong>Try It</strong> button under <strong>manual-invoke</strong>.</p>
+<p>Open <strong>Fiddler</strong>.</p>
+<p>Switch back to the API Management Portal where the test page for the API
+is opened now. Scroll down a bit and under <strong>Authorization</strong>, and from
+the dropdown select the OAuth 2.0 server which is configured in the
+<a href="mailto:https://blogs.msdn.microsoft.com/azuredev/2017/09/21/part-3-secure-your-logic-app-with-azure-active-directory-using-azure-api-management/">previous
+article</a>.</p>
+<p>A login window pops up. Log in with your Azure AD credentials and switch
+back to Fiddler. Select the GET request to the Azure AD API from fiddler
+which contains the following URL:
+/oauth2/authorizationcode/acquiretoken. Open the inspectors view and
+copy the Access Token which is returned from Azure AD after login in
+using your Azure AD credentials.</p>
+<h3 id="jwt-token-details">JWT Token Details<a hidden class="anchor" aria-hidden="true" href="#jwt-token-details">#</a></h3>
+<p>We now have obtained the Access Token and to look into it in further
+detail, we can use a site called &ldquo;JWT&rdquo; (<a href="http://jwt.io">http://jwt.io</a>). Click the
+<strong>Debugger</strong> menu item in the top menu and past the Access token inside
+the <strong>Encoded</strong> text box.</p>
+<p>The token gets decoded and on the right side you can see all the claims
+that are inside of it. Like mentioned before, we are going to use the
+audience for this example, which is &ldquo;<strong>http://SecureLogicApp</strong>&rdquo; in my
+case.</p>
+<p>If you want more information about the JWT token and all the properties
+inside of it, you can refer to the home page of the <strong>JWT</strong> website.</p>
+<h2></h2>
+<h2 id="setting-up-the-validate-jwt-token-policy">Setting up the Validate JWT Token policy<a hidden class="anchor" aria-hidden="true" href="#setting-up-the-validate-jwt-token-policy">#</a></h2>
+<p>Switch back to the Azure API Management Service inside the Azure Portal,
+and again, click <strong>APIs</strong> in the left menu.</p>
+<p>Select the SecureLogicApp and click on the arrow next to Inbound
+Processing. Select <strong>Form-based Editor</strong>.</p>
+<p>Click <strong>Code View</strong> at the right side of the screen.</p>
+<p>Add the below code inside the &lt;inbound&gt; tag to check the audience
+inside the JWT token from the caller of the endpoint. If the audience
+does not match, the API Management Service will simply block the
+request.</p>
+<p>&lt;validate-jwt header-name=&quot;Authorization&quot;
+failed-validation-httpcode=&quot;401&quot;
+failed-validation-error-message=&quot;Unauthorized. Access token is missing
+or invalid.&quot;&gt;</p>
+<p>&lt;openid-config
+url=&quot;https://login.microsoftonline.com/sjoukjelive.onmicrosoft.com/.well-known/openid-configuration&quot;
+/&gt;</p>
+<p>&lt;required-claims&gt;</p>
+<p>&lt;claim name=&quot;aud&quot;&gt;</p>
+<p>&lt;value&gt;http://SecureLogicApp&lt;/value&gt;</p>
+<p>&lt;/claim&gt;</p>
+<p>&lt;/required-claims&gt;</p>
+<p>&lt;/validate-jwt&gt;</p>
+<p>It will look like below image:</p>
+<p>Click the <strong>Save</strong> button.</p>
+<p>To test this policy, switch over to the Developer Portal of the API
+Management Service. Under the Authorization section, reset the OAuth2
+Server to <strong>No auth</strong>, like show in the below image.</p>
+<p>Click the <strong>Send</strong> button and you will get a 401 Unauthorized response
+with the response message which is specified in the policy:</p>
+<h2 id="conclusion">Conclusion<a hidden class="anchor" aria-hidden="true" href="#conclusion">#</a></h2>
+<p>This is the last Access Restriction Policy in this series, that you can
+use to secure your Logic App using API Management. The other ones are
+described in the <a href="mailto:https://blogs.msdn.microsoft.com/azuredev/2017/08/16/part-2-secure-your-logic-app-using-api-management-access-restriction-policies/">second
+post</a>
+of this series.</p>
+<p>The JWT Validate Policy is, in my opinion, a very effective way of
+securing your API. Based on certain claims, or even certain permissions,
+you can block your API right at the door even without making a call to
+your authentication provider to check if the caller has permissions to
+access the API. This reduces unnecessary time and traffic, which will
+result in a better experience for the requestor of the API.</p>
+<ul>
+<li>Sjoukje</li>
+</ul>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+    </ul>
+<nav class="paginav">
+  <a class="prev" href="//localhost:1313/posts/2018-05-17-azure-content-spotlight-what-s-new-with-cognitive-/">
+    <span class="title">« Prev</span>
+    <br>
+    <span>Azure Content Spotlight – What’s New with Cognitive Services</span>
+  </a>
+  <a class="next" href="//localhost:1313/posts/2018-05-16-securing-your-azure-logic-apps-part-3-secure-your-logic-app-using-azure-active-directory/">
+    <span class="title">Next »</span>
+    <br>
+    <span>Securing Your Azure Logic Apps Part 3: Secure your Logic App with Azure Active Directory using Azure API Management</span>
+  </a>
+</nav>
+
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="//localhost:1313/">sjoukje.eth</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerHTML = 'copy';
+
+        function copyingDone() {
+            copybutton.innerHTML = 'copied!';
+            setTimeout(() => {
+                copybutton.innerHTML = 'copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+</body>
+
+</html>

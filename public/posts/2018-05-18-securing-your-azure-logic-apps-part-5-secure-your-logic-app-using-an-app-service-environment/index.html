@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto" data-theme="auto">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Securing Your Azure Logic Apps Part 5: Secure your Logic App using an App Service Environment | sjoukje.eth</title>
+<meta name="keywords" content="">
+<meta name="description" content="This is the fifth part in the series about securing your Logic Apps. In
+the previous post, we&rsquo;ve covered how to use the Validate JWT access
+Restriction Policy in API Management for securing your Logic Apps. In
+this post, I&rsquo;m going to show you how you can add your Logic App to an
+App Service Environment to create an isolated and secure environment for
+your app to run in.
+In this series:">
+<meta name="author" content="sjoukje.eth">
+<link rel="canonical" href="//localhost:1313/posts/2018-05-18-securing-your-azure-logic-apps-part-5-secure-your-logic-app-using-an-app-service-environment/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.36f09b336921909a5971cfa84422229fa3edb550fa46b7707cb5436b0983bdcf.css" integrity="sha256-NvCbM2khkJpZcc&#43;oRCIin6PttVD6RrdwfLVDawmDvc8=" rel="preload stylesheet" as="style">
+<link rel="icon" href="//localhost:1313/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="//localhost:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="//localhost:1313/favicon-32x32.png">
+<link rel="apple-touch-icon" href="//localhost:1313/apple-touch-icon.png">
+<link rel="mask-icon" href="//localhost:1313/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="//localhost:1313/posts/2018-05-18-securing-your-azure-logic-apps-part-5-secure-your-logic-app-using-an-app-service-environment/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script><meta property="og:url" content="//localhost:1313/posts/2018-05-18-securing-your-azure-logic-apps-part-5-secure-your-logic-app-using-an-app-service-environment/">
+  <meta property="og:site_name" content="sjoukje.eth">
+  <meta property="og:title" content="Securing Your Azure Logic Apps Part 5: Secure your Logic App using an App Service Environment">
+  <meta property="og:description" content="This is the fifth part in the series about securing your Logic Apps. In the previous post, we’ve covered how to use the Validate JWT access Restriction Policy in API Management for securing your Logic Apps. In this post, I’m going to show you how you can add your Logic App to an App Service Environment to create an isolated and secure environment for your app to run in.
+In this series:">
+  <meta property="og:locale" content="en-us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2018-05-18T00:00:00+00:00">
+    <meta property="article:modified_time" content="2018-05-18T00:00:00+00:00">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Securing Your Azure Logic Apps Part 5: Secure your Logic App using an App Service Environment">
+<meta name="twitter:description" content="This is the fifth part in the series about securing your Logic Apps. In
+the previous post, we&rsquo;ve covered how to use the Validate JWT access
+Restriction Policy in API Management for securing your Logic Apps. In
+this post, I&rsquo;m going to show you how you can add your Logic App to an
+App Service Environment to create an isolated and secure environment for
+your app to run in.
+In this series:">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "//localhost:1313/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "Securing Your Azure Logic Apps Part 5: Secure your Logic App using an App Service Environment",
+      "item": "//localhost:1313/posts/2018-05-18-securing-your-azure-logic-apps-part-5-secure-your-logic-app-using-an-app-service-environment/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Securing Your Azure Logic Apps Part 5: Secure your Logic App using an App Service Environment",
+  "name": "Securing Your Azure Logic Apps Part 5: Secure your Logic App using an App Service Environment",
+  "description": "This is the fifth part in the series about securing your Logic Apps. In the previous post, we\u0026rsquo;ve covered how to use the Validate JWT access Restriction Policy in API Management for securing your Logic Apps. In this post, I\u0026rsquo;m going to show you how you can add your Logic App to an App Service Environment to create an isolated and secure environment for your app to run in.\nIn this series:\n",
+  "keywords": [
+    
+  ],
+  "articleBody": "This is the fifth part in the series about securing your Logic Apps. In the previous post, we’ve covered how to use the Validate JWT access Restriction Policy in API Management for securing your Logic Apps. In this post, I’m going to show you how you can add your Logic App to an App Service Environment to create an isolated and secure environment for your app to run in.\nIn this series:\nSecure access to the trigger.\nSecure your Logic App using API Management – Access Restriction Policies.\nSecure your Logic App using Azure Active Directory\nSecure your Logic App using API Management – Validate JWT Access Restriction Policy\nSecure your Logic App using an App Service Environment\nFor this article, I’ve used the Logic App which is created in the first post of this series.\nhttps://azure.microsoft.com/en-us/blog/introducing-app-service-environment/\nApp Service Environment An App Service Environment (ASE) offers a fully isolated and dedicated environment for securely running all kinds of apps, like Web Apps, Mobile Apps, API Apps and Logic Apps. The ASE feature is a deployment of an Azure App Service directly into the Azure Resource Manager virtual network (VNet). ASEs are created inside a subnet of the Azure Virtual Network, which enables your apps to connect securely to endpoints that are accessible only from within the VNet (this includes endpoints that are connected using VPNs and ExpressRoute circuits). ASEs are most suitable for apps that require very high scale, isolation and secure network access and high memory utilization.\nAt the time of writing, Microsoft offers two versions of the App Service Environment, v1 and v2. The former uses workers that need to be added to ASE manually. When you need more capacity, you need to add more workers to the pool. With ASEv2, this is all done automatically. Besides that, ASEv1 has support for a maximum of 50 workers, where ASEv2 supports a maximum of 50 workers. ASEv2 offers faster CPUs, twice the memory per core and SSDs. ASEv1 can be deployed in a classic virtual network and in a Resource Manager virtual network and has a different pricing model.\nIn this demo we are going to use the ASEv2. For more information about V1, you can refer to the following article: App Service Environment v1 introduction.\nCreating an App Service Environment App Service Environments are very expensive, so I strongly advice to remove them immediately after this demo…\nTo create an App Service Environment, take the following steps:\nNavigate to https://portal.azure.com, Click on Create a new resource, type App Service Environment in the searchbox and create a new ASE.\nAdd the below settings (if you select the ASE pricing details, you can get an idea of the monthly costs of the ASE). You can keep the default Virtual Network Location for this demo.\nClick Create. It will take some time before the ASE is created.\nAdd the Logic App to the ASE When the deployment of the ASE is finished, next is adding the Logic App to the ASE. To do that.\nThe Logic App is added to a Consumption Plan, meaning that you only pay for the action executions that are performed by the Logic App instance are billed. So, the first step is to move the Logic App from the Consumption plan to an App Service Plan.\nAccording to the Microsoft documentation, the way to do this, is to manually redeploy the Logic App into another Service Plan. Since we have initially deployed the Logic App from Visual Studio, we will redeploy the App from there as well.\nTake the following steps to do this:\nOpen Visual Studio 2017, and select the Cloud Explorer tab. In there select the Logic App which was created in the first chapter. Right click it and select Open with Logic App Editor.\n{width=“2.0838582677165354in” height=“5.170795056867892in”}\nThis will open the Logic App instance which is deployed in Azure. Click download in the top menu top download the JSON template. Save the template somewhere on your filesystem.\n{width=“5.354166666666667in” height=“4.157694663167104in”}\nOpen the SecureLogicApp Project from Visual Studio. On the Solution Explorer tab, open the LogicApp.json file. This will automatically open the JSON Outline tab as well.\nRight click resources, and add and select Add new resource. Select App Service Plan (Server Farm) and add the following settings:\n{width=“6.268055555555556in” height=“3.995138888888889in”}\nClick Add.\nRight click the project and select Deploy -\u003e New.\n{width=“6.268055555555556in” height=“3.995138888888889in”}\nSelect the appropriate Azure Subscription and Resource Group and click Edit Parameters…\n{width=“4.663207567804024in” height=“4.005208880139983in”}\nFill in the parameters like the values below:\n{width=“6.135461504811898in” height=“3.067730752405949in”}\nClick Save and in the next screen click Deploy. The Logic App is now deployed inside an App Service Plan.\n{width=“6.268055555555556in” height=“3.995138888888889in”}\nConclusion Usefull links For this post, I’ve used the following links for research:\nIntroduction to the App Service Environments ",
+  "wordCount" : "792",
+  "inLanguage": "en",
+  "datePublished": "2018-05-18T00:00:00Z",
+  "dateModified": "2018-05-18T00:00:00Z",
+  "author":{
+    "@type": "Person",
+    "name": "sjoukje.eth"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "//localhost:1313/posts/2018-05-18-securing-your-azure-logic-apps-part-5-secure-your-logic-app-using-an-app-service-environment/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "sjoukje.eth",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "//localhost:1313/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="//localhost:1313/" accesskey="h" title="sjoukje.eth (Alt + H)">sjoukje.eth</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="//localhost:1313/posts/" title="Posts">
+                    <span>Posts</span>
+                </a>
+            </li>
+            <li>
+                <a href="//localhost:1313/books/" title="Books">
+                    <span>Books</span>
+                </a>
+            </li>
+            <li>
+                <a href="//localhost:1313/about/" title="About">
+                    <span>About</span>
+                </a>
+            </li>
+            <li>
+                <a href="//localhost:1313/archives/" title="Archive">
+                    <span>Archive</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="//localhost:1313/">Home</a>&nbsp;»&nbsp;<a href="//localhost:1313/posts/">Posts</a></div>
+    <h1 class="post-title entry-hint-parent">
+      Securing Your Azure Logic Apps Part 5: Secure your Logic App using an App Service Environment
+    </h1>
+    <div class="post-meta"><span title='2018-05-18 00:00:00 +0000 UTC'>May 18, 2018</span>&nbsp;·&nbsp;<span>4 min</span>&nbsp;·&nbsp;<span>sjoukje.eth</span>
+
+</div>
+  </header> 
+  <div class="post-content"><p>This is the fifth part in the series about securing your Logic Apps. In
+the previous post, we&rsquo;ve covered how to use the Validate JWT access
+Restriction Policy in API Management for securing your Logic Apps. In
+this post, I&rsquo;m going to show you how you can add your Logic App to an
+App Service Environment to create an isolated and secure environment for
+your app to run in.</p>
+<p>In this series:</p>
+<ul>
+<li>
+<p><a href="https://blogs.msdn.microsoft.com/azuredev/2017/07/26/securing-your-azure-logic-apps-part-1-secure-access-to-the-trigger/">Secure access to the
+trigger</a>.</p>
+</li>
+<li>
+<p><a href="https://blogs.msdn.microsoft.com/azuredev/2017/08/16/part-2-secure-your-logic-app-using-api-management-access-restriction-policies/">Secure your Logic App using API Management &ndash; Access Restriction
+Policies.</a></p>
+</li>
+<li>
+<p><a href="mailto:https://blogs.msdn.microsoft.com/azuredev/2017/09/21/part-3-secure-your-logic-app-with-azure-active-directory-using-azure-api-management/">Secure your Logic App using Azure Active
+Directory</a></p>
+</li>
+<li>
+<p><a href="https://blogs.msdn.microsoft.com/azuredev/2017/10/18/securing-your-azure-logic-apps-part-4-secure-your-logic-app-using-api-management-validate-jwt-access-restriction-policy/">Secure your Logic App using API Management &ndash; Validate JWT Access
+Restriction
+Policy</a></p>
+</li>
+<li>
+<p>Secure your Logic App using an App Service Environment</p>
+</li>
+</ul>
+<p>For this article, I&rsquo;ve used the Logic App which is created in the <a href="https://blogs.msdn.microsoft.com/azuredev/2017/08/16/part-2-secure-your-logic-app-using-api-management-access-restriction-policies/">first
+post</a>
+of this series.</p>
+<p><a href="https://azure.microsoft.com/en-us/blog/introducing-app-service-environment/">https://azure.microsoft.com/en-us/blog/introducing-app-service-environment/</a></p>
+<h1 id="app-service-environment">App Service Environment<a hidden class="anchor" aria-hidden="true" href="#app-service-environment">#</a></h1>
+<p>An App Service Environment (ASE) offers a fully isolated and dedicated
+environment for securely running all kinds of apps, like Web Apps,
+Mobile Apps, API Apps and Logic Apps. The ASE feature is a deployment of
+an Azure App Service directly into the Azure Resource Manager virtual
+network (VNet). ASEs are created inside a subnet of the Azure Virtual
+Network, which enables your apps to connect securely to endpoints that
+are accessible only from within the VNet (this includes endpoints that
+are connected using VPNs and ExpressRoute circuits). ASEs are most
+suitable for apps that require very high scale, isolation and secure
+network access and high memory utilization.</p>
+<p>At the time of writing, Microsoft offers two versions of the App Service
+Environment, v1 and v2. The former uses <strong>workers</strong> that need to be
+added to ASE manually. When you need more capacity, you need to add more
+workers to the pool. With ASEv2, this is all done automatically. Besides
+that, ASEv1 has support for a maximum of 50 workers, where ASEv2
+supports a maximum of 50 workers. ASEv2 offers faster CPUs, twice the
+memory per core and SSDs. ASEv1 can be deployed in a classic virtual
+network and in a Resource Manager virtual network and has a different
+pricing model.</p>
+<p>In this demo we are going to use the ASEv2. For more information about
+V1, you can refer to the following article: <a href="https://docs.microsoft.com/en-ca/azure/app-service/environment/app-service-app-service-environment-intro">App Service Environment v1
+introduction</a>.</p>
+<h2 id="creating-an-app-service-environment">Creating an App Service Environment<a hidden class="anchor" aria-hidden="true" href="#creating-an-app-service-environment">#</a></h2>
+<p><em>App Service Environments are very expensive, so I strongly advice to
+remove them immediately after this demo&hellip;</em></p>
+<p>To create an App Service Environment, take the following steps:</p>
+<p>Navigate to <a href="https://portal.azure.com">https://portal.azure.com</a>, Click on <strong>Create a new
+resource,</strong> type <strong>App Service Environment</strong> in the searchbox and create
+a new ASE.</p>
+<p>Add the below settings (if you select the ASE pricing details, you can
+get an idea of the monthly costs of the ASE). You can keep the default
+Virtual Network Location for this demo.</p>
+<p>Click <strong>Create</strong>. It will take some time before the ASE is created.</p>
+<h2 id="add-the-logic-app-to-the-ase">Add the Logic App to the ASE<a hidden class="anchor" aria-hidden="true" href="#add-the-logic-app-to-the-ase">#</a></h2>
+<p>When the deployment of the ASE is finished, next is adding the Logic App
+to the ASE. To do that.</p>
+<p>The Logic App is added to a Consumption Plan, meaning that you only pay
+for the action executions that are performed by the Logic App instance
+are billed. So, the first step is to move the Logic App from the
+Consumption plan to an App Service Plan.</p>
+<p>According to the Microsoft documentation, the way to do this, is to
+manually redeploy the Logic App into another Service Plan. Since we have
+initially deployed the Logic App from Visual Studio, we will redeploy
+the App from there as well.</p>
+<p>Take the following steps to do this:</p>
+<p>Open Visual Studio 2017, and select the <strong>Cloud Explorer</strong> tab. In there
+select the Logic App which was created in the first chapter. Right click
+it and select <strong>Open with Logic App Editor.</strong></p>
+<p><img loading="lazy" src="media/image1.png">{width=&ldquo;2.0838582677165354in&rdquo;
+height=&ldquo;5.170795056867892in&rdquo;}</p>
+<p>This will open the Logic App instance which is deployed in Azure. Click
+download in the top menu top download the JSON template. Save the
+template somewhere on your filesystem.</p>
+<p><img loading="lazy" src="media/image2.png">{width=&ldquo;5.354166666666667in&rdquo;
+height=&ldquo;4.157694663167104in&rdquo;}</p>
+<p>Open the <strong>SecureLogicApp</strong> Project from Visual Studio. On the Solution
+Explorer tab, open the <strong>LogicApp.json</strong> file. This will automatically
+open the JSON Outline tab as well.</p>
+<p>Right click resources, and add and select <strong>Add new resource.</strong> Select
+<strong>App Service Plan (Server Farm)</strong> and add the following settings:</p>
+<p><img loading="lazy" src="media/image3.png">{width=&ldquo;6.268055555555556in&rdquo;
+height=&ldquo;3.995138888888889in&rdquo;}</p>
+<p>Click <strong>Add.</strong></p>
+<p>Right click the project and select <strong>Deploy -&gt; New.</strong></p>
+<p><img loading="lazy" src="media/image4.png">{width=&ldquo;6.268055555555556in&rdquo;
+height=&ldquo;3.995138888888889in&rdquo;}</p>
+<p>Select the appropriate Azure Subscription and Resource Group and click
+<strong>Edit Parameters&hellip;</strong></p>
+<p><img loading="lazy" src="media/image5.png">{width=&ldquo;4.663207567804024in&rdquo;
+height=&ldquo;4.005208880139983in&rdquo;}</p>
+<p>Fill in the parameters like the values below:</p>
+<p><img loading="lazy" src="media/image6.png">{width=&ldquo;6.135461504811898in&rdquo;
+height=&ldquo;3.067730752405949in&rdquo;}</p>
+<p>Click <strong>Save</strong> and in the next screen click <strong>Deploy.</strong> The Logic App is
+now deployed inside an App Service Plan.</p>
+<p><img loading="lazy" src="media/image7.png">{width=&ldquo;6.268055555555556in&rdquo;
+height=&ldquo;3.995138888888889in&rdquo;}</p>
+<h1 id="conclusion">Conclusion<a hidden class="anchor" aria-hidden="true" href="#conclusion">#</a></h1>
+<h1 id="usefull-links">Usefull links<a hidden class="anchor" aria-hidden="true" href="#usefull-links">#</a></h1>
+<p>For this post, I&rsquo;ve used the following links for research:</p>
+<ul>
+<li><a href="https://docs.microsoft.com/en-ca/azure/app-service/environment/intro">Introduction to the App Service
+Environments</a></li>
+</ul>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+    </ul>
+<nav class="paginav">
+  <a class="prev" href="//localhost:1313/posts/2018-05-28-introduction-to-azure-event-grid/">
+    <span class="title">« Prev</span>
+    <br>
+    <span>Introduction to Azure Event Grid</span>
+  </a>
+  <a class="next" href="//localhost:1313/posts/2018-05-17-azure-content-spotlight-what-s-new-with-cognitive-/">
+    <span class="title">Next »</span>
+    <br>
+    <span>Azure Content Spotlight – What’s New with Cognitive Services</span>
+  </a>
+</nav>
+
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="//localhost:1313/">sjoukje.eth</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerHTML = 'copy';
+
+        function copyingDone() {
+            copybutton.innerHTML = 'copied!';
+            setTimeout(() => {
+                copybutton.innerHTML = 'copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+</body>
+
+</html>

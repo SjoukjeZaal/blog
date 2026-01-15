@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto" data-theme="auto">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Securing Your Azure Logic Apps Part 3: Secure your Logic App with Azure Active Directory using Azure API Management | sjoukje.eth</title>
+<meta name="keywords" content="">
+<meta name="description" content="This is the third part in the series about securing your Logic Apps. In
+the previous post, I&rsquo;ve described how to add several Access restriction
+policies to your API inside of the API Management Service. In this post,
+I was going to show how you can leverage the Validate JWT Access
+Restriction Policy. But when I did some research for this article, I
+found out that, to proper implement that policy, it is better to first
+secure your Logic App with Azure Active Directory using API Management.
+And as this is also a great topic for this series, I&rsquo;ve decided to add
+this as well. So, a little side step is added to this series.">
+<meta name="author" content="sjoukje.eth">
+<link rel="canonical" href="//localhost:1313/posts/2018-05-16-securing-your-azure-logic-apps-part-3-secure-your-logic-app-using-azure-active-directory/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.36f09b336921909a5971cfa84422229fa3edb550fa46b7707cb5436b0983bdcf.css" integrity="sha256-NvCbM2khkJpZcc&#43;oRCIin6PttVD6RrdwfLVDawmDvc8=" rel="preload stylesheet" as="style">
+<link rel="icon" href="//localhost:1313/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="//localhost:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="//localhost:1313/favicon-32x32.png">
+<link rel="apple-touch-icon" href="//localhost:1313/apple-touch-icon.png">
+<link rel="mask-icon" href="//localhost:1313/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="//localhost:1313/posts/2018-05-16-securing-your-azure-logic-apps-part-3-secure-your-logic-app-using-azure-active-directory/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script><meta property="og:url" content="//localhost:1313/posts/2018-05-16-securing-your-azure-logic-apps-part-3-secure-your-logic-app-using-azure-active-directory/">
+  <meta property="og:site_name" content="sjoukje.eth">
+  <meta property="og:title" content="Securing Your Azure Logic Apps Part 3: Secure your Logic App with Azure Active Directory using Azure API Management">
+  <meta property="og:description" content="This is the third part in the series about securing your Logic Apps. In the previous post, I’ve described how to add several Access restriction policies to your API inside of the API Management Service. In this post, I was going to show how you can leverage the Validate JWT Access Restriction Policy. But when I did some research for this article, I found out that, to proper implement that policy, it is better to first secure your Logic App with Azure Active Directory using API Management. And as this is also a great topic for this series, I’ve decided to add this as well. So, a little side step is added to this series.">
+  <meta property="og:locale" content="en-us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2018-05-16T00:00:00+00:00">
+    <meta property="article:modified_time" content="2018-05-16T00:00:00+00:00">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Securing Your Azure Logic Apps Part 3: Secure your Logic App with Azure Active Directory using Azure API Management">
+<meta name="twitter:description" content="This is the third part in the series about securing your Logic Apps. In
+the previous post, I&rsquo;ve described how to add several Access restriction
+policies to your API inside of the API Management Service. In this post,
+I was going to show how you can leverage the Validate JWT Access
+Restriction Policy. But when I did some research for this article, I
+found out that, to proper implement that policy, it is better to first
+secure your Logic App with Azure Active Directory using API Management.
+And as this is also a great topic for this series, I&rsquo;ve decided to add
+this as well. So, a little side step is added to this series.">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "//localhost:1313/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "Securing Your Azure Logic Apps Part 3: Secure your Logic App with Azure Active Directory using Azure API Management",
+      "item": "//localhost:1313/posts/2018-05-16-securing-your-azure-logic-apps-part-3-secure-your-logic-app-using-azure-active-directory/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Securing Your Azure Logic Apps Part 3: Secure your Logic App with Azure Active Directory using Azure API Management",
+  "name": "Securing Your Azure Logic Apps Part 3: Secure your Logic App with Azure Active Directory using Azure API Management",
+  "description": "This is the third part in the series about securing your Logic Apps. In the previous post, I\u0026rsquo;ve described how to add several Access restriction policies to your API inside of the API Management Service. In this post, I was going to show how you can leverage the Validate JWT Access Restriction Policy. But when I did some research for this article, I found out that, to proper implement that policy, it is better to first secure your Logic App with Azure Active Directory using API Management. And as this is also a great topic for this series, I\u0026rsquo;ve decided to add this as well. So, a little side step is added to this series.\n",
+  "keywords": [
+    
+  ],
+  "articleBody": "This is the third part in the series about securing your Logic Apps. In the previous post, I’ve described how to add several Access restriction policies to your API inside of the API Management Service. In this post, I was going to show how you can leverage the Validate JWT Access Restriction Policy. But when I did some research for this article, I found out that, to proper implement that policy, it is better to first secure your Logic App with Azure Active Directory using API Management. And as this is also a great topic for this series, I’ve decided to add this as well. So, a little side step is added to this series.\nIn this series:\nSecure access to the trigger.\nSecure your Logic App using API Management – Access Restriction Policies.\nSecure your Logic App with Azure Active Directory using Azure API Management (this post).\nSecure your Logic App using API Management – Validate JWT Access Restriction Policy.\nSecure your Logic App using API Management – Authentication Policies.\nFor this article, I’ve used the Logic App which is created in the first post of this series, and the API Management service which is created in the second post.\nGrant Permissions inside Azure Active Directory The first step is to grant permissions inside the Azure Active Directory for your Logic App. The Logic App is added to Azure AD as part as the configuring and publishing process from Visual Studio. To access the Azure Directory Tenant from the Azure Portal, click Azure Active Directory in the left menu, and then App Registrations.\nInside the App Registration window, click on the SecureLogicApp. The Settings page is openend. In there, click on Required Permissions, click Add, and click Select the API.\nYou can choose between two different API’s in the next screen for authenticating your application with Azure AD. In here select Windows Azure Active Directory.\nIn the next screen, the application permissions are set. As we only want to authenticate to Azure Active Directory, you only need to select the Read Directory Data permissions. Click Select.\nClick Done.\nRegister the Azure API Management Service in Azure Active Directory Next, is to register the Azure API Management Service as an application in Azure Active Directory.\nInside the Azure AD tenant, in the Azure Portal, click App Registrations again. Then click on New Application Registrations, in the top menu.\nName the application, I’ve named mine APIMPortal, as an application pick Web app / api and fill in the API Management Service URL as the sign-on URL and append with ‘/signin’. In my case this is: https://msdnapimgmt.portal.azure-api.net/signin .\nAfter creation, click the Properties tab of the App. Change the App ID URI to the API Management Service URL and append with ‘SecureLogicApp’: https://msdnapimgmt.portal.azure-api.net/SecureLogicApp . Click the Save button.\nConfigure an API Management OAuth 2.0 Authorization Server Now, open the API Management service in the Azure Portal and click OAuth 2.0 in the left menu.\nClick the Add button.\nAdd an optional name, like OAuth2 Server. In the “Client registration page URL” box, add a placeholder URL, like http://localhost.\nNext add, the Authorization Endpoint URL and the Token Endpoint URL. These values can be retrieved from the App Endpoints Page of the Azure AD application which is registered in the previous step. For this, you have to navigate to the Azure Active Directory tenant in the Azure Portal.\nCopy the OAuth 2.0 authorization endpoint and paste it into the Authorization endpoint URL textbox.\nCopy the OAuth 2.0 token endpoint and paste it into the Token endpoint URL textbox. Add an additional body parameter to the URL with Name = resource and Value = the App ID of the SecureLogicApp. You can obtain this URL from the Azure Active Directory tenant in the Azure Portal.\nNext, specify the Client Credentials. These are the credentials for the resource you want to access, in this case the Azure API Management application which is added in the previous step. In the Azure Portal, this is called the Application ID.\nFor generating a client secret, click Keys in the left menu, add a description and select 1 year for expiration. Click the save button to save the configuration and display of the key.\nCopy the key to the client secret field in the OAuth Service creation page.\nClick Create.\nBelow the client secret is a. authorization code field. Copy the URL, switch back to the Azure AD portal and paste it in the Reply URL field of the API Management App and click Save.\nThe next step is to configure the permissions for the API Management application. Click Required Permissions and check the box for Read Directory Data.\nClick the Add button, then Select An API, and in the search box type the name of the Logic App and select it from the list and click select.\nFor the permissions, there is only one possibility, Access SecureLogicApp. Check it.\nClick the Select button, and after that, the Done button.\nEnable OAuth 2.0 Authorization in the API Management Portal Now that the OAuth 2.0 server is configured, you can enable it in the API Management portal. Switch over to the API Management portal in the Azure Portal, click APIs in the left menu and select the SecureLogicApp. Click the Settings tab.\nIn there, under the Security section, select OAuth 2.0 and below select the OAuth 2.0 server. Save your settings.\nNow, it is time to test the App. Something strange happened here, when I click the Test tab, next to the Settings tab at the top of the window, it is not possible to select the Authorization Server. But, when I open the Developer Portal, there is a possibility to select it. So, we have to do it from there. To open the Developer Portal, click the menu item at the top of the Azure Management Service. Then, click APIs, SecureLogicApp and click the Try it button under manual-invoke.\nScroll down a bit and in the Authorization section, click the OAuth 2 Server dropdown and select Authorization Code.\nAnd now comes the cool part….\nAfter selecting Authorization Code, a window pops up! Wow!! Trust the application, by clicking the Accept button.\nSorry for the Dutch language here…\nAfter accepting the permissions, you get an access token and you can now test your API.\nConclusion There will be a lot of production scenario’s where you want to secure your Logic App with Azure AD. There are a lot of steps involved and it was kind of a puzzle to implement this in the ’new’ Azure Portal, as the documentation I’ve found regarding this topic, was all aiming at the Classic Portal. I actually did not meet my deadline for this article because of this. But finally, it worked…\nThe next article will cover the Validate JWT Access Restriction Policy. So, stay tuned!\n",
+  "wordCount" : "1142",
+  "inLanguage": "en",
+  "datePublished": "2018-05-16T00:00:00Z",
+  "dateModified": "2018-05-16T00:00:00Z",
+  "author":{
+    "@type": "Person",
+    "name": "sjoukje.eth"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "//localhost:1313/posts/2018-05-16-securing-your-azure-logic-apps-part-3-secure-your-logic-app-using-azure-active-directory/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "sjoukje.eth",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "//localhost:1313/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="//localhost:1313/" accesskey="h" title="sjoukje.eth (Alt + H)">sjoukje.eth</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="//localhost:1313/posts/" title="Posts">
+                    <span>Posts</span>
+                </a>
+            </li>
+            <li>
+                <a href="//localhost:1313/books/" title="Books">
+                    <span>Books</span>
+                </a>
+            </li>
+            <li>
+                <a href="//localhost:1313/about/" title="About">
+                    <span>About</span>
+                </a>
+            </li>
+            <li>
+                <a href="//localhost:1313/archives/" title="Archive">
+                    <span>Archive</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="//localhost:1313/">Home</a>&nbsp;»&nbsp;<a href="//localhost:1313/posts/">Posts</a></div>
+    <h1 class="post-title entry-hint-parent">
+      Securing Your Azure Logic Apps Part 3: Secure your Logic App with Azure Active Directory using Azure API Management
+    </h1>
+    <div class="post-meta"><span title='2018-05-16 00:00:00 +0000 UTC'>May 16, 2018</span>&nbsp;·&nbsp;<span>6 min</span>&nbsp;·&nbsp;<span>sjoukje.eth</span>
+
+</div>
+  </header> 
+  <div class="post-content"><p>This is the third part in the series about securing your Logic Apps. In
+the previous post, I&rsquo;ve described how to add several Access restriction
+policies to your API inside of the API Management Service. In this post,
+I was going to show how you can leverage the Validate JWT Access
+Restriction Policy. But when I did some research for this article, I
+found out that, to proper implement that policy, it is better to first
+secure your Logic App with Azure Active Directory using API Management.
+And as this is also a great topic for this series, I&rsquo;ve decided to add
+this as well. So, a little side step is added to this series.</p>
+<p>In this series:</p>
+<ul>
+<li>
+<p><a href="https://blogs.msdn.microsoft.com/azuredev/2017/07/26/securing-your-azure-logic-apps-part-1-secure-access-to-the-trigger/">Secure access to the
+trigger</a>.</p>
+</li>
+<li>
+<p><a href="https://blogs.msdn.microsoft.com/azuredev/2017/08/16/part-2-secure-your-logic-app-using-api-management-access-restriction-policies/">Secure your Logic App using API Management &ndash; Access Restriction
+Policies.</a></p>
+</li>
+<li>
+<p>Secure your Logic App with Azure Active Directory using Azure API
+Management (this post).</p>
+</li>
+<li>
+<p>Secure your Logic App using API Management &ndash; Validate JWT Access
+Restriction Policy.</p>
+</li>
+<li>
+<p>Secure your Logic App using API Management &ndash; Authentication Policies.</p>
+</li>
+</ul>
+<p>For this article, I&rsquo;ve used the Logic App which is created in the <a href="https://blogs.msdn.microsoft.com/azuredev/2017/08/16/part-2-secure-your-logic-app-using-api-management-access-restriction-policies/">first
+post</a>
+of this series, and the API Management service which is created in the
+<a href="https://blogs.msdn.microsoft.com/azuredev/2017/08/16/part-2-secure-your-logic-app-using-api-management-access-restriction-policies/">second
+post</a>.</p>
+<h2 id="grant-permissions-inside-azure-active-directory">Grant Permissions inside Azure Active Directory<a hidden class="anchor" aria-hidden="true" href="#grant-permissions-inside-azure-active-directory">#</a></h2>
+<p>The first step is to grant permissions inside the Azure Active Directory
+for your Logic App. The Logic App is added to Azure AD as part as the
+configuring and publishing process from Visual Studio. To access the
+Azure Directory Tenant from the Azure Portal, click <strong>Azure Active
+Directory</strong> in the left menu, and then <strong>App Registrations.</strong></p>
+<p>Inside the App Registration window, click on the <strong>SecureLogicApp.</strong> The
+Settings page is openend. In there, click on <strong>Required Permissions</strong>,
+click <strong>Add,</strong> and click <strong>Select the API.</strong></p>
+<p>You can choose between two different API&rsquo;s in the next screen for
+authenticating your application with Azure AD. In here select <strong>Windows
+Azure Active Directory.</strong></p>
+<p>In the next screen, the application permissions are set. As we only want
+to authenticate to Azure Active Directory, you only need to select the
+<strong>Read Directory Data</strong> permissions. Click <strong>Select</strong>.</p>
+<p>Click <strong>Done.</strong></p>
+<h2 id="register-the-azure-api-management-service-in-azure-active-directory">Register the Azure API Management Service in Azure Active Directory<a hidden class="anchor" aria-hidden="true" href="#register-the-azure-api-management-service-in-azure-active-directory">#</a></h2>
+<p>Next, is to register the Azure API Management Service as an application
+in Azure Active Directory.</p>
+<p>Inside the Azure AD tenant, in the Azure Portal, click <strong>App
+Registrations</strong> again. Then click on <strong>New Application Registrations</strong>,
+in the top menu.</p>
+<p>Name the application, I&rsquo;ve named mine <strong>APIMPortal,</strong> as an application
+pick <strong>Web app / api</strong> and fill in the API Management Service URL as the
+sign-on URL and append with &lsquo;/signin&rsquo;. In my case this is:
+<a href="https://msdnapimgmt.portal.azure-api.net/signin">https://msdnapimgmt.portal.azure-api.net/signin</a> .</p>
+<p>After creation, click the <strong>Properties</strong> tab of the App. Change the App
+ID URI to the API Management Service URL and append with
+&lsquo;SecureLogicApp&rsquo;:
+<a href="https://msdnapimgmt.portal.azure-api.net/SecureLogicApp">https://msdnapimgmt.portal.azure-api.net/SecureLogicApp</a> . Click the
+Save button.</p>
+<h2 id="configure-an-api-management-oauth-20-authorization-server">Configure an API Management OAuth 2.0 Authorization Server<a hidden class="anchor" aria-hidden="true" href="#configure-an-api-management-oauth-20-authorization-server">#</a></h2>
+<p>Now, open the API Management service in the Azure Portal and click
+<strong>OAuth 2.0</strong> in the left menu.</p>
+<p>Click the <strong>Add</strong> button.</p>
+<p>Add an optional name, like <strong>OAuth2 Server</strong>. In the &ldquo;Client
+registration page URL&rdquo; box, add a placeholder URL, like
+<a href="http://localhost">http://localhost</a>.</p>
+<p>Next add, the <strong>Authorization Endpoint URL</strong> and the <strong>Token Endpoint
+URL.</strong> These values can be retrieved from the App Endpoints Page of the
+Azure AD application which is registered in the previous step. For this,
+you have to navigate to the Azure Active Directory tenant in the Azure
+Portal.</p>
+<p>Copy the <strong>OAuth 2.0 authorization endpoint</strong> and paste it into the
+<strong>Authorization endpoint URL</strong> textbox.</p>
+<p>Copy the <strong>OAuth 2.0 token endpoint</strong> and paste it into the <strong>Token
+endpoint URL</strong> textbox. Add an additional body parameter to the URL with
+<strong>Name = resource</strong> and Value = the App ID of the SecureLogicApp. You
+can obtain this URL from the Azure Active Directory tenant in the Azure
+Portal.</p>
+<p>Next, specify the <strong>Client Credentials</strong>. These are the credentials for
+the resource you want to access, in this case the Azure API Management
+application which is added in the previous step. In the Azure Portal,
+this is called the <strong>Application ID.</strong></p>
+<p>For generating a client secret, click <strong>Keys</strong> in the left menu, add a
+description and select <strong>1 year</strong> for expiration. Click the save button
+to save the configuration and display of the key.</p>
+<p>Copy the key to the client secret field in the OAuth Service creation
+page.</p>
+<p>Click <strong>Create.</strong></p>
+<p>Below the client secret is a. authorization code field. Copy the URL,
+switch back to the Azure AD portal and paste it in the <strong>Reply URL</strong>
+field of the <strong>API Management App</strong> and click <strong>Save</strong>.</p>
+<p>The next step is to configure the permissions for the API Management
+application. Click <strong>Required Permissions</strong> and check the box for <strong>Read
+Directory Data.</strong></p>
+<p>Click the <strong>Add</strong> button, then <strong>Select An API</strong>, and in the search box
+type the name of the Logic App and select it from the list and click
+select.</p>
+<p>For the permissions, there is only one possibility, <strong>Access
+SecureLogicApp.</strong> Check it.</p>
+<p>Click the <strong>Select</strong> button, and after that, the <strong>Done</strong> button.</p>
+<h2 id="enable-oauth-20-authorization-in-the-api-management-portal">Enable OAuth 2.0 Authorization in the API Management Portal<a hidden class="anchor" aria-hidden="true" href="#enable-oauth-20-authorization-in-the-api-management-portal">#</a></h2>
+<p>Now that the OAuth 2.0 server is configured, you can enable it in the
+API Management portal. Switch over to the API Management portal in the
+Azure Portal, click <strong>APIs</strong> in the left menu and select the
+<strong>SecureLogicApp</strong>. Click the <strong>Settings</strong> tab.</p>
+<p>In there, under the <strong>Security</strong> section, select <strong>OAuth 2.0</strong> and below
+select the OAuth 2.0 server. Save your settings.</p>
+<p>Now, it is time to test the App. Something strange happened here, when I
+click the <strong>Test</strong> tab, next to the <strong>Settings</strong> tab at the top of the
+window, it is not possible to select the <strong>Authorization Server</strong>. But,
+when I open the Developer Portal, there is a possibility to select it.
+So, we have to do it from there. </p>
+<p>To open the Developer Portal, click the menu item at the top of the
+Azure Management Service. Then, click <strong>APIs,</strong> <strong>SecureLogicApp</strong> and
+click the <strong>Try it</strong> button under <strong>manual-invoke.</strong></p>
+<p>Scroll down a bit and in the Authorization section, click the <strong>OAuth 2
+Server</strong> dropdown and select <strong>Authorization Code</strong>.</p>
+<p>And now comes the cool part&hellip;.</p>
+<p>After selecting <strong>Authorization Code,</strong> a window pops up! Wow!! Trust
+the application, by clicking the <strong>Accept</strong> button.</p>
+<p>Sorry for the Dutch language here&hellip;</p>
+<p>After accepting the permissions, you get an access token and you can now
+test your API.</p>
+<h2 id="conclusion">Conclusion<a hidden class="anchor" aria-hidden="true" href="#conclusion">#</a></h2>
+<p>There will be a lot of production scenario&rsquo;s where you want to secure
+your Logic App with Azure AD. There are a lot of steps involved and it
+was kind of a puzzle to implement this in the &rsquo;new&rsquo; Azure Portal, as the
+documentation I&rsquo;ve found regarding this topic, was all aiming at the
+Classic Portal. I actually did not meet my deadline for this article
+because of this. But finally, it worked&hellip;</p>
+<p>The next article will cover the Validate JWT Access Restriction Policy.
+So, stay tuned!</p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+    </ul>
+<nav class="paginav">
+  <a class="prev" href="//localhost:1313/posts/2018-05-17-securing-your-azure-logic-apps-part-4-secure-your-logic-app-using-api-management/">
+    <span class="title">« Prev</span>
+    <br>
+    <span>Securing Your Azure Logic Apps Part 4: Secure your Logic App using API Management -- Validate JWT Access Restriction Policy</span>
+  </a>
+  <a class="next" href="//localhost:1313/posts/2018-05-15-securing-your-azure-logic-apps-part-2-secure-your-logic-app-using-api-management/">
+    <span class="title">Next »</span>
+    <br>
+    <span>Securing Your Azure Logic Apps Part 2: Secure your Logic App using API Management -- Access Restriction Policies</span>
+  </a>
+</nav>
+
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="//localhost:1313/">sjoukje.eth</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerHTML = 'copy';
+
+        function copyingDone() {
+            copybutton.innerHTML = 'copied!';
+            setTimeout(() => {
+                copybutton.innerHTML = 'copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+</body>
+
+</html>

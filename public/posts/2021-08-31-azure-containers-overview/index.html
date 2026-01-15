@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto" data-theme="auto">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Azure containers overview | sjoukje.eth</title>
+<meta name="keywords" content="">
+<meta name="description" content="&ldquo;It works on my machine&rdquo; - a phrase that every developer has uttered, at
+least once in his or her career.
+Containers are the solution to the problem of how to get software run
+reliably when moved between computing environments. From a developer
+laptop to production environments, or from on-premises environments to
+cloud environments. By packaging all the required dependencies together
+with the application, you ensure that it can run in every environment.
+That is one of the reasons that container deployment is so successful
+nowadays. They also give you the portability to run exactly the same
+workloads across different cloud providers. You see that a lot of
+enterprises are heavily investing in multi-cloud environments. Gartner
+forecasts that by 2022, more than 75% of global organizations will be
+running containerized applications in production.">
+<meta name="author" content="sjoukje.eth">
+<link rel="canonical" href="//localhost:1313/posts/2021-08-31-azure-containers-overview/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.36f09b336921909a5971cfa84422229fa3edb550fa46b7707cb5436b0983bdcf.css" integrity="sha256-NvCbM2khkJpZcc&#43;oRCIin6PttVD6RrdwfLVDawmDvc8=" rel="preload stylesheet" as="style">
+<link rel="icon" href="//localhost:1313/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="//localhost:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="//localhost:1313/favicon-32x32.png">
+<link rel="apple-touch-icon" href="//localhost:1313/apple-touch-icon.png">
+<link rel="mask-icon" href="//localhost:1313/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="//localhost:1313/posts/2021-08-31-azure-containers-overview/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script><meta property="og:url" content="//localhost:1313/posts/2021-08-31-azure-containers-overview/">
+  <meta property="og:site_name" content="sjoukje.eth">
+  <meta property="og:title" content="Azure containers overview">
+  <meta property="og:description" content="“It works on my machine” - a phrase that every developer has uttered, at least once in his or her career.
+Containers are the solution to the problem of how to get software run reliably when moved between computing environments. From a developer laptop to production environments, or from on-premises environments to cloud environments. By packaging all the required dependencies together with the application, you ensure that it can run in every environment. That is one of the reasons that container deployment is so successful nowadays. They also give you the portability to run exactly the same workloads across different cloud providers. You see that a lot of enterprises are heavily investing in multi-cloud environments. Gartner forecasts that by 2022, more than 75% of global organizations will be running containerized applications in production.">
+  <meta property="og:locale" content="en-us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2021-08-31T00:00:00+00:00">
+    <meta property="article:modified_time" content="2021-08-31T00:00:00+00:00">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Azure containers overview">
+<meta name="twitter:description" content="&ldquo;It works on my machine&rdquo; - a phrase that every developer has uttered, at
+least once in his or her career.
+Containers are the solution to the problem of how to get software run
+reliably when moved between computing environments. From a developer
+laptop to production environments, or from on-premises environments to
+cloud environments. By packaging all the required dependencies together
+with the application, you ensure that it can run in every environment.
+That is one of the reasons that container deployment is so successful
+nowadays. They also give you the portability to run exactly the same
+workloads across different cloud providers. You see that a lot of
+enterprises are heavily investing in multi-cloud environments. Gartner
+forecasts that by 2022, more than 75% of global organizations will be
+running containerized applications in production.">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "//localhost:1313/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "Azure containers overview",
+      "item": "//localhost:1313/posts/2021-08-31-azure-containers-overview/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Azure containers overview",
+  "name": "Azure containers overview",
+  "description": "\u0026ldquo;It works on my machine\u0026rdquo; - a phrase that every developer has uttered, at least once in his or her career.\nContainers are the solution to the problem of how to get software run reliably when moved between computing environments. From a developer laptop to production environments, or from on-premises environments to cloud environments. By packaging all the required dependencies together with the application, you ensure that it can run in every environment. That is one of the reasons that container deployment is so successful nowadays. They also give you the portability to run exactly the same workloads across different cloud providers. You see that a lot of enterprises are heavily investing in multi-cloud environments. Gartner forecasts that by 2022, more than 75% of global organizations will be running containerized applications in production.\n",
+  "keywords": [
+    
+  ],
+  "articleBody": "“It works on my machine” - a phrase that every developer has uttered, at least once in his or her career.\nContainers are the solution to the problem of how to get software run reliably when moved between computing environments. From a developer laptop to production environments, or from on-premises environments to cloud environments. By packaging all the required dependencies together with the application, you ensure that it can run in every environment. That is one of the reasons that container deployment is so successful nowadays. They also give you the portability to run exactly the same workloads across different cloud providers. You see that a lot of enterprises are heavily investing in multi-cloud environments. Gartner forecasts that by 2022, more than 75% of global organizations will be running containerized applications in production.\nMicrosoft Azure provides different solutions to deploy and run applications in Azure. In this article I will dive briefly into the various offerings that Microsoft provides for running container deployments and when to use what for your workloads.\nWeb App for Containers With Web App for Containers, you can easily deploy your custom Docker images in Azure App Services and take advantage of the managed platform. Patching and managing is all handled for you by Azure. You can deploy both Windows and Linux containers. By running your containers in Azure App Services, you can also make use of the features that it provides, such as autoscaling, security, load balancing, DevOps capabilities such as continuous deployment from Azure DevOps, GitHub, Docker Hub, and other sources. It also provides package management, staging environments, custom domain, and TLS/SSL certificates and integration with other PaaS services in Azure and Azure AD.\nWhen to use Azure Web App for Containers: If your development team is already familiar with Azure Web Apps, you have one or a few long-running containers/services that are being deployed, you want to deploy container applications quickly, don’t want to manage the platform, and run containers on a small scale. And at last, you want to take advantage of built-in auto-scaling capabilities available through Azure Monitor.\nAzure Container instances (ACI) Azure Container Instances is a fully managed service and offers the fastest and simplest way to run a container in Azure, without having to manage any virtual machines and without having to adopt a higher-level service. ACI offer significant startup benefits over virtual machines (VMs). Azure Container Instances can start containers in Azure in seconds, without the need to provision and manage VMs. You can also run Windows and Linux containers in ACI. ACI can also provide ‘virtual nodes’ to form the backbone of a serverless cluster within AKS.\nWhen to use Azure Container Instances: if you want to get started with containers, you only want to pay based on consumption, have simple requirements and have short-lived workloads that respond to on-demand events or schedules, ACI is a well fitted solution.\nAzure Kubernetes Services (AKS) For scenarios where you need full container orchestration, including service discovery across multiple containers, automatic scaling, and coordinated application upgrades, AKS is recommended. Kubernetes has established itself as the standard for container orchestration nowadays. Azure offers a fully managed service for Kubernetes that offers integrated features such as identity with Azure AD, networking and monitoring capabilities. It also reduces the configuration overhead of the cluster.\nWhen to use Azure Kubernetes Services: if you’re looking to run containers at scale with flexible networking and customization options. If you also want your infrastructure to be portable for on-premises and other cloud providers and want to use as many open sources tooling as possible. If you also have a development team that is familiar with Kubernetes, AKS is a good solution.\n",
+  "wordCount" : "614",
+  "inLanguage": "en",
+  "datePublished": "2021-08-31T00:00:00Z",
+  "dateModified": "2021-08-31T00:00:00Z",
+  "author":{
+    "@type": "Person",
+    "name": "sjoukje.eth"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "//localhost:1313/posts/2021-08-31-azure-containers-overview/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "sjoukje.eth",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "//localhost:1313/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="//localhost:1313/" accesskey="h" title="sjoukje.eth (Alt + H)">sjoukje.eth</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="//localhost:1313/posts/" title="Posts">
+                    <span>Posts</span>
+                </a>
+            </li>
+            <li>
+                <a href="//localhost:1313/books/" title="Books">
+                    <span>Books</span>
+                </a>
+            </li>
+            <li>
+                <a href="//localhost:1313/about/" title="About">
+                    <span>About</span>
+                </a>
+            </li>
+            <li>
+                <a href="//localhost:1313/archives/" title="Archive">
+                    <span>Archive</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="//localhost:1313/">Home</a>&nbsp;»&nbsp;<a href="//localhost:1313/posts/">Posts</a></div>
+    <h1 class="post-title entry-hint-parent">
+      Azure containers overview
+    </h1>
+    <div class="post-meta"><span title='2021-08-31 00:00:00 +0000 UTC'>August 31, 2021</span>&nbsp;·&nbsp;<span>3 min</span>&nbsp;·&nbsp;<span>sjoukje.eth</span>
+
+</div>
+  </header> 
+  <div class="post-content"><p>&ldquo;It works on my machine&rdquo; - a phrase that every developer has uttered, at
+least once in his or her career.</p>
+<p>Containers are the solution to the problem of how to get software run
+reliably when moved between computing environments. From a developer
+laptop to production environments, or from on-premises environments to
+cloud environments. By packaging all the required dependencies together
+with the application, you ensure that it can run in every environment.
+That is one of the reasons that container deployment is so successful
+nowadays. They also give you the portability to run exactly the same
+workloads across different cloud providers. You see that a lot of
+enterprises are heavily investing in multi-cloud environments. Gartner
+forecasts that by 2022, more than 75% of global organizations will be
+running containerized applications in production.</p>
+<p>Microsoft Azure provides different solutions to deploy and run
+applications in Azure. In this article I will dive briefly into the
+various offerings that Microsoft provides for running container
+deployments and when to use what for your workloads.</p>
+<h2 id="web-app-for-containers">Web App for Containers<a hidden class="anchor" aria-hidden="true" href="#web-app-for-containers">#</a></h2>
+<p>With Web App for Containers, you can easily deploy your custom Docker
+images in Azure App Services and take advantage of the managed platform.
+Patching and managing is all handled for you by Azure. You can deploy
+both Windows and Linux containers. By running your containers in Azure
+App Services, you can also make use of the features that it provides,
+such as autoscaling, security, load balancing, DevOps capabilities such
+as continuous deployment from Azure DevOps, GitHub, Docker Hub, and
+other sources. It also provides package management, staging
+environments, custom domain, and TLS/SSL certificates and integration
+with other PaaS services in Azure and Azure AD.</p>
+<p><strong>When to use Azure Web App for Containers:</strong> If your development team
+is already familiar with Azure Web Apps, you have one or a few
+long-running containers/services that are being deployed, you want to
+deploy container applications quickly, don&rsquo;t want to manage the
+platform, and run containers on a small scale. And at last, you want to
+take advantage of built-in auto-scaling capabilities available through
+Azure Monitor.</p>
+<h2 id="azure-container-instances-aci">Azure Container instances (ACI)<a hidden class="anchor" aria-hidden="true" href="#azure-container-instances-aci">#</a></h2>
+<p>Azure Container Instances is a fully managed service and offers the
+fastest and simplest way to run a container in Azure, without having to
+manage any virtual machines and without having to adopt a higher-level
+service. ACI offer significant startup benefits over virtual machines
+(VMs). Azure Container Instances can start containers in Azure in
+seconds, without the need to provision and manage VMs. You can also run
+Windows and Linux containers in ACI. ACI can also provide &lsquo;virtual
+nodes&rsquo; to form the backbone of a serverless cluster within AKS.</p>
+<p><strong>When to use Azure Container Instances:</strong> if you want to get started
+with containers, you only want to pay based on consumption, have simple
+requirements and have short-lived workloads that respond to on-demand
+events or schedules, ACI is a well fitted solution.</p>
+<h2 id="azure-kubernetes-services-aks">Azure Kubernetes Services (AKS)<a hidden class="anchor" aria-hidden="true" href="#azure-kubernetes-services-aks">#</a></h2>
+<p>For scenarios where you need full container orchestration, including
+service discovery across multiple containers, automatic scaling, and
+coordinated application upgrades, AKS is recommended. Kubernetes has
+established itself as the standard for container orchestration nowadays.
+Azure offers a fully managed service for Kubernetes that offers
+integrated features such as identity with Azure AD, networking and
+monitoring capabilities. It also reduces the configuration overhead of
+the cluster.</p>
+<p><strong>When to use Azure Kubernetes Services:</strong> if you&rsquo;re looking to run
+containers at scale with flexible networking and customization options.
+If you also want your infrastructure to be portable for on-premises and
+other cloud providers and want to use as many open sources tooling as
+possible. If you also have a development team that is familiar with
+Kubernetes, AKS is a good solution.</p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+    </ul>
+<nav class="paginav">
+  <a class="prev" href="//localhost:1313/posts/2021-09-03-onboarding-an-organisation-for-a-fully-cloud-strategy/">
+    <span class="title">« Prev</span>
+    <br>
+    <span>Onboarding an organisation for a fully cloud strategy</span>
+  </a>
+  <a class="next" href="//localhost:1313/posts/2021-07-06-azure-thursday-july-2021/">
+    <span class="title">Next »</span>
+    <br>
+    <span>Azure Thursday - July 2021</span>
+  </a>
+</nav>
+
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="//localhost:1313/">sjoukje.eth</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerHTML = 'copy';
+
+        function copyingDone() {
+            copybutton.innerHTML = 'copied!';
+            setTimeout(() => {
+                copybutton.innerHTML = 'copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+</body>
+
+</html>

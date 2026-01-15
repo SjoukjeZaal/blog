@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto" data-theme="auto">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Azure Active Directory Flavors | sjoukje.eth</title>
+<meta name="keywords" content="">
+<meta name="description" content="Azure Active Directory is the heart of everything inside of Microsoft Azure. All Azure services are depending on it and using it for Identity Management in the Microsoft Cloud. Office 365, Intune, Exchange Online, Enterprise Mobility Suite, are all examples of Azure Services depending on Azure Active directory for both security and identity management. And when implemented right, all your custom applications, which are hosted in Azure or somehow are integrating with Azure services are using Azure Active Directory as well.">
+<meta name="author" content="sjoukje.eth">
+<link rel="canonical" href="//localhost:1313/posts/2017-08-03-azure-active-directory-flavors/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.36f09b336921909a5971cfa84422229fa3edb550fa46b7707cb5436b0983bdcf.css" integrity="sha256-NvCbM2khkJpZcc&#43;oRCIin6PttVD6RrdwfLVDawmDvc8=" rel="preload stylesheet" as="style">
+<link rel="icon" href="//localhost:1313/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="//localhost:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="//localhost:1313/favicon-32x32.png">
+<link rel="apple-touch-icon" href="//localhost:1313/apple-touch-icon.png">
+<link rel="mask-icon" href="//localhost:1313/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="//localhost:1313/posts/2017-08-03-azure-active-directory-flavors/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script><meta property="og:url" content="//localhost:1313/posts/2017-08-03-azure-active-directory-flavors/">
+  <meta property="og:site_name" content="sjoukje.eth">
+  <meta property="og:title" content="Azure Active Directory Flavors">
+  <meta property="og:description" content="Azure Active Directory is the heart of everything inside of Microsoft Azure. All Azure services are depending on it and using it for Identity Management in the Microsoft Cloud. Office 365, Intune, Exchange Online, Enterprise Mobility Suite, are all examples of Azure Services depending on Azure Active directory for both security and identity management. And when implemented right, all your custom applications, which are hosted in Azure or somehow are integrating with Azure services are using Azure Active Directory as well.">
+  <meta property="og:locale" content="en-us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2017-08-03T00:00:00+00:00">
+    <meta property="article:modified_time" content="2017-08-03T00:00:00+00:00">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Azure Active Directory Flavors">
+<meta name="twitter:description" content="Azure Active Directory is the heart of everything inside of Microsoft Azure. All Azure services are depending on it and using it for Identity Management in the Microsoft Cloud. Office 365, Intune, Exchange Online, Enterprise Mobility Suite, are all examples of Azure Services depending on Azure Active directory for both security and identity management. And when implemented right, all your custom applications, which are hosted in Azure or somehow are integrating with Azure services are using Azure Active Directory as well.">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "//localhost:1313/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "Azure Active Directory Flavors",
+      "item": "//localhost:1313/posts/2017-08-03-azure-active-directory-flavors/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Azure Active Directory Flavors",
+  "name": "Azure Active Directory Flavors",
+  "description": "Azure Active Directory is the heart of everything inside of Microsoft Azure. All Azure services are depending on it and using it for Identity Management in the Microsoft Cloud. Office 365, Intune, Exchange Online, Enterprise Mobility Suite, are all examples of Azure Services depending on Azure Active directory for both security and identity management. And when implemented right, all your custom applications, which are hosted in Azure or somehow are integrating with Azure services are using Azure Active Directory as well.\n",
+  "keywords": [
+    
+  ],
+  "articleBody": "Azure Active Directory is the heart of everything inside of Microsoft Azure. All Azure services are depending on it and using it for Identity Management in the Microsoft Cloud. Office 365, Intune, Exchange Online, Enterprise Mobility Suite, are all examples of Azure Services depending on Azure Active directory for both security and identity management. And when implemented right, all your custom applications, which are hosted in Azure or somehow are integrating with Azure services are using Azure Active Directory as well.\nThat’s why it is high on the agenda of Microsoft and it is constantly evolving. In this article, I want to give an overview of the different flavors of Azure Active Directory and where it stands right know, because what once started as a basic user directory, has now become something much more than that…\nAzure Active Directory As pointed out before Azure AD is the heart of everything inside of Azure. Plain Azure AD, is the “root service” where you create the user accounts for your organization and which can be used for application access management. It is designed for a single tenant, so it is designed for a single organization. This doesn’t mean that it doesn’t supports a multi-domain environment, but there are differences and restrictions. Azure Active Directory has been set up using a different architecture as the Windows Server Active Directory was set up many years ago.\nCustomers that are using Office 365, Intune or Dynamics CRM online, are not always aware of the fact that they are using Azure Active Directory. It can easily be integrated with an existing Windows Server Active Directory using AAD Connect, so the on-premises identity investments that are already made by organizations, can be leveraged in the cloud as well.\nAzure Active Directory also consists of a full suite of enterprise identity management capabilities, which are now available for the smaller companies as well for a fair cost. It includes Multi-Factor Authentication, device registration, self-service password management, self-service group management, privileged account management, role based access control, application usage monitoring, rich auditing and security monitoring and alerting. It depends of the Azure AD edition if these features are included. There are three editions, Azure Active Directory Basic, Premium P1 and Premium P2. You can refer to the following article on what is included in these different editions: https://azure.microsoft.com/en-us/pricing/details/active-directory/\nAzure Active Directory B2B Azure Active Directory Business-to-Business is a fairly new service which offers collaboration capabilities for organization which are using Azure AD. With Azure AD B2C you can work safely and securely with users from other organizations.\nWith the use of this service, organizations can provide access to documents, resources and applications to their partners, while maintaining complete control over their own corporate data. Developers can use the Azure AD B2C API’s to write applications that bring two organizations together.\nPartners can use their own credentials to sign in, and there is no requirement for having an Azure AD tenant of their own. This means you don’t have to manage external accounts anymore.\nCorporate data is protected using policies which can be added at the tenant level, the application level and user level.\nThis sounds very promising and I really hope this can replace the external sharing feature of Office 365, as this is not an enterprise ready sharing mechanism in my opinion.\nYou can watch the video with more information on Azure B2B on Youtube\nAzure Active Directory B2C Azure AD Business to Consumer is a cloud identity management solution for mobile and web applications. It is a highly available and it can scale to hundreds of millions of identities. Azure AD B2C is not Azure AD, it is a developer feature which can be leveraged in custom applications.\nWith minimal configuration, Azure AD B2C offers the following authentication providers:\nSocial Accounts (like Facebook, Google, LinkedIn and more)\nEnterprise Accounts (using open standards protocols, like OpenID Connect or SAML)\nLocal Accounts (like accounts using email address and password or username and password)\nBeside these authentication providers, additional ones can be added as well through the Azure Portal. New authentication providers are constantly added by Microsoft, so if your application uses some other authentication provider, there’s a big change you can add this one to Azure B2C in the Azure portal.\nIn Azure B2C, you cannot use the employee identities which are stored in Azure AD. It is a separate product and cannot be integrated with Azure AD. So, you can’t use the features that are offered for Azure AD inside of Azure B2C. What it does offer is, MFA, sign-in reports, usage reports and audit reports.\nAzure AD Directory Services (AADDS) Azure AD Directory Services is an extension of Azure AD and it provides managed domain services such as domain join, group policy, LDAP, Kerberos/NTLM authentication that are fully compatible with Windows Server Active Directory.\nLegacy applications often depend on LDAP or Windows Integrated Authentication (NTLM or Kerberos) to authenticate users. To migrate those applications to the cloud, these dependencies on the corporate identity infrastructure need to be resolved.\nSo, instead of having to deploy VM’s with domain controllers in the cloud or deploy a site-to-site VPN connection organizations can use Azure AD Directory Services for authenticating users in hybrid scenario’s.\nFor more information you can refer to the following site: https://docs.microsoft.com/en-us/azure/active-directory-domain-services/active-directory-ds-overview\nConclusion Azure Active Directory has a lot to offer these days. Additional features can help organization to overcome the flaws in the original architecture, as it was designed in the early Azure days. You are not bound to that one Azure AD tenant anymore.\nAlso, in hybrid scenarios Azure AD has a lot to offer. Migrating to the cloud, is much easier using these features, and it is even possible to keep a part of your applications on-premises.\nHopefully, you got some more understanding of the different services and features after reading this article. And more hopefully, you are going to use them for your organization and applications in the near future.\nCheers, Sjoukje\nPs. I have big expectations of Azure AD B2B myself. So, if anyone is already using this in conjunction with Office 365, please let me know. I’m really curious if this is working as expected.\n",
+  "wordCount" : "1033",
+  "inLanguage": "en",
+  "datePublished": "2017-08-03T00:00:00Z",
+  "dateModified": "2017-08-03T00:00:00Z",
+  "author":{
+    "@type": "Person",
+    "name": "sjoukje.eth"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "//localhost:1313/posts/2017-08-03-azure-active-directory-flavors/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "sjoukje.eth",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "//localhost:1313/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="//localhost:1313/" accesskey="h" title="sjoukje.eth (Alt + H)">sjoukje.eth</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="//localhost:1313/posts/" title="Posts">
+                    <span>Posts</span>
+                </a>
+            </li>
+            <li>
+                <a href="//localhost:1313/books/" title="Books">
+                    <span>Books</span>
+                </a>
+            </li>
+            <li>
+                <a href="//localhost:1313/about/" title="About">
+                    <span>About</span>
+                </a>
+            </li>
+            <li>
+                <a href="//localhost:1313/archives/" title="Archive">
+                    <span>Archive</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="//localhost:1313/">Home</a>&nbsp;»&nbsp;<a href="//localhost:1313/posts/">Posts</a></div>
+    <h1 class="post-title entry-hint-parent">
+      Azure Active Directory Flavors
+    </h1>
+    <div class="post-meta"><span title='2017-08-03 00:00:00 +0000 UTC'>August 3, 2017</span>&nbsp;·&nbsp;<span>5 min</span>&nbsp;·&nbsp;<span>sjoukje.eth</span>
+
+</div>
+  </header> 
+  <div class="post-content"><p>Azure Active Directory is the heart of everything inside of Microsoft Azure. All Azure services are depending on it and using it for Identity Management in the Microsoft Cloud. Office 365, Intune, Exchange Online, Enterprise Mobility Suite, are all examples of Azure Services depending on Azure Active directory for both security and identity management. And when implemented right, all your custom applications, which are hosted in Azure or somehow are integrating with Azure services are using Azure Active Directory as well.</p>
+<p>That&rsquo;s why it is high on the agenda of Microsoft and it is constantly evolving. In this article, I want to give an overview of the different flavors of Azure Active Directory and where it stands right know, because what once started as a basic user directory, has now become something much more than that&hellip;</p>
+<h2 id="azure-active-directory">Azure Active Directory<a hidden class="anchor" aria-hidden="true" href="#azure-active-directory">#</a></h2>
+<p>As pointed out before Azure AD is the heart of everything inside of Azure. Plain Azure AD, is the &ldquo;root service&rdquo; where you create the user accounts for your organization and which can be used for application access management. It is designed for a single tenant, so it is designed for a single organization. This doesn&rsquo;t mean that it doesn&rsquo;t supports a multi-domain environment, but there are differences and restrictions. Azure Active Directory has been set up using a different architecture as the Windows Server Active Directory was set up many years ago.</p>
+<p>Customers that are using Office 365, Intune or Dynamics CRM online, are not always aware of the fact that they are using Azure Active Directory. It can easily be integrated with an existing Windows Server Active Directory using <a href="https://docs.microsoft.com/en-us/azure/active-directory/connect/active-directory-aadconnect">AAD Connect</a>, so the on-premises identity investments that are already made by organizations, can be leveraged in the cloud as well.</p>
+<p>Azure Active Directory also consists of a full suite of enterprise identity management capabilities, which are now available for the smaller companies as well for a fair cost. It includes Multi-Factor Authentication, device registration, self-service password management, self-service group management, privileged account management, role based access control, application usage monitoring, rich auditing and security monitoring and alerting. It depends of the Azure AD edition if these features are included. There are three editions, Azure Active Directory Basic, Premium P1 and Premium P2. You can refer to the following article on what is included in these different editions: <a href="https://azure.microsoft.com/en-us/pricing/details/active-directory/">https://azure.microsoft.com/en-us/pricing/details/active-directory/</a></p>
+<h2 id="azure-active-directory-b2b">Azure Active Directory B2B<a hidden class="anchor" aria-hidden="true" href="#azure-active-directory-b2b">#</a></h2>
+<p>Azure Active Directory Business-to-Business is a fairly new service which offers collaboration capabilities for organization which are using Azure AD. With Azure AD B2C you can work safely and securely with users from other organizations.</p>
+<p>With the use of this service, organizations can provide access to documents, resources and applications to their partners, while maintaining complete control over their own corporate data. Developers can use the Azure AD B2C API&rsquo;s to write applications that bring two organizations together.</p>
+<p>Partners can use their own credentials to sign in, and there is no requirement for having an Azure AD tenant of their own. This means you don&rsquo;t have to manage external accounts anymore.</p>
+<p>Corporate data is protected using policies which can be added at the tenant level, the application level and user level.</p>
+<p>This sounds very promising and I really hope this can replace the external sharing feature of Office 365, as this is not an enterprise ready sharing mechanism in my opinion.</p>
+<h2></h2>
+<p>You can watch <a href="https://www.youtube.com/watch?v=AhwrweCBdsc">the video</a> with more information on Azure B2B on Youtube</p>
+<h2></h2>
+<h2 id="azure-active-directory-b2c">Azure Active Directory B2C<a hidden class="anchor" aria-hidden="true" href="#azure-active-directory-b2c">#</a></h2>
+<p>Azure AD Business to Consumer is a cloud identity management solution for mobile and web applications. It is a highly available and it can scale to hundreds of millions of identities. Azure AD B2C is not Azure AD, it is a developer feature which can be leveraged in custom applications.</p>
+<p>With minimal configuration, Azure AD B2C offers the following authentication providers:</p>
+<ul>
+<li>
+<p>Social Accounts (like Facebook, Google, LinkedIn and more)</p>
+</li>
+<li>
+<p>Enterprise Accounts (using open standards protocols, like OpenID Connect or SAML)</p>
+</li>
+<li>
+<p>Local Accounts (like accounts using email address and password or username and password)</p>
+</li>
+</ul>
+<p>Beside these authentication providers, additional ones can be added as well through the Azure Portal. New authentication providers are constantly added by Microsoft, so if your application uses some other authentication provider, there&rsquo;s a big change you can add this one to Azure B2C in the Azure portal.</p>
+<p>In Azure B2C, you cannot use the employee identities which are stored in Azure AD. It is a separate product and cannot be integrated with Azure AD. So, you can&rsquo;t use the features that are offered for Azure AD inside of Azure B2C. What it does offer is, MFA, sign-in reports, usage reports and audit reports.</p>
+<h2 id="azure-ad-directory-services-aadds">Azure AD Directory Services (AADDS)<a hidden class="anchor" aria-hidden="true" href="#azure-ad-directory-services-aadds">#</a></h2>
+<p>Azure AD Directory Services is an extension of Azure AD and it provides managed domain services such as domain join, group policy, LDAP, Kerberos/NTLM authentication that are fully compatible with Windows Server Active Directory.</p>
+<p>Legacy applications often depend on LDAP or Windows Integrated Authentication (NTLM or Kerberos) to authenticate users. To migrate those applications to the cloud, these dependencies on the corporate identity infrastructure need to be resolved.</p>
+<p>So, instead of having to deploy VM&rsquo;s with domain controllers in the cloud or deploy a site-to-site VPN connection organizations can use Azure AD Directory Services for authenticating users in hybrid scenario&rsquo;s.</p>
+<p>For more information you can refer to the following site: <a href="https://docs.microsoft.com/en-us/azure/active-directory-domain-services/active-directory-ds-overview">https://docs.microsoft.com/en-us/azure/active-directory-domain-services/active-directory-ds-overview</a></p>
+<h2 id="conclusion">Conclusion<a hidden class="anchor" aria-hidden="true" href="#conclusion">#</a></h2>
+<p>Azure Active Directory has a lot to offer these days. Additional features can help organization to overcome the flaws in the original architecture, as it was designed in the early Azure days. You are not bound to that one Azure AD tenant anymore.</p>
+<p>Also, in hybrid scenarios Azure AD has a lot to offer. Migrating to the cloud, is much easier using these features, and it is even possible to keep a part of your applications on-premises.</p>
+<p>Hopefully, you got some more understanding of the different services and features after reading this article. And more hopefully, you are going to use them for your organization and applications in the near future.</p>
+<p>Cheers, Sjoukje</p>
+<p>Ps. I have big expectations of Azure AD B2B myself. So, if anyone is already using this in conjunction with Office 365, please let me know. I&rsquo;m really curious if this is working as expected.</p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+    </ul>
+<nav class="paginav">
+  <a class="prev" href="//localhost:1313/posts/2017-10-25-2-ways-azure-key-vault-logic-apps/">
+    <span class="title">« Prev</span>
+    <br>
+    <span>2 Different Ways of Using Azure Key Vault in Your Logic Apps</span>
+  </a>
+  <a class="next" href="//localhost:1313/posts/2017-07-04-nl-digitale-transformatie-microsoft-azure-als-verbindende-factor/">
+    <span class="title">Next »</span>
+    <br>
+    <span>Adapt and thrive with Microsoft Azure for Industries -- part 1</span>
+  </a>
+</nav>
+
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="//localhost:1313/">sjoukje.eth</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerHTML = 'copy';
+
+        function copyingDone() {
+            copybutton.innerHTML = 'copied!';
+            setTimeout(() => {
+                copybutton.innerHTML = 'copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+</body>
+
+</html>

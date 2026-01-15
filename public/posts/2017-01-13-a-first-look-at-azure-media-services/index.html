@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto" data-theme="auto">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>A first look at Azure Media Services | sjoukje.eth</title>
+<meta name="keywords" content="">
+<meta name="description" content="Back in the early (Azure) days, I did a project in which we used the
+Microsoft Expression Media Encoder SDK for encoding video&#39;s from inside
+a Azure Worker Role. We stored those video&#39;s in Azure Blob Storage and
+used IIS Smooth Streaming &amp; Silverlight for playing those video&#39;s.
+But now there is Azure Media Services, and this will make it all a lot
+easier and better! Let&#39;s take a look at what Azure Media Services has
+to offer from a developer perspective.">
+<meta name="author" content="sjoukje.eth">
+<link rel="canonical" href="//localhost:1313/posts/2017-01-13-a-first-look-at-azure-media-services/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.36f09b336921909a5971cfa84422229fa3edb550fa46b7707cb5436b0983bdcf.css" integrity="sha256-NvCbM2khkJpZcc&#43;oRCIin6PttVD6RrdwfLVDawmDvc8=" rel="preload stylesheet" as="style">
+<link rel="icon" href="//localhost:1313/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="//localhost:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="//localhost:1313/favicon-32x32.png">
+<link rel="apple-touch-icon" href="//localhost:1313/apple-touch-icon.png">
+<link rel="mask-icon" href="//localhost:1313/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="//localhost:1313/posts/2017-01-13-a-first-look-at-azure-media-services/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script><meta property="og:url" content="//localhost:1313/posts/2017-01-13-a-first-look-at-azure-media-services/">
+  <meta property="og:site_name" content="sjoukje.eth">
+  <meta property="og:title" content="A first look at Azure Media Services">
+  <meta property="og:description" content="Back in the early (Azure) days, I did a project in which we used the Microsoft Expression Media Encoder SDK for encoding video&#39;s from inside a Azure Worker Role. We stored those video&#39;s in Azure Blob Storage and used IIS Smooth Streaming &amp; Silverlight for playing those video&#39;s.
+But now there is Azure Media Services, and this will make it all a lot easier and better! Let&#39;s take a look at what Azure Media Services has to offer from a developer perspective.">
+  <meta property="og:locale" content="en-us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2017-01-13T00:00:00+00:00">
+    <meta property="article:modified_time" content="2017-01-13T00:00:00+00:00">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="A first look at Azure Media Services">
+<meta name="twitter:description" content="Back in the early (Azure) days, I did a project in which we used the
+Microsoft Expression Media Encoder SDK for encoding video&#39;s from inside
+a Azure Worker Role. We stored those video&#39;s in Azure Blob Storage and
+used IIS Smooth Streaming &amp; Silverlight for playing those video&#39;s.
+But now there is Azure Media Services, and this will make it all a lot
+easier and better! Let&#39;s take a look at what Azure Media Services has
+to offer from a developer perspective.">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "//localhost:1313/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "A first look at Azure Media Services",
+      "item": "//localhost:1313/posts/2017-01-13-a-first-look-at-azure-media-services/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "A first look at Azure Media Services",
+  "name": "A first look at Azure Media Services",
+  "description": "Back in the early (Azure) days, I did a project in which we used the Microsoft Expression Media Encoder SDK for encoding video's from inside a Azure Worker Role. We stored those video's in Azure Blob Storage and used IIS Smooth Streaming \u0026amp; Silverlight for playing those video's.\nBut now there is Azure Media Services, and this will make it all a lot easier and better! Let's take a look at what Azure Media Services has to offer from a developer perspective.\n",
+  "keywords": [
+    
+  ],
+  "articleBody": "Back in the early (Azure) days, I did a project in which we used the Microsoft Expression Media Encoder SDK for encoding video's from inside a Azure Worker Role. We stored those video's in Azure Blob Storage and used IIS Smooth Streaming \u0026 Silverlight for playing those video's.\nBut now there is Azure Media Services, and this will make it all a lot easier and better! Let's take a look at what Azure Media Services has to offer from a developer perspective.\nIntroduction Microsoft Azure Media Services (AMS) allows you tot build end to end media distribition solutions that can upload, encode, package, and stream media to multiple platforms and devices.\nBelow features are included:\nStudio-grade encoding at cloud scale.\nOne player for all your playback needs.\nGreater discoverability and accessibility of media through media intelligence.\nContent protection and encryption delivered by AES and PlayReady.\nOn-demand and live video streaming with integrated Content Delivery Network capabilities.\nBefore you can get start developing your first AMS solution you need the following:\nA Media Services account in an Azure subscription.\nVisual Studio 2015 / 2013 / 2012.\n.Net Frameword 4.5.\nCreate a Media Services Account A Media Services account gives you access to a set of cloud-based services available in Azure. It does'nt stores the actual media content, only the media metadata and media processing jobs. Take the following steps to create a new Media Services account.\nNavigate to the Azure Portal and login.\nClick Web + Mobile -\u003e Media Services.\n{width=“4.59375in” height=“5.0in”}\nEnter an accountname, select a Resourcegroup or create a new one and select a storage account or create a new one. Click OK. {width=“1.8333333333333333in” height=“5.0in”}\nYour AMS account is being created now!\nAfter the account creation navigate to the new Media Service. A Default endpoint is created for you, which is in the stopped state. Turn this on to enable streaming, by clicking the Start button.\nFor your application, you need the Account key to connect to your Media Services account. Go to Account Keys and copy the Primary Key to your text-editor.\nCreate your Visual Studio Project The AMS SDK can be installed using NuGet. So, open Visual Studio and create a new C# Console Application.\nWhen the project is created, click Tools -\u003e NuGet Package Manager -\u003e Manage NuGet Packages for Solution.\nIn the search box, type windowsazure.mediaservices.extensions, select the package and click install.\nAdd a reference to the System.Configuration assembly to your project. This assembly is used to add the Media Services account name and the account key (which you’ve copied earlier) to the App.config.\nAdd the below code to the App.Config file:\nReplace the values with your Account Name and the Account Key.\nAdd the following using statements to the program.cs file:\nusing System.Configuration;\nusing System.Threading;\nusing System.IO;\nusing Microsoft.WindowsAzure.MediaServices.Client;\nInside your class, add the following code:\nclass Program\n{\n// Read values from the App.config file.\nprivate static readonly string _mediaServicesAccountName =\nConfigurationManager.AppSettings[\"MediaServicesAccountName\"];\nprivate static readonly string _mediaServicesAccountKey =\nConfigurationManager.AppSettings[\"MediaServicesAccountKey\"];\nprivate static CloudMediaContext _context = null;\nprivate static MediaServicesCredentials _cachedCredentials = null;\nstatic void Main(string[] args)\n{\ntry\n{\n_cachedCredentials = new MediaServicesCredentials(\n_mediaServicesAccountName,\n_mediaServicesAccountKey);\n_context = new CloudMediaContext(_cachedCredentials);\nIAsset inputAsset =\nUploadFile(@\"C:\\SampleVideo.mp4\", AssetCreationOptions.None);\n}\ncatch (Exception exception)\n{\nexception = MediaServicesExceptionParser.Parse(exception);\nConsole.Error.WriteLine(exception.Message);\n}\nfinally\n{\nConsole.ReadLine();\n}\n}\nstatic public IAsset UploadFile(string fileName, AssetCreationOptions options)\n{\nIAsset inputAsset = _context.Assets.CreateFromFile(\nfileName,\noptions,\n(af, p) =\u003e\n{\nConsole.WriteLine(\"Uploading '{0}' - Progress: {1:0.##}%\", af.Name, p.Progress);\n});\nConsole.WriteLine(\"Asset {0} created.\", inputAsset.Id);\nreturn inputAsset;\n}\nWhen you run this code, the video gets uploaded to the storage account of your Media Services. If you open the Media Services account in the Azure Portal you can see that it’s there.\nConclusion\nIn this post we’ve created a Azure Media Service Account and created a simple application for uploading a video into AMS. It works smooth and fast in my opinion. In upcoming posts I will explore some more AMS development functionalities.\n",
+  "wordCount" : "663",
+  "inLanguage": "en",
+  "datePublished": "2017-01-13T00:00:00Z",
+  "dateModified": "2017-01-13T00:00:00Z",
+  "author":{
+    "@type": "Person",
+    "name": "sjoukje.eth"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "//localhost:1313/posts/2017-01-13-a-first-look-at-azure-media-services/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "sjoukje.eth",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "//localhost:1313/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="//localhost:1313/" accesskey="h" title="sjoukje.eth (Alt + H)">sjoukje.eth</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="//localhost:1313/posts/" title="Posts">
+                    <span>Posts</span>
+                </a>
+            </li>
+            <li>
+                <a href="//localhost:1313/books/" title="Books">
+                    <span>Books</span>
+                </a>
+            </li>
+            <li>
+                <a href="//localhost:1313/about/" title="About">
+                    <span>About</span>
+                </a>
+            </li>
+            <li>
+                <a href="//localhost:1313/archives/" title="Archive">
+                    <span>Archive</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="//localhost:1313/">Home</a>&nbsp;»&nbsp;<a href="//localhost:1313/posts/">Posts</a></div>
+    <h1 class="post-title entry-hint-parent">
+      A first look at Azure Media Services
+    </h1>
+    <div class="post-meta"><span title='2017-01-13 00:00:00 +0000 UTC'>January 13, 2017</span>&nbsp;·&nbsp;<span>4 min</span>&nbsp;·&nbsp;<span>sjoukje.eth</span>
+
+</div>
+  </header> 
+  <div class="post-content"><p>Back in the early (Azure) days, I did a project in which we used the
+Microsoft Expression Media Encoder SDK for encoding video's from inside
+a Azure Worker Role. We stored those video's in Azure Blob Storage and
+used IIS Smooth Streaming &amp; Silverlight for playing those video's.</p>
+<p>But now there is Azure Media Services, and this will make it all a lot
+easier and better! Let's take a look at what Azure Media Services has
+to offer from a developer perspective.</p>
+<h2 id="introduction">Introduction<a hidden class="anchor" aria-hidden="true" href="#introduction">#</a></h2>
+<p><a href="https://azure.microsoft.com/en-us/services/media-services/">Microsoft Azure Media
+Services</a>
+(AMS) allows you tot build end to end media distribition solutions that
+can upload, encode, package, and stream media to multiple platforms and
+devices.</p>
+<p>Below features are included:</p>
+<ul>
+<li>
+<p>Studio-grade encoding at cloud scale.</p>
+</li>
+<li>
+<p>One player for all your playback needs.</p>
+</li>
+<li>
+<p>Greater discoverability and accessibility of media through media
+intelligence.</p>
+</li>
+<li>
+<p>Content protection and encryption delivered by AES and PlayReady.</p>
+</li>
+<li>
+<p>On-demand and live video streaming with integrated Content Delivery
+Network capabilities.</p>
+</li>
+</ul>
+<p>Before you can get start developing your first AMS solution you need the
+following:</p>
+<ul>
+<li>
+<p>A Media Services account in an Azure subscription.</p>
+</li>
+<li>
+<p>Visual Studio 2015 / 2013 / 2012.</p>
+</li>
+<li>
+<p>.Net Frameword 4.5.</p>
+</li>
+</ul>
+<h2 id="create-a-media-services-account">Create a Media Services Account<a hidden class="anchor" aria-hidden="true" href="#create-a-media-services-account">#</a></h2>
+<p>A Media Services account gives you access to a set of cloud-based
+services available in Azure. It does'nt stores the actual media
+content, only the media metadata and media processing jobs. Take the
+following steps to create a new Media Services account.</p>
+<ol>
+<li>
+<p>Navigate to the <a href="https://portal.azure.com/">Azure Portal</a> and login.</p>
+</li>
+<li>
+<p>Click <strong>Web + Mobile</strong> -&gt; <strong>Media Services.</strong></p>
+</li>
+</ol>
+<blockquote>
+<p><img loading="lazy" src="media/image1.png">{width=&ldquo;4.59375in&rdquo; height=&ldquo;5.0in&rdquo;}</p>
+</blockquote>
+<ol start="3">
+<li>Enter an accountname, select a Resourcegroup or create a new one and
+select a storage account or create a new one. Click <strong>OK</strong>.</li>
+</ol>
+<p><img loading="lazy" src="media/image2.png">{width=&ldquo;1.8333333333333333in&rdquo; height=&ldquo;5.0in&rdquo;}</p>
+<p>Your AMS account is being created now!</p>
+<p>After the account creation navigate to the new Media Service. A Default
+endpoint is created for you, which is in the stopped state. Turn this on
+to enable streaming, by clicking the <strong>Start</strong> button.</p>
+<p><img loading="lazy" src="media/image3.png"></p>
+<p>For your application, you need the Account key to connect to your Media
+Services account. Go to <strong>Account Keys</strong> and copy the <strong>Primary Key</strong> to
+your text-editor.</p>
+<p><img loading="lazy" src="media/image4.png"></p>
+<h2 id="create-your-visual-studio-project">Create your Visual Studio Project<a hidden class="anchor" aria-hidden="true" href="#create-your-visual-studio-project">#</a></h2>
+<p>The AMS SDK can be installed using NuGet. So, open Visual Studio and
+create a new C# Console Application.</p>
+<p><img loading="lazy" src="media/image5.png"></p>
+<p>When the project is created, click <strong>Tools</strong> -&gt; <strong>NuGet Package
+Manager</strong> -&gt; <strong>Manage NuGet Packages for Solution</strong>.</p>
+<p>In the search box, type <strong>windowsazure.mediaservices.extensions,</strong>
+select the package and click install.</p>
+<p><img loading="lazy" src="media/image6.png"></p>
+<p>Add a reference to the System.Configuration assembly to your project.
+This assembly is used to add the Media Services account name and the
+account key (which you&rsquo;ve copied earlier) to the App.config.</p>
+<p>Add the below code to the <strong>App.Config</strong> file:</p>
+<p>&lt;appSettings&gt;</p>
+<p>&lt;add key=&quot;MediaServicesAccountName&quot;
+value=&quot;Media-Services-Account-Name&quot; /&gt;</p>
+<p>&lt;add key=&quot;MediaServicesAccountKey&quot;
+value=&quot;Media-Services-Account-Key&quot; /&gt;</p>
+<p>&lt;/appSettings&gt;</p>
+<p>Replace the values with your Account Name and the Account Key.</p>
+<p>Add the following using statements to the program.cs file:</p>
+<p>using System.Configuration;</p>
+<p>using System.Threading;</p>
+<p>using System.IO;</p>
+<p>using Microsoft.WindowsAzure.MediaServices.Client;</p>
+<p>Inside your class, add the following code:</p>
+<p>class Program</p>
+<p>{</p>
+<p>// Read values from the App.config file.</p>
+<p>private static readonly string _mediaServicesAccountName =</p>
+<p>ConfigurationManager.AppSettings[&quot;MediaServicesAccountName&quot;];</p>
+<p>private static readonly string _mediaServicesAccountKey =</p>
+<p>ConfigurationManager.AppSettings[&quot;MediaServicesAccountKey&quot;];</p>
+<p>private static CloudMediaContext _context = null;</p>
+<p>private static MediaServicesCredentials _cachedCredentials = null;</p>
+<p>static void Main(string[] args)</p>
+<p>{</p>
+<p>try</p>
+<p>{</p>
+<p>_cachedCredentials = new MediaServicesCredentials(</p>
+<p>_mediaServicesAccountName,</p>
+<p>_mediaServicesAccountKey);</p>
+<p>_context = new CloudMediaContext(_cachedCredentials);</p>
+<p>IAsset inputAsset =</p>
+<p>UploadFile(@&quot;C:\SampleVideo.mp4&quot;, AssetCreationOptions.None);</p>
+<p>}</p>
+<p>catch (Exception exception)</p>
+<p>{</p>
+<p>exception = MediaServicesExceptionParser.Parse(exception);</p>
+<p>Console.Error.WriteLine(exception.Message);</p>
+<p>}</p>
+<p>finally</p>
+<p>{</p>
+<p>Console.ReadLine();</p>
+<p>}</p>
+<p>}</p>
+<p>static public IAsset UploadFile(string fileName, AssetCreationOptions
+options)</p>
+<p>{</p>
+<p>IAsset inputAsset = _context.Assets.CreateFromFile(</p>
+<p>fileName,</p>
+<p>options,</p>
+<p>(af, p) =&gt;</p>
+<p>{</p>
+<p>Console.WriteLine(&quot;Uploading '{0}' - Progress: {1:0.##}%&quot;, af.Name,
+p.Progress);</p>
+<p>});</p>
+<p>Console.WriteLine(&quot;Asset {0} created.&quot;, inputAsset.Id);</p>
+<p>return inputAsset;</p>
+<p>}</p>
+<p>When you run this code, the video gets uploaded to the storage account
+of your Media Services. If you open the Media Services account in the
+Azure Portal you can see that it&rsquo;s there.</p>
+<p>Conclusion</p>
+<p>In this post we&rsquo;ve created a Azure Media Service Account and created a
+simple application for uploading a video into AMS. It works smooth and
+fast in my opinion. In upcoming posts I will explore some more AMS
+development functionalities.</p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+    </ul>
+<nav class="paginav">
+  <a class="prev" href="//localhost:1313/posts/2017-02-08-azure-dev-interview/">
+    <span class="title">« Prev</span>
+    <br>
+    <span>Azure Dev Interview</span>
+  </a>
+  <a class="next" href="//localhost:1313/posts/2016-12-13-this-is-the-first-article-in-a-series-on-office-365-development/">
+    <span class="title">Next »</span>
+    <br>
+    <span>Office 365: Setting up your development environment</span>
+  </a>
+</nav>
+
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="//localhost:1313/">sjoukje.eth</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerHTML = 'copy';
+
+        function copyingDone() {
+            copybutton.innerHTML = 'copied!';
+            setTimeout(() => {
+                copybutton.innerHTML = 'copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+</body>
+
+</html>

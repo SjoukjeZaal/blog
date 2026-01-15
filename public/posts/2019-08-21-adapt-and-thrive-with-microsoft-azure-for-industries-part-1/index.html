@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto" data-theme="auto">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Adapt and thrive with Microsoft Azure for Industries -- part 1 | sjoukje.eth</title>
+<meta name="keywords" content="">
+<meta name="description" content="Adapt and thrive with Microsoft Azure for Industries &ndash; part 1
+The way we work and live has changed. As a result of the recent global health crisis, many organizations are accelerating their digital transformation efforts to meet the challenges that they were exposed to. Employees around the world shifted to remote work, stores needed to shift to a buy online, pick up in-store model. In manufacturing, remote capabilities became key. Digital transformation has now become a requirement for business continuity, and digital technology has universally become key to business resilience and transformation.">
+<meta name="author" content="sjoukje.eth">
+<link rel="canonical" href="//localhost:1313/posts/2019-08-21-adapt-and-thrive-with-microsoft-azure-for-industries-part-1/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.36f09b336921909a5971cfa84422229fa3edb550fa46b7707cb5436b0983bdcf.css" integrity="sha256-NvCbM2khkJpZcc&#43;oRCIin6PttVD6RrdwfLVDawmDvc8=" rel="preload stylesheet" as="style">
+<link rel="icon" href="//localhost:1313/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="//localhost:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="//localhost:1313/favicon-32x32.png">
+<link rel="apple-touch-icon" href="//localhost:1313/apple-touch-icon.png">
+<link rel="mask-icon" href="//localhost:1313/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="//localhost:1313/posts/2019-08-21-adapt-and-thrive-with-microsoft-azure-for-industries-part-1/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script><meta property="og:url" content="//localhost:1313/posts/2019-08-21-adapt-and-thrive-with-microsoft-azure-for-industries-part-1/">
+  <meta property="og:site_name" content="sjoukje.eth">
+  <meta property="og:title" content="Adapt and thrive with Microsoft Azure for Industries -- part 1">
+  <meta property="og:description" content="Adapt and thrive with Microsoft Azure for Industries – part 1 The way we work and live has changed. As a result of the recent global health crisis, many organizations are accelerating their digital transformation efforts to meet the challenges that they were exposed to. Employees around the world shifted to remote work, stores needed to shift to a buy online, pick up in-store model. In manufacturing, remote capabilities became key. Digital transformation has now become a requirement for business continuity, and digital technology has universally become key to business resilience and transformation.">
+  <meta property="og:locale" content="en-us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2019-08-21T00:00:00+00:00">
+    <meta property="article:modified_time" content="2019-08-21T00:00:00+00:00">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Adapt and thrive with Microsoft Azure for Industries -- part 1">
+<meta name="twitter:description" content="Adapt and thrive with Microsoft Azure for Industries &ndash; part 1
+The way we work and live has changed. As a result of the recent global health crisis, many organizations are accelerating their digital transformation efforts to meet the challenges that they were exposed to. Employees around the world shifted to remote work, stores needed to shift to a buy online, pick up in-store model. In manufacturing, remote capabilities became key. Digital transformation has now become a requirement for business continuity, and digital technology has universally become key to business resilience and transformation.">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "//localhost:1313/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "Adapt and thrive with Microsoft Azure for Industries -- part 1",
+      "item": "//localhost:1313/posts/2019-08-21-adapt-and-thrive-with-microsoft-azure-for-industries-part-1/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Adapt and thrive with Microsoft Azure for Industries -- part 1",
+  "name": "Adapt and thrive with Microsoft Azure for Industries -- part 1",
+  "description": "Adapt and thrive with Microsoft Azure for Industries \u0026ndash; part 1 The way we work and live has changed. As a result of the recent global health crisis, many organizations are accelerating their digital transformation efforts to meet the challenges that they were exposed to. Employees around the world shifted to remote work, stores needed to shift to a buy online, pick up in-store model. In manufacturing, remote capabilities became key. Digital transformation has now become a requirement for business continuity, and digital technology has universally become key to business resilience and transformation.\n",
+  "keywords": [
+    
+  ],
+  "articleBody": "Adapt and thrive with Microsoft Azure for Industries – part 1 The way we work and live has changed. As a result of the recent global health crisis, many organizations are accelerating their digital transformation efforts to meet the challenges that they were exposed to. Employees around the world shifted to remote work, stores needed to shift to a buy online, pick up in-store model. In manufacturing, remote capabilities became key. Digital transformation has now become a requirement for business continuity, and digital technology has universally become key to business resilience and transformation.\nThis enormous pressure on digital transformation, since the pandemic struck, has affected all industries. A recent study from the Economist and Microsoft shows that organizations that already started their digital transformation before the pandemic, were able to adjust more quickly to meet the new customer’s needs. The digital infrastructure that these industries already put in place, allowed them to not only remain competitive in the market, but also respond to societal disruption in a nimbler way. To meet the challenges of a rapidly changing economy, across all different industries, it is no longer sufficient to just adopt technology. They need to build their own technology to compete and grow. And this makes every company a technology company.\nWe’ve seen two years’ worth of digital transformation in two months. From remote teamwork and learning, to sales and customer service, to critical cloud infrastructure and security—we are working alongside customers every day to help them adapt and stay open for business in a world of remote everything.\"\nSatya Nadella,\nCEO,\nMicrosoft\nOver the past year, Microsoft has been working closely with leaders in every industry to help them navigate the crisis. They equipped them with the right technology and tools to accelerate the digital transformation. Industry specific solutions are the key to ensure business resiliency and accelerating growth.\nIn this first part of a series blogs about industry solutions build on the Microsoft Azure platform, I’m going to focus on retail and healthcare solutions. We are going to focus on some use cases and the solutions and tools that Microsoft has to offer to build the different practices.\nAzure for retail Gone are the days when retailers choose when, where, and what to sell. In this changing world, retailers are being challenged to figure out how best engage with customers within new constraints. One examples of this is adapting business processes to provide BOPIS (buy-online-and-pickup-in-store- services). Also, many retailers are driving a more sustainable model proliferation of data, are including the ability to deliver remote sales and services and are addressing the need to better equip store associates with technology.\nWith Azure for retail, organizations are capable of building personalized experiences, optimize their supply chains, and reimagine multichannel retail using Microsoft Azure. This includes predictive AI, machine learning, IoT, hybrid cloud, computer vision and analytics.\nAzure for Retail includes the following tools and services:\nAzure Synapse Analytics: With Azure Synapse for Analytics, retailers can gather, store, process, analyze, and visualize data of any volume, variety, or velocity to pave the way to intelligent retail.\nAzure AI and Machine Learning: With these tools, retailers can build intelligent, personalized customer experiences and optimized systems powered by the proven, responsible, and secure AI that Microsoft Azure has to offer.\nAzure Cognitive Services: Bring AI within the reach of every developer, without the need to require machine-learning expertise.\nAzure IoT: Enabling smart retail through Azure IoT. Retailer can securely connect their assets and equipment to the retail cloud with the different IoT solutions that Azure has to offer to unlock real time insights and enable system interoperability.\nAzure Mixed Reality: Blend the digital and the physical worlds to create immersive, and collaborative experiences.\nAzure Stack: Build and run hybrid applications across datacenters, edge locations, and the cloud.\nAzure Virtual Desktop: Deploy virtual desktops and apps to enable secure remote work.\nSAP on Azure: Run your organizations retail operations with SAP workloads on Azure to increase agility, drive strategic innovation and perform at scale.\nIn the next section, we are going to look at what Microsoft Azure has to offer for healthcare organizations.\nAzure for healthcare The healthcare industry is highly regulated. In this field, digital change is driven by the need to lower the risk of delivering patient care, while doing so at scale. The rapidly changing world is pressuring healthcare organizations to evolve how they deliver patient care as well. One example of this, is that healthcare organizations are increasingly using technology platform to shift to more telehealth services. And this example is very spot on as well in the current pandemic. By meeting patients virtually, healthcare professionals can threat (more) patients while minimizing the risk of exposure to themselves and other patients.\nWith Azure for healthcare, healthcare organizations can deliver better health insights and outcomes as they enhance patient engagement, empower health team collaboration, and improve clinical informatics and operational insights. All backed by a secure and trusted cloud. This includes hybrid cloud, mixed reality, AI, and IoT—to drive better health outcomes, improve security, scale faster, and enhance data interoperability.\nAzure for Healthcare includes the following tools and services:\nAzure Healthcare APIs: With Azure healthcare specific APIs, organizations can securely manage different formats of protected health data, accelerate machine learning, and enable a secure exchange of health data within a global infrastructure.\nAzure AI and Machine Learning: Deliver better healthcare outcomes with personalized, preventative care, and intelligent systems powered by proven, secure, and responsible AI.\nAzure Synapse Analytics: With Azure Synapse for Analytics, healthcare organizations can gather, store, process, analyze, and visualize clinical data of any volume, variety, or velocity to pave the way to smart healthcare.\nAzure IoT: Deliver personalized care, empower care teams and employees, and improve operational outcomes. Securely connect health devices and equipment to the cloud with healthcare solutions to unlock real-time insights and enable system interoperability.\nHigh Performance Computing: Accelerate insights in genomics precision medicine and clinical trials with near-finite high performance bioinformatics infrastructure.\nAzure Stack: Build and run hybrid applications across datacenters, edge locations, remote clinical facilities, and the cloud.\nAzure Mixed Reality: Blend the digital and the physical worlds to create immersive, and collaborative experiences, across the operating room and other health facilities.\nAzure Security: Protection from the edge to the cloud and stay ahead of risks with intelligent monitoring tools built with powerful AI.\nWrap up Microsoft offers a comprehensive toolset for the retail and healthcare industries.\nImplementing these cloud solutions on a large scale and embedding it into your organization, involves a structured approach, a cultural shift, and a need for a solid and secure architecture. This also includes setting up a Cloud Center of Excellence, and embracing cloud native technologies and the Microsoft Well Architected Framework.\n",
+  "wordCount" : "1125",
+  "inLanguage": "en",
+  "datePublished": "2019-08-21T00:00:00Z",
+  "dateModified": "2019-08-21T00:00:00Z",
+  "author":{
+    "@type": "Person",
+    "name": "sjoukje.eth"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "//localhost:1313/posts/2019-08-21-adapt-and-thrive-with-microsoft-azure-for-industries-part-1/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "sjoukje.eth",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "//localhost:1313/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="//localhost:1313/" accesskey="h" title="sjoukje.eth (Alt + H)">sjoukje.eth</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="//localhost:1313/posts/" title="Posts">
+                    <span>Posts</span>
+                </a>
+            </li>
+            <li>
+                <a href="//localhost:1313/books/" title="Books">
+                    <span>Books</span>
+                </a>
+            </li>
+            <li>
+                <a href="//localhost:1313/about/" title="About">
+                    <span>About</span>
+                </a>
+            </li>
+            <li>
+                <a href="//localhost:1313/archives/" title="Archive">
+                    <span>Archive</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="//localhost:1313/">Home</a>&nbsp;»&nbsp;<a href="//localhost:1313/posts/">Posts</a></div>
+    <h1 class="post-title entry-hint-parent">
+      Adapt and thrive with Microsoft Azure for Industries -- part 1
+    </h1>
+    <div class="post-meta"><span title='2019-08-21 00:00:00 +0000 UTC'>August 21, 2019</span>&nbsp;·&nbsp;<span>6 min</span>&nbsp;·&nbsp;<span>sjoukje.eth</span>
+
+</div>
+  </header> 
+  <div class="post-content"><h1 id="adapt-and-thrive-with-microsoft-azure-for-industries--part-1">Adapt and thrive with Microsoft Azure for Industries &ndash; part 1<a hidden class="anchor" aria-hidden="true" href="#adapt-and-thrive-with-microsoft-azure-for-industries--part-1">#</a></h1>
+<p>The way we work and live has changed. As a result of the recent global health crisis, many organizations are accelerating their digital transformation efforts to meet the challenges that they were exposed to. Employees around the world shifted to remote work, stores needed to shift to a buy online, pick up in-store model. In manufacturing, remote capabilities became key. Digital transformation has now become a requirement for business continuity, and digital technology has universally become key to business resilience and transformation.</p>
+<p>This enormous pressure on digital transformation, since the pandemic struck, has affected all industries. A recent study from the Economist and Microsoft shows that organizations that already started their digital transformation before the pandemic, were able to adjust more quickly to meet the new customer&rsquo;s needs. The digital infrastructure that these industries already put in place, allowed them to not only remain competitive in the market, but also respond to societal disruption in a nimbler way. To meet the challenges of a rapidly changing economy, across all different industries, it is no longer sufficient to just adopt technology. They need to build their own technology to compete and grow. And this makes every company a technology company.</p>
+<blockquote>
+<p>We&rsquo;ve seen two years&rsquo; worth of digital transformation in two months. From remote teamwork and learning, to sales and customer service, to critical cloud infrastructure and security&mdash;we are working alongside customers every day to help them adapt and stay open for business in a world of remote everything.&quot;</p>
+<p>Satya Nadella,</p>
+<p>CEO,</p>
+<p>Microsoft</p>
+</blockquote>
+<p>Over the past year, Microsoft has been working closely with leaders in every industry to help them navigate the crisis. They equipped them with the right technology and tools to accelerate the digital transformation. Industry specific solutions are the key to ensure business resiliency and accelerating growth.</p>
+<p>In this first part of a series blogs about industry solutions build on the Microsoft Azure platform, I&rsquo;m going to focus on retail and healthcare solutions. We are going to focus on some use cases and the solutions and tools that Microsoft has to offer to build the different practices.</p>
+<h2 id="azure-for-retail">Azure for retail<a hidden class="anchor" aria-hidden="true" href="#azure-for-retail">#</a></h2>
+<p>Gone are the days when retailers choose when, where, and what to sell. In this changing world, retailers are being challenged to figure out how best engage with customers within new constraints. One examples of this is adapting business processes to provide BOPIS (buy-online-and-pickup-in-store- services). Also, many retailers are driving a more sustainable model proliferation of data, are including the ability to deliver remote sales and services and are addressing the need to better equip store associates with technology.</p>
+<p>With Azure for retail, organizations are capable of building personalized experiences, optimize their supply chains, and reimagine multichannel retail using Microsoft Azure. This includes predictive AI, machine learning, IoT, hybrid cloud, computer vision and analytics.</p>
+<p>Azure for Retail includes the following tools and services:</p>
+<ul>
+<li>
+<p><a href="https://azure.microsoft.com/en-us/services/synapse-analytics/#overview">Azure Synapse Analytics</a>: With Azure Synapse for Analytics, retailers can gather, store, process, analyze, and visualize data of any volume, variety, or velocity to pave the way to intelligent retail.</p>
+</li>
+<li>
+<p><a href="https://azure.microsoft.com/en-us/overview/ai-platform/#overview">Azure AI and Machine Learning</a>: With these tools, retailers can build intelligent, personalized customer experiences and optimized systems powered by the proven, responsible, and secure AI that Microsoft Azure has to offer.</p>
+</li>
+<li>
+<p><a href="https://azure.microsoft.com/en-us/services/cognitive-services/#overview">Azure Cognitive Services</a>: Bring AI within the reach of every developer, without the need to require machine-learning expertise.</p>
+</li>
+<li>
+<p><a href="https://azure.microsoft.com/en-us/overview/iot/industry/retail/#overview">Azure IoT</a>: Enabling smart retail through Azure IoT. Retailer can securely connect their assets and equipment to the retail cloud with the different IoT solutions that Azure has to offer to unlock real time insights and enable system interoperability.</p>
+</li>
+<li>
+<p><a href="https://azure.microsoft.com/en-us/topic/mixed-reality/">Azure Mixed Reality</a>: Blend the digital and the physical worlds to create immersive, and collaborative experiences.</p>
+</li>
+<li>
+<p><a href="https://azure.microsoft.com/en-us/overview/azure-stack/#industries">Azure Stack</a>: Build and run hybrid applications across datacenters, edge locations, and the cloud.</p>
+</li>
+<li>
+<p><a href="https://azure.microsoft.com/en-us/free/services/virtual-desktop/">Azure Virtual Desktop</a>: Deploy virtual desktops and apps to enable secure remote work.</p>
+</li>
+<li>
+<p><a href="https://azure.microsoft.com/en-us/solutions/sap/">SAP on Azure:</a> Run your organizations retail operations with SAP workloads on Azure to increase agility, drive strategic innovation and perform at scale.</p>
+</li>
+</ul>
+<p>In the next section, we are going to look at what Microsoft Azure has to offer for healthcare organizations.</p>
+<h2 id="azure-for-healthcare">Azure for healthcare<a hidden class="anchor" aria-hidden="true" href="#azure-for-healthcare">#</a></h2>
+<p>The healthcare industry is highly regulated. In this field, digital change is driven by the need to lower the risk of delivering patient care, while doing so at scale. The rapidly changing world is pressuring healthcare organizations to evolve how they deliver patient care as well. One example of this, is that healthcare organizations are increasingly using technology platform to shift to more telehealth services. And this example is very spot on as well in the current pandemic. By meeting patients virtually, healthcare professionals can threat (more) patients while minimizing the risk of exposure to themselves and other patients.</p>
+<p>With Azure for healthcare, healthcare organizations can deliver better health insights and outcomes as they enhance patient engagement, empower health team collaboration, and improve clinical informatics and operational insights. All backed by a secure and trusted cloud. This includes hybrid cloud, mixed reality, AI, and IoT&mdash;to drive better health outcomes, improve security, scale faster, and enhance data interoperability.</p>
+<p>Azure for Healthcare includes the following tools and services:</p>
+<ul>
+<li>
+<p><a href="https://azure.microsoft.com/en-us/services/healthcare-apis/#overview">Azure Healthcare APIs</a>: With Azure healthcare specific APIs, organizations can securely manage different formats of protected health data, accelerate machine learning, and enable a secure exchange of health data within a global infrastructure.</p>
+</li>
+<li>
+<p><a href="https://azure.microsoft.com/en-us/overview/ai-platform/#overview">Azure AI and Machine Learning</a>: Deliver better healthcare outcomes with personalized, preventative care, and intelligent systems powered by proven, secure, and responsible AI.</p>
+</li>
+<li>
+<p><a href="https://azure.microsoft.com/en-us/services/synapse-analytics/#overview">Azure Synapse Analytics</a>: With Azure Synapse for Analytics, healthcare organizations can gather, store, process, analyze, and visualize clinical data of any volume, variety, or velocity to pave the way to smart healthcare.</p>
+</li>
+<li>
+<p><a href="https://azure.microsoft.com/en-us/overview/iot/industry/healthcare/">Azure IoT</a>: Deliver personalized care, empower care teams and employees, and improve operational outcomes. Securely connect health devices and equipment to the cloud with healthcare solutions to unlock real-time insights and enable system interoperability.</p>
+</li>
+<li>
+<p><a href="https://azure.microsoft.com/en-us/solutions/high-performance-computing/health-and-life-sciences/#features">High Performance Computing</a>: Accelerate insights in genomics precision medicine and clinical trials with near-finite high performance bioinformatics infrastructure.</p>
+</li>
+<li>
+<p><a href="https://azure.microsoft.com/en-us/overview/azure-stack/#industries">Azure Stack</a>: Build and run hybrid applications across datacenters, edge locations, remote clinical facilities, and the cloud.</p>
+</li>
+<li>
+<p><a href="https://azure.microsoft.com/en-us/topic/mixed-reality/">Azure Mixed Reality</a>: Blend the digital and the physical worlds to create immersive, and collaborative experiences, across the operating room and other health facilities.</p>
+</li>
+<li>
+<p><a href="https://azure.microsoft.com/en-us/overview/trusted-cloud/">Azure Security</a>: Protection from the edge to the cloud and stay ahead of risks with intelligent monitoring tools built with powerful AI.</p>
+</li>
+</ul>
+<h2 id="wrap-up">Wrap up<a hidden class="anchor" aria-hidden="true" href="#wrap-up">#</a></h2>
+<p>Microsoft offers a comprehensive toolset for the retail and healthcare industries.</p>
+<p>Implementing these cloud solutions on a large scale and embedding it into your organization, involves a structured approach, a cultural shift, and a need for a solid and secure architecture. This also includes setting up a Cloud Center of Excellence, and embracing cloud native technologies and the Microsoft Well Architected Framework.</p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+    </ul>
+<nav class="paginav">
+  <a class="prev" href="//localhost:1313/posts/2019-08-24-adapt-and-thrive-with-microsoft-azure-for-industries-part-2/">
+    <span class="title">« Prev</span>
+    <br>
+    <span>Adapt and thrive with Microsoft Azure for Industries -- part 2</span>
+  </a>
+  <a class="next" href="//localhost:1313/posts/2019-06-03-my-new-book-microsoft-azure-administrator-exam-gui/">
+    <span class="title">Next »</span>
+    <br>
+    <span>My new book Microsoft Azure Administrator – Exam Guide AZ-103 is now published!</span>
+  </a>
+</nav>
+
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="//localhost:1313/">sjoukje.eth</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerHTML = 'copy';
+
+        function copyingDone() {
+            copybutton.innerHTML = 'copied!';
+            setTimeout(() => {
+                copybutton.innerHTML = 'copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+</body>
+
+</html>

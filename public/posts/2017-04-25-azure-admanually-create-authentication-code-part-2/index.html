@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto" data-theme="auto">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Azure AD -- Manually add authentication code to your app Part 2 | sjoukje.eth</title>
+<meta name="keywords" content="">
+<meta name="description" content="Creating (web) applications which use Azure Active Directory for
+authentication can be quite simple. As a developer, you don&rsquo;t have to
+know which code is added to your application for authentication. Visual
+Studio will handle that burden for you. But, what if something goes
+wrong and you suddenly have to debug your code. Or you&rsquo;re just curious
+and want to know what happens under the hood.
+In this post, I&rsquo;m going to add the code for authenticating my MVC
+application to Azure manually. This will provide more insights in the
+different parts which are added by Visual Studio using the project
+templates. Insights you might need in the future when troubleshooting
+more complex scenarios.">
+<meta name="author" content="sjoukje.eth">
+<link rel="canonical" href="//localhost:1313/posts/2017-04-25-azure-admanually-create-authentication-code-part-2/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.36f09b336921909a5971cfa84422229fa3edb550fa46b7707cb5436b0983bdcf.css" integrity="sha256-NvCbM2khkJpZcc&#43;oRCIin6PttVD6RrdwfLVDawmDvc8=" rel="preload stylesheet" as="style">
+<link rel="icon" href="//localhost:1313/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="//localhost:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="//localhost:1313/favicon-32x32.png">
+<link rel="apple-touch-icon" href="//localhost:1313/apple-touch-icon.png">
+<link rel="mask-icon" href="//localhost:1313/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="//localhost:1313/posts/2017-04-25-azure-admanually-create-authentication-code-part-2/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script><meta property="og:url" content="//localhost:1313/posts/2017-04-25-azure-admanually-create-authentication-code-part-2/">
+  <meta property="og:site_name" content="sjoukje.eth">
+  <meta property="og:title" content="Azure AD -- Manually add authentication code to your app Part 2">
+  <meta property="og:description" content="Creating (web) applications which use Azure Active Directory for authentication can be quite simple. As a developer, you don’t have to know which code is added to your application for authentication. Visual Studio will handle that burden for you. But, what if something goes wrong and you suddenly have to debug your code. Or you’re just curious and want to know what happens under the hood.
+In this post, I’m going to add the code for authenticating my MVC application to Azure manually. This will provide more insights in the different parts which are added by Visual Studio using the project templates. Insights you might need in the future when troubleshooting more complex scenarios.">
+  <meta property="og:locale" content="en-us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2017-04-25T00:00:00+00:00">
+    <meta property="article:modified_time" content="2017-04-25T00:00:00+00:00">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Azure AD -- Manually add authentication code to your app Part 2">
+<meta name="twitter:description" content="Creating (web) applications which use Azure Active Directory for
+authentication can be quite simple. As a developer, you don&rsquo;t have to
+know which code is added to your application for authentication. Visual
+Studio will handle that burden for you. But, what if something goes
+wrong and you suddenly have to debug your code. Or you&rsquo;re just curious
+and want to know what happens under the hood.
+In this post, I&rsquo;m going to add the code for authenticating my MVC
+application to Azure manually. This will provide more insights in the
+different parts which are added by Visual Studio using the project
+templates. Insights you might need in the future when troubleshooting
+more complex scenarios.">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "//localhost:1313/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "Azure AD -- Manually add authentication code to your app Part 2",
+      "item": "//localhost:1313/posts/2017-04-25-azure-admanually-create-authentication-code-part-2/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Azure AD -- Manually add authentication code to your app Part 2",
+  "name": "Azure AD -- Manually add authentication code to your app Part 2",
+  "description": "Creating (web) applications which use Azure Active Directory for authentication can be quite simple. As a developer, you don\u0026rsquo;t have to know which code is added to your application for authentication. Visual Studio will handle that burden for you. But, what if something goes wrong and you suddenly have to debug your code. Or you\u0026rsquo;re just curious and want to know what happens under the hood.\nIn this post, I\u0026rsquo;m going to add the code for authenticating my MVC application to Azure manually. This will provide more insights in the different parts which are added by Visual Studio using the project templates. Insights you might need in the future when troubleshooting more complex scenarios.\n",
+  "keywords": [
+    
+  ],
+  "articleBody": "Creating (web) applications which use Azure Active Directory for authentication can be quite simple. As a developer, you don’t have to know which code is added to your application for authentication. Visual Studio will handle that burden for you. But, what if something goes wrong and you suddenly have to debug your code. Or you’re just curious and want to know what happens under the hood.\nIn this post, I’m going to add the code for authenticating my MVC application to Azure manually. This will provide more insights in the different parts which are added by Visual Studio using the project templates. Insights you might need in the future when troubleshooting more complex scenarios.\nLet’s start with a little bit of background information…\nOWIN, Katana and OpenId Connect In.Net Framework 3.5, Microsoft introduced WIF (Windows Identity Foundation). This was the first library entirely devoted to claims-based identity development for ASP.Net applications. WIF eventually evolved into .Net framework 4.5, which was reengineered to root all identity representations to one base class, called ClaimsPrincipal.\nHowever, as the WIF classes are still supported today, these classes are not suited for the new protocols used in Azure. WIF is strongly xml based, which makes it hard to extend. That’s why OWIN is introduced for implementing modern protocols.\nOWIN stands for Open Web Interface for .Net, a community owned specification for the creation of highly portable HTTP processing components that can be used and reused on any web server, hosting process or OS, as long as the .Net framework is available on the target platform.\nAs OWIN does not provide any classes for implementation, Katana does. “Katana” is the original code name of the project and is completely open source. The source code for all ASP.NET OWIN components is available under https://github.com/aspnet/AspNetKatana/ .\nOpenId Connect is a simple identity layer built on top of the OAuth 2.0 protocol. OpenId Connect extends OAuth2 with a new token, the ID token, that verifies the identity of the user and provides basic profile information about the user. This ID token comes in the form of a JSON Web Token (JWT Token).\nThis is just a very brief introduction on this topic. If you want more information you can refer to http://owin.org/ , https://docs.microsoft.com/en-us/aspnet/aspnet/overview/owin-and-katana/ or http://openid.net/ .\nCreating the App Begin by creating a new MVC project with no authentication targeting the .NET Framework 4.6.\n{width=“4.257048337707786in” height=“2.8333333333333335in”}\nFirst, change the project URL to HTTPS instead of the default HTTP. Go to the Project properties and set SSL Enable to true.\n{width=“2.0625in” height=“2.3153947944007in”}\nNotice that the SSL URL is now filled with the following URL: https://localhost:44355/. Copy this to the clipboard.\nIn the Solution Explorer, right click the project and choose properties. Open the Web Tab and replace the original URL with the copied URL.\n{width=“4.302083333333333in” height=“2.64250656167979in”}\nPress F5 to check if your application still works.\nInstall the Azure Authentication Packages The first thing to do is to add the required NuGet packages. Open the Package Manager Console, and add the following commands:\nInstall-Package Microsoft.Owin.Host.SystemWeb\nThis package installs the assemblies to host the OWIN middleware pipeline in your application.\nInstall-Package Microsoft.Owin.Security.Cookies\nMost redirect-based web applications request a token for the initial authentication and rely on a cookie-based session for all further interactions. The cookie middleware generates and tracks such a session. This package also brings in the Microsoft.Owin.Security as a dependency, which is a repository of classes that creates the building blocks of security-related middlewares.\nInstall-Package Microsoft.Owin.Security.OpenIdConnect\nThis package contains the OpenId Connect middleware parts. It pulls down the JWT Handler (System.IdentityModel.Protocol.Extensions) and Microsoft.IdentityModel.Protocol.Extensions. These packages are separated from the OWIN package because you can use them if you want to build a stack without OWIN.\nAdd your application to Azure AD. For adding your application to Azure AD, you can refer to the previous article I wrote called: 4 ways of adding your application to Azure Active Directory\nAfter adding your application to Azure Active Directory, copy the Application ID to the clipboard.\nSetting up Azure Authentication Switch back to your application. The next step is to add an OWIN Pipeline in front of the app and initialize the appropriate middleware in the pipeline.\nRight click the project and choose Add new item. Select the OWIN Startup Class and name the class Startup.cs and select Add.\n{width=“4.239583333333333in” height=“2.9571970691163605in”}\nEdit the class declaration to include the partial keyword. The result will look like the following:\nusing System;\nusing System.Threading.Tasks;\nusing Microsoft.Owin;\nusing Owin;\n[assembly: OwinStartup(typeof(OWINSample.Startup))]\nnamespace OWINSample\n{\npublic partial class Startup\n{\npublic void Configuration(IAppBuilder app)\n{\n// For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=316888\n}\n}\n}\nThe OWINStartup attribute will cause the Configuration method to be invoked at assembly load time. You can use this method to add all your initialization code.\nTo initialize the cookie and the OpenId Connect middleware, add a new class and call it Startup.Auth.cs. Replace the public declaration with partial.\nAdd the following using directives:\nusing Owin;\nusing Microsoft.Owin.Security;\nusing Microsoft.Owin.Security.Cookies;\nusing Microsoft.Owin.Security.OpenIdConnect;\nAdd the following identity-initialization method to the Startup class:\npublic void ConfigureAuth(IAppBuilder app) {\napp.SetDefaultSignInAsAuthenticationType(CookieAuthenticationDefaults.AuthenticationType);\napp.UseCookieAuthentication(new CookieAuthenticationOptions());\napp.UseOpenIdConnectAuthentication(\nnew OpenIdConnectAuthenticationOptions\n{\nClientId = \"\",\nAuthority = \"https://login.microsoftonline.com/.onmicrosoft.com/\"\n});\n}\nThe first line sets the default sign in authentication to accept cookies. The UseCookieAuthentication adds an instance of the cookie middleware to the pipeline. The UseOpenIdConnectAuthentication does the same for the OpenId Connect middleware. The order is important here. The first middleware you add will be invoked first after a request. The last one will be the one which works on the response.\nThe OpenId Connect middleware allows you to control every aspect of the authentication flow. By adding the OpenIdConnectAuthenticationOptions initialization parameters:\nClientId: This is the Application Id assigned to your app when adding it to Azure Active Directory. You have copied this value to the clipboard (or you retrieve it from the Azure Portal).\nAuthority: This is the complete url of your Azure AD tenant (You can retrieve this from the Azure Portal as well).\nAlmost there. You have to ensure that the above code is called at load time. Open the Startup.cs class again and add the following code:\npublic void Configuration(IAppBuilder app)\n{\nConfigureAuth(app);\n}\nYour application is now configured to use OpenId Connect against your Azure AD tenant for authentication!\nTest your application To test your application, add a trigger for authentication. Open the HomeController.cs and add the following directive:\nusing System.Security.Claims;\nReplace the Contact method with the following:\n[Authorize]\npublic ActionResult Contact()\n{\nstring userfirstName = ClaimsPrincipal.Current.FindFirst(ClaimTypes.GivenName).Value;\nViewBag.Message = String.Format(\"Welcome {0}!\", userfirstName);\nreturn View();\n}\nPress F5. The application will open like it did earlier. Click the Contact link in top bar. You should be directed to the Azure AD Authentication Page (caused by the [Authorize]). Fill in your credentials and you should be directed back to the Contact view. If everything went well, the users first name will be displayed in the top bar of the page!\nConclusion In this post, I’ve shown what it takes to add the authentication code to your application manually. I gave some brief background information on the different parts what makes up your authentication code. Hopefully, by now, you have just enough information to debug and troubleshoot your code when anything goes wrong in the future.\nYou can download the sample app from:\n",
+  "wordCount" : "1224",
+  "inLanguage": "en",
+  "datePublished": "2017-04-25T00:00:00Z",
+  "dateModified": "2017-04-25T00:00:00Z",
+  "author":{
+    "@type": "Person",
+    "name": "sjoukje.eth"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "//localhost:1313/posts/2017-04-25-azure-admanually-create-authentication-code-part-2/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "sjoukje.eth",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "//localhost:1313/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="//localhost:1313/" accesskey="h" title="sjoukje.eth (Alt + H)">sjoukje.eth</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="//localhost:1313/posts/" title="Posts">
+                    <span>Posts</span>
+                </a>
+            </li>
+            <li>
+                <a href="//localhost:1313/books/" title="Books">
+                    <span>Books</span>
+                </a>
+            </li>
+            <li>
+                <a href="//localhost:1313/about/" title="About">
+                    <span>About</span>
+                </a>
+            </li>
+            <li>
+                <a href="//localhost:1313/archives/" title="Archive">
+                    <span>Archive</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="//localhost:1313/">Home</a>&nbsp;»&nbsp;<a href="//localhost:1313/posts/">Posts</a></div>
+    <h1 class="post-title entry-hint-parent">
+      Azure AD -- Manually add authentication code to your app Part 2
+    </h1>
+    <div class="post-meta"><span title='2017-04-25 00:00:00 +0000 UTC'>April 25, 2017</span>&nbsp;·&nbsp;<span>6 min</span>&nbsp;·&nbsp;<span>sjoukje.eth</span>
+
+</div>
+  </header> 
+  <div class="post-content"><p>Creating (web) applications which use Azure Active Directory for
+authentication can be quite simple. As a developer, you don&rsquo;t have to
+know which code is added to your application for authentication. Visual
+Studio will handle that burden for you. But, what if something goes
+wrong and you suddenly have to debug your code. Or you&rsquo;re just curious
+and want to know what happens under the hood.</p>
+<p>In this post, I&rsquo;m going to add the code for authenticating my MVC
+application to Azure manually. This will provide more insights in the
+different parts which are added by Visual Studio using the project
+templates. Insights you might need in the future when troubleshooting
+more complex scenarios.</p>
+<p>Let&rsquo;s start with a little bit of background information&hellip;</p>
+<h2 id="owin-katana-and-openid-connect">OWIN, Katana and OpenId Connect<a hidden class="anchor" aria-hidden="true" href="#owin-katana-and-openid-connect">#</a></h2>
+<p>In.Net Framework 3.5, Microsoft introduced WIF (Windows Identity
+Foundation). This was the first library entirely devoted to claims-based
+identity development for ASP.Net applications. WIF eventually evolved
+into .Net framework 4.5, which was reengineered to root all identity
+representations to one base class, called <strong>ClaimsPrincipal</strong>.</p>
+<p>However, as the WIF classes are still supported today, these classes are
+not suited for the new protocols used in Azure. WIF is strongly xml
+based, which makes it hard to extend. That&rsquo;s why OWIN is introduced for
+implementing modern protocols.</p>
+<p>OWIN stands for Open Web Interface for .Net, a community owned
+specification for the creation of highly portable HTTP processing
+components that can be used and reused on any web server, hosting
+process or OS, as long as the .Net framework is available on the target
+platform.</p>
+<p>As OWIN does not provide any classes for implementation, Katana does.
+&ldquo;Katana&rdquo; is the original code name of the project and is completely open
+source. The source code for all ASP.NET OWIN components is available
+under <a href="https://github.com/aspnet/AspNetKatana/">https://github.com/aspnet/AspNetKatana/</a> .</p>
+<p>OpenId Connect is a simple identity layer built on top of the OAuth 2.0
+protocol. OpenId Connect extends OAuth2 with a new token, the ID token,
+that verifies the identity of the user and provides basic profile
+information about the user. This ID token comes in the form of a JSON
+Web Token (JWT Token).</p>
+<p><em>This is just a very brief introduction on this topic. If you want more
+information you can refer to <a href="http://owin.org/">http://owin.org/</a> ,
+<a href="https://docs.microsoft.com/en-us/aspnet/aspnet/overview/owin-and-katana/">https://docs.microsoft.com/en-us/aspnet/aspnet/overview/owin-and-katana/</a>
+or <a href="http://openid.net/">http://openid.net/</a> .</em></p>
+<h2 id="creating-the-app">Creating the App<a hidden class="anchor" aria-hidden="true" href="#creating-the-app">#</a></h2>
+<p>Begin by creating a new MVC project with no authentication targeting the
+.NET Framework 4.6.</p>
+<p><img alt="C:\\Users\\sza19920\\AppData\\Local\\Microsoft\\Windows\\INetCache\\Content.Word\\Azure\nAD &ndash; Manually add authentication code to your\napp1.png" loading="lazy" src="media/image1.png">{width=&ldquo;4.257048337707786in&rdquo;
+height=&ldquo;2.8333333333333335in&rdquo;}</p>
+<p>First, change the project URL to HTTPS instead of the default HTTP. Go
+to the Project properties and set SSL Enable to true.</p>
+<p><img alt="C:\\Users\\sza19920\\AppData\\Local\\Microsoft\\Windows\\INetCache\\Content.Word\\Azure\nAD &ndash; Manually add authentication code to your\napp2.png" loading="lazy" src="media/image2.png">{width=&ldquo;2.0625in&rdquo; height=&ldquo;2.3153947944007in&rdquo;}</p>
+<p>Notice that the SSL URL is now filled with the following URL:
+<a href="https://localhost:44355/">https://localhost:44355/</a>. Copy this to the clipboard.</p>
+<p>In the Solution Explorer, right click the project and choose
+<strong>properties.</strong> Open the Web Tab and replace the original URL with the
+copied URL.</p>
+<p><img alt="C:\\Users\\sza19920\\AppData\\Local\\Microsoft\\Windows\\INetCache\\Content.Word\\Azure\nAD &ndash; Manually add authentication code to your\napp3.png" loading="lazy" src="media/image3.png">{width=&ldquo;4.302083333333333in&rdquo;
+height=&ldquo;2.64250656167979in&rdquo;}</p>
+<p>Press F5 to check if your application still works.</p>
+<h2 id="install-the-azure-authentication-packages">Install the Azure Authentication Packages<a hidden class="anchor" aria-hidden="true" href="#install-the-azure-authentication-packages">#</a></h2>
+<p>The first thing to do is to add the required NuGet packages. Open the
+Package Manager Console, and add the following commands:</p>
+<p>Install-Package Microsoft.Owin.Host.SystemWeb</p>
+<p>This package installs the assemblies to host the OWIN middleware
+pipeline in your application.</p>
+<p>Install-Package Microsoft.Owin.Security.Cookies</p>
+<p>Most redirect-based web applications request a token for the initial
+authentication and rely on a cookie-based session for all further
+interactions. The cookie middleware generates and tracks such a session.
+This package also brings in the Microsoft.Owin.Security as a dependency,
+which is a repository of classes that creates the building blocks of
+security-related middlewares.</p>
+<p>Install-Package Microsoft.Owin.Security.OpenIdConnect</p>
+<p>This package contains the OpenId Connect middleware parts. It pulls down
+the JWT Handler (System.IdentityModel.Protocol.Extensions) and
+Microsoft.IdentityModel.Protocol.Extensions. These packages are
+separated from the OWIN package because you can use them if you want to
+build a stack without OWIN.</p>
+<h2 id="add-your-application-to-azure-ad">Add your application to Azure AD.<a hidden class="anchor" aria-hidden="true" href="#add-your-application-to-azure-ad">#</a></h2>
+<p>For adding your application to Azure AD, you can refer to the previous
+article I wrote called: <a href="https://blogs.msdn.microsoft.com/azuredev/2017/03/29/4-ways-of-adding-your-application-to-azure-active-directory/">4 ways of adding your application to Azure
+Active
+Directory</a></p>
+<p>After adding your application to Azure Active Directory, copy the
+Application ID to the clipboard.</p>
+<h2 id="setting-up-azure-authentication">Setting up Azure Authentication<a hidden class="anchor" aria-hidden="true" href="#setting-up-azure-authentication">#</a></h2>
+<p>Switch back to your application. The next step is to add an OWIN
+Pipeline in front of the app and initialize the appropriate middleware
+in the pipeline.</p>
+<p>Right click the project and choose <strong>Add new item</strong>. Select the OWIN
+Startup Class and name the class <strong>Startup.cs</strong> and select <strong>Add.</strong></p>
+<p><img alt="C:\\Users\\sza19920\\AppData\\Local\\Microsoft\\Windows\\INetCache\\Content.Word\\Azure\nAD &ndash; Manually add authentication code to your\napp4.png" loading="lazy" src="media/image4.png">{width=&ldquo;4.239583333333333in&rdquo;
+height=&ldquo;2.9571970691163605in&rdquo;}</p>
+<p>Edit the class declaration to include the <strong>partial</strong> keyword. The
+result will look like the following:</p>
+<p>using System;</p>
+<p>using System.Threading.Tasks;</p>
+<p>using Microsoft.Owin;</p>
+<p>using Owin;</p>
+<p>[assembly: OwinStartup(typeof(OWINSample.Startup))]</p>
+<p>namespace OWINSample</p>
+<p>{</p>
+<p>public partial class Startup</p>
+<p>{</p>
+<p>public void Configuration(IAppBuilder app)</p>
+<p>{</p>
+<p>// For more information on how to configure your application, visit
+<a href="https://go.microsoft.com/fwlink/?LinkID=316888">https://go.microsoft.com/fwlink/?LinkID=316888</a></p>
+<p>}</p>
+<p>}</p>
+<p>}</p>
+<p>The <strong>OWINStartup</strong> attribute will cause the <strong>Configuration</strong> method to
+be invoked at assembly load time. You can use this method to add all
+your initialization code.</p>
+<p>To initialize the cookie and the OpenId Connect middleware, add a new
+class and call it <strong>Startup.Auth.cs.</strong> Replace the <strong>public</strong>
+declaration with <strong>partial.</strong></p>
+<p>Add the following using directives:</p>
+<p>using Owin;</p>
+<p>using Microsoft.Owin.Security;</p>
+<p>using Microsoft.Owin.Security.Cookies;</p>
+<p>using Microsoft.Owin.Security.OpenIdConnect;</p>
+<p>Add the following identity-initialization method to the Startup class:</p>
+<p>public void ConfigureAuth(IAppBuilder app) {</p>
+<p>app.SetDefaultSignInAsAuthenticationType(CookieAuthenticationDefaults.AuthenticationType);</p>
+<p>app.UseCookieAuthentication(new CookieAuthenticationOptions());</p>
+<p>app.UseOpenIdConnectAuthentication(</p>
+<p>new OpenIdConnectAuthenticationOptions</p>
+<p>{</p>
+<p>ClientId = &quot;&lt;Your Azure AD Application Id&gt;&quot;,</p>
+<p>Authority =
+&quot;https://login.microsoftonline.com/&lt;your-active-directory-tenant&gt;.onmicrosoft.com/&quot;</p>
+<p>});</p>
+<p>}</p>
+<p>The first line sets the default sign in authentication to accept
+cookies. The UseCookieAuthentication adds an instance of the cookie
+middleware to the pipeline. The UseOpenIdConnectAuthentication does the
+same for the OpenId Connect middleware. The order is important here. The
+first middleware you add will be invoked first after a request. The last
+one will be the one which works on the response.</p>
+<p>The OpenId Connect middleware allows you to control every aspect of the
+authentication flow. By adding the OpenIdConnectAuthenticationOptions
+initialization parameters:</p>
+<p>ClientId: This is the Application Id assigned to your app when adding it
+to Azure Active Directory. You have copied this value to the clipboard
+(or you retrieve it from the Azure Portal).</p>
+<p>Authority: This is the complete url of your Azure AD tenant (You can
+retrieve this from the Azure Portal as well).</p>
+<p>Almost there. You have to ensure that the above code is called at load
+time. Open the Startup.cs class again and add the following code:</p>
+<p>public void Configuration(IAppBuilder app)</p>
+<p>{</p>
+<p>ConfigureAuth(app);</p>
+<p>}</p>
+<p>Your application is now configured to use OpenId Connect against your
+Azure AD tenant for authentication!</p>
+<h2 id="test-your-application">Test your application<a hidden class="anchor" aria-hidden="true" href="#test-your-application">#</a></h2>
+<p>To test your application, add a trigger for authentication. Open the
+HomeController.cs and add the following directive:</p>
+<p>using System.Security.Claims;</p>
+<p>Replace the Contact method with the following:</p>
+<p>[Authorize]</p>
+<p>public ActionResult Contact()</p>
+<p>{</p>
+<p>string userfirstName =
+ClaimsPrincipal.Current.FindFirst(ClaimTypes.GivenName).Value;</p>
+<p>ViewBag.Message = String.Format(&quot;Welcome {0}!&quot;, userfirstName);</p>
+<p>return View();</p>
+<p>}</p>
+<p>Press F5. The application will open like it did earlier. Click the
+Contact link in top bar. You should be directed to the Azure AD
+Authentication Page (caused by the [Authorize]). Fill in your
+credentials and you should be directed back to the Contact view. If
+everything went well, the users first name will be displayed in the top
+bar of the page!</p>
+<h2 id="conclusion">Conclusion<a hidden class="anchor" aria-hidden="true" href="#conclusion">#</a></h2>
+<p>In this post, I&rsquo;ve shown what it takes to add the authentication code to
+your application manually. I gave some brief background information on
+the different parts what makes up your authentication code. Hopefully,
+by now, you have just enough information to debug and troubleshoot your
+code when anything goes wrong in the future.</p>
+<p>You can download the sample app from:</p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+    </ul>
+<nav class="paginav">
+  <a class="prev" href="//localhost:1313/posts/2017-05-23-microsoft-identities/">
+    <span class="title">« Prev</span>
+    <br>
+    <span>Microsoft Identities: What&#39;s new</span>
+  </a>
+  <a class="next" href="//localhost:1313/posts/2017-03-24-4-ways-of-adding-your-application-to-azure-active-directory/">
+    <span class="title">Next »</span>
+    <br>
+    <span>4 ways of adding your application to Azure Active Directory</span>
+  </a>
+</nav>
+
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="//localhost:1313/">sjoukje.eth</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerHTML = 'copy';
+
+        function copyingDone() {
+            copybutton.innerHTML = 'copied!';
+            setTimeout(() => {
+                copybutton.innerHTML = 'copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+</body>
+
+</html>

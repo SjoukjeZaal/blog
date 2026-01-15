@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto" data-theme="auto">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Getting started with Azure architecture | sjoukje.eth</title>
+<meta name="keywords" content="">
+<meta name="description" content="Cloud computing is redefining how modern services and applications are
+designed. Instead of building traditional monoliths, applications are
+broken down into smaller, decentralized microservices. And instead of
+running on a traditional server, they are using serverless services
+where you don&rsquo;t have to worry about infrastructure at all and only pay
+for the services you actually use. Microservices typically communicate
+with other microservices by through APIs and asynchronous messaging.
+This allows applications to scale more efficiently, be more cost
+effective and easier to replace and deploy. Cloud platforms and
+microservices ask for a different type of architecture.">
+<meta name="author" content="sjoukje.eth">
+<link rel="canonical" href="//localhost:1313/posts/2021-09-03-getting-started-with-azure-architecture/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.36f09b336921909a5971cfa84422229fa3edb550fa46b7707cb5436b0983bdcf.css" integrity="sha256-NvCbM2khkJpZcc&#43;oRCIin6PttVD6RrdwfLVDawmDvc8=" rel="preload stylesheet" as="style">
+<link rel="icon" href="//localhost:1313/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="//localhost:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="//localhost:1313/favicon-32x32.png">
+<link rel="apple-touch-icon" href="//localhost:1313/apple-touch-icon.png">
+<link rel="mask-icon" href="//localhost:1313/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="//localhost:1313/posts/2021-09-03-getting-started-with-azure-architecture/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script><meta property="og:url" content="//localhost:1313/posts/2021-09-03-getting-started-with-azure-architecture/">
+  <meta property="og:site_name" content="sjoukje.eth">
+  <meta property="og:title" content="Getting started with Azure architecture">
+  <meta property="og:description" content="Cloud computing is redefining how modern services and applications are designed. Instead of building traditional monoliths, applications are broken down into smaller, decentralized microservices. And instead of running on a traditional server, they are using serverless services where you don’t have to worry about infrastructure at all and only pay for the services you actually use. Microservices typically communicate with other microservices by through APIs and asynchronous messaging. This allows applications to scale more efficiently, be more cost effective and easier to replace and deploy. Cloud platforms and microservices ask for a different type of architecture.">
+  <meta property="og:locale" content="en-us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2021-09-03T00:00:00+00:00">
+    <meta property="article:modified_time" content="2021-09-03T00:00:00+00:00">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Getting started with Azure architecture">
+<meta name="twitter:description" content="Cloud computing is redefining how modern services and applications are
+designed. Instead of building traditional monoliths, applications are
+broken down into smaller, decentralized microservices. And instead of
+running on a traditional server, they are using serverless services
+where you don&rsquo;t have to worry about infrastructure at all and only pay
+for the services you actually use. Microservices typically communicate
+with other microservices by through APIs and asynchronous messaging.
+This allows applications to scale more efficiently, be more cost
+effective and easier to replace and deploy. Cloud platforms and
+microservices ask for a different type of architecture.">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "//localhost:1313/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "Getting started with Azure architecture",
+      "item": "//localhost:1313/posts/2021-09-03-getting-started-with-azure-architecture/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Getting started with Azure architecture",
+  "name": "Getting started with Azure architecture",
+  "description": "Cloud computing is redefining how modern services and applications are designed. Instead of building traditional monoliths, applications are broken down into smaller, decentralized microservices. And instead of running on a traditional server, they are using serverless services where you don\u0026rsquo;t have to worry about infrastructure at all and only pay for the services you actually use. Microservices typically communicate with other microservices by through APIs and asynchronous messaging. This allows applications to scale more efficiently, be more cost effective and easier to replace and deploy. Cloud platforms and microservices ask for a different type of architecture.\n",
+  "keywords": [
+    
+  ],
+  "articleBody": "Cloud computing is redefining how modern services and applications are designed. Instead of building traditional monoliths, applications are broken down into smaller, decentralized microservices. And instead of running on a traditional server, they are using serverless services where you don’t have to worry about infrastructure at all and only pay for the services you actually use. Microservices typically communicate with other microservices by through APIs and asynchronous messaging. This allows applications to scale more efficiently, be more cost effective and easier to replace and deploy. Cloud platforms and microservices ask for a different type of architecture.\nThe are many cloud providers in the market, but Microsoft Azure is one of the biggest, used by 95 percent of the Fortune 500 companies. Microsoft provides a lot of resources on how to architect and develop applications and services on their platform, which will be covered in the next sections.\nAzure Architecture Center The Azure Architecture Center is a great starting point for everyone who wants to start developing services and applications on Azure. It offers proven guidance for architecting solutions on Azure including patterns and practices. You can use the technology choices and guides to decide which services are right for your solution. The guides include all aspects for building apps and services for the cloud, such as operations, reliability, performance, security, and cost optimization. There are a couple of sections that I want to highlight here:\nReference Architectures: Microsoft provides a collection of reference architectures that you can use as a starting point for building your own applications and services. This also gives architects a lot of in-depth information about how to combine the different services.\nCloud best-practices: This guide presents structured approach for designing scalable, resilient, secure, and highly available applications and services on Azure. A great starting point for gaining knowledge about building distributed apps.\nTo get started, you can refer to the following overview page: https://docs.microsoft.com/en-us/azure/architecture/\nCloud Adoption Framework The Cloud Adoption Framework is a collection of documentation, best-practices, implementation guidance and tools that can accelerate cloud adoption in organizations. It is focused on different methodologies, such as strategy, planning, readiness, migrations, innovation, governance, managing, and organizing which all together offers a full broad adoption lifecyle framework, which supports organizations throughout each phase of cloud adoption.\nTo get started, you can refer to the following site: https://docs.microsoft.com/en-us/azure/cloud-adoption-framework/\nLanding zones Microsoft offers a set of enterprise scale landing zones that you can use to get started as well. A landing zone is an environment for hosting your workloads, preprovisioned through code. Because no single solution will fit all technical environments, there are a couple of landing zone implementations that you can choose from to get started:\nEnterprise-Scale foundation: This landing zone offers a foundation for organizations to support their application portfolios, regardless of whether the applications are being migrated or are newly developed and deployed to Azure. It enables organizations to start as small as needed and scale alongside their business requirements. It is a good solution when hybrid connectivity to on-premises datacenters is not required from the start.\nEnterprise-scale for small enterprises: This landing zone is similar to the foundation one above. It also allows organizations to start small. This reference implementation is aimed at organizations that do not have a large IT team and do not require fine grained administration delegation models.\nEnterprise-Scale with Azure VWAN: This landing zone offers a foundation for organizations that want to focus on application portfolios and hybrid connectivity with ExpressRoute or VPN. It also offers an architecture based on an Azure Virtual WAN network topology.\nEnterprise-Scale with hub and spoke architecture: This landing zone example is also for organizations that want to support their application portfolios and add hybrid connectivity with ExpressRoute or VPN. If organizations require hybrid connectivity to on-premises locations from the beginning, you can start with this architecture based on the traditional hub and spoke network topology.\nWell-Architected Framework Lastly, I want to cover the Azure Well Architected Framework. This can be used to improve the quality of your workloads on Azure. The framework consists of five pillars of architecture excellence:\nCost optimization: The principles of cost optimization are a series of important considerations that can help achieve both business objectives and cost justification.\nOperational Excellence: This pillar covers the operations processes that keep an application running in production. If focuses on reliable and automated deployments, which can easily roll back or forward when required.\nPerformance Efficiency: Performance efficiency is the ability of your workload to scale to meet the demands.\nReliability: In the cloud, we acknowledge up front that failures will happen. Instead of trying to prevent failures altogether, the goal is to minimize the effects of a single failing component.\nSecurity: Extremely important nowadays. You should protect your applications and data from threats at all costs.\n",
+  "wordCount" : "800",
+  "inLanguage": "en",
+  "datePublished": "2021-09-03T00:00:00Z",
+  "dateModified": "2021-09-03T00:00:00Z",
+  "author":{
+    "@type": "Person",
+    "name": "sjoukje.eth"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "//localhost:1313/posts/2021-09-03-getting-started-with-azure-architecture/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "sjoukje.eth",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "//localhost:1313/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="//localhost:1313/" accesskey="h" title="sjoukje.eth (Alt + H)">sjoukje.eth</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="//localhost:1313/posts/" title="Posts">
+                    <span>Posts</span>
+                </a>
+            </li>
+            <li>
+                <a href="//localhost:1313/books/" title="Books">
+                    <span>Books</span>
+                </a>
+            </li>
+            <li>
+                <a href="//localhost:1313/about/" title="About">
+                    <span>About</span>
+                </a>
+            </li>
+            <li>
+                <a href="//localhost:1313/archives/" title="Archive">
+                    <span>Archive</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="//localhost:1313/">Home</a>&nbsp;»&nbsp;<a href="//localhost:1313/posts/">Posts</a></div>
+    <h1 class="post-title entry-hint-parent">
+      Getting started with Azure architecture
+    </h1>
+    <div class="post-meta"><span title='2021-09-03 00:00:00 +0000 UTC'>September 3, 2021</span>&nbsp;·&nbsp;<span>4 min</span>&nbsp;·&nbsp;<span>sjoukje.eth</span>
+
+</div>
+  </header> 
+  <div class="post-content"><p>Cloud computing is redefining how modern services and applications are
+designed. Instead of building traditional monoliths, applications are
+broken down into smaller, decentralized microservices. And instead of
+running on a traditional server, they are using serverless services
+where you don&rsquo;t have to worry about infrastructure at all and only pay
+for the services you actually use. Microservices typically communicate
+with other microservices by through APIs and asynchronous messaging.
+This allows applications to scale more efficiently, be more cost
+effective and easier to replace and deploy. Cloud platforms and
+microservices ask for a different type of architecture.</p>
+<p>The are many cloud providers in the market, but Microsoft Azure is one
+of the biggest, used by 95 percent of the Fortune 500 companies.
+Microsoft provides a lot of resources on how to architect and develop
+applications and services on their platform, which will be covered in
+the next sections.</p>
+<h2 id="azure-architecture-center">Azure Architecture Center<a hidden class="anchor" aria-hidden="true" href="#azure-architecture-center">#</a></h2>
+<p>The Azure Architecture Center is a great starting point for everyone who
+wants to start developing services and applications on Azure. It offers
+proven guidance for architecting solutions on Azure including patterns
+and practices. You can use the technology choices and guides to decide
+which services are right for your solution. The guides include all
+aspects for building apps and services for the cloud, such as
+operations, reliability, performance, security, and cost optimization.
+There are a couple of sections that I want to highlight here:</p>
+<ul>
+<li>
+<p><a href="https://docs.microsoft.com/en-us/azure/architecture/browse/">Reference
+Architectures</a>:
+Microsoft provides a collection of reference architectures that you
+can use as a starting point for building your own applications and
+services. This also gives architects a lot of in-depth information
+about how to combine the different services.</p>
+</li>
+<li>
+<p><a href="https://docs.microsoft.com/en-us/azure/architecture/guide/">Cloud
+best-practices</a>:
+This guide presents structured approach for designing scalable,
+resilient, secure, and highly available applications and services on
+Azure. A great starting point for gaining knowledge about building
+distributed apps.</p>
+</li>
+</ul>
+<p>To get started, you can refer to the following overview page:
+<a href="https://docs.microsoft.com/en-us/azure/architecture/">https://docs.microsoft.com/en-us/azure/architecture/</a></p>
+<h2 id="cloud-adoption-framework">Cloud Adoption Framework<a hidden class="anchor" aria-hidden="true" href="#cloud-adoption-framework">#</a></h2>
+<p>The Cloud Adoption Framework is a collection of documentation,
+best-practices, implementation guidance and tools that can accelerate
+cloud adoption in organizations. It is focused on different
+methodologies, such as strategy, planning, readiness, migrations,
+innovation, governance, managing, and organizing which all together
+offers a full broad adoption lifecyle framework, which supports
+organizations throughout each phase of cloud adoption.</p>
+<p>To get started, you can refer to the following site:
+<a href="https://docs.microsoft.com/en-us/azure/cloud-adoption-framework/">https://docs.microsoft.com/en-us/azure/cloud-adoption-framework/</a></p>
+<h2 id="landing-zones">Landing zones<a hidden class="anchor" aria-hidden="true" href="#landing-zones">#</a></h2>
+<p>Microsoft offers a set of enterprise scale landing zones that you can
+use to get started as well. A landing zone is an environment for hosting
+your workloads, preprovisioned through code. Because no single solution
+will fit all technical environments, there are a couple of landing zone
+implementations that you can choose from to get started:</p>
+<ul>
+<li>
+<p><a href="https://github.com/Azure/Enterprise-Scale/blob/main/docs/reference/wingtip/README.md">Enterprise-Scale
+foundation</a>:
+This landing zone offers a foundation for organizations to support
+their application portfolios, regardless of whether the applications
+are being migrated or are newly developed and deployed to Azure. It
+enables organizations to start as small as needed and scale alongside
+their business requirements. It is a good solution when hybrid
+connectivity to on-premises datacenters is not required from the
+start.</p>
+</li>
+<li>
+<p><a href="https://github.com/Azure/Enterprise-Scale/blob/main/docs/reference/treyresearch/README.md">Enterprise-scale for small
+enterprises:</a>
+This landing zone is similar to the foundation one above. It also
+allows organizations to start small. This reference implementation is
+aimed at organizations that do not have a large IT team and do not
+require fine grained administration delegation models.</p>
+</li>
+<li>
+<p><a href="https://github.com/Azure/Enterprise-Scale/blob/main/docs/reference/contoso/Readme.md">Enterprise-Scale with Azure
+VWAN:</a>
+This landing zone offers a foundation for organizations that want to
+focus on application portfolios and hybrid connectivity with
+ExpressRoute or VPN. It also offers an architecture based on an Azure
+Virtual WAN network topology.</p>
+</li>
+<li>
+<p><a href="https://github.com/Azure/Enterprise-Scale/blob/main/docs/reference/adventureworks/README.md">Enterprise-Scale with hub and spoke
+architecture</a>:
+This landing zone example is also for organizations that want to
+support their application portfolios and add hybrid connectivity with
+ExpressRoute or VPN. If organizations require hybrid connectivity to
+on-premises locations from the beginning, you can start with this
+architecture based on the traditional hub and spoke network topology.</p>
+</li>
+</ul>
+<h2 id="well-architected-framework">Well-Architected Framework<a hidden class="anchor" aria-hidden="true" href="#well-architected-framework">#</a></h2>
+<p>Lastly, I want to cover the Azure Well Architected Framework. This can
+be used to improve the quality of your workloads on Azure. The framework
+consists of five pillars of architecture excellence:</p>
+<ul>
+<li>
+<p><a href="https://docs.microsoft.com/en-us/azure/architecture/framework/cost/overview">Cost
+optimization</a>:
+The principles of cost optimization are a series of important
+considerations that can help achieve both business objectives and cost
+justification.</p>
+</li>
+<li>
+<p><a href="https://docs.microsoft.com/en-us/azure/architecture/framework/devops/overview">Operational
+Excellence</a>:
+This pillar covers the operations processes that keep an application
+running in production. If focuses on reliable and automated
+deployments, which can easily roll back or forward when required.</p>
+</li>
+<li>
+<p><a href="https://docs.microsoft.com/en-us/azure/architecture/framework/scalability/overview">Performance
+Efficiency</a>:
+Performance efficiency is the ability of your workload to scale to
+meet the demands.</p>
+</li>
+<li>
+<p><a href="https://docs.microsoft.com/en-us/azure/architecture/framework/resiliency/principles">Reliability</a>:
+In the cloud, we acknowledge up front that failures will happen.
+Instead of trying to prevent failures altogether, the goal is to
+minimize the effects of a single failing component.</p>
+</li>
+<li>
+<p><a href="https://docs.microsoft.com/en-us/azure/architecture/framework/security/overview">Security</a>:
+Extremely important nowadays. You should protect your applications and
+data from threats at all costs.</p>
+</li>
+</ul>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+    </ul>
+<nav class="paginav">
+  <a class="prev" href="//localhost:1313/posts/2021-09-29-global-xr-talks-september-2021/">
+    <span class="title">« Prev</span>
+    <br>
+    <span>Global XR Talks - September 2021</span>
+  </a>
+  <a class="next" href="//localhost:1313/posts/2021-09-03-onboarding-an-organisation-for-a-fully-cloud-strategy/">
+    <span class="title">Next »</span>
+    <br>
+    <span>Onboarding an organisation for a fully cloud strategy</span>
+  </a>
+</nav>
+
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="//localhost:1313/">sjoukje.eth</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerHTML = 'copy';
+
+        function copyingDone() {
+            copybutton.innerHTML = 'copied!';
+            setTimeout(() => {
+                copybutton.innerHTML = 'copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+</body>
+
+</html>

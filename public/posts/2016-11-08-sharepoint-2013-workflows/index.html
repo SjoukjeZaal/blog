@@ -1,0 +1,975 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto" data-theme="auto">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>SharePoint 2013 Workflows -- Introduction | sjoukje.eth</title>
+<meta name="keywords" content="">
+<meta name="description" content="In this series of posts I will take a deep dive on creating Workflows in
+SharePoint 2013. As I am focusing on Microsoft integration in my daily
+work and had to create some workflows for the SharePoint 2013 platform
+in the last months, I have spent a lot of time doing research on this
+subject.
+Workflow has changed a lot in SharePoint 2013 (in a positive way) and in
+upcoming posts I will provide you with some product insights as well as
+samples you can use in your own projects. I will stick to Microsoft Best
+Practices and give some more information on (workflow) Architecture,
+reusability and security regarding this topic.">
+<meta name="author" content="sjoukje.eth">
+<link rel="canonical" href="//localhost:1313/posts/2016-11-08-sharepoint-2013-workflows/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.36f09b336921909a5971cfa84422229fa3edb550fa46b7707cb5436b0983bdcf.css" integrity="sha256-NvCbM2khkJpZcc&#43;oRCIin6PttVD6RrdwfLVDawmDvc8=" rel="preload stylesheet" as="style">
+<link rel="icon" href="//localhost:1313/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="//localhost:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="//localhost:1313/favicon-32x32.png">
+<link rel="apple-touch-icon" href="//localhost:1313/apple-touch-icon.png">
+<link rel="mask-icon" href="//localhost:1313/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="//localhost:1313/posts/2016-11-08-sharepoint-2013-workflows/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script><meta property="og:url" content="//localhost:1313/posts/2016-11-08-sharepoint-2013-workflows/">
+  <meta property="og:site_name" content="sjoukje.eth">
+  <meta property="og:title" content="SharePoint 2013 Workflows -- Introduction">
+  <meta property="og:description" content="In this series of posts I will take a deep dive on creating Workflows in SharePoint 2013. As I am focusing on Microsoft integration in my daily work and had to create some workflows for the SharePoint 2013 platform in the last months, I have spent a lot of time doing research on this subject.
+Workflow has changed a lot in SharePoint 2013 (in a positive way) and in upcoming posts I will provide you with some product insights as well as samples you can use in your own projects. I will stick to Microsoft Best Practices and give some more information on (workflow) Architecture, reusability and security regarding this topic.">
+  <meta property="og:locale" content="en-us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2016-11-08T00:00:00+00:00">
+    <meta property="article:modified_time" content="2016-11-08T00:00:00+00:00">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="SharePoint 2013 Workflows -- Introduction">
+<meta name="twitter:description" content="In this series of posts I will take a deep dive on creating Workflows in
+SharePoint 2013. As I am focusing on Microsoft integration in my daily
+work and had to create some workflows for the SharePoint 2013 platform
+in the last months, I have spent a lot of time doing research on this
+subject.
+Workflow has changed a lot in SharePoint 2013 (in a positive way) and in
+upcoming posts I will provide you with some product insights as well as
+samples you can use in your own projects. I will stick to Microsoft Best
+Practices and give some more information on (workflow) Architecture,
+reusability and security regarding this topic.">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "//localhost:1313/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "SharePoint 2013 Workflows -- Introduction",
+      "item": "//localhost:1313/posts/2016-11-08-sharepoint-2013-workflows/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "SharePoint 2013 Workflows -- Introduction",
+  "name": "SharePoint 2013 Workflows -- Introduction",
+  "description": "In this series of posts I will take a deep dive on creating Workflows in SharePoint 2013. As I am focusing on Microsoft integration in my daily work and had to create some workflows for the SharePoint 2013 platform in the last months, I have spent a lot of time doing research on this subject.\nWorkflow has changed a lot in SharePoint 2013 (in a positive way) and in upcoming posts I will provide you with some product insights as well as samples you can use in your own projects. I will stick to Microsoft Best Practices and give some more information on (workflow) Architecture, reusability and security regarding this topic.\n",
+  "keywords": [
+    
+  ],
+  "articleBody": "In this series of posts I will take a deep dive on creating Workflows in SharePoint 2013. As I am focusing on Microsoft integration in my daily work and had to create some workflows for the SharePoint 2013 platform in the last months, I have spent a lot of time doing research on this subject.\nWorkflow has changed a lot in SharePoint 2013 (in a positive way) and in upcoming posts I will provide you with some product insights as well as samples you can use in your own projects. I will stick to Microsoft Best Practices and give some more information on (workflow) Architecture, reusability and security regarding this topic.\nI will cover the following topics over the series:\nSharePoint 2013 Workflows\nSharePoint 2013 Workflows Part 1: Workflow Manager 1.0 Architecture\nSharePoint 2013 Workflows Part 2: Installing and Configuring The Workflow Manager.\nSharePoint 2013 Workflows Part 3: Using the SharePoint 2013 REST API in a Visual Studio 2013 Workflow.\nSharePoint 2013 Workflows Part 5: Using Secure WCF Services in a Visual Studio workflow.\nIn the first post of this series I will start off by discussing the Workflow Manager.\nSharePoint 2013 Workflow Part 1: Workflow Manager Architecture This is the first part in a series of posts about SharePoint 2013 Workflows. In this post we will discuss the architecture and improvements of the new Workflow Model in SharePoint 2013.\nNote that Office 365 is using this same Workflow Architecture only Microsoft handles all the installation and configuration regarding the Workflow Manager.\nWorkflow Architecture Besides the SharePoint 2010 workflow model, which is still part of the SharePoint 2013 installation, Microsoft introduced a new Workflow architecture in SharePoint 2013 (and Office 365).\nSharePoint 2013 is now using Workflow Manager 1.0 which acts as the host for the workflow runtime, is hosting the latest version of Windows Workflow Foundation (WF 4.5) and unlike the 2010 Workflow model, is totally decoupled from SharePoint using OAuth secured WCF Services. SharePoint 2013 is configured to send all related tasks to the workflow manager to execute workflows using these services.\nWorkflow Manager 1.0 consists of 3 components:\nWorkflow Frontend\nThis is a web service that receive calls from an external application, SharePoint in our case. Calls that are made by SharePoint to the Workflow Service are then logged in the Service Bus.\nService Bus\nThe Service bus uses the Pub/Sub model and will publish the message which is send to the service to all the subscribers.\nWorkflow Backend\nThe Workflow Backend service is a Windows Service and it is responsible for processing the actual Workflow. It communicates with SharePoint by using the SharePoint REST API.\nFigure 1: Workflow Manager Architecture (copied from MSDN)\nHow it works After installing and configuring the workflow Manager a Workflow Manager farm is created within SharePoint which contains all of the necessary databases to store workflows and services to communicate with the Workflow Manager Frontend Service. The Workflow Manager farm is configured by SharePoint as an App.\nWhen a workflow is published, SharePoint only stores a copy of the workflow, the actual workflow is going to be send to the workflow manager farm which will handle the execution of the workflow. By the time the workflow needs to be executed, SharePoint tells the Workflow Manager farm to execute the workflow and adds some extra context information to the call, like which start-up parameters to use and what SharePoint list it has to execute on. This call is send to the Workflow Manager Frontend and will be queued in the Workflow Manager Service Bus until the Workflow Manager Bacnkend process is picking it up to execute.\nWorkflows that are executed by the Workflow Manager Backend will need to communicate with SharePoint on several occasions, for instance to send emails, store items in lists, creating tasks and retrieve other relevant information for the workflow. This communication is done by using the SharePoint REST API and it uses S2S high trust authentication.\nImprovements Workflow Manager uses Windows Workflow Foundation 4.5. This means that you can only create declarative workflows in SharePoint 2013 and you are not allowed anymore to add custom code to your workflow.\nWorkflow Manager includes a HTTP Send activity which can make Web Service calls and REST / OData calls. The business logic will now need to be added to a custom web service which can be called from the HTTP Send activity. This activity is also added to SharePoint Designer. In my upcoming posts I will provide you with some samples on how to do this.\nBy moving the business logic from out of SharePoint to custom services, you can reuse this logic in multiple applications (like mobile apps, BizTalk, custom applications, etc.) and It can be hosted on premise or for instance, in Windows Azure.\nWorkflow Manager 1.0 can also be installed on multiple servers, which don’t need to have a SharePoint installation on it. This means that you can easily scale out your workflow environment and you don’t have to deal with additional SharePoint licensing costs.\nSummary Microsoft has made a lot of great improvements with this new Workflow Model. The Workflow Manager is scalable and robust and because it uses the most recent version of the workflow model, it can integrate with almost everything.\nBelow are some interesting sites about workflow manager:\nMSDN: http://msdn.microsoft.com/en-us/library/jj193528%28v=azure.10%29.aspx\nWorkflow Team Blog: http://blogs.msdn.com/b/workflowteam/\nFor more information on Workflow Foundation 4.5 I recommend the book Pro WF 4.5: http://www.amazon.com/Pro-WF-4-5-Bayer-White/dp/143024383X or you can visit:\nhttp://msdn.microsoft.com/en-us/library/hh305677%28v=vs.110%29.aspx\nSharePoint 2013 Workflows Part 2: Installing and Configuring The Workflow Manager In this post I will guide you through installing and configuring the Workflow Manager for SharePoint 2013.\nThis is the second post in the following series:\nSharePoint 2013 Workflows: Introduction\nSharePoint 2013 Workflows Part 1: Workflow Manager 1.0 Architecture\nSharePoint 2013 Workflows Part 2: Installing and Configuring The Workflow Manager.\nSharePoint 2013 Workflows Part 3: Using the SharePoint 2013 REST API in a Visual Studio 2013 Workflow.\nSharePoint 2013 Workflows Part 5: Using Secure WCF Services in a Visual Studio workflow.\nBefore starting the installation of the Workflow Manager, make sure that at least the SharePoint 2013 March Public Update (KB 2767999) is installed on toy SharePoint Server: http://support.microsoft.com/default.aspx?scid=kb;EN-US;2767999. This update solves some bug fixes and added extra support for the Workflow Manager and workflow development in Visual Studio.\nInstalling the Workflow Manager It is best to install the Workflow Manager using the Web Platform Installer tool. This will automatically install all the prerequisites like Service Bus 1.0.\nYou can download Workflow Manager 1.0 from here: http://www.microsoft.com/en-us/download/details.aspx?id=35375.\nYou can also download the Web Platform Installer Tools Command Line for offline installation:\nhttp://www.iis.net/learn/install/web-platform-installer/web-platform-installer-v4-command-line-webpicmdexe-rtw-release\nWhen workflow manager is installed, the Web Platform Installer will also install the workflow Manager Client 1.0.\nSharePoint uses this client to communicate with the Workflow Manager.\nIf the Workflow Manager is installed on a separate server, this client will still need to be installed (manually) on the SharePoint Server. You can download the Workflow Manager Client 1.0 from the same website as the Workflow Manager.\nThe Web Platform installer will also automatically install the Workflow Manager Tools 1.0 for Visual Studio if Visual Studio is already installed on the system.\nRun the Workflow Manager installer. This will launch the Web Platform Installer and click “Install” and follow the installation steps.\nFigure 1: Installing Workflow Manager 1.0 using the Web Platform installer.\nConfiguring the Workflow Manager After the installation the configuring screen is automatically opened. This configuration wizard creates the databases and Workflow Manager farm and provisions the Service Bus. It also provides a PowerShell which can be used to configure other server installations as well.\nFigure 2: Configuring Workflow Manager 1.0.\nFor this installation choose Configure Workflow Manager With Custom Settings and in the next screen enter the name of the SQL Server Instance, you can change the database name or leave the default if you like, and you can test the connection.\nFigure 3: Configuring Workflow Manager 1.0.\nIf you scroll down you can configure the service account. Best Practice is to create a new Service account for the workflow manager.\nFigure 4: Configuring Workflow Manager 1.0.\nIn the next section add a certification Generation Key and confirm. You need this key if you want to join extra servers to the workflow farm so memorize it!\nFigure 5: Configuring Workflow Manager 1.0.\nScroll down again and in the next section you can configure the ports. Leave the default settings and for developing purposes you can check the Allow Workflow Management over HTTP on this Computer box.\nFigure 6: Configuring Workflow Manager 1.0.\nClick on the right arrow to go to the next screen to configure the Service Bus.\nHere you can provide the database settings for the Service Bus. I used the default settings here for my development environment.\nFigure 7: Configuring Workflow Manager 1.0.\nHere you can provide the Service Account Settings. You can choose the same Service Account credentials as you used for the Workflow Manager or add different credentials. The same for the Certificate key, I used the same key as I entered for the Workflow Manager.\nFigure 8: Configuring Workflow Manager 1.0.\nLeave the default ports in the next section and click the right arrow.\nFigure 9: Configuring Workflow Manager 1.0.\nThe next screen provides you with an overview of the settings. Review them and Click Apply. You can also download the PowerShell Script here for installing.\nIf everything went right you will see the following screen after the installation:\nFigure 10: Configuring Workflow Manager 1.0.\nAfter installing and configuring the workflow manager and creating the SharePoint Manager Farm you need to connect both environments to communicate with each other.\nThis is done by running a PowerShell script on the SharePoint 2013 farm. It configures the SharePoint farm to send all workflow related tasks to the Workflow Manager Frontend Service.\nOpen the SharePoint Management Console and type the following Powershell cmdlet:\nFor communicating over HTTP (only recommended for a development environment)\nRegister-SPWorkflowService –SPSite http://sp-siteurl –WorkflowHostUri http://workflowhostURI:12291 –AllowOAuthHttp\nFor communicating over HTTPS\nRegister-SPWorkflowService –SPSite http:// sp-siteurl –WorkflowHostUri https://workflowhostURI:12290\nTo Retrieve the Workflowhost Url open IIS, look for the Workflow Management Site check the settings.\nAfter running this command the Workflow Manager is connected to the SharePoint farm and you can begin to create custom Workflows.\nMicrosoft released a Workflow Manager Best Practice analyzer which scans your Workflow Environment and provides best practices on installing and configuring. For more information see this site: http://msdn.microsoft.com/library/azure/jj730571%28v=azure.10%29.aspx\nUpdating Workflow Manager 1.0 The Workflow Manager Service and the Service Bus are released prior to the RTM release of SharePoint 2013. Since then, some things changed and some bugs where found and resolved in below updates.\nInstall the Azure Services February 2013 Cumulative Updates:\nCumulative Update for Service Bus 1.0 (KB2799752) : http://www.microsoft.com/en-us/download/confirmation.aspx?id=36794\nCumulative Update for Workflow Manager 1.0 (KB2799754) : http://www.microsoft.com/en-us/download/details.aspx?id=36800\nSummary In this article I explained how to install and configure the Workflow Manager 1.0. The steps are already explained in several other articles on the internet, but in most cases some settings and steps are left out of it, so I wasn’t able to connect the workflow manager to the SharePoint farm.\nAlso running the SharePoint updates before installing the Workflow Manager and installing the Windows Azure February updates afterwards is a critical step, which will solve a lot of problems using the SharePoint 2013 Workflow Manager and creating Workflows.\nIn my next post I will actually create a SharePoint 2013 Workflow……\nSharePoint 2013 Workflows Part 3: Using the SharePoint 2013 REST API in a Visual Studio 2013 Workflow In this post I will create a Custom Workflow in Visual Studio that uses the SharePoint REST API to create a new list item in a SharePoint list site.\nThis is the second post in the following series:\nSharePoint 2013 Workflows: Introduction\nSharePoint 2013 Workflows Part 1: Workflow Manager 1.0 Architecture\nSharePoint 2013 Workflows Part 2: Installing and Configuring The Workflow Manager.\nSharePoint 2013 Workflows Part 3: Using the SharePoint 2013 REST API in a Visual Studio 2013 Workflow.\nSharePoint 2013 Workflows Part 4: Using Secure WCF Services in a Visual Studio workflow.\nIn this scenario a List item is created in a vacation requests list. After creating the request item, the workflow is automatically triggered to create a copy of this item in the Approved Vacation Requests list.\nBoth the Vacation Request list and the workflow are created as an app in SharePoint which means they are stored in the App web. The Approved Vacation list is a list created using a Farm solution and is stored in the host web.\nThe workflow in the app needs to create a list item in the Host Web under the workflow manager context and not the user context. In this case you don’t need to give users permissions to create the list items, you only have the give the app the appropriate permissions. I think this is one of the biggest advantages using apps and that’s why I include this in my post.\nIn a real world scenario, the request probably will need to be approved or rejected by a manager, but for this demo this step is not required because I only want to show how to use the REST API in a workflow and to create a new list item in the host web.\nSetting Up the Visual Studio Project Create a new Visual Studio Project, choose the App for SharePoint project and give it a name.\nSelect SharePoint-Hosted app and fill in a SharePoint Development Site Url.\nAfter the project is created, add a new list to the project. Call the list Vacation Requests.\nCreate another SharePoint project choose SharePoint Solutions -\u003e Empty SharePoint Project and call it HostWebApprovedVacationRequests. Deploy it as a Farm solution Project. Add a new list to the new Project and call it ApprovedVacationRequests. This list will be deployed to the host web.\nDeploy the Solution.\nAdd the below fields to both the lists.\nChange the start page for the App to point to the default Url of the Vacation Request list. Open the AppManifest.xml and change the start page.\nThe App will create the list in the Host web and not in the App web so you have to change the App permissions so it will have full control on the host web.\nThe last step for setting up the project is to add a workflow. Name it CreateListItemWorkflow.\nIn the next screen select List Workflow, click next and select the Vacation Requests list to associate the workflow to. Create a new History and Task list.\nSelect the option that the workflow automatically needs be started when an item is created.\nThe workflow is created and the below items are added to the project.\nCreating the Workflow So now the project is created the next step is to create the actual Workflow. First I will add a few variables I will need throughout the project.\nAdd the below variables. The first are for the listitem fields, the SecurityDigest and the WMSecurityToken are both used for authenticating to the REST API.\nYou can get a reference of the SecurityToken type from the below Assembly.\nGet ListItem Properties Add an Sequence activity to the Root Activity and call it Get Vacation Request Properties. Add a SetUserStatus Activity to the sequence and add the description: Collecting Data from the List Item. The SetUserStatus will create an internal status property which will be displayed on the Workflow Status Page.\nAdd a LookUpSPListItem activity below the SetUserStatus Activity and create a new variable ListRequestItemProperties of the type DynamicValue. This type is referenced in the Microsoft Activity Assembly under Microsoft Activities -\u003e DynamicValue.\nThe DynamicValue is a new data type which understands JSON, so when you make a call to a WCF using the HTTP Send Activity, it return s an object of the type DynamicValue. You can then use an activity to extract data from this variables using an XPATH Expression.\nRename the LookUpSPListItem to Get List Item Request Properties and add the following properties:\nItemId = (currentitem)\nListId = (currentlist)\nResult = ListRequestItemProperties\nAdd an GetDynamicValueProperties Activity, call it Extract ListItem Properties, and add the ListRequestItemProperties as the source in the property pane. Click on the ellipsis button next to properties and add the items to the properties box like the items in the below figure:\nAdd a WriteToHistory Activity and add the message provided below:\nRetrieve the Root Site Collection Url Add a new variable and call it HostWebUrl. In the next step we are going to obtain the Url of the Web where the Approved Vacation Requests list is stored**.**\nAdd a new sequence below the Get Vacation Request Properties sequence and call it Get Host Url. Add a SetUserStatus Activity to it and add the description “Retrieving Host Url”.\nAdd the variables in the below figure:\nThese variables are scoped at the Get Host Url because they are only needed for this sequence.\nTo retrieve the Host Web Url a couple of calls need to be made to the REST API. First we need the Url of the App web, then we are going to use the REST API to get the properties of the current app web hosting SPWeb (Host Web), then we retrieve the server relative url of this Host web.\nAdd a WebUri Activity to the sequence and call it GetAppWebUrl. Select the AppWebUrl as the result in the property pane.\nAdd a HTTPSend Activity and call it GetHostingWebProperties to get the properties of the current site collection. Add the following properties:\nMethod: POST\nRequest Headers: Add the following request header:\nAccept: “application/json;odata=verbose” Uri: AppWebUrl + \"/api/web/parentweb\"\nResponseContent: GetHostSiteCollectionPropertiesResponse\nThen add a GetDynamicValueProperty activity to extract the Server Relative Url from the response, select the type String, and call it Retract Host Web Relative Url. Set the following properties:\nPropertyName: “d/ServerRelativeUrl”\nResult: [HostWebServerRelativeUrl]{.mark}\nSource: [GetHostWebPropertiesResponse]{.mark}\nAdd a HTTPSend Activity, call it Get Host SiteCollection Properties and add the following properties:\nMethod: GET\nRequest Headers: Add the following request header:\nAccept: “application/json;odata=verbose” Uri: AppWebUrl + [\"_api/site\"]{.mark}\nResponseContent: [GetHostSiteCollectionPropertiesResponse]{.mark}\nAdd a GetDynamicValueProperty activity to extract the absolute Url of the Host Site Collection, , select the type String, and call it Extract Host Site Collection Property and add the following properties:\nPropertyName: “d/Url”\nResult: [HostWebSiteCollectionUrl]{.mark}\nSource: [GetHostSiteCollectionPropertiesResponse]{.mark}\nFinally add a Assign Activity to concat the HostWebSiteCollectionUrl and the [HostWebServerRelativeUrl]{.mark} and store that in the HostWebUrl Variable.\nAdd the following properties:\nDisplayname: Get The Host Web Absolute Url\nTo: HostWebUrl\nValue: [HostWebSiteCollectionUrl + HostWebServerRelativeUrl]{.mark}\nAdd a WriteToHistory activity and add the following message:\n“The Host Web root url is: \" + HostWebUrl\nSecurity Digest To submit an HTTP Post to the SharePoint REST API we need a Security Digest. The next step in the workflow is to obtain this.\nAs I pointed out before, the workflow in the app needs to create a list item in the Host Web under the workflow manager context. The user may not have permissions to create a list item. To create a list item as the workflow manager we need to pass along a OAuth Security token.\nSo to get this token add the GetS2SSecurityToken Activity below the Get Host Url Sequence. Add the Following Properties:\nDisplayname: Get Worfklow Manager Token\nResult: [WMSecurityToken]{.mark}\nNow that we have the token we can obtain the security Digest. Add a new Sequence and call it Get SP Security Digest. Add a new Variable and call it GetSecurityDigestReponse, type DynamicValue.\nAdd an HTTPSend Activity and add the following properties:\nMethod: POST\nRequest Headers: Add the following request header:\nAccept: “application/json;odata=verbose”\nContent-Length: “0”\nSecurityToken: [WMSecurityToken]{.mark}\nUri: [HostWebUrl + \"_api/contextinfo\"]{.mark}\nResponseContent: [GetSecurityDigestReponse]{.mark}\nAdd a GetDynamicValueProperty activity of type String and add the following properties:\nDisplayName: Get SP Security Digest\nPropertyName: “d/GetContextWebInformation/FormDigestValue”\nResult: [SecurityDigest]{.mark}\nSource: [GetSecurityDigestReponse]{.mark}\nFor Debugging add a WriteToHistoryList Activity to write the digest to the histtorylist. Add the following message:\n[\"SP Security Digest: \" + SecurityDigest]{.mark}\nIt is not recommended to add this line of code in production… ☺\nCreate the new List Item With the digest obtained we can create the new List Item.\nAdd a new Sequence to the Root and call it Create List item. Create the following variables:\nCreateListRequestPayLoad\nCreateListResponseBody\nAdd a SetUserStatus Activity and the following description: [\"Create a list item in the Host Web.\"]{.mark}\nTo Create the new list item we need to create the payload we are going to send to the REST API using JSON. Add a BuildDynamicValue Activity and add the following properties:\nDisplayName: Create new List Item Payload\nResult: [CreateListRequestPayLoad]{.mark}\nProperties:\nAdd an HTTPSend Activity and add the following properties:\nDisplayName: Create List Item\nMethod: POST\nRequest Content: [CreateListRequestPayLoad]{.mark}\nRequest Headers: Add the following request header:\nAccept: “application/json;odata=verbose”\nContent-Type: “application/json;odata=verbose”\nX-RequestDigest: [SecurityDigest]{.mark}\nSecurityToken: [WMSecurityToken]{.mark}\nUri: [HostWebUrl + \"_api/web/lists/GetByTitle(‘ApprovedVacationRequests')/items\"]{.mark}\nResponseContent: [CreateListResponseBody]{.mark}\nDeploying the Workflow Now the workflow is created so we are going to deploy it to SharePoint. If you did not already deployed the Farm feature do it now.\nSet the Worfklow Projects as the Start-Up project and click F5.\nAdd a new Vacation Request to the list and\n",
+  "wordCount" : "3512",
+  "inLanguage": "en",
+  "datePublished": "2016-11-08T00:00:00Z",
+  "dateModified": "2016-11-08T00:00:00Z",
+  "author":{
+    "@type": "Person",
+    "name": "sjoukje.eth"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "//localhost:1313/posts/2016-11-08-sharepoint-2013-workflows/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "sjoukje.eth",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "//localhost:1313/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="//localhost:1313/" accesskey="h" title="sjoukje.eth (Alt + H)">sjoukje.eth</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="//localhost:1313/posts/" title="Posts">
+                    <span>Posts</span>
+                </a>
+            </li>
+            <li>
+                <a href="//localhost:1313/books/" title="Books">
+                    <span>Books</span>
+                </a>
+            </li>
+            <li>
+                <a href="//localhost:1313/about/" title="About">
+                    <span>About</span>
+                </a>
+            </li>
+            <li>
+                <a href="//localhost:1313/archives/" title="Archive">
+                    <span>Archive</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="//localhost:1313/">Home</a>&nbsp;»&nbsp;<a href="//localhost:1313/posts/">Posts</a></div>
+    <h1 class="post-title entry-hint-parent">
+      SharePoint 2013 Workflows -- Introduction
+    </h1>
+    <div class="post-meta"><span title='2016-11-08 00:00:00 +0000 UTC'>November 8, 2016</span>&nbsp;·&nbsp;<span>17 min</span>&nbsp;·&nbsp;<span>sjoukje.eth</span>
+
+</div>
+  </header> 
+  <div class="post-content"><p>In this series of posts I will take a deep dive on creating Workflows in
+SharePoint 2013. As I am focusing on Microsoft integration in my daily
+work and had to create some workflows for the SharePoint 2013 platform
+in the last months, I have spent a lot of time doing research on this
+subject.</p>
+<p>Workflow has changed a lot in SharePoint 2013 (in a positive way) and in
+upcoming posts I will provide you with some product insights as well as
+samples you can use in your own projects. I will stick to Microsoft Best
+Practices and give some more information on (workflow) Architecture,
+reusability and security regarding this topic.</p>
+<p>I will cover the following topics over the series:</p>
+<ol>
+<li>
+<p>SharePoint 2013 Workflows</p>
+</li>
+<li>
+<p>SharePoint 2013 Workflows Part 1: Workflow Manager 1.0 Architecture</p>
+</li>
+<li>
+<p>SharePoint 2013 Workflows Part 2: Installing and Configuring The
+Workflow Manager.</p>
+</li>
+<li>
+<p>SharePoint 2013 Workflows Part 3: Using the SharePoint 2013 REST API
+in a Visual Studio 2013 Workflow.</p>
+</li>
+<li>
+<p>SharePoint 2013 Workflows Part 5: Using Secure WCF Services in a
+Visual Studio workflow.</p>
+</li>
+</ol>
+<p>In the first post of this series I will start off by discussing the
+Workflow Manager.</p>
+<h1 id="sharepoint-2013-workflow-part-1-workflow-manager-architecture">SharePoint 2013 Workflow Part 1: Workflow Manager Architecture<a hidden class="anchor" aria-hidden="true" href="#sharepoint-2013-workflow-part-1-workflow-manager-architecture">#</a></h1>
+<p>This is the first part in a series of posts about SharePoint 2013
+Workflows. In this post we will discuss the architecture and
+improvements of the new Workflow Model in SharePoint 2013.</p>
+<p>Note that Office 365 is using this same Workflow Architecture only
+Microsoft handles all the installation and configuration regarding the
+Workflow Manager.</p>
+<h2 id="workflow-architecture">Workflow Architecture<a hidden class="anchor" aria-hidden="true" href="#workflow-architecture">#</a></h2>
+<p>Besides the SharePoint 2010 workflow model, which is still part of the
+SharePoint 2013 installation, Microsoft introduced a new Workflow
+architecture in SharePoint 2013 (and Office 365).</p>
+<p>SharePoint 2013 is now using Workflow Manager 1.0 which acts as the host
+for the workflow runtime, is hosting the latest version of Windows
+Workflow Foundation (WF 4.5) and unlike the 2010 Workflow model, is
+totally decoupled from SharePoint using OAuth secured WCF Services.
+SharePoint 2013 is configured to send all related tasks to the workflow
+manager to execute workflows using these services.</p>
+<p>Workflow Manager 1.0 consists of 3 components:</p>
+<p><strong>Workflow Frontend</strong></p>
+<p>This is a web service that receive calls from an external application,
+SharePoint in our case. Calls that are made by SharePoint to the
+Workflow Service are then logged in the Service Bus.</p>
+<p><strong>Service Bus</strong></p>
+<p>The Service bus uses the Pub/Sub model and will publish the message
+which is send to the service to all the subscribers.</p>
+<p><strong>Workflow Backend</strong></p>
+<p>The Workflow Backend service is a Windows Service and it is responsible
+for processing the actual Workflow. It communicates with SharePoint by
+using the SharePoint REST API.</p>
+<p>Figure 1: Workflow Manager Architecture (copied from MSDN)</p>
+<h2 id="how-it-works">How it works<a hidden class="anchor" aria-hidden="true" href="#how-it-works">#</a></h2>
+<p>After installing and configuring the workflow Manager a Workflow Manager
+farm is created within SharePoint which contains all of the necessary
+databases to store workflows and services to communicate with the
+Workflow Manager Frontend Service. The Workflow Manager farm is
+configured by SharePoint as an App.</p>
+<p>When a workflow is published, SharePoint only stores a copy of the
+workflow, the actual workflow is going to be send to the workflow
+manager farm which will handle the execution of the workflow. By the
+time the workflow needs to be executed, SharePoint tells the Workflow
+Manager farm to execute the workflow and adds some extra context
+information to the call, like which start-up parameters to use and what
+SharePoint list it has to execute on. This call is send to the Workflow
+Manager Frontend and will be queued in the Workflow Manager Service Bus
+until the Workflow Manager Bacnkend process is picking it up to execute.</p>
+<p>Workflows that are executed by the Workflow Manager Backend will need to
+communicate with SharePoint on several occasions, for instance to send
+emails, store items in lists, creating tasks and retrieve other relevant
+information for the workflow. This communication is done by using the
+SharePoint REST API and it uses S2S high trust authentication.</p>
+<h2 id="improvements">Improvements<a hidden class="anchor" aria-hidden="true" href="#improvements">#</a></h2>
+<p>Workflow Manager uses Windows Workflow Foundation 4.5. This means that
+you can only create declarative workflows in SharePoint 2013 and you are
+not allowed anymore to add custom code to your workflow.</p>
+<p>Workflow Manager includes a HTTP Send activity which can make Web
+Service calls and REST / OData calls. The business logic will now need
+to be added to a custom web service which can be called from the HTTP
+Send activity. This activity is also added to SharePoint Designer. In my
+upcoming posts I will provide you with some samples on how to do this.</p>
+<p>By moving the business logic from out of SharePoint to custom services,
+you can reuse this logic in multiple applications (like mobile apps,
+BizTalk, custom applications, etc.) and It can be hosted on premise or
+for instance, in Windows Azure.</p>
+<p>Workflow Manager 1.0 can also be installed on multiple servers, which
+don&rsquo;t need to have a SharePoint installation on it. This means that you
+can easily scale out your workflow environment and you don&rsquo;t have to
+deal with additional SharePoint licensing costs.</p>
+<h2 id="summary">Summary<a hidden class="anchor" aria-hidden="true" href="#summary">#</a></h2>
+<p>Microsoft has made a lot of great improvements with this new Workflow
+Model. The Workflow Manager is scalable and robust and because it uses
+the most recent version of the workflow model, it can integrate with
+almost everything.</p>
+<p>Below are some interesting sites about workflow manager:</p>
+<p>MSDN:
+<a href="http://msdn.microsoft.com/en-us/library/jj193528%28v=azure.10%29.aspx">http://msdn.microsoft.com/en-us/library/jj193528%28v=azure.10%29.aspx</a></p>
+<p>Workflow Team Blog: <a href="http://blogs.msdn.com/b/workflowteam/">http://blogs.msdn.com/b/workflowteam/</a></p>
+<p>For more information on Workflow Foundation 4.5 I recommend the book Pro
+WF 4.5: <a href="http://www.amazon.com/Pro-WF-4-5-Bayer-White/dp/143024383X">http://www.amazon.com/Pro-WF-4-5-Bayer-White/dp/143024383X</a> or
+you can visit:</p>
+<p><a href="http://msdn.microsoft.com/en-us/library/hh305677%28v=vs.110%29.aspx">http://msdn.microsoft.com/en-us/library/hh305677%28v=vs.110%29.aspx</a></p>
+<h1 id="sharepoint-2013-workflows-part-2-installing-and-configuring-the-workflow-manager">SharePoint 2013 Workflows Part 2: Installing and Configuring The Workflow Manager<a hidden class="anchor" aria-hidden="true" href="#sharepoint-2013-workflows-part-2-installing-and-configuring-the-workflow-manager">#</a></h1>
+<p>In this post I will guide you through installing and configuring the
+Workflow Manager for SharePoint 2013.</p>
+<p>This is the second post in the following series:</p>
+<ol>
+<li>
+<p><a href="http://www.sjoukjezaal.com/blog/2014/05/sharepoint-2013-workflows-introduction/">SharePoint 2013 Workflows:
+Introduction</a></p>
+</li>
+<li>
+<p><a href="http://www.sjoukjezaal.com/blog/2014/05/sharepoint-2013-workflow-part-1-workflow-manager-architecture/">SharePoint 2013 Workflows Part 1: Workflow Manager 1.0
+Architecture</a></p>
+</li>
+<li>
+<p>SharePoint 2013 Workflows Part 2: Installing and Configuring The
+Workflow Manager.</p>
+</li>
+<li>
+<p>SharePoint 2013 Workflows Part 3: Using the SharePoint 2013 REST API
+in a Visual Studio 2013 Workflow.</p>
+</li>
+<li>
+<p>SharePoint 2013 Workflows Part 5: Using Secure WCF Services in a
+Visual Studio workflow.</p>
+</li>
+</ol>
+<p>Before starting the installation of the Workflow Manager, make sure that
+at least the SharePoint 2013 March Public Update (KB 2767999) is
+installed on toy SharePoint Server:
+<a href="http://support.microsoft.com/default.aspx?scid=kb;EN-US;2767999">http://support.microsoft.com/default.aspx?scid=kb;EN-US;2767999</a>. This
+update solves some bug fixes and added extra support for the Workflow
+Manager and workflow development in Visual Studio.</p>
+<h2 id="installing-the-workflow-manager">Installing the Workflow Manager<a hidden class="anchor" aria-hidden="true" href="#installing-the-workflow-manager">#</a></h2>
+<p>It is best to install the Workflow Manager using the Web Platform
+Installer tool. This will automatically install all the prerequisites
+like Service Bus 1.0.</p>
+<p>You can download Workflow Manager 1.0 from here:
+<a href="http://www.microsoft.com/en-us/download/details.aspx?id=35375">http://www.microsoft.com/en-us/download/details.aspx?id=35375</a>.</p>
+<p>You can also download the Web Platform Installer Tools Command Line for
+offline installation:</p>
+<p><a href="http://www.iis.net/learn/install/web-platform-installer/web-platform-installer-v4-command-line-webpicmdexe-rtw-release">http://www.iis.net/learn/install/web-platform-installer/web-platform-installer-v4-command-line-webpicmdexe-rtw-release</a></p>
+<p>When workflow manager is installed, the Web Platform Installer will also
+install the workflow Manager Client 1.0.</p>
+<p>SharePoint uses this client to communicate with the Workflow Manager.</p>
+<p>If the Workflow Manager is installed on a separate server, this client
+will still need to be installed (manually) on the SharePoint Server. You
+can download the Workflow Manager Client 1.0 from the same website as
+the Workflow Manager.</p>
+<p>The Web Platform installer will also automatically install the Workflow
+Manager Tools 1.0 for Visual Studio if Visual Studio is already
+installed on the system.</p>
+<p>Run the Workflow Manager installer. This will launch the Web Platform
+Installer and click &ldquo;<strong>Install&rdquo;</strong> and follow the installation steps.</p>
+<p>Figure 1: Installing Workflow Manager 1.0 using the Web Platform
+installer.</p>
+<h2 id="configuring-the-workflow-manager">Configuring the Workflow Manager<a hidden class="anchor" aria-hidden="true" href="#configuring-the-workflow-manager">#</a></h2>
+<p>After the installation the configuring screen is automatically opened.
+This configuration wizard creates the databases and Workflow Manager
+farm and provisions the Service Bus. It also provides a PowerShell which
+can be used to configure other server installations as well.</p>
+<p>Figure 2: Configuring Workflow Manager 1.0.</p>
+<p>For this installation choose <strong>Configure Workflow Manager With Custom
+Settings</strong> and in the next screen enter the name of the SQL Server
+Instance, you can change the database name or leave the default if you
+like, and you can test the connection.</p>
+<p>Figure 3: Configuring Workflow Manager 1.0.</p>
+<p>If you scroll down you can configure the service account. Best Practice
+is to create a new Service account for the workflow manager.</p>
+<p>Figure 4: Configuring Workflow Manager 1.0.</p>
+<p>In the next section add a certification Generation Key and confirm. You
+need this key if you want to join extra servers to the workflow farm so
+memorize it!</p>
+<p>Figure 5: Configuring Workflow Manager 1.0.</p>
+<p>Scroll down again and in the next section you can configure the ports.
+Leave the default settings and for developing purposes you can check the
+<strong>Allow Workflow Management over HTTP on this Computer</strong> box.</p>
+<p>Figure 6: Configuring Workflow Manager 1.0.</p>
+<p>Click on the right arrow to go to the next screen to configure the
+Service Bus.</p>
+<p>Here you can provide the database settings for the Service Bus. I used
+the default settings here for my development environment.</p>
+<p>Figure 7: Configuring Workflow Manager 1.0.</p>
+<p>Here you can provide the Service Account Settings. You can choose the
+same Service Account credentials as you used for the Workflow Manager or
+add different credentials. The same for the Certificate key, I used the
+same key as I entered for the Workflow Manager.</p>
+<p>Figure 8: Configuring Workflow Manager 1.0.</p>
+<p>Leave the default ports in the next section and click the right arrow.</p>
+<p>Figure 9: Configuring Workflow Manager 1.0.</p>
+<p>The next screen provides you with an overview of the settings. Review
+them and Click <strong>Apply.</strong> You can also download the PowerShell Script
+here for installing.</p>
+<p>If everything went right you will see the following screen after the
+installation:</p>
+<p>Figure 10: Configuring Workflow Manager 1.0.</p>
+<p>After installing and configuring the workflow manager and creating the
+SharePoint Manager Farm you need to connect both environments to
+communicate with each other.</p>
+<p>This is done by running a PowerShell script on the SharePoint 2013 farm.
+It configures the SharePoint farm to send all workflow related tasks to
+the Workflow Manager Frontend Service.</p>
+<p>Open the SharePoint Management Console and type the following Powershell
+cmdlet:</p>
+<p><strong>For communicating over HTTP (only recommended for a development
+environment)</strong></p>
+<p>Register-SPWorkflowService &ndash;SPSite <a href="http://sp-siteurl">http://sp-siteurl</a>
+&ndash;WorkflowHostUri <a href="http://workflowhostURI:12291">http://workflowhostURI:12291</a> &ndash;AllowOAuthHttp</p>
+<p><strong>For communicating over HTTPS</strong></p>
+<p>Register-SPWorkflowService &ndash;SPSite <a href="http://sharepointsite">http://
+sp-siteurl</a> &ndash;WorkflowHostUri
+<a href="https://workflowhostURI:12290">https://workflowhostURI:12290</a></p>
+<p>To Retrieve the Workflowhost Url open IIS, look for the Workflow
+Management Site check the settings.</p>
+<p>After running this command the Workflow Manager is connected to the
+SharePoint farm and you can begin to create custom Workflows.</p>
+<p>Microsoft released a Workflow Manager Best Practice analyzer which scans
+your Workflow Environment and provides best practices on installing and
+configuring. For more information see this site:
+<a href="http://msdn.microsoft.com/library/azure/jj730571%28v=azure.10%29.aspx">http://msdn.microsoft.com/library/azure/jj730571%28v=azure.10%29.aspx</a></p>
+<h2 id="updating-workflow-manager-10">Updating Workflow Manager 1.0<a hidden class="anchor" aria-hidden="true" href="#updating-workflow-manager-10">#</a></h2>
+<p>The Workflow Manager Service and the Service Bus are released prior to
+the RTM release of SharePoint 2013. Since then, some things changed and
+some bugs where found and resolved in below updates.</p>
+<p>Install the Azure Services February 2013 Cumulative Updates:</p>
+<p>Cumulative Update for Service Bus 1.0 (KB2799752) :
+<a href="http://www.microsoft.com/en-us/download/confirmation.aspx?id=36794">http://www.microsoft.com/en-us/download/confirmation.aspx?id=36794</a></p>
+<p>Cumulative Update for Workflow Manager 1.0 (KB2799754) :
+<a href="http://www.microsoft.com/en-us/download/details.aspx?id=36800">http://www.microsoft.com/en-us/download/details.aspx?id=36800</a></p>
+<h2 id="summary-1">Summary<a hidden class="anchor" aria-hidden="true" href="#summary-1">#</a></h2>
+<p>In this article I explained how to install and configure the Workflow
+Manager 1.0. The steps are already explained in several other articles
+on the internet, but in most cases some settings and steps are left out
+of it, so I wasn&rsquo;t able to connect the workflow manager to the
+SharePoint farm.</p>
+<p>Also running the SharePoint updates before installing the Workflow
+Manager and installing the Windows Azure February updates afterwards is
+a critical step, which will solve a lot of problems using the SharePoint
+2013 Workflow Manager and creating Workflows.</p>
+<p>In my next post I will actually create a SharePoint 2013 Workflow&hellip;&hellip;</p>
+<h1 id="sharepoint-2013-workflows-part-3-using-the-sharepoint-2013-rest-api-in-a-visual-studio-2013-workflow">SharePoint 2013 Workflows Part 3: Using the SharePoint 2013 REST API in a Visual Studio 2013 Workflow<a hidden class="anchor" aria-hidden="true" href="#sharepoint-2013-workflows-part-3-using-the-sharepoint-2013-rest-api-in-a-visual-studio-2013-workflow">#</a></h1>
+<h1></h1>
+<p>In this post I will create a Custom Workflow in Visual Studio that uses
+the SharePoint REST API to create a new list item in a SharePoint list
+site.</p>
+<p>This is the second post in the following series:</p>
+<ol>
+<li>
+<p><a href="http://www.sjoukjezaal.com/blog/2014/05/sharepoint-2013-workflows-introduction/">SharePoint 2013 Workflows:
+Introduction</a></p>
+</li>
+<li>
+<p><a href="http://www.sjoukjezaal.com/blog/2014/05/sharepoint-2013-workflow-part-1-workflow-manager-architecture/">SharePoint 2013 Workflows Part 1: Workflow Manager 1.0
+Architecture</a></p>
+</li>
+<li>
+<p>SharePoint 2013 Workflows Part 2: Installing and Configuring The
+Workflow Manager.</p>
+</li>
+<li>
+<p>SharePoint 2013 Workflows Part 3: Using the SharePoint 2013 REST API
+in a Visual Studio 2013 Workflow.</p>
+</li>
+<li>
+<p>SharePoint 2013 Workflows Part 4: Using Secure WCF Services in a
+Visual Studio workflow.</p>
+</li>
+</ol>
+<p>In this scenario a List item is created in a vacation requests list.
+After creating the request item, the workflow is automatically triggered
+to create a copy of this item in the Approved Vacation Requests list.</p>
+<p>Both the Vacation Request list and the workflow are created as an app in
+SharePoint which means they are stored in the App web. The Approved
+Vacation list is a list created using a Farm solution and is stored in
+the host web.</p>
+<p>The workflow in the app needs to create a list item in the Host Web
+under the workflow manager context and not the user context. In this
+case you don&rsquo;t need to give users permissions to create the list items,
+you only have the give the app the appropriate permissions. I think this
+is one of the biggest advantages using apps and that&rsquo;s why I include
+this in my post.</p>
+<p>In a real world scenario, the request probably will need to be approved
+or rejected by a manager, but for this demo this step is not required
+because I only want to show how to use the REST API in a workflow and to
+create a new list item in the host web.</p>
+<h2 id="setting-up-the-visual-studio-project">Setting Up the Visual Studio Project<a hidden class="anchor" aria-hidden="true" href="#setting-up-the-visual-studio-project">#</a></h2>
+<p>Create a new Visual Studio Project, choose the <strong>App for SharePoint</strong>
+project and give it a name.</p>
+<p>Select <strong>SharePoint-Hosted</strong> app and fill in a SharePoint Development
+Site Url.</p>
+<p>After the project is created, add a new list to the project. Call the
+list <strong>Vacation Requests.</strong></p>
+<p>Create another SharePoint project choose SharePoint Solutions -&gt; Empty
+SharePoint Project and call it <strong>HostWebApprovedVacationRequests</strong>.
+Deploy it as a Farm solution Project. Add a new list to the new Project
+and call it <strong>ApprovedVacationRequests.</strong> This list will be deployed to
+the host web.</p>
+<p>Deploy the Solution.</p>
+<p>Add the below fields to both the lists.</p>
+<p>Change the start page for the App to point to the default Url of the
+Vacation Request list. Open the <strong>AppManifest.xml</strong> and change the start
+page.</p>
+<p>The App will create the list in the Host web and not in the App web so
+you have to change the App permissions so it will have full control on
+the host web.</p>
+<p>The last step for setting up the project is to add a workflow. Name it
+<strong>CreateListItemWorkflow</strong>.</p>
+<p>In the next screen select <strong>List Workflow</strong>, click next and select the
+Vacation Requests list to associate the workflow to. Create a new
+History and Task list.</p>
+<p>Select the option that the workflow automatically needs be started when
+an item is created.</p>
+<p>The workflow is created and the below items are added to the project.</p>
+<h2 id="creating-the-workflow">Creating the Workflow<a hidden class="anchor" aria-hidden="true" href="#creating-the-workflow">#</a></h2>
+<p>So now the project is created the next step is to create the actual
+Workflow. First I will add a few variables I will need throughout the
+project.</p>
+<p>Add the below variables. The first are for the listitem fields, the
+SecurityDigest and the WMSecurityToken are both used for authenticating
+to the REST API.</p>
+<p>You can get a reference of the SecurityToken type from the below
+Assembly.</p>
+<h3 id="get-listitem-properties">Get ListItem Properties<a hidden class="anchor" aria-hidden="true" href="#get-listitem-properties">#</a></h3>
+<p>Add an Sequence activity to the Root Activity and call it <strong>Get Vacation
+Request Properties.</strong> Add a <strong>SetUserStatus</strong> Activity to the sequence
+and add the description: <strong>Collecting Data from the List Item.</strong> The
+<strong>SetUserStatus</strong> will create an internal status property which will be
+displayed on the Workflow Status Page.</p>
+<p>Add a <strong>LookUpSPListItem</strong> activity below the SetUserStatus Activity and
+create a new variable <strong>ListRequestItemProperties</strong> of the type
+DynamicValue. This type is referenced in the Microsoft Activity Assembly
+under Microsoft Activities -&gt; DynamicValue.</p>
+<p>The DynamicValue is a new data type which understands JSON, so when you
+make a call to a WCF using the HTTP Send Activity, it return s an object
+of the type DynamicValue. You can then use an activity to extract data
+from this variables using an XPATH Expression.</p>
+<p>Rename the <strong>LookUpSPListItem</strong> to Get List Item Request Properties and
+add the following properties:</p>
+<ul>
+<li>
+<p>ItemId = (currentitem)</p>
+</li>
+<li>
+<p>ListId = (currentlist)</p>
+</li>
+<li>
+<p>Result = ListRequestItemProperties</p>
+</li>
+</ul>
+<p>Add an <strong>GetDynamicValueProperties</strong> Activity, call it Extract ListItem
+Properties, and add the ListRequestItemProperties as the source in the
+property pane. Click on the ellipsis button next to properties and add
+the items to the properties box like the items in the below figure:</p>
+<p>Add a <strong>WriteToHistory Activity</strong> and add the message provided below:</p>
+<h3 id="retrieve-the-root-site-collection-url">Retrieve the Root Site Collection Url<a hidden class="anchor" aria-hidden="true" href="#retrieve-the-root-site-collection-url">#</a></h3>
+<p>Add a new variable and call it HostWebUrl. In the next step we are going
+to obtain the Url of the Web where the <strong>Approved Vacation Requests</strong>
+list is stored**.**</p>
+<p>Add a new sequence below the Get Vacation Request Properties sequence
+and call it Get Host Url. Add a SetUserStatus Activity to it and add the
+description &ldquo;Retrieving Host Url&rdquo;.</p>
+<p>Add the variables in the below figure:</p>
+<p>These variables are scoped at the Get Host Url because they are only
+needed for this sequence.</p>
+<p>To retrieve the Host Web Url a couple of calls need to be made to the
+REST API. First we need the Url of the <strong>App web</strong>, then we are going to
+use the REST API to get the properties of the current app web hosting
+SPWeb (Host Web), then we retrieve the server relative url of this Host
+web.</p>
+<p>Add a WebUri Activity to the sequence and call it <strong>GetAppWebUrl.</strong>
+Select the AppWebUrl as the result in the property pane.</p>
+<p>Add a HTTPSend Activity and call it GetHostingWebProperties to get the
+properties of the current site collection. Add the following properties:</p>
+<ul>
+<li>
+<p>Method: POST</p>
+</li>
+<li>
+<p>Request Headers: Add the following request header:</p>
+<ul>
+<li>Accept: &ldquo;application/json;odata=verbose&rdquo;</li>
+</ul>
+</li>
+<li>
+<p>Uri: AppWebUrl + &quot;/api/web/parentweb&quot;</p>
+</li>
+<li>
+<p>ResponseContent: GetHostSiteCollectionPropertiesResponse</p>
+</li>
+</ul>
+<p>Then add a GetDynamicValueProperty&lt;T&gt; activity to extract the Server
+Relative Url from the response, select the type <strong>String,</strong> and call it
+<strong>Retract Host Web Relative Url.</strong> Set the following properties:</p>
+<ul>
+<li>
+<p>PropertyName: &ldquo;d/ServerRelativeUrl&rdquo;</p>
+</li>
+<li>
+<p>Result: [HostWebServerRelativeUrl]{.mark}</p>
+</li>
+<li>
+<p>Source: [GetHostWebPropertiesResponse]{.mark}</p>
+</li>
+</ul>
+<p>Add a <strong>HTTPSend</strong> Activity, call it <strong>Get Host SiteCollection
+Properties</strong> and add the following properties:</p>
+<ul>
+<li>
+<p>Method: GET</p>
+</li>
+<li>
+<p>Request Headers: Add the following request header:</p>
+<ul>
+<li>Accept: &ldquo;application/json;odata=verbose&rdquo;</li>
+</ul>
+</li>
+<li>
+<p>Uri: AppWebUrl + [&quot;_api/site&quot;]{.mark}</p>
+</li>
+<li>
+<p>ResponseContent: [GetHostSiteCollectionPropertiesResponse]{.mark}</p>
+</li>
+</ul>
+<p>Add a GetDynamicValueProperty&lt;T&gt; activity to extract the absolute Url
+of the Host Site Collection, , select the type <strong>String,</strong> and call it
+<strong>Extract Host Site Collection Property</strong> and add the following
+properties:</p>
+<ul>
+<li>
+<p>PropertyName: &ldquo;d/Url&rdquo;</p>
+</li>
+<li>
+<p>Result: [HostWebSiteCollectionUrl]{.mark}</p>
+</li>
+<li>
+<p>Source: [GetHostSiteCollectionPropertiesResponse]{.mark}</p>
+</li>
+</ul>
+<p>Finally add a Assign Activity to concat the HostWebSiteCollectionUrl and
+the [HostWebServerRelativeUrl]{.mark} and store that in the HostWebUrl
+Variable.</p>
+<p>Add the following properties:</p>
+<ul>
+<li>
+<p>Displayname: Get The Host Web Absolute Url</p>
+</li>
+<li>
+<p>To: HostWebUrl</p>
+</li>
+<li>
+<p>Value: [HostWebSiteCollectionUrl + HostWebServerRelativeUrl]{.mark}</p>
+</li>
+</ul>
+<p>Add a WriteToHistory activity and add the following message:</p>
+<p>&ldquo;The Host Web root url is: &quot; + HostWebUrl</p>
+<h3></h3>
+<h3 id="security-digest">Security Digest<a hidden class="anchor" aria-hidden="true" href="#security-digest">#</a></h3>
+<p>To submit an HTTP Post to the SharePoint REST API we need a Security
+Digest. The next step in the workflow is to obtain this.</p>
+<p>As I pointed out before, the workflow in the app needs to create a list
+item in the Host Web under the workflow manager context. The user may
+not have permissions to create a list item. To create a list item as the
+workflow manager we need to pass along a OAuth Security token.</p>
+<p>So to get this token add the GetS2SSecurityToken Activity below the Get
+Host Url Sequence. Add the Following Properties:</p>
+<ul>
+<li>
+<p>Displayname: Get Worfklow Manager Token</p>
+</li>
+<li>
+<p>Result: [WMSecurityToken]{.mark}</p>
+</li>
+</ul>
+<p>Now that we have the token we can obtain the security Digest. Add a new
+Sequence and call it Get <strong>SP Security Digest</strong>. Add a new Variable and
+call it <strong>GetSecurityDigestReponse</strong>, type DynamicValue.</p>
+<p>Add an <strong>HTTPSend</strong> Activity and add the following properties:</p>
+<ul>
+<li>
+<p>Method: POST</p>
+</li>
+<li>
+<p>Request Headers: Add the following request header:</p>
+<ul>
+<li>
+<p>Accept: &ldquo;application/json;odata=verbose&rdquo;</p>
+</li>
+<li>
+<p>Content-Length: &ldquo;0&rdquo;</p>
+</li>
+</ul>
+</li>
+<li>
+<p>SecurityToken: [WMSecurityToken]{.mark}</p>
+</li>
+<li>
+<p>Uri: [HostWebUrl + &quot;_api/contextinfo&quot;]{.mark}</p>
+</li>
+<li>
+<p>ResponseContent: [GetSecurityDigestReponse]{.mark}</p>
+</li>
+</ul>
+<p>Add a GetDynamicValueProperty&lt;T&gt; activity of type String and add the
+following properties:</p>
+<ul>
+<li>
+<p>DisplayName: Get SP Security Digest</p>
+</li>
+<li>
+<p>PropertyName: &ldquo;d/GetContextWebInformation/FormDigestValue&rdquo;</p>
+</li>
+<li>
+<p>Result: [SecurityDigest]{.mark}</p>
+</li>
+<li>
+<p>Source: [GetSecurityDigestReponse]{.mark}</p>
+</li>
+</ul>
+<p>For Debugging add a WriteToHistoryList Activity to write the digest to
+the histtorylist. Add the following message:</p>
+<p>[&quot;SP Security Digest: &quot; + SecurityDigest]{.mark}</p>
+<p>It is not recommended to add this line of code in production&hellip; ☺</p>
+<h3 id="create-the-new-list-item">Create the new List Item<a hidden class="anchor" aria-hidden="true" href="#create-the-new-list-item">#</a></h3>
+<p>With the digest obtained we can create the new List Item.</p>
+<p>Add a new Sequence to the Root and call it <strong>Create List item.</strong> Create
+the following variables:</p>
+<ul>
+<li>
+<p>CreateListRequestPayLoad</p>
+</li>
+<li>
+<p>CreateListResponseBody</p>
+</li>
+</ul>
+<p>Add a SetUserStatus Activity and the following description: [&quot;Create a
+list item in the Host Web.&quot;]{.mark}</p>
+<p>To Create the new list item we need to create the payload we are going
+to send to the REST API using JSON. Add a BuildDynamicValue Activity and
+add the following properties:</p>
+<ul>
+<li>
+<p>DisplayName: Create new List Item Payload</p>
+</li>
+<li>
+<p>Result: [CreateListRequestPayLoad]{.mark}</p>
+</li>
+<li>
+<p>Properties:</p>
+</li>
+</ul>
+<p>Add an <strong>HTTPSend</strong> Activity and add the following properties:</p>
+<ul>
+<li>
+<p>DisplayName: Create List Item</p>
+</li>
+<li>
+<p>Method: POST</p>
+</li>
+<li>
+<p>Request Content: [CreateListRequestPayLoad]{.mark}</p>
+</li>
+<li>
+<p>Request Headers: Add the following request header:</p>
+<ul>
+<li>
+<p>Accept: &ldquo;application/json;odata=verbose&rdquo;</p>
+</li>
+<li>
+<p>Content-Type: &ldquo;application/json;odata=verbose&rdquo;</p>
+</li>
+<li>
+<p>X-RequestDigest: [SecurityDigest]{.mark}</p>
+</li>
+</ul>
+</li>
+<li>
+<p>SecurityToken: [WMSecurityToken]{.mark}</p>
+</li>
+<li>
+<p>Uri: [HostWebUrl +
+&quot;_api/web/lists/GetByTitle(&lsquo;ApprovedVacationRequests')/items&quot;]{.mark}</p>
+</li>
+<li>
+<p>ResponseContent: [CreateListResponseBody]{.mark}</p>
+</li>
+</ul>
+<h3 id="deploying-the-workflow">Deploying the Workflow<a hidden class="anchor" aria-hidden="true" href="#deploying-the-workflow">#</a></h3>
+<p>Now the workflow is created so we are going to deploy it to SharePoint.
+If you did not already deployed the Farm feature do it now.</p>
+<p>Set the Worfklow Projects as the Start-Up project and click F5.</p>
+<p>Add a new Vacation Request to the list and</p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+    </ul>
+<nav class="paginav">
+  <a class="prev" href="//localhost:1313/posts/2016-11-08-error-after-installing-cumulative-update-for-workflow-manager/">
+    <span class="title">« Prev</span>
+    <br>
+    <span>Microsoft.Workflow.Common.FatalException error after installing Cumulative Update for Workflow Manager 1.0</span>
+  </a>
+  <a class="next" href="//localhost:1313/posts/2016-11-07-biztalk-2013-install-ssl-certificates-store_1/">
+    <span class="title">Next »</span>
+    <br>
+    <span>Certificates in BizTalk 2013 Part 1: How To Install SSL Certificates in the Certificate store</span>
+  </a>
+</nav>
+
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="//localhost:1313/">sjoukje.eth</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerHTML = 'copy';
+
+        function copyingDone() {
+            copybutton.innerHTML = 'copied!';
+            setTimeout(() => {
+                copybutton.innerHTML = 'copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+</body>
+
+</html>

@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto" data-theme="auto">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Office 365: Setting up your development environment | sjoukje.eth</title>
+<meta name="keywords" content="">
+<meta name="description" content="In this wiki article I give an overview on how to set up your
+development environment for Office 365.
+Office 365 Developer Tenant
+Before you can start coding, you need an Office 365 developer tenant.
+You could sign up for a 1-year free developer subscription on:
+http://dev.office.com . Navigate to the website, follow the
+instructions and sign up. You will receive a welcome email with a link
+to sign up for an Office 365 development tenant. First Release will be
+enabled already for this tenant.">
+<meta name="author" content="sjoukje.eth">
+<link rel="canonical" href="//localhost:1313/posts/2016-12-13-this-is-the-first-article-in-a-series-on-office-365-development/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.36f09b336921909a5971cfa84422229fa3edb550fa46b7707cb5436b0983bdcf.css" integrity="sha256-NvCbM2khkJpZcc&#43;oRCIin6PttVD6RrdwfLVDawmDvc8=" rel="preload stylesheet" as="style">
+<link rel="icon" href="//localhost:1313/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="//localhost:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="//localhost:1313/favicon-32x32.png">
+<link rel="apple-touch-icon" href="//localhost:1313/apple-touch-icon.png">
+<link rel="mask-icon" href="//localhost:1313/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="//localhost:1313/posts/2016-12-13-this-is-the-first-article-in-a-series-on-office-365-development/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script><meta property="og:url" content="//localhost:1313/posts/2016-12-13-this-is-the-first-article-in-a-series-on-office-365-development/">
+  <meta property="og:site_name" content="sjoukje.eth">
+  <meta property="og:title" content="Office 365: Setting up your development environment">
+  <meta property="og:description" content="In this wiki article I give an overview on how to set up your development environment for Office 365.
+Office 365 Developer Tenant Before you can start coding, you need an Office 365 developer tenant. You could sign up for a 1-year free developer subscription on: http://dev.office.com . Navigate to the website, follow the instructions and sign up. You will receive a welcome email with a link to sign up for an Office 365 development tenant. First Release will be enabled already for this tenant.">
+  <meta property="og:locale" content="en-us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2016-12-13T00:00:00+00:00">
+    <meta property="article:modified_time" content="2016-12-13T00:00:00+00:00">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Office 365: Setting up your development environment">
+<meta name="twitter:description" content="In this wiki article I give an overview on how to set up your
+development environment for Office 365.
+Office 365 Developer Tenant
+Before you can start coding, you need an Office 365 developer tenant.
+You could sign up for a 1-year free developer subscription on:
+http://dev.office.com . Navigate to the website, follow the
+instructions and sign up. You will receive a welcome email with a link
+to sign up for an Office 365 development tenant. First Release will be
+enabled already for this tenant.">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "//localhost:1313/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "Office 365: Setting up your development environment",
+      "item": "//localhost:1313/posts/2016-12-13-this-is-the-first-article-in-a-series-on-office-365-development/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Office 365: Setting up your development environment",
+  "name": "Office 365: Setting up your development environment",
+  "description": "In this wiki article I give an overview on how to set up your development environment for Office 365.\nOffice 365 Developer Tenant Before you can start coding, you need an Office 365 developer tenant. You could sign up for a 1-year free developer subscription on: http://dev.office.com . Navigate to the website, follow the instructions and sign up. You will receive a welcome email with a link to sign up for an Office 365 development tenant. First Release will be enabled already for this tenant.\n",
+  "keywords": [
+    
+  ],
+  "articleBody": "In this wiki article I give an overview on how to set up your development environment for Office 365.\nOffice 365 Developer Tenant Before you can start coding, you need an Office 365 developer tenant. You could sign up for a 1-year free developer subscription on: http://dev.office.com . Navigate to the website, follow the instructions and sign up. You will receive a welcome email with a link to sign up for an Office 365 development tenant. First Release will be enabled already for this tenant.\nYou could also create an Office 365 developer tenant using your MSDN subscription (Premium and Ultimate).\nThe Office 365 development tenant is for developing and testing purposes only.\nVisual Studio For a development environment, you can choose between Visual Studio Code or Visual Studio 2015. Visual Studio Code is the free open source tool Microsoft developed. Check the download section for downloading VSCode.\nFor most development tasks VSCode will be suitable. however, if you want to use the Office Development tools for Visual Studio, you need to install Visual Studio 2015 with update 2. The Office Development tools will provide some project templates that give you a head start on developing SharePoint Add-ins or Office Add-ins. Besides Office 365 development, Visual Studio will provide project templates targeting the old on premise development model as well (SharePoint and VSTO solutions). So, you should focus on the templates displayed in the image below:\n{width=“6.5in” height=“4.489583333333333in”}\nIn VSCode you have to write almost everything from scratch. There are some helpful open source tools, but it will not give you the same development experience that Visual Studio 2015 will give.\nOffice 365 Developer Patterns \u0026 Practices Tools Besides the Microsoft tools there is a community project called Office 365 Developer Patterns \u0026 Practices (PnP). The focus of PnP is to provide training, guiding, articles and solutions to support the community.\nOne of the key elements PnP is offering is a framework which makes it easy to develop Office 365 solutions. This is an open source library on GitHub called SharePoint PnP Core . You can include this library in all your Visual Studio projects using a NuGet package. After installing this NuGet package you can call common CSOM/REST operations using Extension Methods.\nThe PnP Core team also provides the PnP Remote Provisioning Engine. With this engine you can provision SharePoint on premise and SharePoint Online artifact using SharePoint CSOM instead of the ‘old’ SharePoint feature framework.\nAnother solution which is provided by the PnP Core Team is the PnP Powershell Cmdlets. This solution contains a library of PowerShell commands that allows you to perform provisioning and management actions towards SharePoint on premise and SharePoint Online.\nYou can download a .msi setup package from GitHub to install the PnP Powershell Cmdlets. If your operating system is Windows 10 or Windows Server 2016 (or have PowerShell 3.0 installed), you can install the Cmdlets from within your PowerShell Command line.\nSharePoint Online:\nInstall-Module SharePointPnPPowerShellOnline -AllowClobber\nSharePoint 2016\nInstall-Module SharePointPnPPowerShell2016 -AllowClobber\nSharePoint 2013\nInstall-Module SharePointPnPPowerShell2013 -AllowClobber\nSharePoint Framework On May 4, 2016 Microsoft Announced the SharePoint Framework, which allows you to develop client side web parts and applications using JavaScript.\nFor development using the SharePoint Framework, you can use any kind of code editor as long as you can use it to write JavaScript, TypeScript and Node.js.\nTo install the latest version of the Node.js runtime, navigate to the Node.js website. After installing, update the NPM package manager to the latest version using the node.js command line. Type the following command:\nnpm install -g npm\nWrap-up This concludes setting up your development environment for Office 365. Below is a list for further reading. You should definitely check these out. There is a lot more information on PnP and the SharePoint Framework there.\nFurther Reading https://dev.office.com/sharepoint/docs/spfx/set-up-your-developer-tenant\nSharePoint / Office 365 Dev Patterns \u0026 Practices (PnP)\nSharePoint PnP Core\nPnP Provisioning Framework\nPnP Provisioning Engine\nIntroduction to Office 365 Dev PnP Provisioning Engine\nWhat you should learn to prepare for developing solutions on the SharePoint Framework\nDownloads Visual Studio Code\nOffice Development Tools for Visual Studio 2015\nSharePoint PnP Core\nPnP Remote Provisioning Engine\nPnP Powershell Cmdlets\nNode.js\n",
+  "wordCount" : "693",
+  "inLanguage": "en",
+  "datePublished": "2016-12-13T00:00:00Z",
+  "dateModified": "2016-12-13T00:00:00Z",
+  "author":{
+    "@type": "Person",
+    "name": "sjoukje.eth"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "//localhost:1313/posts/2016-12-13-this-is-the-first-article-in-a-series-on-office-365-development/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "sjoukje.eth",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "//localhost:1313/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="//localhost:1313/" accesskey="h" title="sjoukje.eth (Alt + H)">sjoukje.eth</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="//localhost:1313/posts/" title="Posts">
+                    <span>Posts</span>
+                </a>
+            </li>
+            <li>
+                <a href="//localhost:1313/books/" title="Books">
+                    <span>Books</span>
+                </a>
+            </li>
+            <li>
+                <a href="//localhost:1313/about/" title="About">
+                    <span>About</span>
+                </a>
+            </li>
+            <li>
+                <a href="//localhost:1313/archives/" title="Archive">
+                    <span>Archive</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="//localhost:1313/">Home</a>&nbsp;»&nbsp;<a href="//localhost:1313/posts/">Posts</a></div>
+    <h1 class="post-title entry-hint-parent">
+      Office 365: Setting up your development environment
+    </h1>
+    <div class="post-meta"><span title='2016-12-13 00:00:00 +0000 UTC'>December 13, 2016</span>&nbsp;·&nbsp;<span>4 min</span>&nbsp;·&nbsp;<span>sjoukje.eth</span>
+
+</div>
+  </header> 
+  <div class="post-content"><p>In this wiki article I give an overview on how to set up your
+development environment for Office 365.</p>
+<h2 id="office-365-developer-tenant">Office 365 Developer Tenant<a hidden class="anchor" aria-hidden="true" href="#office-365-developer-tenant">#</a></h2>
+<p>Before you can start coding, you need an Office 365 developer tenant.
+You could sign up for a 1-year free developer subscription on:
+<a href="http://dev.office.com">http://dev.office.com</a> . Navigate to the website, follow the
+instructions and sign up. You will receive a welcome email with a link
+to sign up for an Office 365 development tenant. First Release will be
+enabled already for this tenant.</p>
+<p><img loading="lazy" src="media/image1.png"></p>
+<p>You could also create an Office 365 developer tenant using your MSDN
+subscription (Premium and Ultimate).</p>
+<p>The Office 365 development tenant is for developing and testing purposes
+only.</p>
+<h2 id="visual-studio">Visual Studio<a hidden class="anchor" aria-hidden="true" href="#visual-studio">#</a></h2>
+<p>For a development environment, you can choose between Visual Studio Code
+or Visual Studio 2015. Visual Studio Code is the free open source tool
+Microsoft developed. Check the download section for downloading VSCode.</p>
+<p>For most development tasks VSCode will be suitable. however, if you want
+to use the Office Development tools for Visual Studio, you need to
+install Visual Studio 2015 with update 2. The Office Development tools
+will provide some project templates that give you a head start on
+developing SharePoint Add-ins or Office Add-ins. Besides Office 365
+development, Visual Studio will provide project templates targeting the
+old on premise development model as well (SharePoint and VSTO
+solutions). So, you should focus on the templates displayed in the image
+below:</p>
+<p><img alt="C:\\Users\\Administrator\\AppData\\Local\\Microsoft\\Windows\\INetCache\\Content.Word\\Office354_Dev1.png" loading="lazy" src="media/image2.png">{width=&ldquo;6.5in&rdquo;
+height=&ldquo;4.489583333333333in&rdquo;}</p>
+<p>In VSCode you have to write almost everything from scratch. There are
+some helpful open source tools, but it will not give you the same
+development experience that Visual Studio 2015 will give.</p>
+<h2 id="office-365-developer-patterns--practices-tools">Office 365 Developer Patterns &amp; Practices Tools<a hidden class="anchor" aria-hidden="true" href="#office-365-developer-patterns--practices-tools">#</a></h2>
+<p>Besides the Microsoft tools there is a community project called Office
+365 Developer Patterns &amp; Practices (PnP). The focus of PnP is to provide
+training, guiding, articles and solutions to support the community.</p>
+<p>One of the key elements PnP is offering is a framework which makes it
+easy to develop Office 365 solutions. This is an open source library on
+GitHub called <a href="https://github.com/SharePoint/PnP-Sites-Core">SharePoint PnP
+Core</a> . You can include
+this library in all your Visual Studio projects using a NuGet package.
+After installing this NuGet package you can call common CSOM/REST
+operations using <a href="https://msdn.microsoft.com/en-us/library/bb383977.aspx">Extension
+Methods</a>.</p>
+<p><img loading="lazy" src="media/image3.png"></p>
+<p>The PnP Core team also provides the <a href="https://github.com/SharePoint/PnP/tree/master/Samples/Provisioning.Framework.Console">PnP Remote Provisioning
+Engine</a>.
+With this engine you can provision SharePoint on premise and SharePoint
+Online artifact using SharePoint CSOM instead of the &lsquo;old&rsquo; SharePoint
+feature framework.</p>
+<p>Another solution which is provided by the PnP Core Team is the <a href="https://github.com/SharePoint/PnP-PowerShell">PnP
+Powershell Cmdlets</a>. This
+solution contains a library of PowerShell commands that allows you to
+perform provisioning and management actions towards SharePoint on
+premise and SharePoint Online.</p>
+<p>You can download a .msi setup package from GitHub to install the PnP
+Powershell Cmdlets. If your operating system is Windows 10 or Windows
+Server 2016 (or have PowerShell 3.0 installed), you can install the
+Cmdlets from within your PowerShell Command line.</p>
+<p>SharePoint Online:</p>
+<p>Install-Module SharePointPnPPowerShellOnline -AllowClobber</p>
+<p>SharePoint 2016</p>
+<p>Install-Module SharePointPnPPowerShell2016 -AllowClobber</p>
+<p>SharePoint 2013</p>
+<p>Install-Module SharePointPnPPowerShell2013 -AllowClobber</p>
+<p><img loading="lazy" src="media/image4.png"></p>
+<h2 id="sharepoint-framework">SharePoint Framework<a hidden class="anchor" aria-hidden="true" href="#sharepoint-framework">#</a></h2>
+<p>On May 4, 2016 Microsoft Announced the SharePoint Framework, which
+allows you to develop client side web parts and applications using
+JavaScript.</p>
+<p>For development using the SharePoint Framework, you can use any kind of
+code editor as long as you can use it to write JavaScript, TypeScript
+and Node.js.</p>
+<p>To install the latest version of the Node.js runtime, navigate to the
+<a href="https://nodejs.org/en/">Node.js website</a>. After installing, update the
+NPM package manager to the latest version using the node.js command
+line. Type the following command:</p>
+<p>npm install -g npm</p>
+<p><img loading="lazy" src="media/image5.png"></p>
+<h2 id="wrap-up">Wrap-up<a hidden class="anchor" aria-hidden="true" href="#wrap-up">#</a></h2>
+<p>This concludes setting up your development environment for Office 365.
+Below is a list for further reading. You should definitely check these
+out. There is a lot more information on PnP and the SharePoint Framework
+there.</p>
+<h2 id="further-reading">Further Reading<a hidden class="anchor" aria-hidden="true" href="#further-reading">#</a></h2>
+<ul>
+<li>
+<p><a href="https://dev.office.com/sharepoint/docs/spfx/set-up-your-developer-tenant">https://dev.office.com/sharepoint/docs/spfx/set-up-your-developer-tenant</a></p>
+</li>
+<li>
+<p><a href="https://dev.office.com/patterns-and-practices">SharePoint / Office 365 Dev Patterns &amp; Practices
+(PnP)</a></p>
+</li>
+<li>
+<p><a href="https://github.com/SharePoint/PnP-Sites-Core/tree/master/Core">SharePoint PnP
+Core</a></p>
+</li>
+<li>
+<p><a href="https://msdn.microsoft.com/en-us/pnp_articles/pnp-provisioning-framework">PnP Provisioning
+Framework</a></p>
+</li>
+<li>
+<p><a href="https://channel9.msdn.com/blogs/OfficeDevPnP/PnP-Provisioning-Engine-Introducing-PnP-file-type-for-template-handling">PnP Provisioning
+Engine</a></p>
+</li>
+<li>
+<p><a href="https://dev.office.com/blogs/introduction-to-office-365-dev-pnp-provisioning-engine">Introduction to Office 365 Dev PnP Provisioning
+Engine</a></p>
+</li>
+<li>
+<p><a href="https://blog.mastykarz.nl/learn-sharepoint-framework/">What you should learn to prepare for developing solutions on the
+SharePoint
+Framework</a></p>
+</li>
+</ul>
+<h2></h2>
+<h2 id="downloads">Downloads<a hidden class="anchor" aria-hidden="true" href="#downloads">#</a></h2>
+<h2></h2>
+<ul>
+<li>
+<p><a href="https://code.visualstudio.com/">Visual Studio Code</a></p>
+</li>
+<li>
+<p><a href="http://aka.ms/getlatestofficedevtools">Office Development Tools for Visual Studio
+2015</a></p>
+</li>
+<li>
+<p><a href="https://github.com/SharePoint/PnP-Sites-Core">SharePoint PnP Core</a></p>
+</li>
+<li>
+<p><a href="https://github.com/SharePoint/PnP/tree/master/Samples/Provisioning.Framework.Console">PnP Remote Provisioning
+Engine</a></p>
+</li>
+<li>
+<p><a href="https://github.com/SharePoint/PnP-PowerShell">PnP Powershell Cmdlets</a></p>
+</li>
+<li>
+<p><a href="https://nodejs.org/en/">Node.js</a></p>
+</li>
+</ul>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+    </ul>
+<nav class="paginav">
+  <a class="prev" href="//localhost:1313/posts/2017-01-13-a-first-look-at-azure-media-services/">
+    <span class="title">« Prev</span>
+    <br>
+    <span>A first look at Azure Media Services</span>
+  </a>
+  <a class="next" href="//localhost:1313/posts/2016-11-08-2-ways-to-install-office-for-office-365-users/">
+    <span class="title">Next »</span>
+    <br>
+    <span>2 ways to install Office for Office 365 Users</span>
+  </a>
+</nav>
+
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="//localhost:1313/">sjoukje.eth</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerHTML = 'copy';
+
+        function copyingDone() {
+            copybutton.innerHTML = 'copied!';
+            setTimeout(() => {
+                copybutton.innerHTML = 'copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+</body>
+
+</html>

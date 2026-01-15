@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto" data-theme="auto">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Azure Media Services: Uploading and encoding your video files | sjoukje.eth</title>
+<meta name="keywords" content="">
+<meta name="description" content="In the previous
+post
+on AMS I&rsquo;ve shown how to create a new media channel, and wrote some
+simple code for uploading a video to AMS. In this post, I want to
+elaborate a bit more on the uploading of video files.
+Some Background information
+A best practice for uploading video files to AMS is, that each asset
+contains a unique instance of media content. Each asset should not
+contain multiple edits of a file, in order to reduce difficulties
+submitting encoding jobs and streaming and securing the delivery of the
+asset later in the workflow.">
+<meta name="author" content="sjoukje.eth">
+<link rel="canonical" href="//localhost:1313/posts/2017-02-24-azure-media-services-uploading-and-encoding-your-video-files/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.36f09b336921909a5971cfa84422229fa3edb550fa46b7707cb5436b0983bdcf.css" integrity="sha256-NvCbM2khkJpZcc&#43;oRCIin6PttVD6RrdwfLVDawmDvc8=" rel="preload stylesheet" as="style">
+<link rel="icon" href="//localhost:1313/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="//localhost:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="//localhost:1313/favicon-32x32.png">
+<link rel="apple-touch-icon" href="//localhost:1313/apple-touch-icon.png">
+<link rel="mask-icon" href="//localhost:1313/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="//localhost:1313/posts/2017-02-24-azure-media-services-uploading-and-encoding-your-video-files/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script><meta property="og:url" content="//localhost:1313/posts/2017-02-24-azure-media-services-uploading-and-encoding-your-video-files/">
+  <meta property="og:site_name" content="sjoukje.eth">
+  <meta property="og:title" content="Azure Media Services: Uploading and encoding your video files">
+  <meta property="og:description" content="In the previous post on AMS I’ve shown how to create a new media channel, and wrote some simple code for uploading a video to AMS. In this post, I want to elaborate a bit more on the uploading of video files.
+Some Background information A best practice for uploading video files to AMS is, that each asset contains a unique instance of media content. Each asset should not contain multiple edits of a file, in order to reduce difficulties submitting encoding jobs and streaming and securing the delivery of the asset later in the workflow.">
+  <meta property="og:locale" content="en-us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2017-02-24T00:00:00+00:00">
+    <meta property="article:modified_time" content="2017-02-24T00:00:00+00:00">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Azure Media Services: Uploading and encoding your video files">
+<meta name="twitter:description" content="In the previous
+post
+on AMS I&rsquo;ve shown how to create a new media channel, and wrote some
+simple code for uploading a video to AMS. In this post, I want to
+elaborate a bit more on the uploading of video files.
+Some Background information
+A best practice for uploading video files to AMS is, that each asset
+contains a unique instance of media content. Each asset should not
+contain multiple edits of a file, in order to reduce difficulties
+submitting encoding jobs and streaming and securing the delivery of the
+asset later in the workflow.">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "//localhost:1313/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "Azure Media Services: Uploading and encoding your video files",
+      "item": "//localhost:1313/posts/2017-02-24-azure-media-services-uploading-and-encoding-your-video-files/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Azure Media Services: Uploading and encoding your video files",
+  "name": "Azure Media Services: Uploading and encoding your video files",
+  "description": "In the previous post on AMS I\u0026rsquo;ve shown how to create a new media channel, and wrote some simple code for uploading a video to AMS. In this post, I want to elaborate a bit more on the uploading of video files.\nSome Background information A best practice for uploading video files to AMS is, that each asset contains a unique instance of media content. Each asset should not contain multiple edits of a file, in order to reduce difficulties submitting encoding jobs and streaming and securing the delivery of the asset later in the workflow.\n",
+  "keywords": [
+    
+  ],
+  "articleBody": "In the previous post on AMS I’ve shown how to create a new media channel, and wrote some simple code for uploading a video to AMS. In this post, I want to elaborate a bit more on the uploading of video files.\nSome Background information A best practice for uploading video files to AMS is, that each asset contains a unique instance of media content. Each asset should not contain multiple edits of a file, in order to reduce difficulties submitting encoding jobs and streaming and securing the delivery of the asset later in the workflow.\nFor instance, the trailer of your movie is stored in a different asset than the feature-length movie. In this case the trailer can have a wide viewership, but the viewing of actual movie can be restricted.\nAMS REST API Azure Media Services provides an OData REST service which built on OData v3. By using v3, you can submit HTTP request bodies in atom-pub or JSON, and you can receive the response in the same format. The Media SDK for .Net, which I am using in my samples, is a wrapper around the REST API.\nFor more information about using the REST API for uploading video assets see:\nIngesting Assets with the Media Services REST API\nIngesting Assets in Bulk with the REST API\nAMS supported video input formats The AMS SDK supports various video, image and audio file types which can be uploaded to the AMS portal. However, the AMS portal only allows formats being uploaded that are supported by the Azure Media Encoder.\nContent encoded with the following formats are allowed to be imported:\nH.264 (Baseline, Main, and High Profiles)\nMPEG-1\nMPEG-2 (Simple and Main Profile)\nMPEG-4 v2 (Simple Visual Profile and Advanced Simple Profile)\nVC-1 (Simple, Main, and Advanced Profiles)\nWindows Media Video (Simple, Main, and Advanced Profiles)\nDV (DVC, DVHD, DVSD, DVSL)\nThe following video file formats are supported for input:\n3GPP, 3GPP2 (.3gp, .3g2, .3gp2)\nAdvanced Systems Format (ASF) (.asf)\nAdvanced Video Coding High Definition (AVCHD) (.mts, .m2tf)\nAudio-Video Interleaved (AVI) (.avi)\nDigital camcorder MPEG-2 (MOD) (.mod)\nDigital video (DV) camera file (.dv)\nDVD transport stream (TS) file (.ts)\nDVD video object (VOB) file (.vob)\nExpression Encoder Screen Capture Codec file (.xesc)\nMP4 (.mp4)\nMPEG-1 System Stream (.mpeg, .mpg)\nMPEG-2 video file (.m2v)\nSmooth Streaming File Format (PIFF 1.3) (.ismv)\nWindows Media Video (WMV) (.wmv)\nFor more information on supported input formats and codecs, see: ‘Media Encoder Standard Formats and Codecs’\nSecuring your video when uploading to AMS AMS provides the ability to secure your video when it’s being uploaded to the AMS portal. All video files are associated with an Asset object in the AMS SDK. When you create a new Asset object for your video, you must specify an Encryption option as parameter. Each file added to the Asset will then use the Encryption option you specified.\nThe AssetCreationOptions enumeration comes in four different flavors:\nAssetCreationOptions.None\nAssetCreationOptions.StorageEncrypted\nAssetCreationOptions.CommonEncryptionProtected\nAssetCreationOptions.EnvelopeEncryptionProtected\nFor more information about protecting your content, see ‘AMS Protecting content overview’.\nSo, enough background information for now. Let’s do some coding!!\nSetting up your Application For more information about how to set up an AMS account and retrieving your account key, as well as some more information on setting up the Visual Studio solution, refer to my previous post. For this sample, I will use the same account and key which are used in the previous post.\nIn this sample, we are going to use a more professional approach. Where in the previous sample, the video files where only uploaded, this time we will encode the video file, add a policy, a locator and secure the upload.\nSo, the following tasks are performed by the sample code:\nCreate an empty Asset\nCreate an AssetFile instance which is associated to the Asset\nCreate an AccesPolicy that defines the access permissions and the duration of the Asset\nCreate a Locator instance that provides access to the Asset. The Locator provides an access point by creating Url. This way the account key does not have to be shared, the files can be accessed using a custom Url.\nOpen Visual Studio and create a new C# console application. Install the windowsazure.mediaservices.extensions NuGet Package, add a reference to the System.Configuration assembly and add the appropriate App Settings to the App.config.\nOpen the program.cs file and add the following using statements to it:\nusing System.Configuration;\nusing System.Threading;\nusing System.IO;\nusing Microsoft.WindowsAzure.MediaServices.Client;\ninside the class, add the following code:\nclass Program\n{\n// Read values from the App.config file.\nprivate static readonly string _mediaServicesAccountName =\nConfigurationManager.AppSettings[\"MediaServicesAccountName\"];\nprivate static readonly string _mediaServicesAccountKey =\nConfigurationManager.AppSettings[\"MediaServicesAccountKey\"];\nprivate static CloudMediaContext _context = null;\nprivate static MediaServicesCredentials _cachedCredentials = null;\nstatic void Main(string[] args)\n{\n_cachedCredentials = new MediaServicesCredentials(_mediaServicesAccountName,\n_mediaServicesAccountKey);\n_context = new CloudMediaContext(_cachedCredentials);\nIAsset inputAsset = CreateAssetAndUploadSingleFile(@\"C:\\SampleVideo.mp4\", AssetCreationOptions.StorageEncrypted);\nEncodeToAdaptiveBitrateMP4Set(inputAsset);\n}\nstatic public IAsset CreateAssetAndUploadSingleFile(string singleFilePath, AssetCreationOptions assetCreationOptions)\n{\nif (!File.Exists(singleFilePath))\n{\nConsole.WriteLine(\"File does not exist.\");\nreturn null;\n}\nvar assetName = Path.GetFileNameWithoutExtension(singleFilePath);\n//create a new input asset\nIAsset inputAsset = _context.Assets.Create(assetName, assetCreationOptions);\nvar assetFile = inputAsset.AssetFiles.Create(Path.GetFileName(singleFilePath));\nConsole.WriteLine(\"Created assetFile {0}\", assetFile.Name);\n//create a 30-day read and list access policy\nvar policy = _context.AccessPolicies.Create(\nassetName,\nTimeSpan.FromDays(30),\nAccessPermissions.Read | AccessPermissions.List);\n//create a SAS locator to the asset\nvar locator = _context.Locators.CreateLocator(LocatorType.Sas, inputAsset, policy);\nConsole.WriteLine(\"Upload {0}\", assetFile.Name);\nassetFile.Upload(singleFilePath);\nConsole.WriteLine(\"Done uploading {0}\", assetFile.Name);\nlocator.Delete();\npolicy.Delete();\nreturn inputAsset;\n}\nstatic public IAsset EncodeToAdaptiveBitrateMP4Set(IAsset asset)\n{\n// Declare a new job.\nIJob job = _context.Jobs.Create(\"Media Encoder Standard Job\");\n// Get a media processor reference, and pass to it the name of the\n// processor to use for the specific task.\nIMediaProcessor processor = GetLatestMediaProcessorByName(\"Media Encoder Standard\");\n// Create a task with the encoding details, using a string preset.\n// In this case \"H264 Multiple Bitrate 720p\" preset is used.\nITask task = job.Tasks.AddNew(\"My encoding task\",\nprocessor,\n\"H264 Multiple Bitrate 720p\",\nTaskOptions.None);\n// Specify the input asset to be encoded.\ntask.InputAssets.Add(asset);\n// Add an output asset to contain the results of the job.\n// This output is specified as AssetCreationOptions.None, which\n// means the output asset is not encrypted.\ntask.OutputAssets.AddNew(\"Output asset\",\nAssetCreationOptions.None);\njob.StateChanged += new EventHandler(JobStateChanged);\njob.Submit();\njob.GetExecutionProgressTask(CancellationToken.None).Wait();\nreturn job.OutputMediaAssets[0];\n}\nprivate static void JobStateChanged(object sender, JobStateChangedEventArgs e)\n{\n//Eventhandler for monitoring the job state\nConsole.WriteLine(\"Job state changed event:\");\nConsole.WriteLine(\" Previous state: \" + e.PreviousState);\nConsole.WriteLine(\" Current state: \" + e.CurrentState);\nswitch (e.CurrentState)\n{\ncase JobState.Finished:\nConsole.WriteLine();\nConsole.WriteLine(\"Job is finished. Please wait while local tasks or downloads complete...\");\nbreak;\ncase JobState.Canceling:\ncase JobState.Queued:\ncase JobState.Scheduled:\ncase JobState.Processing:\nConsole.WriteLine(\"Please wait...\\n\");\nbreak;\ncase JobState.Canceled:\ncase JobState.Error:\n// Cast sender as a job.\nIJob job = (IJob)sender;\n// Display or log error details as needed.\nbreak;\ndefault:\nbreak;\n}\n}\nprivate static IMediaProcessor GetLatestMediaProcessorByName(string mediaProcessorName)\n{\nvar processor = _context.MediaProcessors.Where(p =\u003e p.Name == mediaProcessorName).\nToList().OrderBy(p =\u003e new Version(p.Version)).LastOrDefault();\nif (processor == null)\nthrow new ArgumentException(string.Format(\"Unknown media processor\", mediaProcessorName));\nreturn processor;\n}\n}\nBy executing this code, the video will be uploaded to the AMS account, a 30-day access policy is created for the file, a locator Url is created on which the video can be displayed and the video is encoded using a Media Encoder.\nWhen you navigate to the AMS portal, you can see that there are two assets created.\nClick the ‘Output Asset’, scroll down and you will see that the original file is encoded and that there are multiple files now. From here, you can publish the asset.\nSummary This concludes this series of posts about Azure Media Services. Below is a list with reference materials used for this article. They provide a good starting point for building your own Azure Media Services solutions:\nBuilding an On-Demand Video Service with Microsoft Azure Media Services\nAzure Media Services overview and common scenarios\n",
+  "wordCount" : "1274",
+  "inLanguage": "en",
+  "datePublished": "2017-02-24T00:00:00Z",
+  "dateModified": "2017-02-24T00:00:00Z",
+  "author":{
+    "@type": "Person",
+    "name": "sjoukje.eth"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "//localhost:1313/posts/2017-02-24-azure-media-services-uploading-and-encoding-your-video-files/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "sjoukje.eth",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "//localhost:1313/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="//localhost:1313/" accesskey="h" title="sjoukje.eth (Alt + H)">sjoukje.eth</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="//localhost:1313/posts/" title="Posts">
+                    <span>Posts</span>
+                </a>
+            </li>
+            <li>
+                <a href="//localhost:1313/books/" title="Books">
+                    <span>Books</span>
+                </a>
+            </li>
+            <li>
+                <a href="//localhost:1313/about/" title="About">
+                    <span>About</span>
+                </a>
+            </li>
+            <li>
+                <a href="//localhost:1313/archives/" title="Archive">
+                    <span>Archive</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="//localhost:1313/">Home</a>&nbsp;»&nbsp;<a href="//localhost:1313/posts/">Posts</a></div>
+    <h1 class="post-title entry-hint-parent">
+      Azure Media Services: Uploading and encoding your video files
+    </h1>
+    <div class="post-meta"><span title='2017-02-24 00:00:00 +0000 UTC'>February 24, 2017</span>&nbsp;·&nbsp;<span>6 min</span>&nbsp;·&nbsp;<span>sjoukje.eth</span>
+
+</div>
+  </header> 
+  <div class="post-content"><p>In <a href="https://blogs.msdn.microsoft.com/azuredev/2017/02/01/a-first-look-at-azure-media-services/">the previous
+post</a>
+on AMS I&rsquo;ve shown how to create a new media channel, and wrote some
+simple code for uploading a video to AMS. In this post, I want to
+elaborate a bit more on the uploading of video files.</p>
+<h2 id="some-background-information">Some Background information<a hidden class="anchor" aria-hidden="true" href="#some-background-information">#</a></h2>
+<p>A best practice for uploading video files to AMS is, that each asset
+contains a unique instance of media content. Each asset should not
+contain multiple edits of a file, in order to reduce difficulties
+submitting encoding jobs and streaming and securing the delivery of the
+asset later in the workflow.</p>
+<p>For instance, the trailer of your movie is stored in a different asset
+than the feature-length movie. In this case the trailer can have a wide
+viewership, but the viewing of actual movie can be restricted.</p>
+<h3 id="ams-rest-api">AMS REST API<a hidden class="anchor" aria-hidden="true" href="#ams-rest-api">#</a></h3>
+<p>Azure Media Services provides an OData REST service which built on OData
+v3. By using v3, you can submit HTTP request bodies in atom-pub or JSON,
+and you can receive the response in the same format. The Media SDK for
+.Net, which I am using in my samples, is a wrapper around the REST API.</p>
+<p>For more information about using the REST API for uploading video assets
+see:</p>
+<ul>
+<li>
+<p><a href="https://docs.microsoft.com/nl-nl/azure/media-services/media-services-rest-upload-files">Ingesting Assets with the Media Services REST
+API</a></p>
+</li>
+<li>
+<p><a href="https://docs.microsoft.com/nl-nl/azure/media-services/media-services-rest-upload-files#upload_in_bulk">Ingesting Assets in Bulk with the REST
+API</a></p>
+</li>
+</ul>
+<h3 id="ams-supported-video-input-formats">AMS supported video input formats<a hidden class="anchor" aria-hidden="true" href="#ams-supported-video-input-formats">#</a></h3>
+<p>The AMS SDK supports various video, image and audio file types which can
+be uploaded to the AMS portal. However, the AMS portal only allows
+formats being uploaded that are supported by the Azure Media Encoder.</p>
+<p>Content encoded with the following formats are allowed to be imported:</p>
+<ul>
+<li>
+<p>H.264 (Baseline, Main, and High Profiles)</p>
+</li>
+<li>
+<p>MPEG-1</p>
+</li>
+<li>
+<p>MPEG-2 (Simple and Main Profile)</p>
+</li>
+<li>
+<p>MPEG-4 v2 (Simple Visual Profile and Advanced Simple Profile)</p>
+</li>
+<li>
+<p>VC-1 (Simple, Main, and Advanced Profiles)</p>
+</li>
+<li>
+<p>Windows Media Video (Simple, Main, and Advanced Profiles)</p>
+</li>
+<li>
+<p>DV (DVC, DVHD, DVSD, DVSL)</p>
+</li>
+</ul>
+<p>The following video file formats are supported for input:</p>
+<ul>
+<li>
+<p>3GPP, 3GPP2 (.3gp, .3g2, .3gp2)</p>
+</li>
+<li>
+<p>Advanced Systems Format (ASF) (.asf)</p>
+</li>
+<li>
+<p>Advanced Video Coding High Definition (AVCHD) (.mts, .m2tf)</p>
+</li>
+<li>
+<p>Audio-Video Interleaved (AVI) (.avi)</p>
+</li>
+<li>
+<p>Digital camcorder MPEG-2 (MOD) (.mod)</p>
+</li>
+<li>
+<p>Digital video (DV) camera file (.dv)</p>
+</li>
+<li>
+<p>DVD transport stream (TS) file (.ts)</p>
+</li>
+<li>
+<p>DVD video object (VOB) file (.vob)</p>
+</li>
+<li>
+<p>Expression Encoder Screen Capture Codec file (.xesc)</p>
+</li>
+<li>
+<p>MP4 (.mp4)</p>
+</li>
+<li>
+<p>MPEG-1 System Stream (.mpeg, .mpg)</p>
+</li>
+<li>
+<p>MPEG-2 video file (.m2v)</p>
+</li>
+<li>
+<p>Smooth Streaming File Format (PIFF 1.3) (.ismv)</p>
+</li>
+<li>
+<p>Windows Media Video (WMV) (.wmv)</p>
+</li>
+</ul>
+<p>For more information on supported input formats and codecs, see: &lsquo;<a href="https://docs.microsoft.com/en-us/azure/media-services/media-services-media-encoder-standard-formats">Media
+Encoder Standard Formats and
+Codecs</a>&rsquo;</p>
+<h3 id="securing-your-video-when-uploading-to-ams">Securing your video when uploading to AMS<a hidden class="anchor" aria-hidden="true" href="#securing-your-video-when-uploading-to-ams">#</a></h3>
+<p>AMS provides the ability to secure your video when it&rsquo;s being uploaded
+to the AMS portal. All video files are associated with an <strong>Asset</strong>
+object in the AMS SDK. When you create a new Asset object for your
+video, you must specify an Encryption option as parameter. Each file
+added to the Asset will then use the Encryption option you specified.</p>
+<p>The AssetCreationOptions enumeration comes in four different flavors:</p>
+<ul>
+<li>
+<p>AssetCreationOptions.None</p>
+</li>
+<li>
+<p>AssetCreationOptions.StorageEncrypted</p>
+</li>
+<li>
+<p>AssetCreationOptions.CommonEncryptionProtected</p>
+</li>
+<li>
+<p>AssetCreationOptions.EnvelopeEncryptionProtected</p>
+</li>
+</ul>
+<p>For more information about protecting your content, see &lsquo;<a href="https://docs.microsoft.com/en-us/azure/media-services/media-services-content-protection-overview">AMS Protecting
+content
+overview</a>&rsquo;.</p>
+<p>So, enough background information for now. Let&rsquo;s do some coding!!</p>
+<h2 id="setting-up-your-application">Setting up your Application<a hidden class="anchor" aria-hidden="true" href="#setting-up-your-application">#</a></h2>
+<p>For more information about how to set up an AMS account and retrieving
+your account key, as well as some more information on setting up the
+Visual Studio solution, refer to <a href="https://blogs.msdn.microsoft.com/azuredev/2017/02/01/a-first-look-at-azure-media-services/">my previous
+post</a>.
+For this sample, I will use the same account and key which are used in
+the previous post.</p>
+<p>In this sample, we are going to use a more professional approach. Where
+in the previous sample, the video files where only uploaded, this time
+we will encode the video file, add a policy, a locator and secure the
+upload.</p>
+<p>So, the following tasks are performed by the sample code:</p>
+<ul>
+<li>
+<p>Create an empty Asset</p>
+</li>
+<li>
+<p>Create an AssetFile instance which is associated to the Asset</p>
+</li>
+<li>
+<p>Create an AccesPolicy that defines the access permissions and the
+duration of the Asset</p>
+</li>
+<li>
+<p>Create a
+<a href="https://docs.microsoft.com/en-us/rest/api/media/operations/locator">Locator</a>
+instance that provides access to the Asset. The Locator provides an
+access point by creating Url. This way the account key does not have
+to be shared, the files can be accessed using a custom Url.</p>
+</li>
+</ul>
+<p>Open Visual Studio and create a new C# console application. Install the
+<strong>windowsazure.mediaservices.extensions</strong> NuGet Package, add a reference
+to the System.Configuration assembly and add the appropriate App
+Settings to the App.config.</p>
+<p>Open the <strong>program.cs</strong> file and add the following using statements to
+it:</p>
+<p>using System.Configuration;</p>
+<p>using System.Threading;</p>
+<p>using System.IO;</p>
+<p>using Microsoft.WindowsAzure.MediaServices.Client;</p>
+<p>inside the class, add the following code:</p>
+<p>class Program</p>
+<p>{</p>
+<p>// Read values from the App.config file.</p>
+<p>private static readonly string _mediaServicesAccountName =</p>
+<p>ConfigurationManager.AppSettings[&quot;MediaServicesAccountName&quot;];</p>
+<p>private static readonly string _mediaServicesAccountKey =</p>
+<p>ConfigurationManager.AppSettings[&quot;MediaServicesAccountKey&quot;];</p>
+<p>private static CloudMediaContext _context = null;</p>
+<p>private static MediaServicesCredentials _cachedCredentials = null;</p>
+<p>static void Main(string[] args)</p>
+<p>{</p>
+<p>_cachedCredentials = new
+MediaServicesCredentials(_mediaServicesAccountName,</p>
+<p>_mediaServicesAccountKey);</p>
+<p>_context = new CloudMediaContext(_cachedCredentials);</p>
+<p>IAsset inputAsset =
+CreateAssetAndUploadSingleFile(@&quot;C:\SampleVideo.mp4&quot;,
+AssetCreationOptions.StorageEncrypted);</p>
+<p>EncodeToAdaptiveBitrateMP4Set(inputAsset);</p>
+<p>}</p>
+<p>static public IAsset CreateAssetAndUploadSingleFile(string
+singleFilePath, AssetCreationOptions assetCreationOptions)</p>
+<p>{</p>
+<p>if (!File.Exists(singleFilePath))</p>
+<p>{</p>
+<p>Console.WriteLine(&quot;File does not exist.&quot;);</p>
+<p>return null;</p>
+<p>}</p>
+<p>var assetName = Path.GetFileNameWithoutExtension(singleFilePath);</p>
+<p>//create a new input asset</p>
+<p>IAsset inputAsset = _context.Assets.Create(assetName,
+assetCreationOptions);</p>
+<p>var assetFile =
+inputAsset.AssetFiles.Create(Path.GetFileName(singleFilePath));</p>
+<p>Console.WriteLine(&quot;Created assetFile {0}&quot;, assetFile.Name);</p>
+<p>//create a 30-day read and list access policy</p>
+<p>var policy = _context.AccessPolicies.Create(</p>
+<p>assetName,</p>
+<p>TimeSpan.FromDays(30),</p>
+<p>AccessPermissions.Read | AccessPermissions.List);</p>
+<p>//create a SAS locator to the asset</p>
+<p>var locator = _context.Locators.CreateLocator(LocatorType.Sas,
+inputAsset, policy);</p>
+<p>Console.WriteLine(&quot;Upload {0}&quot;, assetFile.Name);</p>
+<p>assetFile.Upload(singleFilePath);</p>
+<p>Console.WriteLine(&quot;Done uploading {0}&quot;, assetFile.Name);</p>
+<p>locator.Delete();</p>
+<p>policy.Delete();</p>
+<p>return inputAsset;</p>
+<p>}</p>
+<p>static public IAsset EncodeToAdaptiveBitrateMP4Set(IAsset asset)</p>
+<p>{</p>
+<p>// Declare a new job.</p>
+<p>IJob job = _context.Jobs.Create(&quot;Media Encoder Standard Job&quot;);</p>
+<p>// Get a media processor reference, and pass to it the name of the</p>
+<p>// processor to use for the specific task.</p>
+<p>IMediaProcessor processor = GetLatestMediaProcessorByName(&quot;Media
+Encoder Standard&quot;);</p>
+<p>// Create a task with the encoding details, using a string preset.</p>
+<p>// In this case &quot;H264 Multiple Bitrate 720p&quot; preset is used.</p>
+<p>ITask task = job.Tasks.AddNew(&quot;My encoding task&quot;,</p>
+<p>processor,</p>
+<p>&quot;H264 Multiple Bitrate 720p&quot;,</p>
+<p>TaskOptions.None);</p>
+<p>// Specify the input asset to be encoded.</p>
+<p>task.InputAssets.Add(asset);</p>
+<p>// Add an output asset to contain the results of the job.</p>
+<p>// This output is specified as AssetCreationOptions.None, which</p>
+<p>// means the output asset is not encrypted.</p>
+<p>task.OutputAssets.AddNew(&quot;Output asset&quot;,</p>
+<p>AssetCreationOptions.None);</p>
+<p>job.StateChanged += new
+EventHandler&lt;JobStateChangedEventArgs&gt;(JobStateChanged);</p>
+<p>job.Submit();</p>
+<p>job.GetExecutionProgressTask(CancellationToken.None).Wait();</p>
+<p>return job.OutputMediaAssets[0];</p>
+<p>}</p>
+<p>private static void JobStateChanged(object sender,
+JobStateChangedEventArgs e)</p>
+<p>{</p>
+<p>//Eventhandler for monitoring the job state</p>
+<p>Console.WriteLine(&quot;Job state changed event:&quot;);</p>
+<p>Console.WriteLine(&quot; Previous state: &quot; + e.PreviousState);</p>
+<p>Console.WriteLine(&quot; Current state: &quot; + e.CurrentState);</p>
+<p>switch (e.CurrentState)</p>
+<p>{</p>
+<p>case JobState.Finished:</p>
+<p>Console.WriteLine();</p>
+<p>Console.WriteLine(&quot;Job is finished. Please wait while local tasks or
+downloads complete...&quot;);</p>
+<p>break;</p>
+<p>case JobState.Canceling:</p>
+<p>case JobState.Queued:</p>
+<p>case JobState.Scheduled:</p>
+<p>case JobState.Processing:</p>
+<p>Console.WriteLine(&quot;Please wait...\n&quot;);</p>
+<p>break;</p>
+<p>case JobState.Canceled:</p>
+<p>case JobState.Error:</p>
+<p>// Cast sender as a job.</p>
+<p>IJob job = (IJob)sender;</p>
+<p>// Display or log error details as needed.</p>
+<p>break;</p>
+<p>default:</p>
+<p>break;</p>
+<p>}</p>
+<p>}</p>
+<p>private static IMediaProcessor GetLatestMediaProcessorByName(string
+mediaProcessorName)</p>
+<p>{</p>
+<p>var processor = _context.MediaProcessors.Where(p =&gt; p.Name ==
+mediaProcessorName).</p>
+<p>ToList().OrderBy(p =&gt; new Version(p.Version)).LastOrDefault();</p>
+<p>if (processor == null)</p>
+<p>throw new ArgumentException(string.Format(&quot;Unknown media processor&quot;,
+mediaProcessorName));</p>
+<p>return processor;</p>
+<p>}</p>
+<p>}</p>
+<p>By executing this code, the video will be uploaded to the AMS account, a
+30-day access policy is created for the file, a locator Url is created
+on which the video can be displayed and the video is encoded using a
+Media Encoder.</p>
+<p>When you navigate to the AMS portal, you can see that there are two
+assets created.</p>
+<p><img loading="lazy" src="media/image1.png"></p>
+<p>Click the &lsquo;Output Asset&rsquo;, scroll down and you will see that the original
+file is encoded and that there are multiple files now. From here, you
+can publish the asset.</p>
+<p><img loading="lazy" src="media/image2.png"></p>
+<h2 id="summary">Summary<a hidden class="anchor" aria-hidden="true" href="#summary">#</a></h2>
+<p>This concludes this series of posts about Azure Media Services. Below is
+a list with reference materials used for this article. They provide a
+good starting point for building your own Azure Media Services
+solutions:</p>
+<ul>
+<li>
+<p><a href="https://msdn.microsoft.com/en-us/library/dn735914.aspx">Building an On-Demand Video Service with Microsoft Azure Media
+Services</a></p>
+</li>
+<li>
+<p><a href="https://docs.microsoft.com/en-us/azure/media-services/media-services-overview">Azure Media Services overview and common
+scenarios</a></p>
+</li>
+</ul>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+    </ul>
+<nav class="paginav">
+  <a class="prev" href="//localhost:1313/posts/2017-03-24-azure-ad-manually-create-authentication-code-part-1/">
+    <span class="title">« Prev</span>
+    <br>
+    <span>Azure AD: Manually Create Authentication Code Part 1</span>
+  </a>
+  <a class="next" href="//localhost:1313/posts/2017-02-08-azure-dev-interview/">
+    <span class="title">Next »</span>
+    <br>
+    <span>Azure Dev Interview</span>
+  </a>
+</nav>
+
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="//localhost:1313/">sjoukje.eth</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerHTML = 'copy';
+
+        function copyingDone() {
+            copybutton.innerHTML = 'copied!';
+            setTimeout(() => {
+                copybutton.innerHTML = 'copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+</body>
+
+</html>

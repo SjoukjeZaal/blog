@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto" data-theme="auto">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Microsoft Identities: What&#39;s new | sjoukje.eth</title>
+<meta name="keywords" content="">
+<meta name="description" content="At Build conference, a lot of new features were released. And of course,
+also in the Microsoft Identity space. This article will provide an
+overview of all the awesome new features that were covered there.
+Azure Active Directory v2.0 Endpoint
+The v2.0 endpoint allows developer to write apps that accept sign in
+from both Microsoft Accounts and Azure AD accounts, using one single
+authentication endpoint.
+When your application makes a call to the Microsoft Graph, additional
+functionality and data will be available for Azure AD users. For
+instance, data from SharePoint and Microsoft Teams. But for reading a
+user&rsquo;s mail, or retrieving contacts, the code is exactly the same for
+both Microsoft and Azure AD accounts.">
+<meta name="author" content="sjoukje.eth">
+<link rel="canonical" href="//localhost:1313/posts/2017-05-23-microsoft-identities/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.36f09b336921909a5971cfa84422229fa3edb550fa46b7707cb5436b0983bdcf.css" integrity="sha256-NvCbM2khkJpZcc&#43;oRCIin6PttVD6RrdwfLVDawmDvc8=" rel="preload stylesheet" as="style">
+<link rel="icon" href="//localhost:1313/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="//localhost:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="//localhost:1313/favicon-32x32.png">
+<link rel="apple-touch-icon" href="//localhost:1313/apple-touch-icon.png">
+<link rel="mask-icon" href="//localhost:1313/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="//localhost:1313/posts/2017-05-23-microsoft-identities/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script><meta property="og:url" content="//localhost:1313/posts/2017-05-23-microsoft-identities/">
+  <meta property="og:site_name" content="sjoukje.eth">
+  <meta property="og:title" content="Microsoft Identities: What&#39;s new">
+  <meta property="og:description" content="At Build conference, a lot of new features were released. And of course, also in the Microsoft Identity space. This article will provide an overview of all the awesome new features that were covered there.
+Azure Active Directory v2.0 Endpoint The v2.0 endpoint allows developer to write apps that accept sign in from both Microsoft Accounts and Azure AD accounts, using one single authentication endpoint.
+When your application makes a call to the Microsoft Graph, additional functionality and data will be available for Azure AD users. For instance, data from SharePoint and Microsoft Teams. But for reading a user’s mail, or retrieving contacts, the code is exactly the same for both Microsoft and Azure AD accounts.">
+  <meta property="og:locale" content="en-us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2017-05-23T00:00:00+00:00">
+    <meta property="article:modified_time" content="2017-05-23T00:00:00+00:00">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Microsoft Identities: What&#39;s new">
+<meta name="twitter:description" content="At Build conference, a lot of new features were released. And of course,
+also in the Microsoft Identity space. This article will provide an
+overview of all the awesome new features that were covered there.
+Azure Active Directory v2.0 Endpoint
+The v2.0 endpoint allows developer to write apps that accept sign in
+from both Microsoft Accounts and Azure AD accounts, using one single
+authentication endpoint.
+When your application makes a call to the Microsoft Graph, additional
+functionality and data will be available for Azure AD users. For
+instance, data from SharePoint and Microsoft Teams. But for reading a
+user&rsquo;s mail, or retrieving contacts, the code is exactly the same for
+both Microsoft and Azure AD accounts.">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "//localhost:1313/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "Microsoft Identities: What's new",
+      "item": "//localhost:1313/posts/2017-05-23-microsoft-identities/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Microsoft Identities: What's new",
+  "name": "Microsoft Identities: What\u0027s new",
+  "description": "At Build conference, a lot of new features were released. And of course, also in the Microsoft Identity space. This article will provide an overview of all the awesome new features that were covered there.\nAzure Active Directory v2.0 Endpoint The v2.0 endpoint allows developer to write apps that accept sign in from both Microsoft Accounts and Azure AD accounts, using one single authentication endpoint.\nWhen your application makes a call to the Microsoft Graph, additional functionality and data will be available for Azure AD users. For instance, data from SharePoint and Microsoft Teams. But for reading a user\u0026rsquo;s mail, or retrieving contacts, the code is exactly the same for both Microsoft and Azure AD accounts.\n",
+  "keywords": [
+    
+  ],
+  "articleBody": "At Build conference, a lot of new features were released. And of course, also in the Microsoft Identity space. This article will provide an overview of all the awesome new features that were covered there.\nAzure Active Directory v2.0 Endpoint The v2.0 endpoint allows developer to write apps that accept sign in from both Microsoft Accounts and Azure AD accounts, using one single authentication endpoint.\nWhen your application makes a call to the Microsoft Graph, additional functionality and data will be available for Azure AD users. For instance, data from SharePoint and Microsoft Teams. But for reading a user’s mail, or retrieving contacts, the code is exactly the same for both Microsoft and Azure AD accounts.\nFor more information about the v2.0 endpoint, check out the overview. However, there are some limitations to be aware of.\nNew Application Registration Portal To register an app that works with the v2.0 endpoint, you must use the new application registration portal:\nhttps://apps.dev.microsoft.com\nOne Application Middleware In .Net Core 2.0 (preview), there is only one application middleware using different handlers for OpenID Connect, Cookies, etc. In the near future (approximately 1 or 2 weeks), this will be released for mobile applications as well.\nProduction-Ready MSAL Preview At Build 2016 the first developer preview of the Microsoft Authentication Library (MSAL) was released for .NET. One year later, this SDK is now production ready and enhanced with MSAL iOS, MSAL Android and MSAL JavaScript.\nMSAL is the successor of ADAL and works with Azure AD v2. This means, using this SDK, you can also log in using work \u0026 school accounts, personal accounts and Azure B2C.\nFor a sample using MSAL, check the following site: https://azure.microsoft.com/nl-nl/resources/samples/active-directory-dotnet-webapp-openidconnect-v2/\nMicrosoft Graph The number of data sets that are available through the Microsoft Graph are now increased:\nThe SharePoint sites API, Planner API and OneNote APIs are now available in the Microsoft Graph v1.0 endpoint.\nThe Microsoft Teams APIs, the New Insights APIs, the refreshed SharePoint list APIs and the Office Reporting APIs are now available in the Microsoft Graph beta endpoint.\nDelta Query Delta query enables applications to discover newly created, updated or deleted data without performing a full read with every request. Delta query is available for Users, Groups, Messages, Mail Folders, Calendar Events, Personal Contact, Contact Folders and Drives.\nFor more information, check the Delta Query overview.\nNew Webhooks Applications can already subscribe to and receive notifications from several resources including messages, events, contacts, group conversations and drive root items.\nNow, new subscriptions to Azure AD Users and Groups and additional support for Outlook.com resources were introduced.\nFor more information on webhooks, check the following site: https://dev.office.com/blogs/guide-to-office-at-build-2017\nCustom Data Extensions You can extend the Microsoft Graph with your custom data. For instance, you can add your favorite color to your user profile data using the Graph. This new feature is now production-ready.\nFor more information, check the following article: https://dev.office.com/blogs/adding-customer-data-to-resources-in-Microsoft-Graph-preview\nBatching Using JSON batching requests, multiple requests to the Microsoft Graph can now be combined in a single HTTP call.\nMore information will be posted in the upcoming weeks at https://developer.microsoft.com/en-us/graph/\nAzure Active Directory B2C Azure Active Directory B2C, makes it easy for customers to sign in to applications using their existing social accounts (now Twitter as well). Besides that, you can also add your own.\nFor Azure AD B2C the following new features are available:\nMSAL (on all available platforms);\nThe ASP.NET middleware (OpenId Connect) works with B2C;\nNew web app templates for Visual Studio.\nCreate custom identity policies.\nWrap Up Lots of awesome new features regarding Microsoft Identities were released at build this year. I’ve tried to describe them all in this article but in case I’ve forgotten one, please let me know. I will then add them to the above overview.\nHopefully you are just as excited about this new features as I am!\n-Sjoukje\n",
+  "wordCount" : "641",
+  "inLanguage": "en",
+  "datePublished": "2017-05-23T00:00:00Z",
+  "dateModified": "2017-05-23T00:00:00Z",
+  "author":{
+    "@type": "Person",
+    "name": "sjoukje.eth"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "//localhost:1313/posts/2017-05-23-microsoft-identities/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "sjoukje.eth",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "//localhost:1313/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="//localhost:1313/" accesskey="h" title="sjoukje.eth (Alt + H)">sjoukje.eth</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="//localhost:1313/posts/" title="Posts">
+                    <span>Posts</span>
+                </a>
+            </li>
+            <li>
+                <a href="//localhost:1313/books/" title="Books">
+                    <span>Books</span>
+                </a>
+            </li>
+            <li>
+                <a href="//localhost:1313/about/" title="About">
+                    <span>About</span>
+                </a>
+            </li>
+            <li>
+                <a href="//localhost:1313/archives/" title="Archive">
+                    <span>Archive</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="//localhost:1313/">Home</a>&nbsp;»&nbsp;<a href="//localhost:1313/posts/">Posts</a></div>
+    <h1 class="post-title entry-hint-parent">
+      Microsoft Identities: What&#39;s new
+    </h1>
+    <div class="post-meta"><span title='2017-05-23 00:00:00 +0000 UTC'>May 23, 2017</span>&nbsp;·&nbsp;<span>4 min</span>&nbsp;·&nbsp;<span>sjoukje.eth</span>
+
+</div>
+  </header> 
+  <div class="post-content"><p>At Build conference, a lot of new features were released. And of course,
+also in the Microsoft Identity space. This article will provide an
+overview of all the awesome new features that were covered there.</p>
+<h2 id="azure-active-directory-v20-endpoint">Azure Active Directory v2.0 Endpoint<a hidden class="anchor" aria-hidden="true" href="#azure-active-directory-v20-endpoint">#</a></h2>
+<p>The v2.0 endpoint allows developer to write apps that accept sign in
+from both Microsoft Accounts and Azure AD accounts, using one single
+authentication endpoint.</p>
+<p>When your application makes a call to the Microsoft Graph, additional
+functionality and data will be available for Azure AD users. For
+instance, data from SharePoint and Microsoft Teams. But for reading a
+user&rsquo;s mail, or retrieving contacts, the code is exactly the same for
+both Microsoft and Azure AD accounts.</p>
+<p>For more information about the v2.0 endpoint, check out the
+<a href="https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-appmodel-v2-overview">overview</a>.
+However, there are some
+<a href="https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-v2-limitations">limitations</a>
+to be aware of.</p>
+<h2 id="new-application-registration-portal">New Application Registration Portal<a hidden class="anchor" aria-hidden="true" href="#new-application-registration-portal">#</a></h2>
+<p>To register an app that works with the v2.0 endpoint, you must use the
+new application registration portal:</p>
+<p><a href="https://apps.dev.microsoft.com">https://apps.dev.microsoft.com</a></p>
+<p><img loading="lazy" src="media/image1.png"></p>
+<h2 id="one-application-middleware">One Application Middleware<a hidden class="anchor" aria-hidden="true" href="#one-application-middleware">#</a></h2>
+<p>In .Net Core 2.0 (preview), there is only one application middleware
+using different handlers for OpenID Connect, Cookies, etc. In the near
+future (approximately 1 or 2 weeks), this will be released for mobile
+applications as well.</p>
+<h2 id="production-ready-msal-preview">Production-Ready MSAL Preview<a hidden class="anchor" aria-hidden="true" href="#production-ready-msal-preview">#</a></h2>
+<p>At Build 2016 the first developer preview of the Microsoft
+Authentication Library (MSAL) was released for .NET. One year later,
+this SDK is now production ready and enhanced with MSAL iOS, MSAL
+Android and MSAL JavaScript.</p>
+<p>MSAL is the successor of ADAL and works with Azure AD v2. This means,
+using this SDK, you can also log in using work &amp; school accounts,
+personal accounts and Azure B2C.</p>
+<p>For a sample using MSAL, check the following site:
+<a href="https://azure.microsoft.com/nl-nl/resources/samples/active-directory-dotnet-webapp-openidconnect-v2/">https://azure.microsoft.com/nl-nl/resources/samples/active-directory-dotnet-webapp-openidconnect-v2/</a></p>
+<h2 id="microsoft-graph">Microsoft Graph<a hidden class="anchor" aria-hidden="true" href="#microsoft-graph">#</a></h2>
+<p>The number of data sets that are available through the Microsoft Graph
+are now increased:</p>
+<ul>
+<li>
+<p>The SharePoint sites API, Planner API and OneNote APIs are now
+available in the Microsoft Graph v1.0 endpoint.</p>
+</li>
+<li>
+<p>The Microsoft Teams APIs, the New Insights APIs, the refreshed
+SharePoint list APIs and the Office Reporting APIs are now available
+in the Microsoft Graph beta endpoint.</p>
+</li>
+</ul>
+<h3 id="delta-query">Delta Query<a hidden class="anchor" aria-hidden="true" href="#delta-query">#</a></h3>
+<p>Delta query enables applications to discover newly created, updated or
+deleted data without performing a full read with every request. Delta
+query is available for Users, Groups, Messages, Mail Folders, Calendar
+Events, Personal Contact, Contact Folders and Drives.</p>
+<p>For more information, check the Delta Query
+<a href="https://developer.microsoft.com/en-us/graph/docs/concepts/delta_query_overview">overview</a>.</p>
+<h3 id="new-webhooks">New Webhooks<a hidden class="anchor" aria-hidden="true" href="#new-webhooks">#</a></h3>
+<p>Applications can already subscribe to and receive notifications from
+several resources including messages, events, contacts, group
+conversations and drive root items.</p>
+<p>Now, new subscriptions to Azure AD Users and Groups and additional
+support for Outlook.com resources were introduced.</p>
+<p>For more information on webhooks, check the following site:
+<a href="https://dev.office.com/blogs/guide-to-office-at-build-2017">https://dev.office.com/blogs/guide-to-office-at-build-2017</a></p>
+<h3 id="custom-data-extensions">Custom Data Extensions<a hidden class="anchor" aria-hidden="true" href="#custom-data-extensions">#</a></h3>
+<p>You can extend the Microsoft Graph with your custom data. For instance,
+you can add your favorite color to your user profile data using the
+Graph. This new feature is now production-ready.</p>
+<p>For more information, check the following article:
+<a href="https://dev.office.com/blogs/adding-customer-data-to-resources-in-Microsoft-Graph-preview">https://dev.office.com/blogs/adding-customer-data-to-resources-in-Microsoft-Graph-preview</a></p>
+<h3 id="batching">Batching<a hidden class="anchor" aria-hidden="true" href="#batching">#</a></h3>
+<p>Using JSON batching requests, multiple requests to the Microsoft Graph
+can now be combined in a single HTTP call.</p>
+<p>More information will be posted in the upcoming weeks at
+<a href="https://developer.microsoft.com/en-us/graph/">https://developer.microsoft.com/en-us/graph/</a></p>
+<h2 id="azure-active-directory-b2c">Azure Active Directory B2C<a hidden class="anchor" aria-hidden="true" href="#azure-active-directory-b2c">#</a></h2>
+<p>Azure Active Directory B2C, makes it easy for customers to sign in to
+applications using their existing social accounts (now Twitter as well).
+Besides that, you can also add your own.</p>
+<p>For Azure AD B2C the following new features are available:</p>
+<ul>
+<li>
+<p>MSAL (on all available platforms);</p>
+</li>
+<li>
+<p>The ASP.NET middleware (OpenId Connect) works with B2C;</p>
+</li>
+<li>
+<p>New web app templates for Visual Studio.</p>
+</li>
+<li>
+<p>Create custom identity policies.</p>
+</li>
+</ul>
+<h2 id="wrap-up">Wrap Up<a hidden class="anchor" aria-hidden="true" href="#wrap-up">#</a></h2>
+<p>Lots of awesome new features regarding Microsoft Identities were
+released at build this year. I&rsquo;ve tried to describe them all in this
+article but in case I&rsquo;ve forgotten one, please let me know. I will then
+add them to the above overview.</p>
+<p>Hopefully you are just as excited about this new features as I am!</p>
+<p>-Sjoukje</p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+    </ul>
+<nav class="paginav">
+  <a class="prev" href="//localhost:1313/posts/2017-06-20-registering-your-application-in-the-new-application-portal/">
+    <span class="title">« Prev</span>
+    <br>
+    <span>Registering your application in the new Application Portal</span>
+  </a>
+  <a class="next" href="//localhost:1313/posts/2017-04-25-azure-admanually-create-authentication-code-part-2/">
+    <span class="title">Next »</span>
+    <br>
+    <span>Azure AD -- Manually add authentication code to your app Part 2</span>
+  </a>
+</nav>
+
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="//localhost:1313/">sjoukje.eth</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerHTML = 'copy';
+
+        function copyingDone() {
+            copybutton.innerHTML = 'copied!';
+            setTimeout(() => {
+                copybutton.innerHTML = 'copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+</body>
+
+</html>

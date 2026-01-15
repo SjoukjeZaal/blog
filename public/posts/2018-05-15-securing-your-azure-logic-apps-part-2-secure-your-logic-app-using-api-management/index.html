@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto" data-theme="auto">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Securing Your Azure Logic Apps Part 2: Secure your Logic App using API Management -- Access Restriction Policies | sjoukje.eth</title>
+<meta name="keywords" content="">
+<meta name="description" content="This is the second part in the series about securing your Logic Apps. In
+the previous post, I&rsquo;ve provided several ways to secure your Logic App
+at the Trigger Level. In this post, I&rsquo;m going to show how to secure your
+App using API Management.
+In this series:
+
+
+Secure access to the
+trigger.
+
+
+Secure your Logic App using API Management &ndash; Access Restriction
+Policies (this post).
+
+
+Secure your Logic App using API Management &ndash; Validate JWT Access
+Restriction Policy.">
+<meta name="author" content="sjoukje.eth">
+<link rel="canonical" href="//localhost:1313/posts/2018-05-15-securing-your-azure-logic-apps-part-2-secure-your-logic-app-using-api-management/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.36f09b336921909a5971cfa84422229fa3edb550fa46b7707cb5436b0983bdcf.css" integrity="sha256-NvCbM2khkJpZcc&#43;oRCIin6PttVD6RrdwfLVDawmDvc8=" rel="preload stylesheet" as="style">
+<link rel="icon" href="//localhost:1313/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="//localhost:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="//localhost:1313/favicon-32x32.png">
+<link rel="apple-touch-icon" href="//localhost:1313/apple-touch-icon.png">
+<link rel="mask-icon" href="//localhost:1313/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="//localhost:1313/posts/2018-05-15-securing-your-azure-logic-apps-part-2-secure-your-logic-app-using-api-management/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script><meta property="og:url" content="//localhost:1313/posts/2018-05-15-securing-your-azure-logic-apps-part-2-secure-your-logic-app-using-api-management/">
+  <meta property="og:site_name" content="sjoukje.eth">
+  <meta property="og:title" content="Securing Your Azure Logic Apps Part 2: Secure your Logic App using API Management -- Access Restriction Policies">
+  <meta property="og:description" content="This is the second part in the series about securing your Logic Apps. In the previous post, I’ve provided several ways to secure your Logic App at the Trigger Level. In this post, I’m going to show how to secure your App using API Management.
+In this series:
+Secure access to the trigger.
+Secure your Logic App using API Management – Access Restriction Policies (this post).
+Secure your Logic App using API Management – Validate JWT Access Restriction Policy.">
+  <meta property="og:locale" content="en-us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2018-05-15T00:00:00+00:00">
+    <meta property="article:modified_time" content="2018-05-15T00:00:00+00:00">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Securing Your Azure Logic Apps Part 2: Secure your Logic App using API Management -- Access Restriction Policies">
+<meta name="twitter:description" content="This is the second part in the series about securing your Logic Apps. In
+the previous post, I&rsquo;ve provided several ways to secure your Logic App
+at the Trigger Level. In this post, I&rsquo;m going to show how to secure your
+App using API Management.
+In this series:
+
+
+Secure access to the
+trigger.
+
+
+Secure your Logic App using API Management &ndash; Access Restriction
+Policies (this post).
+
+
+Secure your Logic App using API Management &ndash; Validate JWT Access
+Restriction Policy.">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "//localhost:1313/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "Securing Your Azure Logic Apps Part 2: Secure your Logic App using API Management -- Access Restriction Policies",
+      "item": "//localhost:1313/posts/2018-05-15-securing-your-azure-logic-apps-part-2-secure-your-logic-app-using-api-management/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Securing Your Azure Logic Apps Part 2: Secure your Logic App using API Management -- Access Restriction Policies",
+  "name": "Securing Your Azure Logic Apps Part 2: Secure your Logic App using API Management -- Access Restriction Policies",
+  "description": "This is the second part in the series about securing your Logic Apps. In the previous post, I\u0026rsquo;ve provided several ways to secure your Logic App at the Trigger Level. In this post, I\u0026rsquo;m going to show how to secure your App using API Management.\nIn this series:\nSecure access to the trigger.\nSecure your Logic App using API Management \u0026ndash; Access Restriction Policies (this post).\nSecure your Logic App using API Management \u0026ndash; Validate JWT Access Restriction Policy.\n",
+  "keywords": [
+    
+  ],
+  "articleBody": "This is the second part in the series about securing your Logic Apps. In the previous post, I’ve provided several ways to secure your Logic App at the Trigger Level. In this post, I’m going to show how to secure your App using API Management.\nIn this series:\nSecure access to the trigger.\nSecure your Logic App using API Management – Access Restriction Policies (this post).\nSecure your Logic App using API Management – Validate JWT Access Restriction Policy.\nSetting up API Management Open the Azure Portal and create a new service. Search for ‘API Management’ and click the Create button.\nEnter a name for the service, select the Azure subscription and select the resource group. I’ve picked the same resource group which I have created for the previous post. Add an organization name, an email address and pick a pricing tier. After that, click Create.\nIt takes some time to create the API Management service. After creation and activation, open it from the Azure Portal**.**\nAdding the API I’m using the Logic App which is created in the previous post to import into the publishing portal. So, copy the callback URL from the settings page of the Logic App in the settings portal.\nIn the left menu of your API Management Service, click APIs – Preview.\nA wizard is opened. Select the Logic App in here.\nYou can now browse for your Logic App. Cool!\nClick the Browse button and select the Logic App that you want to import. Add a API URL suffix, I’ve named my ‘secure’ and click Create.\nNote: If you are using the Logic App which is created in the previous post, don’t forget to remove the NotAfter tag from your Logic App code. This will cause an error when importing into the API Management Service.\nAnd there it is!!\nIn this design surface we now have an visual representation of the API, including out Logic App backend. The current context is set for all operations, so all policy changes will take place on a “global” level.\nSelect ‘Manual-invoke’ below the already selected ‘All Operations’.\nInstead of empty policies, this will display some default policies that are already in place by importing the Logic App.\nAccess Restriction Policies To add authentication to this API we need to add some extra policies to the design surface.\nCheck HTTP Header The first is the Check HTTP header policy. For this we are going add an extra check to the header of the request.\nClick the arrow next to Inbound Processing and click Form-based Editor.\nOn the right, click Code View.\nSet your cursor inside the tag and under Access Restriction Policies, click on Check HTTP header.\nThere is a code block added to the xml. Replace it with the following:\nYes\nClick Save.\nClick Test in the left menu, add an additional header to the header section, which is equivalent to the header code block which is added in the previous step, add the body text to the Request Body part and click Send.\nIf anything went well you will a similar response like displayed below:\nLimit Call Rate Per Key Next is the possibility to limit the call rate per key. This adds Throttling capabilities to your API.\nTo add this functionality to your API, open the Code View again (refer to the previous Access Restriction Policy), place the cursor in the tag and click the Limit Call Rate Per Key. The boilerplate code is added to the xml.\nReplace the code with the following:\nIn the above sample, the API only allows 10 requests in 1 minute from a certain IP Address.\nFor more samples about Advanced Throttling, check the following article: https://docs.microsoft.com/en-us/azure/api-management/api-management-sample-flexible-throttling\nSet Usage Quota Per Key In addition to the above, you can also set throttling based on a certain quota.\nAdd the Boilerplate code to the code view to the tag, by clicking the Set usage quota per key link on the right.\nReplace the code with the following:\n",
+  "wordCount" : "860",
+  "inLanguage": "en",
+  "datePublished": "2018-05-15T00:00:00Z",
+  "dateModified": "2018-05-15T00:00:00Z",
+  "author":{
+    "@type": "Person",
+    "name": "sjoukje.eth"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "//localhost:1313/posts/2018-05-15-securing-your-azure-logic-apps-part-2-secure-your-logic-app-using-api-management/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "sjoukje.eth",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "//localhost:1313/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="//localhost:1313/" accesskey="h" title="sjoukje.eth (Alt + H)">sjoukje.eth</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="//localhost:1313/posts/" title="Posts">
+                    <span>Posts</span>
+                </a>
+            </li>
+            <li>
+                <a href="//localhost:1313/books/" title="Books">
+                    <span>Books</span>
+                </a>
+            </li>
+            <li>
+                <a href="//localhost:1313/about/" title="About">
+                    <span>About</span>
+                </a>
+            </li>
+            <li>
+                <a href="//localhost:1313/archives/" title="Archive">
+                    <span>Archive</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="//localhost:1313/">Home</a>&nbsp;»&nbsp;<a href="//localhost:1313/posts/">Posts</a></div>
+    <h1 class="post-title entry-hint-parent">
+      Securing Your Azure Logic Apps Part 2: Secure your Logic App using API Management -- Access Restriction Policies
+    </h1>
+    <div class="post-meta"><span title='2018-05-15 00:00:00 +0000 UTC'>May 15, 2018</span>&nbsp;·&nbsp;<span>5 min</span>&nbsp;·&nbsp;<span>sjoukje.eth</span>
+
+</div>
+  </header> 
+  <div class="post-content"><p>This is the second part in the series about securing your Logic Apps. In
+the previous post, I&rsquo;ve provided several ways to secure your Logic App
+at the Trigger Level. In this post, I&rsquo;m going to show how to secure your
+App using API Management.</p>
+<p>In this series:</p>
+<ul>
+<li>
+<p><a href="https://blogs.msdn.microsoft.com/azuredev/2017/07/26/securing-your-azure-logic-apps-part-1-secure-access-to-the-trigger/">Secure access to the
+trigger</a>.</p>
+</li>
+<li>
+<p>Secure your Logic App using API Management &ndash; Access Restriction
+Policies (this post).</p>
+</li>
+<li>
+<p>Secure your Logic App using API Management &ndash; Validate JWT Access
+Restriction Policy.</p>
+</li>
+</ul>
+<h2 id="setting-up-api-management">Setting up API Management<a hidden class="anchor" aria-hidden="true" href="#setting-up-api-management">#</a></h2>
+<p>Open the Azure Portal and create a new service. Search for &lsquo;API
+Management&rsquo; and click the <strong>Create</strong> button.</p>
+<p>Enter a name for the service, select the Azure subscription and select
+the resource group. I&rsquo;ve picked the same resource group which I have
+created for the <a href="https://blogs.msdn.microsoft.com/azuredev/2017/07/26/securing-your-azure-logic-apps-part-1-secure-access-to-the-trigger/">previous
+post</a>.
+Add an organization name, an email address and pick a pricing tier.
+After that, click <strong>Create</strong>.</p>
+<p>It takes some time to create the API Management service. After creation
+and activation, open it from the Azure Portal**.**</p>
+<h2 id="adding-the-api">Adding the API<a hidden class="anchor" aria-hidden="true" href="#adding-the-api">#</a></h2>
+<p>I&rsquo;m using the Logic App which is created in the previous post to import
+into the publishing portal. So, copy the callback URL from the settings
+page of the Logic App in the settings portal.</p>
+<p>In the left menu of your API Management Service, click <strong>APIs &ndash;
+Preview</strong>.</p>
+<p>A wizard is opened. Select the Logic App in here.</p>
+<p>You can now browse for your Logic App. Cool!</p>
+<p>Click the <strong>Browse</strong> button and select the Logic App that you want to
+import. Add a API URL suffix, I&rsquo;ve named my &lsquo;<strong>secure</strong>&rsquo; and click
+<strong>Create</strong>.</p>
+<p><em>Note: If you are using the Logic App which is created in the previous
+post, don&rsquo;t forget to remove the <strong>NotAfter</strong> tag from your Logic App
+code. This will cause an error when importing into the API Management
+Service.</em></p>
+<p>And there it is!!</p>
+<p>In this design surface we now have an visual representation of the API,
+including out Logic App backend. The current context is set for all
+operations, so all policy changes will take place on a &ldquo;global&rdquo; level.</p>
+<p>Select &lsquo;Manual-invoke&rsquo; below the already selected &lsquo;All
+Operations&rsquo;.</p>
+<p>Instead of empty policies, this will display some default policies that
+are already in place by importing the Logic App.</p>
+<h2 id="access-restriction-policies">Access Restriction Policies<a hidden class="anchor" aria-hidden="true" href="#access-restriction-policies">#</a></h2>
+<p>To add authentication to this API we need to add some extra policies to
+the design surface.</p>
+<h3 id="check-http-header">Check HTTP Header<a hidden class="anchor" aria-hidden="true" href="#check-http-header">#</a></h3>
+<p>The first is the Check HTTP header policy. For this we are going add an
+extra check to the header of the request.</p>
+<p>Click the arrow next to Inbound Processing and click <strong>Form-based
+Editor.</strong></p>
+<p>On the right, click <strong>Code View</strong>.</p>
+<p>Set your cursor inside the &lt;inbound&gt; tag and under <strong>Access
+Restriction Policies</strong>, click on <strong>Check HTTP header</strong>.</p>
+<p>There is a code block added to the xml. Replace it with the following:</p>
+<p>&lt;check-header name=&quot;ExtraCheck&quot; failed-check-httpcode=&quot;401&quot;
+failed-check-error-message=&quot;Not authorized&quot; ignore-case=&quot;false&quot;&gt;</p>
+<p>&lt;value&gt;Yes&lt;/value&gt;</p>
+<p>&lt;/check-header&gt;</p>
+<p>Click <strong>Save.</strong></p>
+<p>Click <strong>Test</strong> in the left menu, add an additional header to the header
+section, which is equivalent to the header code block which is added in
+the previous step, add the body text to the <strong>Request Body</strong> part and
+click <strong>Send.</strong></p>
+<p>If anything went well you will a similar response like displayed below:</p>
+<h3 id="limit-call-rate-per-key">Limit Call Rate Per Key<a hidden class="anchor" aria-hidden="true" href="#limit-call-rate-per-key">#</a></h3>
+<p>Next is the possibility to limit the call rate per key. This adds
+Throttling capabilities to your API.</p>
+<p>To add this functionality to your API, open the <strong>Code View</strong> again
+(refer to the previous Access Restriction Policy), place the cursor in
+the &lt;inbound&gt; tag and click the <strong>Limit Call Rate Per Key.</strong> The
+boilerplate code is added to the xml.</p>
+<p>Replace the code with the following:</p>
+<p>&lt;rate-limit-by-key calls=&quot;10&quot; renewal-period=&quot;60&quot;
+increment-condition=&quot;@(context.Response.StatusCode == 200)&quot;
+counter-key=&quot;@(context.Request.IpAddress)&quot;/&gt;</p>
+<p>In the above sample, the API only allows 10 requests in 1 minute from a
+certain IP Address.</p>
+<p>For more samples about Advanced Throttling, check the following article:
+<a href="https://docs.microsoft.com/en-us/azure/api-management/api-management-sample-flexible-throttling">https://docs.microsoft.com/en-us/azure/api-management/api-management-sample-flexible-throttling</a></p>
+<h3 id="set-usage-quota-per-key">Set Usage Quota Per Key<a hidden class="anchor" aria-hidden="true" href="#set-usage-quota-per-key">#</a></h3>
+<p>In addition to the above, you can also set throttling based on a certain
+quota.</p>
+<p>Add the Boilerplate code to the code view to the &lt;inboud&gt; tag, by
+clicking the <strong>Set usage quota per key</strong> link on the right.</p>
+<p>Replace the code with the following:</p>
+<p>&lt;quota-by-key calls=&quot;10000&quot; bandwidth=&quot;40000&quot;
+renewal-period=&quot;2629800&quot;</p>
+<p>increment-condition=&quot;@(context.Response.StatusCode &gt;= 200 &amp;&amp;
+context.Response.StatusCode &lt; 400)&quot;</p>
+<p>counter-key=&quot;@(context.Request.IpAddress)&quot; /&gt;</p>
+<h2 id="this-policy-restricts-a-single-client-ip-address-to-a-total-of-10000-calls-and-40000-kilobytes-of-bandwidth-per-month">This policy restricts a single client IP address to a total of 10000 calls and 40,000 kilobytes of bandwidth per month.<a hidden class="anchor" aria-hidden="true" href="#this-policy-restricts-a-single-client-ip-address-to-a-total-of-10000-calls-and-40000-kilobytes-of-bandwidth-per-month">#</a></h2>
+<p>You can also combine these last two access restriction policies.</p>
+<h3 id="restrict-caller-ips">Restrict Caller IPs<a hidden class="anchor" aria-hidden="true" href="#restrict-caller-ips">#</a></h3>
+<p>You can also allow or deny calls from specific IP addresses by adding
+the following piece of xml to the &lt;inbound&gt; tag:</p>
+<p>&lt;ip-filter action=&quot;forbid&quot;&gt;</p>
+<p>&lt;address&gt;192.168.1.1&lt;/address&gt;</p>
+<p>&lt;/ip-filter&gt;</p>
+<p>Or use the following for a range of IP addresses:</p>
+<p>&lt;ip-filter action=&quot;forbid&quot;&gt;</p>
+<p>&lt;address-range from=&quot;192.168.1.1&quot; to=&quot;192.168.1.100&quot;/&gt;</p>
+<p>&lt;/ip-filter&gt;</p>
+<h2 id="conclusion">Conclusion<a hidden class="anchor" aria-hidden="true" href="#conclusion">#</a></h2>
+<p>The new preview API functionality I&rsquo;ve used in this post works a lot
+better than the previous way of adding your policies!</p>
+<p>Azure API Management adds a lot of functionality for authentication
+scenario&rsquo;s. Most of the Access Restriction Policies are discussed in
+this post, except for the Validate JWT policy. I&rsquo;m going to write about
+that one in a separate post, because it is basically too much to add to
+this post as well.</p>
+<p>So, there is more to come in this series of posts&hellip;</p>
+<p>-Sjoukje</p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+    </ul>
+<nav class="paginav">
+  <a class="prev" href="//localhost:1313/posts/2018-05-16-securing-your-azure-logic-apps-part-3-secure-your-logic-app-using-azure-active-directory/">
+    <span class="title">« Prev</span>
+    <br>
+    <span>Securing Your Azure Logic Apps Part 3: Secure your Logic App with Azure Active Directory using Azure API Management</span>
+  </a>
+  <a class="next" href="//localhost:1313/posts/2018-05-14-securing-your-azure-logic-apps-part-1-secure-access-to-the-trigger/">
+    <span class="title">Next »</span>
+    <br>
+    <span>Securing Your Azure Logic Apps Part 1: Secure access to the trigger</span>
+  </a>
+</nav>
+
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="//localhost:1313/">sjoukje.eth</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerHTML = 'copy';
+
+        function copyingDone() {
+            copybutton.innerHTML = 'copied!';
+            setTimeout(() => {
+                copybutton.innerHTML = 'copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+</body>
+
+</html>
