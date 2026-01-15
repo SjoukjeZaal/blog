@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" dir="auto" data-theme="auto">
 
-<head><meta charset="utf-8">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="index, follow">
@@ -18,16 +18,16 @@ samples you can use in your own projects. I will stick to Microsoft Best
 Practices and give some more information on (workflow) Architecture,
 reusability and security regarding this topic.">
 <meta name="author" content="sjoukje.eth">
-<link rel="canonical" href="/posts/2016-11-08-sharepoint-2013-workflows/">
+<link rel="canonical" href="//localhost:1313/posts/2016-11-08-sharepoint-2013-workflows/">
 <link crossorigin="anonymous" href="/assets/css/stylesheet.36f09b336921909a5971cfa84422229fa3edb550fa46b7707cb5436b0983bdcf.css" integrity="sha256-NvCbM2khkJpZcc&#43;oRCIin6PttVD6RrdwfLVDawmDvc8=" rel="preload stylesheet" as="style">
-<link rel="icon" href="/favicon.ico">
-<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-<link rel="apple-touch-icon" href="/apple-touch-icon.png">
-<link rel="mask-icon" href="/safari-pinned-tab.svg">
+<link rel="icon" href="//localhost:1313/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="//localhost:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="//localhost:1313/favicon-32x32.png">
+<link rel="apple-touch-icon" href="//localhost:1313/apple-touch-icon.png">
+<link rel="mask-icon" href="//localhost:1313/safari-pinned-tab.svg">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
-<link rel="alternate" hreflang="en" href="/posts/2016-11-08-sharepoint-2013-workflows/">
+<link rel="alternate" hreflang="en" href="//localhost:1313/posts/2016-11-08-sharepoint-2013-workflows/">
 <noscript>
     <style>
         #theme-toggle,
@@ -79,7 +79,7 @@ reusability and security regarding this topic.">
         document.querySelector("html").dataset.theme = 'light';
     }
 
-</script><meta property="og:url" content="/posts/2016-11-08-sharepoint-2013-workflows/">
+</script><meta property="og:url" content="//localhost:1313/posts/2016-11-08-sharepoint-2013-workflows/">
   <meta property="og:site_name" content="sjoukje.eth">
   <meta property="og:title" content="SharePoint 2013 Workflows -- Introduction">
   <meta property="og:description" content="In this series of posts I will take a deep dive on creating Workflows in SharePoint 2013. As I am focusing on Microsoft integration in my daily work and had to create some workflows for the SharePoint 2013 platform in the last months, I have spent a lot of time doing research on this subject.
@@ -112,13 +112,13 @@ reusability and security regarding this topic.">
       "@type": "ListItem",
       "position":  1 ,
       "name": "Posts",
-      "item": "/posts/"
-    }
+      "item": "//localhost:1313/posts/"
+    }, 
     {
       "@type": "ListItem",
-      "position":  1 ,
+      "position":  2 ,
       "name": "SharePoint 2013 Workflows -- Introduction",
-      "item": "/posts/2016-11-08-sharepoint-2013-workflows/"
+      "item": "//localhost:1313/posts/2016-11-08-sharepoint-2013-workflows/"
     }
   ]
 }
@@ -144,14 +144,14 @@ reusability and security regarding this topic.">
   },
   "mainEntityOfPage": {
     "@type": "WebPage",
-    "@id": "/posts/2016-11-08-sharepoint-2013-workflows/"
+    "@id": "//localhost:1313/posts/2016-11-08-sharepoint-2013-workflows/"
   },
   "publisher": {
     "@type": "Organization",
     "name": "sjoukje.eth",
     "logo": {
       "@type": "ImageObject",
-      "url": "/favicon.ico"
+      "url": "//localhost:1313/favicon.ico"
     }
   }
 }
@@ -161,7 +161,7 @@ reusability and security regarding this topic.">
     <header class="header">
     <nav class="nav">
         <div class="logo">
-            <a href="/" accesskey="h" title="sjoukje.eth (Alt + H)">sjoukje.eth</a>
+            <a href="//localhost:1313/" accesskey="h" title="sjoukje.eth (Alt + H)">sjoukje.eth</a>
             <div class="logo-switches">
                 <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
                     <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
@@ -187,27 +187,27 @@ reusability and security regarding this topic.">
         </div>
         <ul id="menu">
             <li>
-                <a href="/posts/" title="Posts">
+                <a href="//localhost:1313/posts/" title="Posts">
                     <span>Posts</span>
                 </a>
             </li>
             <li>
-                <a href="/books/" title="Books">
+                <a href="//localhost:1313/books/" title="Books">
                     <span>Books</span>
                 </a>
             </li>
             <li>
-                <a href="/about/" title="About">
+                <a href="//localhost:1313/about/" title="About">
                     <span>About</span>
                 </a>
             </li>
             <li>
-                <a href="/archives/" title="Archive">
+                <a href="//localhost:1313/archives/" title="Archive">
                     <span>Archive</span>
                 </a>
             </li>
             <li>
-                <a href="/search/" title="Search (Alt &#43; /)" accesskey=/>
+                <a href="//localhost:1313/search/" title="Search (Alt &#43; /)" accesskey=/>
                     <span>Search</span>
                 </a>
             </li>
@@ -218,14 +218,72 @@ reusability and security regarding this topic.">
 
 <article class="post-single">
   <header class="post-header">
-    <div class="breadcrumbs"><a href="/">Home</a>&nbsp;»&nbsp;<a href="/posts/">Posts</a></div>
+    <div class="breadcrumbs"><a href="//localhost:1313/">Home</a>&nbsp;»&nbsp;<a href="//localhost:1313/posts/">Posts</a></div>
     <h1 class="post-title entry-hint-parent">
       SharePoint 2013 Workflows -- Introduction
     </h1>
     <div class="post-meta"><span title='2016-11-08 00:00:00 +0000 UTC'>November 8, 2016</span>&nbsp;·&nbsp;<span>17 min</span>&nbsp;·&nbsp;<span>sjoukje.eth</span>
 
 </div>
-  </header> 
+  </header> <div class="toc">
+    <details  open>
+        <summary accesskey="c" title="(Alt + C)">
+            <span class="details">Table of Contents</span>
+        </summary>
+
+        <div class="inner"><ul>
+                <li>
+                    <a href="#sharepoint-2013-workflow-part-1-workflow-manager-architecture" aria-label="SharePoint 2013 Workflow Part 1: Workflow Manager Architecture">SharePoint 2013 Workflow Part 1: Workflow Manager Architecture</a><ul>
+                        
+                <li>
+                    <a href="#workflow-architecture" aria-label="Workflow Architecture">Workflow Architecture</a></li>
+                <li>
+                    <a href="#how-it-works" aria-label="How it works">How it works</a></li>
+                <li>
+                    <a href="#improvements" aria-label="Improvements">Improvements</a></li>
+                <li>
+                    <a href="#summary" aria-label="Summary">Summary</a></li></ul>
+                </li>
+                <li>
+                    <a href="#sharepoint-2013-workflows-part-2-installing-and-configuring-the-workflow-manager" aria-label="SharePoint 2013 Workflows Part 2: Installing and Configuring The Workflow Manager">SharePoint 2013 Workflows Part 2: Installing and Configuring The Workflow Manager</a><ul>
+                        
+                <li>
+                    <a href="#installing-the-workflow-manager" aria-label="Installing the Workflow Manager">Installing the Workflow Manager</a></li>
+                <li>
+                    <a href="#configuring-the-workflow-manager" aria-label="Configuring the Workflow Manager">Configuring the Workflow Manager</a></li>
+                <li>
+                    <a href="#updating-workflow-manager-10" aria-label="Updating Workflow Manager 1.0">Updating Workflow Manager 1.0</a></li>
+                <li>
+                    <a href="#summary-1" aria-label="Summary">Summary</a></li></ul>
+                </li>
+                <li>
+                    <a href="#sharepoint-2013-workflows-part-3-using-the-sharepoint-2013-rest-api-in-a-visual-studio-2013-workflow" aria-label="SharePoint 2013 Workflows Part 3: Using the SharePoint 2013 REST API in a Visual Studio 2013 Workflow">SharePoint 2013 Workflows Part 3: Using the SharePoint 2013 REST API in a Visual Studio 2013 Workflow</a><ul>
+                        
+                <li>
+                    <a href="#setting-up-the-visual-studio-project" aria-label="Setting Up the Visual Studio Project">Setting Up the Visual Studio Project</a></li>
+                <li>
+                    <a href="#creating-the-workflow" aria-label="Creating the Workflow">Creating the Workflow</a><ul>
+                        
+                <li>
+                    <a href="#get-listitem-properties" aria-label="Get ListItem Properties">Get ListItem Properties</a></li>
+                <li>
+                    <a href="#retrieve-the-root-site-collection-url" aria-label="Retrieve the Root Site Collection Url">Retrieve the Root Site Collection Url</a></li>
+                <li>
+                    <a href="#security-digest" aria-label="Security Digest">Security Digest</a></li>
+                <li>
+                    <a href="#create-the-new-list-item" aria-label="Create the new List Item">Create the new List Item</a></li>
+                <li>
+                    <a href="#deploying-the-workflow" aria-label="Deploying the Workflow">Deploying the Workflow</a>
+                </li>
+            </ul>
+            </li>
+            </ul>
+            </li>
+            </ul>
+        </div>
+    </details>
+</div>
+
   <div class="post-content"><p>In this series of posts I will take a deep dive on creating Workflows in
 SharePoint 2013. As I am focusing on Microsoft integration in my daily
 work and had to create some workflows for the SharePoint 2013 platform
@@ -837,12 +895,12 @@ If you did not already deployed the Farm feature do it now.</p>
     <ul class="post-tags">
     </ul>
 <nav class="paginav">
-  <a class="prev" href="/posts/2016-11-08-error-after-installing-cumulative-update-for-workflow-manager/">
+  <a class="prev" href="//localhost:1313/posts/2016-11-08-error-after-installing-cumulative-update-for-workflow-manager/">
     <span class="title">« Prev</span>
     <br>
     <span>Microsoft.Workflow.Common.FatalException error after installing Cumulative Update for Workflow Manager 1.0</span>
   </a>
-  <a class="next" href="/posts/2016-11-07-biztalk-2013-install-ssl-certificates-store_1/">
+  <a class="next" href="//localhost:1313/posts/2016-11-07-biztalk-2013-install-ssl-certificates-store_1/">
     <span class="title">Next »</span>
     <br>
     <span>Certificates in BizTalk 2013 Part 1: How To Install SSL Certificates in the Certificate store</span>
@@ -854,7 +912,7 @@ If you did not already deployed the Farm feature do it now.</p>
     </main>
     
 <footer class="footer">
-        <span>&copy; 2026 <a href="/">sjoukje.eth</a></span> · 
+        <span>&copy; 2026 <a href="//localhost:1313/">sjoukje.eth</a></span> · 
 
     <span>
         Powered by

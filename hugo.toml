@@ -28,6 +28,9 @@ canonifyURLs = false
     ShowBreadCrumbs = true
     ShowCodeCopyButtons = true
     showPostMeta = true
+
+    ShowToc = true
+    TocOpen = true  # Klapt hem standaard open
     
     [params.homeInfoParams]
         Title = "Hi there \U0001F44B"

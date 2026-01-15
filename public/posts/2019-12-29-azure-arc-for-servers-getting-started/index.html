@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" dir="auto" data-theme="auto">
 
-<head><meta charset="utf-8">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="index, follow">
@@ -11,16 +11,16 @@
 For the last two years, Microsoft is investing enormously in enabling seamless hybrid capabilities. They released Azure Stack, which enables a consistent cloud model, but is deployed on-premises. They enabled security threat protection for any infrastructure, which is fully powered from the cloud, and they enabled the ability to run Microsoft Azure Cognitive Services AI models anywhere. Microsoft recently released Azure Arc, which unlocks new hybrid scenarios for organizations by bringing new Azure services and management features to any infrastructure.
 Azure Arc extends the Azure Resource Manager capabilities to Linux and Windows servers, and Kubernetes clusters on any infrastructure across on-premises, multi-cloud, and the edge. You can use Azure Arc to run Azure data services anywhere, which includes always up-to-date data capabilities, deployment in seconds, and dynamic scalability on any infrastructure. Azure Arc for Servers is currently in preview, and that is what we are going to cover in this post.">
 <meta name="author" content="sjoukje.eth">
-<link rel="canonical" href="/posts/2019-12-29-azure-arc-for-servers-getting-started/">
+<link rel="canonical" href="//localhost:1313/posts/2019-12-29-azure-arc-for-servers-getting-started/">
 <link crossorigin="anonymous" href="/assets/css/stylesheet.36f09b336921909a5971cfa84422229fa3edb550fa46b7707cb5436b0983bdcf.css" integrity="sha256-NvCbM2khkJpZcc&#43;oRCIin6PttVD6RrdwfLVDawmDvc8=" rel="preload stylesheet" as="style">
-<link rel="icon" href="/favicon.ico">
-<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-<link rel="apple-touch-icon" href="/apple-touch-icon.png">
-<link rel="mask-icon" href="/safari-pinned-tab.svg">
+<link rel="icon" href="//localhost:1313/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="//localhost:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="//localhost:1313/favicon-32x32.png">
+<link rel="apple-touch-icon" href="//localhost:1313/apple-touch-icon.png">
+<link rel="mask-icon" href="//localhost:1313/safari-pinned-tab.svg">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
-<link rel="alternate" hreflang="en" href="/posts/2019-12-29-azure-arc-for-servers-getting-started/">
+<link rel="alternate" hreflang="en" href="//localhost:1313/posts/2019-12-29-azure-arc-for-servers-getting-started/">
 <noscript>
     <style>
         #theme-toggle,
@@ -72,7 +72,7 @@ Azure Arc extends the Azure Resource Manager capabilities to Linux and Windows s
         document.querySelector("html").dataset.theme = 'light';
     }
 
-</script><meta property="og:url" content="/posts/2019-12-29-azure-arc-for-servers-getting-started/">
+</script><meta property="og:url" content="//localhost:1313/posts/2019-12-29-azure-arc-for-servers-getting-started/">
   <meta property="og:site_name" content="sjoukje.eth">
   <meta property="og:title" content="Azure Arc for Servers: Getting started">
   <meta property="og:description" content="Most organizations embrace a hybrid and multi cloud approach for their businesses. This will give them the full benefits of their on-premises investments, the ability to innovate using cloud technologies, and the ability to avoid vendor lock-in. For the last two years, Microsoft is investing enormously in enabling seamless hybrid capabilities. They released Azure Stack, which enables a consistent cloud model, but is deployed on-premises. They enabled security threat protection for any infrastructure, which is fully powered from the cloud, and they enabled the ability to run Microsoft Azure Cognitive Services AI models anywhere. Microsoft recently released Azure Arc, which unlocks new hybrid scenarios for organizations by bringing new Azure services and management features to any infrastructure. Azure Arc extends the Azure Resource Manager capabilities to Linux and Windows servers, and Kubernetes clusters on any infrastructure across on-premises, multi-cloud, and the edge. You can use Azure Arc to run Azure data services anywhere, which includes always up-to-date data capabilities, deployment in seconds, and dynamic scalability on any infrastructure. Azure Arc for Servers is currently in preview, and that is what we are going to cover in this post.">
@@ -97,13 +97,13 @@ Azure Arc extends the Azure Resource Manager capabilities to Linux and Windows s
       "@type": "ListItem",
       "position":  1 ,
       "name": "Posts",
-      "item": "/posts/"
-    }
+      "item": "//localhost:1313/posts/"
+    }, 
     {
       "@type": "ListItem",
-      "position":  1 ,
+      "position":  2 ,
       "name": "Azure Arc for Servers: Getting started",
-      "item": "/posts/2019-12-29-azure-arc-for-servers-getting-started/"
+      "item": "//localhost:1313/posts/2019-12-29-azure-arc-for-servers-getting-started/"
     }
   ]
 }
@@ -129,14 +129,14 @@ Azure Arc extends the Azure Resource Manager capabilities to Linux and Windows s
   },
   "mainEntityOfPage": {
     "@type": "WebPage",
-    "@id": "/posts/2019-12-29-azure-arc-for-servers-getting-started/"
+    "@id": "//localhost:1313/posts/2019-12-29-azure-arc-for-servers-getting-started/"
   },
   "publisher": {
     "@type": "Organization",
     "name": "sjoukje.eth",
     "logo": {
       "@type": "ImageObject",
-      "url": "/favicon.ico"
+      "url": "//localhost:1313/favicon.ico"
     }
   }
 }
@@ -146,7 +146,7 @@ Azure Arc extends the Azure Resource Manager capabilities to Linux and Windows s
     <header class="header">
     <nav class="nav">
         <div class="logo">
-            <a href="/" accesskey="h" title="sjoukje.eth (Alt + H)">sjoukje.eth</a>
+            <a href="//localhost:1313/" accesskey="h" title="sjoukje.eth (Alt + H)">sjoukje.eth</a>
             <div class="logo-switches">
                 <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
                     <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
@@ -172,27 +172,27 @@ Azure Arc extends the Azure Resource Manager capabilities to Linux and Windows s
         </div>
         <ul id="menu">
             <li>
-                <a href="/posts/" title="Posts">
+                <a href="//localhost:1313/posts/" title="Posts">
                     <span>Posts</span>
                 </a>
             </li>
             <li>
-                <a href="/books/" title="Books">
+                <a href="//localhost:1313/books/" title="Books">
                     <span>Books</span>
                 </a>
             </li>
             <li>
-                <a href="/about/" title="About">
+                <a href="//localhost:1313/about/" title="About">
                     <span>About</span>
                 </a>
             </li>
             <li>
-                <a href="/archives/" title="Archive">
+                <a href="//localhost:1313/archives/" title="Archive">
                     <span>Archive</span>
                 </a>
             </li>
             <li>
-                <a href="/search/" title="Search (Alt &#43; /)" accesskey=/>
+                <a href="//localhost:1313/search/" title="Search (Alt &#43; /)" accesskey=/>
                     <span>Search</span>
                 </a>
             </li>
@@ -203,14 +203,48 @@ Azure Arc extends the Azure Resource Manager capabilities to Linux and Windows s
 
 <article class="post-single">
   <header class="post-header">
-    <div class="breadcrumbs"><a href="/">Home</a>&nbsp;»&nbsp;<a href="/posts/">Posts</a></div>
+    <div class="breadcrumbs"><a href="//localhost:1313/">Home</a>&nbsp;»&nbsp;<a href="//localhost:1313/posts/">Posts</a></div>
     <h1 class="post-title entry-hint-parent">
       Azure Arc for Servers: Getting started
     </h1>
     <div class="post-meta"><span title='2019-12-29 00:00:00 +0000 UTC'>December 29, 2019</span>&nbsp;·&nbsp;<span>6 min</span>&nbsp;·&nbsp;<span>sjoukje.eth</span>
 
 </div>
-  </header> 
+  </header> <div class="toc">
+    <details  open>
+        <summary accesskey="c" title="(Alt + C)">
+            <span class="details">Table of Contents</span>
+        </summary>
+
+        <div class="inner"><ul>
+                <li>
+                    <a href="#azure-arc-for-servers" aria-label="Azure Arc for Servers">Azure Arc for Servers</a><ul>
+                        
+                <li>
+                    <a href="#supported-operating-systems" aria-label="Supported Operating Systems">Supported Operating Systems</a></li>
+                <li>
+                    <a href="#networking" aria-label="Networking">Networking</a></li></ul>
+                </li>
+                <li>
+                    <a href="#register-the-required-resource-providers-in-azure" aria-label="Register the required Resource Providers in Azure">Register the required Resource Providers in Azure</a></li>
+                <li>
+                    <a href="#connect-the-machine-to-azure-arc-for-servers" aria-label="Connect the machine to Azure Arc for Servers">Connect the machine to Azure Arc for Servers</a><ul>
+                        
+                <li>
+                    <a href="#generate-the-agent-install-script-using-the-azure-portal" aria-label="Generate the agent install script using the Azure portal">Generate the agent install script using the Azure portal</a></li>
+                <li>
+                    <a href="#connect-the-on-premises-machine-to-azure-arc" aria-label="Connect the on-premises machine to Azure Arc">Connect the on-premises machine to Azure Arc</a></li></ul>
+                </li>
+                <li>
+                    <a href="#managing-the-machine-in-azure-arc" aria-label="Managing the machine in Azure Arc">Managing the machine in Azure Arc</a></li>
+                <li>
+                    <a href="#summary" aria-label="Summary">Summary</a>
+                </li>
+            </ul>
+        </div>
+    </details>
+</div>
+
   <div class="post-content"><p>Most organizations embrace a hybrid and multi cloud approach for their businesses. This will give them the full benefits of their on-premises investments, the ability to innovate using cloud technologies, and the ability to avoid vendor lock-in.
 For the last two years, Microsoft is investing enormously in enabling seamless hybrid capabilities. They released Azure Stack, which enables a consistent cloud model, but is deployed on-premises. They enabled security threat protection for any infrastructure, which is fully powered from the cloud, and they enabled the ability to run Microsoft Azure Cognitive Services AI models anywhere. Microsoft recently released Azure Arc, which unlocks new hybrid scenarios for organizations by bringing new Azure services and management features to any infrastructure.
 Azure Arc extends the Azure Resource Manager capabilities to Linux and Windows servers, and Kubernetes clusters on any infrastructure across on-premises, multi-cloud, and the edge. You can use Azure Arc to run Azure data services anywhere, which includes always up-to-date data capabilities, deployment in seconds, and dynamic scalability on any infrastructure. Azure Arc for Servers is currently in preview, and that is what we are going to cover in this post.</p>
@@ -351,12 +385,12 @@ To connect the machine to Azure, we need to generate the agent install script in
     <ul class="post-tags">
     </ul>
 <nav class="paginav">
-  <a class="prev" href="/posts/2020-08-20-what-a-cloud-center-of-excellence-can-do-for-your-organization/">
+  <a class="prev" href="//localhost:1313/posts/2020-08-20-what-a-cloud-center-of-excellence-can-do-for-your-organization/">
     <span class="title">« Prev</span>
     <br>
     <span>What a Cloud Center of Excellence can do for your organization</span>
   </a>
-  <a class="next" href="/posts/2019-10-17-polarconf-the-slides-of-my-session-the-steps-to-ef/">
+  <a class="next" href="//localhost:1313/posts/2019-10-17-polarconf-the-slides-of-my-session-the-steps-to-ef/">
     <span class="title">Next »</span>
     <br>
     <span>PolarConf: The slides of my session The steps to effective Azure governance</span>
@@ -368,7 +402,7 @@ To connect the machine to Azure, we need to generate the agent install script in
     </main>
     
 <footer class="footer">
-        <span>&copy; 2026 <a href="/">sjoukje.eth</a></span> · 
+        <span>&copy; 2026 <a href="//localhost:1313/">sjoukje.eth</a></span> · 
 
     <span>
         Powered by
